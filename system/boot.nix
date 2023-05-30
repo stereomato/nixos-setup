@@ -10,7 +10,8 @@
 			"vm.page-cluster" = 0;
 			"vm.nr_hugepages" = 25;
 			"vm.nr_overcommit_hugepages" = 150;
-			"vm.vfs_cache_pressure" = 50;
+			# Prefer to keep application memory 2x more than cache memory
+			"vm.vfs_cache_pressure" = 200;
 			"vm.swappiness" = 200;
 			#"vm.dirty_ratio"= 6;
 			#"vm.dirty_background_ratio" = 1;

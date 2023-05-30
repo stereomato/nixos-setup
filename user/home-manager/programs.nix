@@ -443,7 +443,6 @@
 				pkgs.vscode-extensions.ms-vscode.cpptools
 				pkgs.vscode-extensions.ms-vscode.hexeditor
 				pkgs.vscode-extensions.ms-vscode.theme-tomorrowkit
-				pkgs.vscode-extensions.mskelton.one-dark-theme
 				pkgs.vscode-extensions.piousdeer.adwaita-theme
 				pkgs.vscode-extensions.pkief.material-product-icons
 				pkgs.vscode-extensions.pkief.material-icon-theme
@@ -468,12 +467,12 @@
     				#	version = "1.3.0";
     				#	sha256 = "15waf36j162i247z8c0dzd1807iww9gmwrnsc7w20i00x66k5gld";
   					#}
-						{
-							name = "gtk-dark-titlebar";
-							publisher = "fkrull";
-							version = "1.3.0";
-							sha256 = "15waf36j162i247z8c0dzd1807iww9gmwrnsc7w20i00x66k5gld";
-						}
+						#{
+						#	name = "gtk-dark-titlebar";
+						#	publisher = "fkrull";
+						#	version = "1.3.0";
+						#	sha256 = "15waf36j162i247z8c0dzd1807iww9gmwrnsc7w20i00x66k5gld";
+						#}
 						{
 							name = "better-cpp-syntax";
 							publisher = "jeff-hykin";
@@ -564,12 +563,12 @@
 							version = "1.0.5834";
 							sha256 = "0xh719xmacgyn59xvbl4isb5xvg5i11bjmqpqra5pm8niyyy59zq";
 						}
-						{
-							name = "vscode-gnome-theme";
-							publisher = "rafaelmardojai";
-							version = "0.4.1";
-							sha256 = "04z9jah2k6gph3zkjkk3ljlp1i7k0fd17qqwmqx4ngjmlmmq9197";
-						}
+						#{
+						#	name = "vscode-gnome-theme";
+						#	publisher = "rafaelmardojai";
+						#	version = "0.4.1";
+						#	sha256 = "04z9jah2k6gph3zkjkk3ljlp1i7k0fd17qqwmqx4ngjmlmmq9197";
+						#}
 						{
 							name = "gruvbox-material";
 							publisher = "sainnhe";
