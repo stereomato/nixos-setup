@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ username, pkgs, ... }:
 {
 	programs = {
 		home-manager = {
@@ -135,7 +135,7 @@
 		git = {
 			enable = true;
 			package = pkgs.gitFull;
-			userName = "Luis O.";
+			userName = "${username}";
 			userEmail = "thepearsche@proton.me";
 			delta = {
 				enable = true;
@@ -454,6 +454,7 @@
 				pkgs.vscode-extensions.vscjava.vscode-java-dependency
 				pkgs.vscode-extensions.vscjava.vscode-java-test
 				pkgs.vscode-extensions.vscjava.vscode-maven
+				pkgs.vscode-extensions.vadimcn.vscode-lldb
 			] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
 						{
     					name = "doxdocgen";

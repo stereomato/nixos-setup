@@ -20,7 +20,7 @@
 			roboto-slab
 			roboto-mono
 			jetbrains-mono
-			input-fonts
+			#input-fonts
 			#Input-Fonts-Custom
 			inter
 			source-sans
@@ -31,6 +31,8 @@
 			source-han-serif
 			source-han-code-jp
 			victor-mono
+			inconsolata
+			courier-prime
 		]; 
 		fontDir.enable = true;
 		fontconfig = {
@@ -70,7 +72,7 @@
 					"Cantarell"
 				];
 				serif = [ "Bitter Pro" ];
-				monospace = [ "Input Mono" ];
+				monospace = [ "Roboto Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

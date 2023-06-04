@@ -7,7 +7,7 @@ in
 	imports = [
 		./fonts.nix
 		./nixpkgs.nix
-		./programs.nix
+		( import ./programs.nix { username = currentUsername; pkgs = pkgs; })
 		./qt.nix
 		./services.nix
 	];
@@ -118,8 +118,9 @@ in
 			
 			
 			# General multimedia tools
-			handbrake-pearsche mediainfo  ffmpeg-fuller 
-			
+			mediainfo  ffmpeg-fuller 
+			# broken: handbrake-pearsche https://github.com/NixOS/nixpkgs/pull/235822
+
 			# Digital media players/readers/streamers
 			celluloid clapper amberol quodlibet syncplay rhythmbox spotify gthumb
 

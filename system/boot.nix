@@ -7,23 +7,34 @@
 		};
 		kernel.sysctl = {
 			# Memory
+			# Disable swap read ahead
 			"vm.page-cluster" = 0;
+			# Hugepages configuration, mostly for xmrig
 			"vm.nr_hugepages" = 25;
 			"vm.nr_overcommit_hugepages" = 150;
-			# Prefer to keep application memory 2x more than cache memory
-			"vm.vfs_cache_pressure" = 200;
+			# Prefer to keep cache memory over application memory (testing)
+			"vm.vfs_cache_pressure" = 50;
+			# Maximum swappiness
 			"vm.swappiness" = 200;
-			#"vm.dirty_ratio"= 6;
-			#"vm.dirty_background_ratio" = 1;
 			# Set the bytes of my current laptop's storage speed
 			"vm.dirty_bytes" = 1000000000;
 			"vm.dirty_background_bytes" = 1800000000;
+			# 5% physical ram / # of threads
 			"vm.min_free_kbytes" = 77050;
+			# Best value, according to phoronix
 			"vm.page_lock_unfairness" = 3;
+			# Disable watermark boosting
 			#"vm.watermark_boost_factor" = 0; # Needed when not using the zen-kernel
+			# Increase kswapd activity more early
 			"vm.watermark_scale_factor" = 375;
+			# Increase the compaction activity slightly
 			"vm.compaction_proactiveness" = 25;
-			"vm.compact_unevictable_allowed" = 1;
+			# Compact also unevictable memory (testing)
+			#"vm.compact_unevictable_allowed" = 1;
+			# Fedora change, for some games. Shouldn't affect most things
+			# Higher memory map count for some games that need it
+			# https://www.phoronix.com/news/Fedora-39-Max-Map-Count-Approve
+			"vm.max_map_count" = 1048576;
 
 			# Internet
 			"net.ipv4.tcp_fastopen" = 3;
@@ -37,6 +48,7 @@
 			#"kernel.perf_cpu_time_max_percent" = 3;
 			
 			# Intel GPU
+			# Disable the paranoid mode over some stats
 			"dev.i915.perf_stream_paranoid" = 0;
 		};
 		initrd = {

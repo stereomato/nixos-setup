@@ -39,7 +39,12 @@
 			SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger"
 		'';
 		# Enable printing
-		printing.enable = true;
+		printing = {
+			enable = true;
+			cups-pdf = {
+				enable = true;
+			};
+		};
 		pipewire = {
 			enable = true;
 			audio.enable = true;
