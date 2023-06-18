@@ -5,11 +5,6 @@ let
 in
 {
 	imports = [
-		./fonts.nix
-		./nixpkgs.nix
-		( import ./programs.nix { username = currentUsername; pkgs = pkgs; })
-		./qt.nix
-		./services.nix
 	];
 	home = {
 		username = currentUsername;

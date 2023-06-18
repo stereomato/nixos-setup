@@ -32,7 +32,7 @@
             ./virtualisation.nix
             ./zramSwap.nix
             # from hardware-configuration.nix
-            (modulesPath + "/installer/scan/not-detected.nix")
+            #(modulesPath + "/installer/scan/not-detected.nix")
           ];
         };
       };
