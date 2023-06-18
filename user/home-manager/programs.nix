@@ -1,4 +1,7 @@
-{ username, pkgs, ... }:
+{ pkgs, ... }:
+let 
+	username = "pearsche";
+	in
 {
 	programs = {
 		home-manager = {

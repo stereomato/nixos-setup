@@ -16,7 +16,11 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       homeConfigurations."pearsche" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        # https://github.com/nix-community/home-manager/issues/2942
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
@@ -24,7 +28,7 @@
           ./fonts.nix
           ./home.nix
 		      ./nixpkgs.nix
-		      ( import ./programs.nix { username = "pearsche"; pkgs = pkgs; })
+		      ./programs.nix
 		      ./qt.nix
 		      ./services.nix 
         ];
