@@ -24,7 +24,7 @@
           ./fonts.nix
           ./home.nix
 		      ./nixpkgs.nix
-		      ( import ./programs.nix { username = currentUsername; pkgs = pkgs; })
+		      ( import ./programs.nix { username = "pearsche"; pkgs = pkgs; })
 		      ./qt.nix
 		      ./services.nix 
         ];
