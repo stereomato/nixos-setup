@@ -45,7 +45,7 @@
 									i = "serifed";
 									l = "serifed";
 									t = "flat-hook-short-neck";
-									zero = "slashed-oval";
+									zero = "oval-slashed";
 									six = "straight-bar";
 									nine = "straight-bar";
 									at = "fourfold-solid-inner";
@@ -138,9 +138,7 @@
 							Z3FOLD = yes;
 							ZSMALLOC = lib.mkForce yes;
 							ZSMALLOC_STAT = yes;
-							# mgLRU, helps a lot with memory management.
-							LRU_GEN = yes;
-							LRU_GEN_ENABLED = yes;
+							# mgLRU statistics support
 							LRU_GEN_STATS = yes;
 							# Compile the kernel with optimizations for my Intel laptop.
 							MNATIVE_INTEL = yes;
@@ -168,6 +166,8 @@
 								openal
 								zlib
 								libpng
+								# https://github.com/NixOS/nixpkgs/issues/236561
+								attr
 							];
 				};
 				optimizeIntelCPUperformancePolicy = pkgs.writers.writeFishBin "scriptOptimizeIntelCPUperformancePolicy" ''
@@ -202,18 +202,18 @@
 					nproc | tr -d '\n' | tee $out/numThreads
 					echo '''$(($(nproc) / 2 ))| tr -d '\n' | tee $out/halfNumThreads
 				'';
-				mesa-intel-fix = super.mesa.overrideAttrs (old: {
-					patches = super.mesa.patches ++ [
-						# HOPEFULLY this will be fixed properly soon.
-						./patchwork-zone/fix-tgl-vulkan-perf.patch
-					];
-				});
-				mesa-intel-fix32 = super.pkgsi686Linux.mesa.overrideAttrs (old: {
-					patches = super.mesa.patches ++ [
-						# HOPEFULLY this will be fixed properly soon.
-						./patchwork-zone/fix-tgl-vulkan-perf.patch
-					];
-				});
+				#mesa-intel-fix = super.mesa.overrideAttrs (old: {
+				#	patches = super.mesa.patches ++ [
+				#		# HOPEFULLY this will be fixed properly soon.
+				#		./patchwork-zone/fix-tgl-vulkan-perf.patch
+				#	];
+				#});
+				#mesa-intel-fix32 = super.pkgsi686Linux.mesa.overrideAttrs (old: {
+				#	patches = super.mesa.patches ++ [
+				#		# HOPEFULLY this will be fixed properly soon.
+				#		./patchwork-zone/fix-tgl-vulkan-perf.patch
+				#	];
+				#});
 				# Has to be replicated on home-manager's own nixpkgs.nix as well...
 				#pkgs.adwaita-qt = super.adwaita-qt.override {
 				#	useQT6 = true;

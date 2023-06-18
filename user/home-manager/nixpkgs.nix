@@ -5,13 +5,15 @@
 				allowUnfree = true;
 				joypixels.acceptLicense = true;
 				input-fonts.acceptLicense = true;
-				# Complete annoyance
-				# Culprits: 
-				# Python 2: Davinci Resolve
-				# Electron 19: Whalebird
 				permittedInsecurePackages = [
+					# Davinci Resolve
 					"python-2.7.18.6"
+					# Whalebird
 					"electron-19.0.7"
+					# Cinny
+					"openssl-1.1.1u"
+					# Find out what
+					"electron-21.4.0"
 				];
 			};
 			overlays = [(
@@ -34,6 +36,7 @@
 					'';
 					chowmatrix = super.callPackage ./derivationsYetToUpstream/chowmatrix.nix {};
 					auburn-sounds-graillon-2 = super.callPackage ./derivationsYetToUpstream/auburn-sounds-graillon-2.nix {};
+					tal-reverb-4 = super.callPackage ./derivationsYetToUpstream/tal-reverb-4.nix {};
 					nvtop = super.nvtop.override {
 						nvidia = false;
 					};

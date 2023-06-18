@@ -7,13 +7,13 @@
 		};
 		kernel.sysctl = {
 			# Memory
-			# Disable swap read ahead
+			# Disable swap read ahead, increases latency when dealing with swap and it's rather meaningless when using zram+zstd anyway
 			"vm.page-cluster" = 0;
 			# Hugepages configuration, mostly for xmrig
 			"vm.nr_hugepages" = 25;
 			"vm.nr_overcommit_hugepages" = 150;
-			# Prefer to keep cache memory over application memory (testing)
-			"vm.vfs_cache_pressure" = 50;
+			# Prefer to keep application memory over filesystem cache memory
+			"vm.vfs_cache_pressure" = 200;
 			# Maximum swappiness
 			"vm.swappiness" = 200;
 			# Set the bytes of my current laptop's storage speed
@@ -25,7 +25,7 @@
 			"vm.page_lock_unfairness" = 3;
 			# Disable watermark boosting
 			#"vm.watermark_boost_factor" = 0; # Needed when not using the zen-kernel
-			# Increase kswapd activity more early
+			# Increase kswapd activity
 			"vm.watermark_scale_factor" = 375;
 			# Increase the compaction activity slightly
 			"vm.compaction_proactiveness" = 25;

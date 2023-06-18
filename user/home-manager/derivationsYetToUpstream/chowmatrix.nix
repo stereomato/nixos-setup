@@ -90,7 +90,7 @@ stdenv.mkDerivation rec {
 		homepage = "https://github.com/Chowdhury-DSP/ChowMatrix";
 		description = "CHOW Matrix is a delay effect, made up of an infinitely growable tree of delay lines, each with individual controls for feedback, panning, distortion, and more.";
 		license = with licenses; [ bsd3 ];
-		maintainers = with maintainers; [ L911P ];
+		maintainers = with maintainers; [ pearsche ];
 		platforms = platforms.linux;
 	};
 }

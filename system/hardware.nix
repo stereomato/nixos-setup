@@ -28,8 +28,8 @@
 			driSupport = true;
 			driSupport32Bit = true;
 			# temporary until it's fixed:
-			package = pkgs.mesa-intel-fix.drivers;
-			package32 = pkgs.mesa-intel-fix32.drivers;
+			#package = pkgs.mesa-intel-fix.drivers;
+			#package32 = pkgs.mesa-intel-fix32.drivers;
 			
 			extraPackages = with pkgs; [ 
 				# HW media acceleration

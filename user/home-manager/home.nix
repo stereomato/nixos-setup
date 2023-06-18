@@ -128,10 +128,11 @@ in
 			obs-studio-with-plugins simplescreenrecorder kooha
 
 			# Music production: DAWs
-			audacity ardour qpwgraph zrythm
+			audacity ardour qpwgraph
+			# zrythm
 
 			# Music production: plugins
-			dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2
+			dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4
 			
 			# Video Production & manipulation
 			pitivi  mkvtoolnix kdenlive
@@ -145,7 +146,7 @@ in
 			#vivaldi-widevine 
 
 			# Chat apps
-			element-desktop tdesktop  discord gnome.polari dino session-desktop mumble fractal
+			element-desktop cinny-desktop tdesktop  discord gnome.polari dino session-desktop mumble fractal
 			
 			# Fediverse apps
 			whalebird

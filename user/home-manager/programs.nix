@@ -462,18 +462,6 @@
     					version = "1.4.0";
     					sha256 = "1d95znf2vsdzv9jqiigh9zm62dp4m9jz3qcfaxn0n0pvalbiyw92";
   					}
-						#{
-    				#	name = "gtk-dark-titlebar";
-    				#	publisher = "fkrull";
-    				#	version = "1.3.0";
-    				#	sha256 = "15waf36j162i247z8c0dzd1807iww9gmwrnsc7w20i00x66k5gld";
-  					#}
-						#{
-						#	name = "gtk-dark-titlebar";
-						#	publisher = "fkrull";
-						#	version = "1.3.0";
-						#	sha256 = "15waf36j162i247z8c0dzd1807iww9gmwrnsc7w20i00x66k5gld";
-						#}
 						{
 							name = "better-cpp-syntax";
 							publisher = "jeff-hykin";
