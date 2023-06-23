@@ -1,8 +1,12 @@
-{ pkgs, ... }:
-let 
-	username = "pearsche";
-	in
+{ username, inputs, pkgs, ... }:
+
 {
+	#TODO: see why this shit doesn't work!
+	nixpkgs = {
+		config.allowUnfree = true;
+		config.allowUnfreePredicate = (_: true);
+	};
+
 	programs = {
 		home-manager = {
 			enable = true;
@@ -458,145 +462,29 @@ let
 				pkgs.vscode-extensions.vscjava.vscode-java-test
 				pkgs.vscode-extensions.vscjava.vscode-maven
 				pkgs.vscode-extensions.vadimcn.vscode-lldb
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.kosz78.nim
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.cschlosser.doxdocgen
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jeff-hykin.better-cpp-syntax
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jgclark.vscode-todo-highlight
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.josetr.cmake-language-support-vscode
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-dotnettools.vscode-dotnet-runtime
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-python.isort
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-python.vscode-pylance
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode-remote.remote-containers
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode-remote.remote-ssh-edit
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode-remote.remote-wsl
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.cpptools-extension-pack
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.cpptools-themes
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.remote-explorer
+				#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.Theme-MaterialKit
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vsliveshare.vsliveshare
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.sainnhe.gruvbox-material
+				#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.VisualStudioExptTeam.intellicode-api-usage-examples
+				#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.VisualStudioExptTeam.vscodeintellicode
+				#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.VisualStudioExptTeam.vscodeintellicode-completions
+				#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.VisualStudioExptTeam.vscodeintellicode-insiders
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.vscjava.vscode-java-pack
 			] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-						{
-    					name = "doxdocgen";
-    					publisher = "cschlosser";
-    					version = "1.4.0";
-    					sha256 = "1d95znf2vsdzv9jqiigh9zm62dp4m9jz3qcfaxn0n0pvalbiyw92";
-  					}
-						{
-							name = "better-cpp-syntax";
-							publisher = "jeff-hykin";
-							version = "1.17.5";
-							sha256 = "16dpgs4blis4yajw51yhby54pag28r74wwf6szx4nr79f44lgh7y";
-						}
-						{
-							name = "vscode-todo-highlight";
-							publisher = "jgclark";
-							version = "2.0.4";
-							sha256 = "18zm1w4ziq3i7fn2rcd095va7nqnbdmsvr82lj27s33zrd2wwzzr";
-						}
-						{
-							name = "cmake-language-support-vscode";
-							publisher = "josetr";
-							version = "0.0.9";
-							sha256 = "0apjsy1g12f0aqgpp320mk4p9c78ra62lplwjsslcbmrkrhmgnrc";
-						}
-						{
-							name = "nim";
-							publisher = "kosz78";
-							version = "0.6.6";
-							sha256 = "1s1npk6fzjngy6bjr65qgabsh6drkwmp2fmbpl3ryypjywpbmmdh";
-						}
-						{
-							name = "vscode-dotnet-runtime";
-							publisher = "ms-dotnettools";
-							version = "1.6.0";
-							sha256 = "047xkz2ka689d88mic4qp1ickjhrqnqzsx9c1rv630naycibjy83";
-						}
-						{
-							name = "isort";
-							publisher = "ms-python";
-							version = "2023.9.10861010";
-							sha256 = "1apsa9kgbz19wyy72vchka6wmfwwj2hy8chpqpppffr4qm2nkq1r";
-						}
-						{
-							name = "vscode-pylance";
-							publisher = "ms-python";
-							version = "2023.3.31";
-							sha256 = "09lm977r1bxm44lw7fiakjk4p9v5nhas3rdvgmwihzcpj7dm8v8p";
-						}
-						{
-							name = "remote-containers";
-							publisher = "ms-vscode-remote";
-							version = "0.287.0";
-							sha256 = "1zn3hzw9laagrjgg943g5nzydxiljq93ckb270fw0bjmab7hqi0c";
-						}
-						{
-							name = "remote-ssh-edit";
-							publisher = "ms-vscode-remote";
-							version = "0.84.0";
-							sha256 = "0rw2klz1f4sy1xzwg4bilcm2sjk0lxdfh9ly3f4kbl8a5xccfy6z";
-						}
-						{
-							name = "remote-wsl";
-							publisher = "ms-vscode-remote";
-							version = "0.77.0";
-							sha256 = "1q364nqwqbkvwzjisx64zc312graj5mcg43ha2vajwq30myivlbw";
-						}
-						{
-							name = "cpptools-extension-pack";
-							publisher = "ms-vscode";
-							version = "1.3.0";
-							sha256 = "11fk26siccnfxhbb92z6r20mfbl9b3hhp5zsvpn2jmh24vn96x5c";
-						}
-						{
-							name = "cpptools-themes";
-							publisher = "ms-vscode";
-							version = "2.0.0";
-							sha256 = "05r7hfphhlns2i7zdplzrad2224vdkgzb0dbxg40nwiyq193jq31";
-						}
-						{
-							name = "remote-explorer";
-							publisher = "ms-vscode";
-							version = "0.3.2023032309";
-							sha256 = "1wncgsw3ijf91fvl4w05xpz4wzc7h3l51ks2q4b99q3gylahlnxf";
-						}
-						{
-							name = "Theme-MaterialKit";
-							publisher = "ms-vscode";
-							version = "0.1.4";
-							sha256 = "1lqql7lb974mix00sad01d88d5mgyzrh1ck7xpgsdl5kqqag0w3a";
-						}
-						{
-							name = "vsliveshare";
-							publisher = "ms-vsliveshare";
-							version = "1.0.5834";
-							sha256 = "0xh719xmacgyn59xvbl4isb5xvg5i11bjmqpqra5pm8niyyy59zq";
-						}
-						#{
-						#	name = "vscode-gnome-theme";
-						#	publisher = "rafaelmardojai";
-						#	version = "0.4.1";
-						#	sha256 = "04z9jah2k6gph3zkjkk3ljlp1i7k0fd17qqwmqx4ngjmlmmq9197";
-						#}
-						{
-							name = "gruvbox-material";
-							publisher = "sainnhe";
-							version = "6.5.2";
-							sha256 = "0bpyb3a88ak1jb26d289fx5nmjwz8q960kj3r2p9g39h0h8rkr0g";
-						}
-						{
-							name = "intellicode-api-usage-examples";
-							publisher = "VisualStudioExptTeam";
-							version = "0.2.7";
-							sha256 = "09s3kv946hbpm1l4vks0vy6rl2vp451vbmr5bj16dd62s31pk4s8";
-						}
-						{
-							name = "vscodeintellicode";
-							publisher = "VisualStudioExptTeam";
-							version = "1.2.30";
-							sha256 = "0lg298047vmy31fnkczgpw78k3yxzpiip0ln1wixy70hdpwsfqbz";
-						}
-						{
-							name = "vscodeintellicode-completions";
-							publisher = "VisualStudioExptTeam";
-							version = "1.0.21";
-							sha256 = "0xwnmhh8l4p693r6hfsg8qk9cvjd91yz3inp26yjavdlp2sf78nh";
-						}
-						{
-							name = "vscodeintellicode-insiders";
-							publisher = "VisualStudioExptTeam";
-							version = "1.1.10";
-							sha256 = "1kf7vdm5gk346ki5k5wdnk57502j68wgjyg05f3sgbn7wrs5f307";
-						}
-						{
-							name = "vscode-java-pack";
-							publisher = "vscjava";
-							version = "0.25.2023032708";
-							sha256 = "1fn2rqxip1839iw2skv1wwymirzbsh9iynqhdp60gkimg2w36504";
-						}
 					];
 		};
 		gnome-terminal = {

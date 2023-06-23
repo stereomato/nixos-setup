@@ -1,8 +1,5 @@
-{ lib, config, pkgs, ... }:
+{ currentUsername, lib, pkgs, ... }:
 
-let
-	currentUsername = "pearsche";
-in
 {
 	imports = [
 	];
@@ -59,7 +56,7 @@ in
 			blackbox-terminal
 
 			# Nix tooling
-			rnix-lsp nix-prefetch-scripts niv
+			rnix-lsp nix-prefetch-scripts niv nixd
 
 			# Debuggers
 			gdb valgrind

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
 	nixpkgs = {
 			config = {
@@ -61,7 +61,7 @@
 					gimp-pearsche = super.gimp-with-plugins.override {
 						withPython = true;
 					};
-				}
+				} 
 			)];
 	};
 }

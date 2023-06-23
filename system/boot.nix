@@ -73,7 +73,7 @@
 			# Find out whether this is a good idea or not
 			#"pcie_aspm=force"
 			"preempt=full"
-			"i915.enable_guc=3"
+			"i915.enable_guc=2"
 			"i915.enable_psr2_sel_fetch=1"
 			"iwlwifi.power_save=Y"
 			"zswap.enabled=N"
