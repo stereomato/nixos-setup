@@ -1,48 +1,48 @@
 { lib, pkgs, ... }:{
 	fileSystems = {
 		"/" = {
-			device = "/dev/mapper/Taihou-Main";
+			device = "/dev/mapper/Taihou-Disk";
 			fsType = "btrfs";
 			options = [
 				"subvol=@"
-				"compress=zstd:1"
+				"compress-force=zstd:1"
 			];
 		};
 		"/boot" = {
-			device = "/dev/disk/by-uuid/9393-3E73";
+			device = "/dev/disk/by-uuid/EF80-E2EB";
 			fsType = "vfat";
 			options = [
 				"discard"
 			];
 		};
 		"/nix" = {
-			device = "/dev/mapper/Taihou-Main";
+			device = "/dev/mapper/Taihou-Disk";
 			fsType = "btrfs";
 			options = [
-				"compress=zstd:2"
+				"compress-force=zstd:2"
 				"subvol=@nix"
 			];
 		};
 		"/home" = {
-			device = "/dev/mapper/Taihou-Main";
+			device = "/dev/mapper/Taihou-Disk";
 			fsType = "btrfs";
 			options = [
-				"compress=zstd:2"
+				"compress-force=zstd:2"
 				"subvol=@home"
 			];
 		};
 		"/swap" = { 
-			device = "/dev/mapper/Taihou-Main";
+			device = "/dev/mapper/Taihou-Disk";
 			fsType = "btrfs";
 			options = [
 				"subvol=@swap"
 			];
 		};
 		"/var/log" = { 
-			device = "/dev/mapper/Taihou-Main";
+			device = "/dev/mapper/Taihou-Disk";
 			fsType = "btrfs";
 			options = [
-				"compress=zstd:10"
+				"compress-force=zstd:10"
 				"subvol=@var_log"
 			];
 		};

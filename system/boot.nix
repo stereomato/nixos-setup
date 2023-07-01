@@ -57,7 +57,7 @@
 			luks = {
 				mitigateDMAAttacks = true;
 				devices = {
-					"Taihou-Main" = {
+					"Taihou-Disk" = {
 						device = "/dev/disk/by-uuid/b9d5979c-bd51-4b40-a759-d24cce9e4c09";
 						allowDiscards = true;
 						bypassWorkqueues = true;
@@ -65,7 +65,6 @@
 				};
 			};
 		};
-		
 		kernelModules = [ "kvm-intel" ];
 		extraModulePackages = [ ];
 		kernelPackages = pkgs.linux-pearsche;

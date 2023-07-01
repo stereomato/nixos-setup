@@ -1,6 +1,0 @@
-{
-    "device": "alsa_output.usb-BEHRINGER_UMC202HD_192k-00.HiFi__hw_U192k__sink",
-    "device-description": "UMC202HD 192k Line A",
-    "device-profile": "[Out] Line1",
-    "preset-name": "Nothing"
-}

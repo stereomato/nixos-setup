@@ -13,7 +13,7 @@
 			fira-mono
 			fira-code
 			joypixels
-			ibm-plex
+			#ibm-plex
 			#iosevka-pearsche
 			manrope
 			roboto
@@ -44,7 +44,7 @@
 			};
 			hinting = {
 				enable = false;
-				style = "hintnone";
+				style = "none";
 			};
 			localConf = ''
 				<fontconfig>

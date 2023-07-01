@@ -74,7 +74,7 @@
 							super.fetchzip {
 								name = "${super.input-fonts.pname}-${super.input-fonts.version}";
 								url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-								sha256 = "0hnd8qdr4kl93lzpfm4h2p2f7pvivnrsyg9q9l8zil1nasa4p7q4";
+								sha256 = "1w9x5vbgglpqcky2b1v0m3rz0npdzlg3482ahfj93vzr9xwmqwq3";
 								stripRoot = false;
 							};
 						
@@ -113,21 +113,10 @@
 							ACPI_I2C_OPREGION = yes;
 							# I2C built-in is needed by ACPI_I2C_OPREGION
 							I2C = yes;
-							# DAMON: Data Access Monitoring Framework
-							DAMON = yes;
-							DAMON_DBGFS = yes;
-							DAMON_LRU_SORT = no;
-							DAMON_PADDR = yes;
-							DAMON_RECLAIM = yes;
-							DAMON_SYSFS = yes;
-							DAMON_VADDR = yes;
-
 							# Extra DMABUF features
 							DMABUF_HEAPS = yes;
 							DMABUF_HEAPS_CMA = yes;
 							DMABUF_HEAPS_SYSTEM = yes;
-							# Helps with battery life/energy efficiency.
-							RCU_LAZY = yes;
 							# Enable compressors to use with zswap or zram.
 							CRYPTO_ZSTD = yes;
 							ZSTD_COMPRESS = yes;
@@ -144,7 +133,6 @@
 							MNATIVE_INTEL = yes;
 							# Extra zram stuff
 							ZRAM_MEMORY_TRACKING = yes;
-							ZRAM_WRITEBACK = yes;
 							ZRAM_MULTI_COMP = yes;
 							# Adds performance related flags to the compiler.
 							CC_OPTIMIZE_FOR_PERFORMANCE = yes;
