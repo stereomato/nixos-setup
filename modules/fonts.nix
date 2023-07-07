@@ -72,7 +72,7 @@
 					"Cantarell"
 				];
 				serif = [ "Bitter Pro" ];
-				monospace = [ "Input Mono" ];
+				monospace = [ "Jetbrains Mono NL" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

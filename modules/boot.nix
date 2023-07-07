@@ -75,7 +75,7 @@
 			"i915.enable_guc=2"
 			"i915.enable_psr2_sel_fetch=1"
 			"iwlwifi.power_save=Y"
-			"zswap.enabled=N"
+			"zswap.enabled=Y"
 			"zswap.compressor=zstd"
 			"zswap.zpool=zsmalloc"
 			"zswap.max_pool_percent=25"

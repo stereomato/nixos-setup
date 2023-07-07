@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:{
 	swapDevices = [{
-		#device = "/swap/Taihou-SWAP";
-		#size = 17365;
+		device = "/swap/Taihou-SWAP";
+		size = 17365;
 		discardPolicy = "both";
 		randomEncryption = {
 			enable = true; 
@@ -9,7 +9,7 @@
 		};
 		# This is in case of zram
 		# Currently, the device doesn't exist.
-		device = "/dev/nvme0n1p3";
-		options = [ "noauto" ];
+		#device = "/dev/nvme0n1p3";
+		#options = [ "noauto" ];
 	}];
 }
