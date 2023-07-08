@@ -80,7 +80,7 @@
 						
 					});
 				# TODO: Find where this comes from, and how it works? But, https://github.com/shiryel/nixos-dotfiles/blob/master/overlays/overrides/linux/default.nix# helped a lot!
-				linux-pearsche = super.linuxPackages_zen.extend (kself: ksuper: {
+				linux-pearsche = super.linuxPackages_6_3.extend (kself: ksuper: {
 					kernel = ksuper.kernel.override { 
 						structuredExtraConfig = with lib.kernel; {
 							# Fedora configuration mimicking
@@ -130,12 +130,11 @@
 							# mgLRU statistics support
 							LRU_GEN_STATS = yes;
 							# Compile the kernel with optimizations for my Intel laptop.
-							MNATIVE_INTEL = yes;
+							#TODO: Disabled because I'm currently using the vanilla 6.3 kernel
+							#MNATIVE_INTEL = yes;
 							# Extra zram stuff
 							ZRAM_MEMORY_TRACKING = yes;
 							ZRAM_MULTI_COMP = yes;
-							# Adds performance related flags to the compiler.
-							CC_OPTIMIZE_FOR_PERFORMANCE = yes;
 						};
 					#	ignoreConfigErrors = true;
 					};

@@ -68,6 +68,8 @@
 		kernelModules = [ "kvm-intel" ];
 		extraModulePackages = [ ];
 		kernelPackages = pkgs.linux-pearsche;
+		# TODO: currently using the 6.3 kernel because 6.4 has the audio bug.
+		#kernelPackages = pkgs.linuxPackages_6_3;
 		kernelParams = [ 
 			# Find out whether this is a good idea or not
 			#"pcie_aspm=force"
