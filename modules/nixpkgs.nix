@@ -74,7 +74,7 @@
 							super.fetchzip {
 								name = "${super.input-fonts.pname}-${super.input-fonts.version}";
 								url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-								sha256 = "1w9x5vbgglpqcky2b1v0m3rz0npdzlg3482ahfj93vzr9xwmqwq3";
+								sha256 = "11dragilx22fg44ynbpbqw1kd73p7ynfhm8zrlw98ha9dbyilkkw";
 								stripRoot = false;
 							};
 						

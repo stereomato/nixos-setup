@@ -9,7 +9,7 @@
 			];
 		};
 		"/boot" = {
-			device = "/dev/disk/by-uuid/EF80-E2EB";
+			device = "/dev/disk/by-uuid/D32C-41BC";
 			fsType = "vfat";
 			options = [
 				"discard"
