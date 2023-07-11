@@ -13,14 +13,14 @@
 			fira-mono
 			fira-code
 			joypixels
-			#ibm-plex
+			ibm-plex
 			#iosevka-pearsche
 			manrope
 			roboto
 			roboto-slab
 			roboto-mono
 			jetbrains-mono
-			input-fonts
+			#input-fonts
 			#Input-Fonts-Custom
 			inter
 			source-sans
@@ -72,7 +72,7 @@
 					"Cantarell"
 				];
 				serif = [ "Bitter Pro" ];
-				monospace = [ "Input Mono" ];
+				monospace = [ "Jetbrains Mono NL" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};
