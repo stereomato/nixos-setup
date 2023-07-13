@@ -167,12 +167,14 @@
 					end
 
 					if test -n "$_flag_mode"
-						if test "$_flag_mode" = "battery" -o "$_flag_mode" = "charger"
+						if test "$_flag_mode" = "battery" -o "$_flag_mode" = "charger" -o "$_flag_mode" = "testing"
 							switch $_flag_mode
 								case battery
 									set preference balance_power
 								case charger
 									set preference balance_performance
+								case testing
+									set preference 160
 							end
 							echo $preference | tee /sys/devices/system/cpu/cpufreq/policy?/energy_performance_preference
 						else

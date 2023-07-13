@@ -13,7 +13,7 @@
 			"vm.nr_hugepages" = 25;
 			"vm.nr_overcommit_hugepages" = 150;
 			# Prefer to keep application memory over filesystem cache memory
-			"vm.vfs_cache_pressure" = 200;
+			"vm.vfs_cache_pressure" = 250;
 			# Maximum swappiness
 			"vm.swappiness" = 200;
 			# Set the bytes of my current laptop's storage speed
