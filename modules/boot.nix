@@ -13,18 +13,21 @@
 			"vm.nr_hugepages" = 25;
 			"vm.nr_overcommit_hugepages" = 150;
 			# Prefer to keep application memory over filesystem cache memory
-			"vm.vfs_cache_pressure" = 250;
+			"vm.vfs_cache_pressure" = 500;
 			# Maximum swappiness
 			"vm.swappiness" = 200;
 			# Set the bytes of my current laptop's storage speed
+			# both dirty_bytes and dirty_background_bytes are set using the write speed obtained from the benchmark runs, both using the NVME SSD preset
+			# dirty_bytes uses peak performance profile
+			# dirty_background_bytes uses the real world performance profile
 			"vm.dirty_bytes" = 1000000000;
-			"vm.dirty_background_bytes" = 1800000000;
+			"vm.dirty_background_bytes" = 500000000;
 			# 5% physical ram / # of threads
 			"vm.min_free_kbytes" = 77050;
 			# Best value, according to phoronix
 			"vm.page_lock_unfairness" = 3;
 			# Disable watermark boosting
-			#"vm.watermark_boost_factor" = 0; # Needed when not using the zen-kernel
+			"vm.watermark_boost_factor" = 0; # Needed when not using the zen-kernel
 			# Increase kswapd activity
 			"vm.watermark_scale_factor" = 375;
 			# Increase the compaction activity slightly
@@ -70,13 +73,24 @@
 		kernelPackages = pkgs.linux-pearsche;
 		# TODO: currently using the 6.3 kernel because 6.4 has the audio bug.
 		#kernelPackages = pkgs.linuxPackages_6_3;
+		kernelPatches = [
+			{
+				name = "Audio distortion fix";
+				patch = ../patchwork-zone/6_4-audio-distortion-fix.patch;
+			}
+		];
 		kernelParams = [ 
 			# Find out whether this is a good idea or not
 			#"pcie_aspm=force"
 			"preempt=full"
+			# For TGL: only enable the HuC
 			"i915.enable_guc=2"
+			# PSR stuff, should help with battery saving on laptop displays that support this
 			"i915.enable_psr2_sel_fetch=1"
-			"iwlwifi.power_save=Y"
+			# Powersaving
+			"iwlwifi.power_save=1"
+			"iwlwifi.power_level=3"
+			# Zswap settings
 			"zswap.enabled=Y"
 			"zswap.compressor=zstd"
 			"zswap.zpool=zsmalloc"

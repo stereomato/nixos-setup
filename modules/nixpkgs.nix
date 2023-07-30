@@ -80,7 +80,7 @@
 						
 					});
 				# TODO: Find where this comes from, and how it works? But, https://github.com/shiryel/nixos-dotfiles/blob/master/overlays/overrides/linux/default.nix# helped a lot!
-				linux-pearsche = super.linuxPackages_6_3.extend (kself: ksuper: {
+				linux-pearsche = super.linuxPackages_zen.extend (kself: ksuper: {
 					kernel = ksuper.kernel.override { 
 						structuredExtraConfig = with lib.kernel; {
 							# Fedora configuration mimicking

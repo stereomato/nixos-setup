@@ -6,6 +6,7 @@
 		[ 
 			./boot.nix
 			./console.nix
+			./documentation.nix
 			./environment.nix
 			./filesystems.nix
 			./fonts.nix

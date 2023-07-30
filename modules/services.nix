@@ -31,12 +31,14 @@
 		fwupd.enable = true;
 		thermald.enable = true;
 		#fstrim.enable = false;
+		# These used to go on udev.extraRules, not needed anymore
+		#SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger"
+		#SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger"
+
 		udev.extraRules = ''
 			KERNEL=="cpu_dma_latency", GROUP="audio"
 			KERNEL=="rtc0", GROUP="audio"
 			KERNEL=="hpet", GROUP="audio"
-			SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=testing"
-			SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=testing"
 		'';
 		# Enable printing
 		printing = {

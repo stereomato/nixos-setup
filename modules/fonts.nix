@@ -33,6 +33,11 @@
 			victor-mono
 			inconsolata
 			courier-prime
+			pretendard
+			pretendard-jp
+			pretendard-std
+			ia-writer-duospace
+
 		]; 
 		fontDir.enable = true;
 		fontconfig = {
@@ -72,7 +77,7 @@
 					"Cantarell"
 				];
 				serif = [ "Bitter Pro" ];
-				monospace = [ "Jetbrains Mono NL" ];
+				monospace = [ "Roboto Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};
