@@ -73,10 +73,12 @@
 		kernelPackages = pkgs.linux-pearsche;
 		# TODO: currently using the 6.3 kernel because 6.4 has the audio bug.
 		#kernelPackages = pkgs.linuxPackages_6_3;
+		# Got it from https://github.com/openSUSE/kernel/commit/c9eb7dc726631d39f11ea17e6db6fe7ad5c0e5d9.patch
+		# Might be fixed in kernel 6.4.8, hopefully. In the end I recompile my kernel anyway so :shrug:
 		kernelPatches = [
 			{
 				name = "Audio distortion fix";
-				patch = ../patchwork-zone/6_4-audio-distortion-fix.patch;
+				patch = ./patchwork-zone/6_4-audio-distortion-fix.patch;
 			}
 		];
 		kernelParams = [ 
