@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:{
 	fonts = {
-		fonts = with pkgs; [
+		packages = with pkgs; [
 			Bitter-Pro
 			noto-fonts
 			noto-fonts-extra

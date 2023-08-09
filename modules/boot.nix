@@ -17,11 +17,11 @@
 			# Maximum swappiness
 			"vm.swappiness" = 200;
 			# Set the bytes of my current laptop's storage speed
-			# both dirty_bytes and dirty_background_bytes are set using the write speed obtained from the benchmark runs, both using the NVME SSD preset
+			# dirty_bytes is set using the write speed obtained from the benchmark runs, using the NVME SSD preset
 			# dirty_bytes uses peak performance profile
-			# dirty_background_bytes uses the real world performance profile
+			# dirty_background_bytes is set by dividing dirty_bytes by 4
 			"vm.dirty_bytes" = 1000000000;
-			"vm.dirty_background_bytes" = 500000000;
+			"vm.dirty_background_bytes" = 250000000;
 			# 5% physical ram / # of threads
 			"vm.min_free_kbytes" = 77050;
 			# Best value, according to phoronix
@@ -71,8 +71,6 @@
 		kernelModules = [ "kvm-intel" ];
 		extraModulePackages = [ ];
 		kernelPackages = pkgs.linux-pearsche;
-		# TODO: currently using the 6.3 kernel because 6.4 has the audio bug.
-		#kernelPackages = pkgs.linuxPackages_6_3;
 		# Got it from https://github.com/openSUSE/kernel/commit/c9eb7dc726631d39f11ea17e6db6fe7ad5c0e5d9.patch
 		# Might be fixed in kernel 6.4.8, hopefully. In the end I recompile my kernel anyway so :shrug:
 		kernelPatches = [

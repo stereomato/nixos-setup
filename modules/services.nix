@@ -47,6 +47,9 @@
 				enable = true;
 			};
 		};
+		psd = {
+			enable = true;
+		};
 		pipewire = {
 			enable = true;
 			audio.enable = true;
