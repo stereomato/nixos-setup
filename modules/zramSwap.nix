@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:{
+{ ... }:{
 	zramSwap = {
 		enable = false;
 		algorithm = "zstd";

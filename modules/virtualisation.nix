@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:{
+{ ... }:{
 	virtualisation = {
 		spiceUSBRedirection.enable = true;
 		libvirtd = {
@@ -10,14 +10,6 @@
 		};
 		podman = {
 			enable = true;
-		};
-		vmware = {
-			guest = {
-				enable = true;
-			};
-			host = {
-				#enable = true;
-			};
 		};
 	};
 }

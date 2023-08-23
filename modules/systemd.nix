@@ -1,4 +1,4 @@
-{ lib, ...}:
+{ ...}:
 {
 	systemd = {
 		tmpfiles = {

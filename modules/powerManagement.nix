@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:{
+{ lib, ... }:{
 	powerManagement = {
 			enable = true;
 			cpuFreqGovernor = lib.mkDefault "powersave";

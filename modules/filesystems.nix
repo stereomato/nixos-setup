@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:{
+{ ... }:{
 	fileSystems = {
 		"/" = {
 			device = "/dev/mapper/Taihou-Disk";

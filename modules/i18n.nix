@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
 	i18n = {
 		defaultLocale = "es_PE.UTF-8";

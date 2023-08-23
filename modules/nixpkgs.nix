@@ -28,57 +28,56 @@
           Generate($1)
         '';
 				iosevka-pearsche = super.iosevka.override {
-						privateBuildPlan = {
-							family = "Pearsche's Iosevka setup";
-							spacing = "normal";
-							serifs = "sans";
-							no-cv-ss = false;
-							export-glyph-names = true;
-							no-ligation = true;
-							variants = {
-								inherits = "ss01";
-								design = {
-									capital-g = "toothless-rounded-inward-serifed-hooked";
-									capital-j = "serifed";
-									capital-q = "crossing";
-									g = "single-storey-serifless";
-									i = "serifed";
-									l = "serifed";
-									t = "flat-hook-short-neck";
-									zero = "oval-slashed";
-									six = "straight-bar";
-									nine = "straight-bar";
-									at = "fourfold-solid-inner";
-								};
-							};
-							widths.normal = {
-								shape = 600;
-								menu = 5;
-								css = "normal";
+					privateBuildPlan = {
+						family = "Pearsche's Iosevka setup";
+						spacing = "normal";
+						serifs = "sans";
+						no-cv-ss = false;
+						export-glyph-names = true;
+						no-ligation = true;
+						variants = {
+							inherits = "ss01";
+							design = {
+								capital-g = "toothless-rounded-inward-serifed-hooked";
+								capital-j = "serifed";
+								capital-q = "crossing";
+								g = "single-storey-serifless";
+								i = "serifed";
+								l = "serifed";
+								t = "flat-hook-short-neck";
+								zero = "oval-slashed";
+								six = "straight-bar";
+								nine = "straight-bar";
+								at = "fourfold-solid-inner";
 							};
 						};
-						set = "Iosevka-Pearsche";
+						widths.normal = {
+							shape = 600;
+							menu = 5;
+							css = "normal";
+						};
 					};
-					SF-Pro = super.callPackage ./derivationsYetToUpstream/SF-Pro.nix {};
-					SF-Compact = super.callPackage ./derivationsYetToUpstream/SF-Compact.nix {};
-					SF-Mono = super.callPackage ./derivationsYetToUpstream/SF-Mono.nix {};
-					SF-Arabic = super.callPackage ./derivationsYetToUpstream/SF-Arabic.nix {};
-					New-York = super.callPackage ./derivationsYetToUpstream/New-York.nix {};
-					Bitter-Pro = super.callPackage ./derivationsYetToUpstream/Bitter-Pro.nix {};
-					Input-Fonts-Custom = super.callPackage ./derivationsYetToUpstream/Input-Fonts-Custom.nix {};
-					input-fonts = super.input-fonts.overrideAttrs (old: {
-						pname = "${super.input-fonts.pname}";
-						version = "${super.input-fonts.version}";
-						src =
-							# Here I had to copy the name and the stripRoot boolean, but I only changed the url and the hash. TODO: Investigate someday 
-							super.fetchzip {
-								name = "${super.input-fonts.pname}-${super.input-fonts.version}";
-								url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-								sha256 = "11dragilx22fg44ynbpbqw1kd73p7ynfhm8zrlw98ha9dbyilkkw";
-								stripRoot = false;
-							};
-						
-					});
+					set = "Iosevka-Pearsche";
+				};
+				SF-Pro = super.callPackage ./derivationsYetToUpstream/SF-Pro.nix {};
+				SF-Compact = super.callPackage ./derivationsYetToUpstream/SF-Compact.nix {};
+				SF-Mono = super.callPackage ./derivationsYetToUpstream/SF-Mono.nix {};
+				SF-Arabic = super.callPackage ./derivationsYetToUpstream/SF-Arabic.nix {};
+				New-York = super.callPackage ./derivationsYetToUpstream/New-York.nix {};
+				Bitter-Pro = super.callPackage ./derivationsYetToUpstream/Bitter-Pro.nix {};
+				Input-Fonts-Custom = super.callPackage ./derivationsYetToUpstream/Input-Fonts-Custom.nix {};
+				input-fonts = super.input-fonts.overrideAttrs (old: {
+					pname = "${super.input-fonts.pname}";
+					version = "${super.input-fonts.version}";
+					src =
+						super.fetchzip {
+							name = "${super.input-fonts.pname}-${super.input-fonts.version}";
+							url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
+							sha256 = "1m9scqsc4y2m6n71dg2irskfvvpyma244w04sfignm0a4dd1wldq";
+							stripRoot = false;
+						};
+					
+				});
 				# TODO: Find where this comes from, and how it works? But, https://github.com/shiryel/nixos-dotfiles/blob/master/overlays/overrides/linux/default.nix# helped a lot!
 				linux-pearsche = super.linuxPackages_zen.extend (kself: ksuper: {
 					kernel = ksuper.kernel.override { 
@@ -136,15 +135,9 @@
 							ZRAM_MEMORY_TRACKING = yes;
 							ZRAM_MULTI_COMP = yes;
 						};
-					#	ignoreConfigErrors = true;
+						#	ignoreConfigErrors = true;
 					};
 				});
-				
-				#ibus = super.ibus.override {
-					#dconf = true;
-					#libnotify = true;
-					#withWayland = true;
-				#};
 				steam = super.steam.override {
 							extraPkgs = pkgs: with pkgs; [
 								openssl_1_1
@@ -191,22 +184,6 @@
 					nproc | tr -d '\n' | tee $out/numThreads
 					echo '''$(($(nproc) / 2 ))| tr -d '\n' | tee $out/halfNumThreads
 				'';
-				#mesa-intel-fix = super.mesa.overrideAttrs (old: {
-				#	patches = super.mesa.patches ++ [
-				#		# HOPEFULLY this will be fixed properly soon.
-				#		./patchwork-zone/fix-tgl-vulkan-perf.patch
-				#	];
-				#});
-				#mesa-intel-fix32 = super.pkgsi686Linux.mesa.overrideAttrs (old: {
-				#	patches = super.mesa.patches ++ [
-				#		# HOPEFULLY this will be fixed properly soon.
-				#		./patchwork-zone/fix-tgl-vulkan-perf.patch
-				#	];
-				#});
-				# Has to be replicated on home-manager's own nixpkgs.nix as well...
-				#pkgs.adwaita-qt = super.adwaita-qt.override {
-				#	useQT6 = true;
-				#};
 			}
 		)];
 	};

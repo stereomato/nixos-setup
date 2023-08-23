@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:{
+{ ... }:{
 	swapDevices = [{
 		device = "/swap/Taihou-SWAP";
 		size = 17365;

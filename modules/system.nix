@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:{
+{ ... }:{
 	system = {
 		# Determines the NixOS version whose format for stateful data will be used.
 		# Upgrading this number isn't really neccessary, but possible. Read the NixOS changelogs if so.

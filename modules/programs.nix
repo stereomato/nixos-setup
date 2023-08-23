@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:{
+{ ... }:{
 	programs = {
 		mtr.enable = true;
 		fish = {
@@ -19,7 +19,7 @@
 			atopacctService.enable = true;
 			# Nah, only supports Nvidia. #intelFTW
 			#atopgpu.enable = true;
-			netatop.enable = true;
+			netatop.enable = false;
 		};
 		# Gnome area
 		# TODO: ask why these 2 and gnome-power-manager aren't in any of the 3 gnome toggles.

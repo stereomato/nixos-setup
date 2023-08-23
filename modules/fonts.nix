@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:{
+{ pkgs, ... }:{
 	fonts = {
 		packages = with pkgs; [
 			Bitter-Pro
@@ -21,7 +21,6 @@
 			roboto-mono
 			jetbrains-mono
 			#input-fonts
-			#Input-Fonts-Custom
 			inter
 			source-sans
 			source-serif

@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
 	boot = {
 		plymouth = {
@@ -29,7 +29,9 @@
 			# Disable watermark boosting
 			"vm.watermark_boost_factor" = 0; # Needed when not using the zen-kernel
 			# Increase kswapd activity
-			"vm.watermark_scale_factor" = 375;
+			# When free memory is less than 2.5%, make kswapd kick in.
+			# https://unix.stackexchange.com/a/679203
+			"vm.watermark_scale_factor" = 250;
 			# Increase the compaction activity slightly
 			"vm.compaction_proactiveness" = 25;
 			# Compact also unevictable memory (testing)
@@ -84,6 +86,7 @@
 			#"pcie_aspm=force"
 			"preempt=full"
 			# For TGL: only enable the HuC
+			# For ADL and up, GuC is enabled automatically.
 			"i915.enable_guc=2"
 			# PSR stuff, should help with battery saving on laptop displays that support this
 			"i915.enable_psr2_sel_fetch=1"

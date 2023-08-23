@@ -1,5 +1,5 @@
 # REMINDER: I NEED TO PACKAGE MENULIBRE
-{ lib, config, pkgs, modulesPath, ... }:
+{ modulesPath, ... }:
 
 {
 	imports =
