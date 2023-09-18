@@ -73,14 +73,7 @@
 		kernelModules = [ "kvm-intel" ];
 		extraModulePackages = [ ];
 		kernelPackages = pkgs.linux-pearsche;
-		# Got it from https://github.com/openSUSE/kernel/commit/c9eb7dc726631d39f11ea17e6db6fe7ad5c0e5d9.patch
-		# Might be fixed in kernel 6.4.8, hopefully. In the end I recompile my kernel anyway so :shrug:
-		kernelPatches = [
-			{
-				name = "Audio distortion fix";
-				patch = ./patchwork-zone/6_4-audio-distortion-fix.patch;
-			}
-		];
+		kernelPatches = [];
 		kernelParams = [ 
 			# Find out whether this is a good idea or not
 			#"pcie_aspm=force"
@@ -94,7 +87,7 @@
 			"iwlwifi.power_save=1"
 			"iwlwifi.power_level=3"
 			# Zswap settings
-			"zswap.enabled=Y"
+			"zswap.enabled=N"
 			"zswap.compressor=zstd"
 			"zswap.zpool=zsmalloc"
 			"zswap.max_pool_percent=25"

@@ -9,7 +9,6 @@
 		bluetooth = {
 			# Enabled already because of gnome related toggles.
 			powerOnBoot = true;
-			#package = "pkgs.bluezFull";
 		};
 		enableAllFirmware = true;
 		

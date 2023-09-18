@@ -6,7 +6,7 @@
 			joypixels.acceptLicense = true;
 			input-fonts.acceptLicense = true;
 			permittedInsecurePackages = [
-					"openssl-1.1.1v"
+					"openssl-1.1.1w"
 			];
 		};
 		overlays = [(
@@ -73,7 +73,7 @@
 						super.fetchzip {
 							name = "${super.input-fonts.pname}-${super.input-fonts.version}";
 							url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-							sha256 = "1m9scqsc4y2m6n71dg2irskfvvpyma244w04sfignm0a4dd1wldq";
+							sha256 = "1w7vbqcnfjg90if9s9zpax82bjd9j4lcvahpclslz30lz3lx7j9q";
 							stripRoot = false;
 						};
 					
