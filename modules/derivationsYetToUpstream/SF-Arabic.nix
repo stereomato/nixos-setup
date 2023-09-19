@@ -54,7 +54,7 @@ stdenv.mkDerivation rec {
 		homepage = "https://developer.apple.com/fonts/";
 		description = "A contemporary interpretation of the Naskh style with a rational and flexible design, this extension of San Francisco is the Arabic system font on Apple platforms. Like San Francisco, SF Arabic features nine weights, variable optical sizes that automatically adjust spacing and contrast based on the point size, and includes a rounded variant.";
 		license = with licenses; [ unfree ];
-		maintainers = with maintainers; [ L911P ];
+		maintainers = with maintainers; [ pearsche ];
 		platforms = platforms.linux;
 	};
 }

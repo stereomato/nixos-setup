@@ -53,7 +53,7 @@ stdenv.mkDerivation rec {
 		homepage = "https://developer.apple.com/fonts/";
 		description = "This monospaced variant of San Francisco enables alignment between rows and columns of text, and is used in coding environments like Xcode. SF Mono features six weights and supports Latin, Greek, and Cyrillic scripts.";
 		license = with licenses; [ unfree ];
-		maintainers = with maintainers; [ L911P ];
+		maintainers = with maintainers; [ pearsche ];
 		platforms = platforms.linux;
 	};
 }

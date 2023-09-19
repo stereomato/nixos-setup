@@ -53,7 +53,7 @@ stdenv.mkDerivation rec {
 		homepage = "https://developer.apple.com/fonts/";
 		description = "A companion to San Francisco, this serif typeface is based on essential aspects of historical type styles. New York features six weights, supports Latin, Greek and Cyrillic scripts, and features variable optical sizes allowing it to perform as a traditional reading face at small sizes and a graphic display face at larger sizes.";
 		license = with licenses; [ unfree ];
-		maintainers = with maintainers; [ L911P ];
+		maintainers = with maintainers; [ pearsche ];
 		platforms = platforms.linux;
 	};
 }

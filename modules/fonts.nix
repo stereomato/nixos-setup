@@ -76,7 +76,7 @@
 					"Cantarell"
 				];
 				serif = [ "Bitter Pro" ];
-				monospace = [ "Jetbrains Mono" ];
+				monospace = [ "Playfair Display" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

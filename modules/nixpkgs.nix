@@ -65,7 +65,7 @@
 				SF-Arabic = super.callPackage ./derivationsYetToUpstream/SF-Arabic.nix {};
 				New-York = super.callPackage ./derivationsYetToUpstream/New-York.nix {};
 				Bitter-Pro = super.callPackage ./derivationsYetToUpstream/Bitter-Pro.nix {};
-				Input-Fonts-Custom = super.callPackage ./derivationsYetToUpstream/Input-Fonts-Custom.nix {};
+				Playfair-Display = super.callPackage ./derivationsYetToUpstream/Playfair-Display.nix {};
 				input-fonts = super.input-fonts.overrideAttrs (old: {
 					pname = "${super.input-fonts.pname}";
 					version = "${super.input-fonts.version}";

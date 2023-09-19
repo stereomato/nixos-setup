@@ -54,7 +54,7 @@ stdenv.mkDerivation rec {
 		homepage = "https://developer.apple.com/fonts/";
 		description = "This neutral, flexible, sans-serif typeface is the system font for iOS, iPad OS, macOS and tvOS. SF Pro features nine weights, variable optical sizes for optimal legibility, four widths, and includes a rounded variant. SF Pro supports over 150 languages across Latin, Greek, and Cyrillic scripts.";
 		license = with licenses; [ unfree ];
-		maintainers = with maintainers; [ L911P ];
+		maintainers = with maintainers; [ pearsche ];
 		platforms = platforms.linux;
 	};
 }
