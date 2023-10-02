@@ -1,6 +1,6 @@
 { 
 	lib
-,	fetchFromGithub
+,	fetchFromGitHub
 ,	stdenv
 }:
 
@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
 	# Doesn't really matter, just gets incremented when I update the derivation
 	version = "2.100-RC3";
 
-	src = fetchFromGithub {
+	src = fetchFromGitHub {
 		owner = "clauseggers";
 		repo = "Playfair";
 		rev = "5ce16a618c8952b896311f75294e10e3db5fc009";
@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
 
 	installPhase = ''
 		mkdir -p $out/share/fonts/${pname}
-		find fonts/VT-TTF/ -name \*.ttf -execdir mv {} $out/share/fonts/${pname} \;
+		find ./fonts/VF-TTF/ -name \*.ttf -execdir mv {} $out/share/fonts/${pname} \;
 	'';
 		
 	meta = with lib; {

@@ -36,7 +36,8 @@
 			pretendard-jp
 			pretendard-std
 			ia-writer-duospace
-
+			Playfair-Display
+			ANRT-Baskervville
 		]; 
 		fontDir.enable = true;
 		fontconfig = {
@@ -75,8 +76,8 @@
 					"Inter" 
 					"Cantarell"
 				];
-				serif = [ "Bitter Pro" ];
-				monospace = [ "Playfair Display" ];
+				serif = [ "Playfair Medium" ];
+				monospace = [ "Jetbrains Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

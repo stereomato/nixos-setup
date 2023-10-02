@@ -66,6 +66,7 @@
 				New-York = super.callPackage ./derivationsYetToUpstream/New-York.nix {};
 				Bitter-Pro = super.callPackage ./derivationsYetToUpstream/Bitter-Pro.nix {};
 				Playfair-Display = super.callPackage ./derivationsYetToUpstream/Playfair-Display.nix {};
+				ANRT-Baskervville = super.callPackage ./derivationsYetToUpstream/ANRT-Baskervville.nix;
 				input-fonts = super.input-fonts.overrideAttrs (old: {
 					pname = "${super.input-fonts.pname}";
 					version = "${super.input-fonts.version}";
@@ -73,7 +74,7 @@
 						super.fetchzip {
 							name = "${super.input-fonts.pname}-${super.input-fonts.version}";
 							url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-							sha256 = "1w7vbqcnfjg90if9s9zpax82bjd9j4lcvahpclslz30lz3lx7j9q";
+							sha256 = "1fk3gkmf6f7x9x05jsdnbnwzxw0vqy6jpvi5x62xvgpdpcgzcrp9";
 							stripRoot = false;
 						};
 					
