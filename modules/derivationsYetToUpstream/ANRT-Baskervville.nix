@@ -21,7 +21,7 @@ stdenv.mkDerivation rec {
 
 	installPhase = ''
 		mkdir -p $out/share/fonts/${pname}
-		find ./fonts/VF-TTF/ -name \*.otf -execdir mv {} $out/share/fonts/${pname} \;
+		find ./fonts/otf/ -name \*.otf -execdir mv {} $out/share/fonts/${pname} \;
 	'';
 		
 	meta = with lib; {

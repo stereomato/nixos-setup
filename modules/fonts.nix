@@ -76,7 +76,7 @@
 					"Inter" 
 					"Cantarell"
 				];
-				serif = [ "Playfair Medium" ];
+				serif = [ "Bitter Pro" ];
 				monospace = [ "Jetbrains Mono" ];
 				emoji = [ "Blobmoji" ];
 			};

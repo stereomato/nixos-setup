@@ -66,7 +66,7 @@
 				New-York = super.callPackage ./derivationsYetToUpstream/New-York.nix {};
 				Bitter-Pro = super.callPackage ./derivationsYetToUpstream/Bitter-Pro.nix {};
 				Playfair-Display = super.callPackage ./derivationsYetToUpstream/Playfair-Display.nix {};
-				ANRT-Baskervville = super.callPackage ./derivationsYetToUpstream/ANRT-Baskervville.nix;
+				ANRT-Baskervville = super.callPackage ./derivationsYetToUpstream/ANRT-Baskervville.nix {};
 				input-fonts = super.input-fonts.overrideAttrs (old: {
 					pname = "${super.input-fonts.pname}";
 					version = "${super.input-fonts.version}";
