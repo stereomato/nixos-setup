@@ -74,7 +74,7 @@
 						super.fetchzip {
 							name = "${super.input-fonts.pname}-${super.input-fonts.version}";
 							url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-							sha256 = "1fk3gkmf6f7x9x05jsdnbnwzxw0vqy6jpvi5x62xvgpdpcgzcrp9";
+							sha256 = "0zhmm6kpjffwlcls638lv22xrmla5va5kbdmpymdw9q75l6px0hj";
 							stripRoot = false;
 						};
 					
@@ -135,6 +135,9 @@
 							# Extra zram stuff
 							ZRAM_MEMORY_TRACKING = yes;
 							ZRAM_MULTI_COMP = yes;
+
+							# Accelerator subsystem
+							DRM_ACCEL = yes;
 						};
 						#	ignoreConfigErrors = true;
 					};

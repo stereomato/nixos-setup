@@ -10,24 +10,26 @@
 			# Disable swap read ahead, increases latency when dealing with swap and it's rather meaningless when using zram+zstd anyway
 			"vm.page-cluster" = 0;
 			# Hugepages configuration, mostly for xmrig
-			"vm.nr_hugepages" = 25;
-			"vm.nr_overcommit_hugepages" = 150;
+			# Not needed anymore
+			#"vm.nr_hugepages" = 25;
+			#"vm.nr_overcommit_hugepages" = 150;
 			# Prefer to keep application memory over filesystem cache memory
 			"vm.vfs_cache_pressure" = 275;
 			# Maximum swappiness
 			"vm.swappiness" = 200;
 			# Set the bytes of my current laptop's storage speed
-			# dirty_bytes is set using the write speed obtained from the benchmark runs, using the NVME SSD preset
+			# dirty_bytes is set using  75% of the write speed obtained from the benchmark runs, using the NVME SSD preset
 			# dirty_bytes uses peak performance profile
-			# dirty_background_bytes is set by dividing dirty_bytes by 4
-			"vm.dirty_bytes" = 1000000000;
-			"vm.dirty_background_bytes" = 250000000;
-			# 5% physical ram / # of threads
-			"vm.min_free_kbytes" = 77050;
+			# dirty_background_bytes is set by dividing dirty_bytes by 8
+			# actual value is 1000000000
+			"vm.dirty_bytes" = 750000000;
+			"vm.dirty_background_bytes" = 125000000;
+			# 5% physical ram
+			"vm.min_free_kbytes" = 616459;
 			# Best value, according to phoronix
 			"vm.page_lock_unfairness" = 3;
 			# Disable watermark boosting
-			"vm.watermark_boost_factor" = 0; # Needed when not using the zen-kernel
+			#"vm.watermark_boost_factor" = 0; # Needed when not using the zen-kernel
 			# Increase kswapd activity
 			# When free memory is less than 2.5%, make kswapd kick in.
 			# https://unix.stackexchange.com/a/679203
@@ -36,6 +38,7 @@
 			"vm.compaction_proactiveness" = 25;
 			# Compact also unevictable memory (testing)
 			#"vm.compact_unevictable_allowed" = 1;
+			
 			# Fedora change, for some games. Shouldn't affect most things
 			# Higher memory map count for some games that need it
 			# https://www.phoronix.com/news/Fedora-39-Max-Map-Count-Approve
@@ -62,8 +65,8 @@
 			luks = {
 				mitigateDMAAttacks = true;
 				devices = {
-					"Taihou-Disk" = {
-						device = "/dev/disk/by-uuid/b9d5979c-bd51-4b40-a759-d24cce9e4c09";
+					"TaihouDisk" = {
+						device = "/dev/disk/by-uuid/7f761093-fe56-4647-abef-205f7cc7a5a6";
 						allowDiscards = true;
 						bypassWorkqueues = true;
 					};

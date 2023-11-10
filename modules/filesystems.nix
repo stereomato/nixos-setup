@@ -1,48 +1,48 @@
 { ... }:{
 	fileSystems = {
 		"/" = {
-			device = "/dev/mapper/Taihou-Disk";
+			device = "/dev/mapper/TaihouDisk";
 			fsType = "btrfs";
 			options = [
 				"subvol=@"
-				"compress-force=zstd:1"
+				"compress=zstd:1"
 			];
 		};
 		"/boot" = {
-			device = "/dev/disk/by-uuid/D32C-41BC";
+			device = "/dev/disk/by-uuid/8FB1-0E96";
 			fsType = "vfat";
 			options = [
 				"discard"
 			];
 		};
 		"/nix" = {
-			device = "/dev/mapper/Taihou-Disk";
+			device = "/dev/mapper/TaihouDisk";
 			fsType = "btrfs";
 			options = [
-				"compress-force=zstd:2"
+				"compress=zstd:2"
 				"subvol=@nix"
 			];
 		};
 		"/home" = {
-			device = "/dev/mapper/Taihou-Disk";
+			device = "/dev/mapper/TaihouDisk";
 			fsType = "btrfs";
 			options = [
-				"compress-force=zstd:2"
+				"compress=zstd:2"
 				"subvol=@home"
 			];
 		};
 		"/swap" = { 
-			device = "/dev/mapper/Taihou-Disk";
+			device = "/dev/mapper/TaihouDisk";
 			fsType = "btrfs";
 			options = [
 				"subvol=@swap"
 			];
 		};
 		"/var/log" = { 
-			device = "/dev/mapper/Taihou-Disk";
+			device = "/dev/mapper/TaihouDisk";
 			fsType = "btrfs";
 			options = [
-				"compress-force=zstd:10"
+				"compress=zstd:10"
 				"subvol=@var_log"
 			];
 		};

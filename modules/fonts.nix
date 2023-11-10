@@ -1,5 +1,9 @@
 { pkgs, ... }:{
 	fonts = {
+		#TODO: find out a way to not install freefont_ttf (gnu free fonts)
+		# (because of the braille font being butt ugly)
+		# I could just add a fontconfig rule to put freemono really low but eh
+		enableDefaultPackages = false;
 		packages = with pkgs; [
 			Bitter-Pro
 			noto-fonts
@@ -20,7 +24,7 @@
 			roboto-slab
 			roboto-mono
 			jetbrains-mono
-			#input-fonts
+			input-fonts
 			inter
 			source-sans
 			source-serif
@@ -49,7 +53,8 @@
 			};
 			hinting = {
 				enable = false;
-				style = "none";
+				style = "slight";
+				autohint = false;
 			};
 			localConf = ''
 				<fontconfig>
@@ -64,9 +69,6 @@
 					<edit name="dpi" mode="assign" binding="strong">
 						<double>141.0</double>
 					</edit>
-					<edit name="autohint" mode="assign" binding="strong">
-      			<bool>false</bool>
-    			</edit>
 				</match>
 				
 				</fontconfig>
@@ -77,7 +79,7 @@
 					"Cantarell"
 				];
 				serif = [ "Bitter Pro" ];
-				monospace = [ "Jetbrains Mono" ];
+				monospace = [ "Input Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

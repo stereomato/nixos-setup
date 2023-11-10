@@ -2,8 +2,9 @@
 {
 	services = {
 		# nice daemon, important for desktop responsiveness
+		# disabled because it disables cgroupsv2 that are needed for systemd-oomd
 		ananicy = {
-			enable = true;
+			enable = false;
 			# Needs the community rules package to work well, in the meantime, use the original ananicy
 			# package = pkgs.ananicy-cpp;
 		};
@@ -30,6 +31,7 @@
 		};
 		fwupd.enable = true;
 		thermald.enable = true;
+		# Not needed for BTRFS anymore
 		#fstrim.enable = false;
 		# These used to go on udev.extraRules, not needed anymore
 		#SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger"

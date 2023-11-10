@@ -11,5 +11,8 @@
 		podman = {
 			enable = true;
 		};
+		waydroid = {
+			enable = true;
+		};
 	};
 }

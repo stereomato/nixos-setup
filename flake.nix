@@ -13,6 +13,7 @@
 						./modules/boot.nix
 						./modules/console.nix
 						./modules/environment.nix
+						./modules/documentation.nix
 						./modules/filesystems.nix
 						./modules/fonts.nix
 						./modules/hardware.nix
