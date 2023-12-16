@@ -20,7 +20,7 @@
 		};
 		locate = {
 			enable = true;
-			locate = pkgs.plocate;
+			package = pkgs.plocate;
 			interval = "daily";
 			prunePaths = [];
 			pruneNames = [];

@@ -2,7 +2,7 @@
 	system = {
 		# Determines the NixOS version whose format for stateful data will be used.
 		# Upgrading this number isn't really neccessary, but possible. Read the NixOS changelogs if so.
-		stateVersion = "22.11";
+		stateVersion = "23.11";
 		# Copy the running system's configuration.nix to /run/current-system/configuration.nix
 		#copySystemConfiguration = true;
 		autoUpgrade = {

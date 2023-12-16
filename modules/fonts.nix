@@ -5,10 +5,11 @@
 		# I could just add a fontconfig rule to put freemono really low but eh
 		enableDefaultPackages = false;
 		packages = with pkgs; [
+			anonymousPro
 			Bitter-Pro
 			noto-fonts
 			noto-fonts-extra
-			noto-fonts-emoji
+			# noto-fonts-emoji
 			noto-fonts-emoji-blob-bin
 			noto-fonts-cjk-sans
 			noto-fonts-cjk-serif
@@ -16,7 +17,7 @@
 			fira
 			fira-mono
 			fira-code
-			joypixels
+			# joypixels
 			ibm-plex
 			#iosevka-pearsche
 			manrope
@@ -53,7 +54,7 @@
 			};
 			hinting = {
 				enable = false;
-				style = "slight";
+				style = "none";
 				autohint = false;
 			};
 			localConf = ''
@@ -61,24 +62,25 @@
 				<alias>
 					<family>system-ui</family>
 					<prefer>
-						<family>Inter</family>
+						<family>Inter Display</family>
 						<family>Cantarell</family>
 					</prefer>
 				</alias>
-				<match target="font">
-					<edit name="dpi" mode="assign" binding="strong">
-						<double>141.0</double>
-					</edit>
-				</match>
-				
 				</fontconfig>
 			'';
+			# Do I even need this? 
+			#<match target="font">
+			#		<edit name="dpi" mode="assign" binding="strong">
+			#			<double>141.0</double>
+			#		</edit>
+			#	</match>
+				
 			defaultFonts = {
 				sansSerif = [ 
 					"Inter" 
 					"Cantarell"
 				];
-				serif = [ "Bitter Pro" ];
+				serif = [ "Roboto Slab" ];
 				monospace = [ "Input Mono" ];
 				emoji = [ "Blobmoji" ];
 			};

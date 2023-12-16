@@ -14,8 +14,8 @@
 			# enableRootSlice = false;
 			enableUserServices = true;
 			extraConfig = {
-				DefaultMemoryPressureLimit = "85%";
-				SwapUsedLimit = "75%";
+				DefaultMemoryPressureLimit = "90%";
+				SwapUsedLimit = "90%";
 			};
 		};
 	};

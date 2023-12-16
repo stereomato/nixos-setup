@@ -2,10 +2,11 @@
 	description = "Pearsche's NixOS setup";
 
 	inputs = {
+		# Until next week
 		nixpkgs.url = "nixpkgs/nixos-unstable";
 	};
 	
-	outputs = { self, nixpkgs }: {
+	outputs = { self, nixpkgs }@inputs: {
 			nixosConfigurations = {
 				Taihou = nixpkgs.lib.nixosSystem {
 					system = "x86_64-linux";
@@ -36,8 +37,8 @@
 						# from hardware-configuration.nix
 						#(modulesPath + "/installer/scan/not-detected.nix")
 					];
+					specialArgs = { inherit inputs; };
 				};
 			};
 		};
-
 }

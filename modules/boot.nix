@@ -3,7 +3,7 @@
 	boot = {
 		plymouth = {
 			enable = true;
-			font = "${pkgs.inter}/share/fonts/opentype/Inter-Regular.otf";
+			font = "${pkgs.inter}/share/fonts/truetype/InterVariable.ttf";
 		};
 		kernel.sysctl = {
 			# Memory
@@ -13,8 +13,8 @@
 			# Not needed anymore
 			#"vm.nr_hugepages" = 25;
 			#"vm.nr_overcommit_hugepages" = 150;
-			# Prefer to keep application memory over filesystem cache memory
-			"vm.vfs_cache_pressure" = 275;
+			# Prefer to keep filesystem cache memory over application memory
+			"vm.vfs_cache_pressure" = 50;
 			# Maximum swappiness
 			"vm.swappiness" = 200;
 			# Set the bytes of my current laptop's storage speed
@@ -35,7 +35,7 @@
 			# https://unix.stackexchange.com/a/679203
 			"vm.watermark_scale_factor" = 250;
 			# Increase the compaction activity slightly
-			"vm.compaction_proactiveness" = 25;
+			#"vm.compaction_proactiveness" = 25;
 			# Compact also unevictable memory (testing)
 			#"vm.compact_unevictable_allowed" = 1;
 			
@@ -66,7 +66,7 @@
 				mitigateDMAAttacks = true;
 				devices = {
 					"TaihouDisk" = {
-						device = "/dev/disk/by-uuid/7f761093-fe56-4647-abef-205f7cc7a5a6";
+						device = "/dev/disk/by-uuid/a3fdd4b9-d758-455c-b438-6baaf92fbdd5";
 						allowDiscards = true;
 						bypassWorkqueues = true;
 					};

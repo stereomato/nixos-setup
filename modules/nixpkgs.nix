@@ -36,25 +36,52 @@
 						export-glyph-names = true;
 						no-ligation = true;
 						variants = {
-							inherits = "ss01";
 							design = {
-								capital-g = "toothless-rounded-inward-serifed-hooked";
+								capital-g = "toothed-serifless-hooked";
 								capital-j = "serifed";
-								capital-q = "crossing";
-								g = "single-storey-serifless";
-								i = "serifed";
-								l = "serifed";
-								t = "flat-hook-short-neck";
-								zero = "oval-slashed";
-								six = "straight-bar";
-								nine = "straight-bar";
+								capital-q = "crossing-baseline";
+								f = "flat-hook-serifless";
+								g = "single-storey-flat-hook-serifless";
+								r = "serifed";
+								t = "flat-hook-short-neck2";
+								eight = "two-circles";
 								at = "fourfold-solid-inner";
 							};
 						};
 						widths.normal = {
-							shape = 600;
+							shape = 500;
 							menu = 5;
 							css = "normal";
+						};
+						widths.extended = {
+							shape = 600;
+							menu = 7;
+							css = "expanded";
+						};
+						widths.condensed = {
+							shape = 416;
+							menu = 3;
+							css = "condensed";
+						};
+						widths.semicondensed = {
+							shape = 456;
+							menu = 4;
+							css = "semi-condensed";
+						};
+						widths.semiextended = {
+							shape = 548;
+							menu = 6;
+							css = "semi-expanded";
+						};
+						widths.extraextended = {
+							shape = 658;
+							menu = 8;
+							css = "extra-expanded";
+						};
+						widths.ultraextended = {
+							shape = 720;
+							menu = 9;
+							css = "ultra-expanded";
 						};
 					};
 					set = "Iosevka-Pearsche";
@@ -74,7 +101,7 @@
 						super.fetchzip {
 							name = "${super.input-fonts.pname}-${super.input-fonts.version}";
 							url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-							sha256 = "0zhmm6kpjffwlcls638lv22xrmla5va5kbdmpymdw9q75l6px0hj";
+							sha256 = "1iq98bvdljiz1rqrxk2r3k06q9m1gv90bnyri8zxfjmpmihs10cp";
 							stripRoot = false;
 						};
 					
