@@ -87,7 +87,7 @@
 				gdm.enable = true;
 				autoLogin = {
 					enable = true;
-					user = "pearsche";
+					user = "stereomato";
 				};
 			};
 			desktopManager.gnome = {
@@ -95,7 +95,8 @@
 				extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
 				extraGSettingsOverrides = ''
 					[org.gnome.mutter]
-					experimental-features=['rt-scheduler','scale-monitor-framebuffer']
+					# Disabled 'rt-scheduler' due to https://gitlab.gnome.org/GNOME/mutter/-/issues/3037
+					experimental-features=['scale-monitor-framebuffer']
 				'';
 			};
 		};

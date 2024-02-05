@@ -11,7 +11,8 @@
 			ibus = {
 				engines = with pkgs.ibus-engines; [ 
 					typing-booster
-					mozc
+					# https://github.com/NixOS/nixpkgs/pull/282148
+					# mozc
 					uniemoji
 				];
 			};

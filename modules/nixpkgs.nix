@@ -27,9 +27,9 @@
           DetachAndRemoveGlyphs()
           Generate($1)
         '';
-				iosevka-pearsche = super.iosevka.override {
+				iosevka-stereomato = super.iosevka.override {
 					privateBuildPlan = {
-						family = "Pearsche's Iosevka setup";
+						family = "stereomato's Iosevka setup";
 						spacing = "normal";
 						serifs = "sans";
 						no-cv-ss = false;
@@ -84,7 +84,7 @@
 							css = "ultra-expanded";
 						};
 					};
-					set = "Iosevka-Pearsche";
+					set = "Iosevka-stereomato";
 				};
 				SF-Pro = super.callPackage ./derivationsYetToUpstream/SF-Pro.nix {};
 				SF-Compact = super.callPackage ./derivationsYetToUpstream/SF-Compact.nix {};
@@ -107,7 +107,7 @@
 					
 				});
 				# TODO: Find where this comes from, and how it works? But, https://github.com/shiryel/nixos-dotfiles/blob/master/overlays/overrides/linux/default.nix# helped a lot!
-				linux-pearsche = super.linuxPackages_zen.extend (kself: ksuper: {
+				linux-stereomato = super.linuxPackages_zen.extend (kself: ksuper: {
 					kernel = ksuper.kernel.override { 
 						structuredExtraConfig = with lib.kernel; {
 							# Fedora configuration mimicking

@@ -2,7 +2,7 @@
 {
 	users = {
 		users = {
-			pearsche = {
+			stereomato = {
 				isNormalUser = true;
 				createHome = true;
 				extraGroups = [ "wheel" "audio" "adbusers" "network" "libvirtd" "networkmanager" "doas" "scanners" "lp" ]; 

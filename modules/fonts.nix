@@ -19,13 +19,13 @@
 			fira-code
 			# joypixels
 			ibm-plex
-			#iosevka-pearsche
+			#iosevka-stereomato
 			manrope
 			roboto
 			roboto-slab
 			roboto-mono
 			jetbrains-mono
-			input-fonts
+			#input-fonts
 			inter
 			source-sans
 			source-serif
@@ -62,7 +62,7 @@
 				<alias>
 					<family>system-ui</family>
 					<prefer>
-						<family>Inter Display</family>
+						<family>InterVariable</family>
 						<family>Cantarell</family>
 					</prefer>
 				</alias>
@@ -77,11 +77,11 @@
 				
 			defaultFonts = {
 				sansSerif = [ 
-					"Inter" 
+					"InterVariable" 
 					"Cantarell"
 				];
 				serif = [ "Roboto Slab" ];
-				monospace = [ "Input Mono" ];
+				monospace = [ "Jetbrains Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

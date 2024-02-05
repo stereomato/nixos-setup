@@ -14,9 +14,9 @@
 			#"vm.nr_hugepages" = 25;
 			#"vm.nr_overcommit_hugepages" = 150;
 			# Prefer to keep filesystem cache memory over application memory
-			"vm.vfs_cache_pressure" = 50;
-			# Maximum swappiness
-			"vm.swappiness" = 200;
+			"vm.vfs_cache_pressure" = 200;
+			# Swapping == evicting cache
+			"vm.swappiness" = 100;
 			# Set the bytes of my current laptop's storage speed
 			# dirty_bytes is set using  75% of the write speed obtained from the benchmark runs, using the NVME SSD preset
 			# dirty_bytes uses peak performance profile
@@ -25,7 +25,8 @@
 			"vm.dirty_bytes" = 750000000;
 			"vm.dirty_background_bytes" = 125000000;
 			# 5% physical ram
-			"vm.min_free_kbytes" = 616459;
+			# "vm.min_free_kbytes" = 616459;
+			"vm.min_free_kbytes" = 308229;
 			# Best value, according to phoronix
 			"vm.page_lock_unfairness" = 3;
 			# Disable watermark boosting
@@ -33,7 +34,7 @@
 			# Increase kswapd activity
 			# When free memory is less than 2.5%, make kswapd kick in.
 			# https://unix.stackexchange.com/a/679203
-			"vm.watermark_scale_factor" = 250;
+			"vm.watermark_scale_factor" = 187;
 			# Increase the compaction activity slightly
 			#"vm.compaction_proactiveness" = 25;
 			# Compact also unevictable memory (testing)
@@ -66,7 +67,7 @@
 				mitigateDMAAttacks = true;
 				devices = {
 					"TaihouDisk" = {
-						device = "/dev/disk/by-uuid/a3fdd4b9-d758-455c-b438-6baaf92fbdd5";
+						device = "/dev/disk/by-uuid/4683a9fa-bf60-4393-bc42-d1c2dcce551d";
 						allowDiscards = true;
 						bypassWorkqueues = true;
 					};
@@ -75,8 +76,13 @@
 		};
 		kernelModules = [ "kvm-intel" ];
 		extraModulePackages = [ ];
-		kernelPackages = pkgs.linux-pearsche;
-		kernelPatches = [];
+		kernelPackages = pkgs.linux-stereomato;
+		kernelPatches = [
+			{	
+				name = "FBC patch";
+				patch = ./patches/drm-i915-fbc-Allow-FBC-with-CCS-modifiers-on-SKL.patch;
+			}
+		];
 		kernelParams = [ 
 			# Find out whether this is a good idea or not
 			#"pcie_aspm=force"
@@ -85,7 +91,8 @@
 			# For ADL and up, GuC is enabled automatically.
 			"i915.enable_guc=2"
 			# PSR stuff, should help with battery saving on laptop displays that support this
-			"i915.enable_psr2_sel_fetch=1"
+			#"i915.enable_psr=1"
+			#"i915.enable_psr2_sel_fetch=1"
 			# Powersaving
 			"iwlwifi.power_save=1"
 			"iwlwifi.power_level=3"
