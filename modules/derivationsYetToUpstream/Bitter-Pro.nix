@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
 		homepage = "https://github.com/solmatas/BitterPro";
 		description = "Bitter Pro is is the extended version based on Bitter Project.";
 		license = with licenses; [ ofl ];
-		maintainers = with maintainers; [ pearsche ];
+		maintainers = with maintainers; [ stereomato ];
 		platforms = platforms.linux;
 	};
 }

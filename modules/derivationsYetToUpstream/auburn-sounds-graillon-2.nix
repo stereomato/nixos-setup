@@ -41,7 +41,7 @@ stdenv.mkDerivation rec {
 		homepage = "https://www.auburnsounds.com/products/Graillon.html";
 		description = "Graillon is a Vocal Live Changer that brings a world of possibilities right into your DAW, with carefully designed features: Pitch-Tracking Modulation, Pitch Shifter and Pitch Correction.";
 		license = with licenses; [ unfree ];
-		maintainers = with maintainers; [ L911P ];
+		maintainers = with maintainers; [ stereomato ];
 		platforms = platforms.linux;
 	};
 }

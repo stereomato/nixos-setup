@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
 		homepage = "https://github.com/clauseggers/Playfair";
 		description = "Playfair is a general purpose Open Source typeface family.";
 		license = with licenses; [ ofl ];
-		maintainers = with maintainers; [ pearsche ];
+		maintainers = with maintainers; [ stereomato ];
 		platforms = platforms.linux;
 	};
 }

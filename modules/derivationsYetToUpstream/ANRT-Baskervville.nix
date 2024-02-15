@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
 		homepage = "https://github.com/anrt-type/ANRT-Baskervville";
 		description = " Revival of Jacob's revival of Baskerville's typeface designed by ANRT students in 2017-2018.";
 		license = with licenses; [ ofl ];
-		maintainers = with maintainers; [ pearsche ];
+		maintainers = with maintainers; [ stereomato ];
 		platforms = platforms.linux;
 	};
 }

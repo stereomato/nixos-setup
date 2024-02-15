@@ -1,9 +1,8 @@
 {
-	description = "Pearsche's NixOS setup";
+	description = "Stereomato's NixOS setup";
 
 	inputs = {
-		# Until next week
-		nixpkgs.url = "nixpkgs/nixos-unstable";
+		nixpkgs.url = "nixpkgs/nixos-23.11";
 	};
 	
 	outputs = { self, nixpkgs }@inputs: {

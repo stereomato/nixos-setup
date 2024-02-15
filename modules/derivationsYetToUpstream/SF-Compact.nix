@@ -54,7 +54,7 @@ stdenv.mkDerivation rec {
 		homepage = "https://developer.apple.com/fonts/";
 		description = "Sharing many features with SF Pro, SF Compact features an efficient, compact design that is optimized for small sizes and narrow columns. SF Compact is the system font for watchOS and includes a rounded variant.";
 		license = with licenses; [ unfree ];
-		maintainers = with maintainers; [ pearsche ];
+		maintainers = with maintainers; [ stereomato ];
 		platforms = platforms.linux;
 	};
 }
