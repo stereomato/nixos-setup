@@ -1,0 +1,195 @@
+{
+    "api": {
+        "id": null,
+        "worker-id": null
+    },
+    "http": {
+        "enabled": false,
+        "host": "127.0.0.1",
+        "port": 0,
+        "access-token": null,
+        "restricted": true
+    },
+    "autosave": true,
+    "background": false,
+    "colors": true,
+    "title": true,
+    "randomx": {
+        "init": -1,
+        "init-avx2": -1,
+        "mode": "fast",
+        "1gb-pages": true,
+        "rdmsr": true,
+        "wrmsr": true,
+        "cache_qos": true,
+        "numa": true,
+        "scratchpad_prefetch_mode": 1
+    },
+    "cpu": {
+        "enabled": true,
+        "huge-pages": true,
+        "huge-pages-jit": true,
+        "hw-aes": null,
+        "priority": 1,
+        "memory-pool": true,
+        "yield": true,
+        "asm": true,
+        "argon2-impl": null,
+        "argon2": [0, 1, 2, 3, 6, 7],
+        "cn": [
+            [1, 0],
+            [1, 1],
+            [1, 2],
+            [1, 3],
+            [1, 6],
+            [1, 7]
+        ],
+        "cn-heavy": [
+            [1, 0],
+            [1, 1],
+            [1, 2]
+        ],
+        "cn-lite": [
+            [1, 0],
+            [1, 1],
+            [1, 2],
+            [1, 3],
+            [1, 6],
+            [1, 7]
+        ],
+        "cn-pico": [
+            [2, 0],
+            [2, 1],
+            [2, 2],
+            [2, 3],
+            [2, 6],
+            [2, 7]
+        ],
+        "cn/2": [
+            [1, 0],
+            [1, 1],
+            [1, 2],
+            [1, 3],
+            [1, 6],
+            [1, 7]
+        ],
+        "cn/gpu": [
+            [1, 0],
+            [1, 1],
+            [1, 2],
+            [1, 3],
+            [1, 6],
+            [1, 7]
+        ],
+        "cn/upx2": [
+            [2, 0],
+            [2, 1],
+            [2, 2],
+            [2, 3],
+            [2, 6],
+            [2, 7]
+        ],
+        "ghostrider": [
+            [8, 0],
+            [8, 1],
+            [8, 2],
+            [8, 3]
+        ],
+        "panthera": [0, 1, 2, 3],
+        "rx": [0, 1, 2, 3, 6, 7],
+        "rx/wow": [0, 1, 2, 3, 6, 7],
+        "cn-lite/0": false,
+        "cn/0": false,
+        "rx/arq": "rx/wow",
+        "rx/keva": "rx/wow"
+    },
+    "opencl": {
+        "enabled": false,
+        "cache": true,
+        "loader": null,
+        "platform": "AMD",
+        "adl": true
+    },
+    "cuda": {
+        "enabled": false,
+        "loader": null,
+        "nvml": true
+    },
+    "log-file": null,
+    "donate-level": 0,
+    "donate-over-proxy": 1,
+    "pools": [
+        {
+            "algo": null,
+            "coin": null,
+            "url": "gulf.moneroocean.stream:10128",
+            "user": "42ANq1QS8v2ek2f9C3whpVT1FvdAV4Ud7FZwKZc1GnU89wKpiLrjsa1bAm6HeLodY1S41GuD8mHz3e4wdKztvtERGExe7kW",
+            "pass": "x",
+            "rig-id": null,
+            "nicehash": false,
+            "keepalive": true,
+            "enabled": true,
+            "tls": false,
+            "tls-fingerprint": null,
+            "daemon": false,
+            "socks5": null,
+            "self-select": null,
+            "submit-to-origin": false
+        }
+    ],
+    "retries": 5,
+    "retry-pause": 5,
+    "print-time": 60,
+    "health-print-time": 60,
+    "dmi": true,
+    "syslog": false,
+    "tls": {
+        "enabled": false,
+        "protocols": null,
+        "cert": null,
+        "cert_key": null,
+        "ciphers": null,
+        "ciphersuites": null,
+        "dhparam": null
+    },
+    "dns": {
+        "ipv6": false,
+        "ttl": 30
+    },
+    "user-agent": null,
+    "verbose": 0,
+    "watch": true,
+    "rebench-algo": false,
+    "bench-algo-time": 10,
+    "algo-min-time": 0,
+    "algo-perf": {
+        "cn/0": 380.49884234897917,
+        "cn/1": 388.08797221929916,
+        "cn/2": 388.08797221929916,
+        "cn/r": 388.08797221929916,
+        "cn/fast": 776.1759444385983,
+        "cn/half": 776.1759444385983,
+        "cn/xao": 388.08797221929916,
+        "cn/rto": 388.08797221929916,
+        "cn/rwz": 517.4506296257322,
+        "cn/zls": 517.4506296257322,
+        "cn/double": 194.04398610964958,
+        "cn/ccx": 760.9976846979583,
+        "cn-lite/0": 1185.325869652139,
+        "cn-lite/1": 1185.325869652139,
+        "cn-heavy/xhv": 181.74555622129017,
+        "cn-pico": 5735.226477352266,
+        "cn-pico/tlo": 5735.226477352266,
+        "cn/gpu": 55.6666315900242,
+        "rx/0": 1829.6170382961702,
+        "rx/arq": 9215.978402159784,
+        "rx/graft": 1800.739852029594,
+        "rx/sfx": 1829.6170382961702,
+        "panthera": 2158.5841415858417,
+        "argon2/chukwav2": 5443.355664433557,
+        "kawpow": 1.2492176398326364e-89,
+        "ghostrider": 642.1292007074876
+    },
+    "pause-on-battery": true,
+    "pause-on-active": false
+}
