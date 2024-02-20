@@ -1,6 +1,5 @@
-{ pkgs, ... }:{
+{ ... }:{
 	nix = {
-		package = pkgs.nix;
 		settings = {
 			substituters = [
 				# nixpkgs

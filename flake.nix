@@ -55,7 +55,7 @@
 								./modules/home-manager/gtk.nix
 								./modules/home-manager/home.nix
 								./modules/home-manager/nix.nix
-								./modules/home-manager/nixpkgs.nix
+								# ./modules/home-manager/nixpkgs.nix
 								./modules/home-manager/programs.nix
 								./modules/home-manager/qt.nix
 								./modules/home-manager/services.nix

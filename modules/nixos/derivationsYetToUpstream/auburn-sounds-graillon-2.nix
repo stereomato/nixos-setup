@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
 	version = "2.7";
 
 	src = fetchzip {
-		url = https://www.auburnsounds.com/downloads/Graillon-FREE-2.7.zip;
+		url = "https://www.auburnsounds.com/downloads/Graillon-FREE-2.7.zip";
 		sha256 = "0vi0nv1106cf6n5n5pbyaq77ar9fnlzf7bb7p475fprbfcia4mv4";
 	};
 
@@ -28,6 +28,8 @@ stdenv.mkDerivation rec {
 		libxcb
 		libXaw
 		libXdmcp
+		# TODO: Understand this
+		stdenv.cc.cc.lib
 	];
 
 	installPhase = ''
@@ -41,7 +43,7 @@ stdenv.mkDerivation rec {
 		homepage = "https://www.auburnsounds.com/products/Graillon.html";
 		description = "Graillon is a Vocal Live Changer that brings a world of possibilities right into your DAW, with carefully designed features: Pitch-Tracking Modulation, Pitch Shifter and Pitch Correction.";
 		license = with licenses; [ unfree ];
-		maintainers = with maintainers; [ stereomato ];
+		maintainers = with maintainers; [ pearsche ];
 		platforms = platforms.linux;
 	};
 }
