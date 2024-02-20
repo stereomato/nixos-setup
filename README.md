@@ -1,4 +1,4 @@
-# Pearsche's NixOS setup
-My NixOS setup. 
+# Stereomato's NixOS setup
+My NixOS + home-manager setup.
 
-My user (home-manager + some stuff not managed by it currently) is [here](https://github.com/pearsche/pearsche-user-setup)
+My previous user only (home-manager) is [here](https://github.com/stereomato/user-setup)
