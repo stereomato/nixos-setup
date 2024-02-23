@@ -29,7 +29,9 @@
 						./modules/nixos/documentation.nix
 						./modules/nixos/filesystems.nix
 						./modules/nixos/fonts.nix
+						./modules/nixos/gtk.nix
 						./modules/nixos/hardware.nix
+						./modules/nixos/home.nix
 						./modules/nixos/i18n.nix
 						./modules/nixos/networking.nix
 						./modules/nixos/nix.nix
@@ -51,7 +53,8 @@
 							home-manager.useGlobalPkgs = true;
 							home-manager.useUserPackages = true;
 							home-manager.extraSpecialArgs = { inherit inputs; installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup"; };
-							# home-manager.users.stereomato.imports = [
+							 home-manager.users.stereomato.imports = [
+									./modules/nixos/file.nix
 								# ./modules/home-manager/fonts.nix
 								# ./modules/home-manager/gtk.nix
 								# ./modules/home-manager/home.nix
@@ -61,7 +64,7 @@
 								# ./modules/home-manager/qt.nix
 								# ./modules/home-manager/services.nix
 								# ./modules/home-manager/systemd.nix
-							# ];
+							 ];
 						}
 						
 						# from hardware-configuration.nix

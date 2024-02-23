@@ -189,15 +189,8 @@
 		#];
 		
 		file."current-hm".source = ./.;
-		# Symlink configuration files for programs that modify their settings at runtime/exit
-		# https://github.com/nix-community/home-manager/issues/3514
-		# FIXME: Some of these configurations can be handled better, so, do that.
-		file.".config/btop".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/modules/home-manager/to-symlink/btop";
-		file.".config/htop".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/modules/home-manager/to-symlink/htop";
-		file.".config/easyeffects".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/modules/home-manager/to-symlink/easyeffects";
-		file.".config/neofetch".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/modules/home-manager/to-symlink/neofetch";
-		file.".config/xmrig-mo".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/modules/home-manager/to-symlink/xmrig-mo";
-		file.".config/MangoHud".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/modules/home-manager/to-symlink/MangoHud";
+		
+	
 		# Version that the installed home-manager is compatible with.
     # Update notes talk about it.
 		stateVersion = "23.11";
