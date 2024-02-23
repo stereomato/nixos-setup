@@ -1,4 +1,10 @@
 { pkgs, ... }:{
+	home-manager.users.stereomato.fonts = {
+		fontconfig = {
+			enable = true;
+		};
+	};
+	
 	fonts = {
 		#TODO: find out a way to not install freefont_ttf (gnu free fonts)
 		# (because of the braille font being butt ugly)

@@ -3,7 +3,7 @@
 {
 	imports = [
 	];
-	home = {
+	home-manager.users.stereomato.home = {
 		username = "stereomato";
 		homeDirectory = "/home/stereomato";
 		packages = with pkgs; [

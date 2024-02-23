@@ -18,7 +18,7 @@
 		};
 	};
 	
-	outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+	outputs = { self, nixpkgs, home-manager, nix-index-database, ... }@inputs: {
 			nixosConfigurations = {
 				Taihou = nixpkgs.lib.nixosSystem {
 					system = "x86_64-linux";
@@ -33,6 +33,7 @@
 						./modules/nixos/i18n.nix
 						./modules/nixos/networking.nix
 						./modules/nixos/nix.nix
+						nix-index-database.nixosModules.nix-index
 						./modules/nixos/nixpkgs.nix
 						./modules/nixos/powerManagement.nix
 						./modules/nixos/programs.nix
@@ -49,18 +50,18 @@
 						home-manager.nixosModules.home-manager {
 							home-manager.useGlobalPkgs = true;
 							home-manager.useUserPackages = true;
-							home-manager.extraSpecialArgs = { inherit inputs; };
-							home-manager.users.stereomato.imports = [
-								./modules/home-manager/fonts.nix
-								./modules/home-manager/gtk.nix
-								./modules/home-manager/home.nix
-								./modules/home-manager/nix.nix
+							home-manager.extraSpecialArgs = { inherit inputs; installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup"; };
+							# home-manager.users.stereomato.imports = [
+								# ./modules/home-manager/fonts.nix
+								# ./modules/home-manager/gtk.nix
+								# ./modules/home-manager/home.nix
+								# ./modules/home-manager/nix.nix
 								# ./modules/home-manager/nixpkgs.nix
-								./modules/home-manager/programs.nix
-								./modules/home-manager/qt.nix
-								./modules/home-manager/services.nix
-								./modules/home-manager/systemd.nix
-							];
+								# ./modules/home-manager/programs.nix
+								# ./modules/home-manager/qt.nix
+								# ./modules/home-manager/services.nix
+								# ./modules/home-manager/systemd.nix
+							# ];
 						}
 						
 						# from hardware-configuration.nix

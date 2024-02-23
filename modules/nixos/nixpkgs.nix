@@ -6,9 +6,10 @@
 			joypixels.acceptLicense = true;
 			input-fonts.acceptLicense = true;
 			permittedInsecurePackages = [
+					# FIXME: https://github.com/NixOS/nixpkgs/issues/269713
 					"openssl-1.1.1w"
-					# Bitwarden
-					"electron-25.9.0"
+					# FIXME: https://github.com/NixOS/nixpkgs/pull/280835
+					"freeimage-unstable-2021-11-01"
 			];
 		};
 		overlays = [(

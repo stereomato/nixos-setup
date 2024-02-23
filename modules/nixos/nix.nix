@@ -1,5 +1,15 @@
 { inputs, lib, ... }:
 {
+	home-manager.users.stereomato.nix = {
+		settings = {
+			substituters = [
+				# nixpkgs
+				"https://cache.nixos.org"
+				# nixified-ai
+				"https://ai.cachix.org"
+			];
+		};
+	};
 	nix = {
 		settings = {
 			auto-optimise-store = true;
