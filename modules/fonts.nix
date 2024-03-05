@@ -31,7 +31,7 @@
 			roboto-slab
 			roboto-mono
 			jetbrains-mono
-			#input-fonts
+			input-fonts
 			inter
 			source-sans
 			source-serif
@@ -87,7 +87,7 @@
 					"Cantarell"
 				];
 				serif = [ "Roboto Slab" ];
-				monospace = [ "Jetbrains Mono" ];
+				monospace = [ "Input Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

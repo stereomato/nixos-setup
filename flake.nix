@@ -55,6 +55,7 @@
 							home-manager.extraSpecialArgs = { inherit inputs; installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup"; };
 							 home-manager.users.stereomato.imports = [
 									./modules/file.nix
+									nix-index-database.hmModules.nix-index
 								# ./modules/home-manager/fonts.nix
 								# ./modules/home-manager/gtk.nix
 								# ./modules/home-manager/home.nix

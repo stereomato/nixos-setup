@@ -91,9 +91,9 @@
 			enableSystemSlice = true;
 			enableUserSlices = true;
 			# This is not
-			# enableRootSlice = true;
+			enableRootSlice = true;
 			extraConfig = {
-				DefaultMemoryPressureLimit = "85%";
+				# DefaultMemoryPressureLimit = "85%";
 				SwapUsedLimit = "75%";
 			};
 		};
