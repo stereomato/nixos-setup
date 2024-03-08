@@ -182,6 +182,16 @@
 								libpng
 								# https://github.com/NixOS/nixpkgs/issues/236561
 								attr
+								xorg.libXcursor
+								xorg.libXi
+								xorg.libXinerama
+								xorg.libXScrnSaver
+								libpng
+								libpulseaudio
+								libvorbis
+								stdenv.cc.cc.lib
+								libkrb5
+								keyutils
 							];
 				};
 				optimizeIntelCPUperformancePolicy = pkgs.writers.writeFishBin "scriptOptimizeIntelCPUperformancePolicy" ''

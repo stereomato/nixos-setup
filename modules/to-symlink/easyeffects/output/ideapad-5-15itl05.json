@@ -1,14 +1,14 @@
 {
     "output": {
         "bass_enhancer#0": {
-            "amount": 20.0,
+            "amount": 15.0,
             "blend": 10.0,
             "bypass": false,
             "floor": 25.0,
             "floor-active": true,
             "harmonics": 9.999999999999995,
             "input-gain": 0.0,
-            "output-gain": 1.0,
+            "output-gain": 0.0,
             "scope": 175.0
         },
         "blocklist": [],
@@ -20,7 +20,7 @@
             "gain": 0.0,
             "input-gain": 0.0,
             "mode": "RLC (BT)",
-            "output-gain": 1.0,
+            "output-gain": 0.0,
             "quality": 0.0,
             "slope": "x1",
             "type": "High-pass",
@@ -36,10 +36,10 @@
             "dithering": "None",
             "external-sidechain": false,
             "gain-boost": false,
-            "input-gain": 0.0,
+            "input-gain": 5.0,
             "lookahead": 4.000000000000021,
             "mode": "Herm Thin",
-            "output-gain": 1.0,
+            "output-gain": 0.0,
             "oversampling": "Half x4(3L)",
             "release": 8.0,
             "sidechain-preamp": 0.0,
@@ -48,15 +48,15 @@
         },
         "multiband_compressor#0": {
             "band0": {
-                "attack-threshold": -16.0,
-                "attack-time": 150.0,
+                "attack-threshold": -15.0,
+                "attack-time": 149.99,
                 "boost-amount": 6.0,
                 "boost-threshold": -72.0,
                 "compression-mode": "Downward",
                 "compressor-enable": true,
                 "external-sidechain": false,
                 "knee": -10.0,
-                "makeup": 5.0,
+                "makeup": 2.5,
                 "mute": false,
                 "ratio": 5.0,
                 "release-threshold": -100.0,
@@ -74,7 +74,7 @@
                 "stereo-split-source": "Left/Right"
             },
             "band1": {
-                "attack-threshold": -22.5,
+                "attack-threshold": -25.0,
                 "attack-time": 150.0,
                 "boost-amount": 6.0,
                 "boost-threshold": -72.0,
@@ -102,7 +102,7 @@
                 "stereo-split-source": "Left/Right"
             },
             "band2": {
-                "attack-threshold": -22.5,
+                "attack-threshold": -25.0,
                 "attack-time": 100.0,
                 "boost-amount": 6.0,
                 "boost-threshold": -72.0,
@@ -130,7 +130,7 @@
                 "stereo-split-source": "Left/Right"
             },
             "band3": {
-                "attack-threshold": -22.5,
+                "attack-threshold": -25.0,
                 "attack-time": 80.0,
                 "boost-amount": 6.0,
                 "boost-threshold": -72.0,
@@ -274,7 +274,7 @@
             "dry": -100.0,
             "envelope-boost": "None",
             "input-gain": 0.0,
-            "output-gain": 1.0,
+            "output-gain": 0.0,
             "stereo-split": false,
             "wet": 0.0
         },
@@ -296,7 +296,7 @@
             "mode": "LR > LR (Stereo Default)",
             "mutel": false,
             "muter": false,
-            "output-gain": 1.0,
+            "output-gain": 0.0,
             "phasel": false,
             "phaser": false,
             "sc-level": 1.0,
