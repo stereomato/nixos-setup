@@ -1,6 +1,7 @@
-{ inputs, pkgs, username, ... }:{
+{ pkgs, username, ... }:{
 	imports = [
-		./imports/stereomato-vscode.nix
+		./imports/vscode.nix
+
 	];
 	home-manager.users.stereomato.programs = {
 		home-manager = {

@@ -91,7 +91,7 @@
 			
 			# Games & Fun
 			# minecraft (official launcher) https://github.com/NixOS/nixpkgs/issues/179323
-			waifu2x-converter-cpp minecraft prismlauncher protontricks sl vintagestory stuntrally tome4
+			waifu2x-converter-cpp minecraft prismlauncher protontricks sl vintagestory stuntrally tome4 gamescope
 			
 			# Emulators
 			dolphin-emu-beta ppsspp-sdl-wayland citra-nightly pcsx2
