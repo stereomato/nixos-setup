@@ -1,6 +1,6 @@
 { ... }:
 {
-	import = [
+	imports = [
 		./imports/stereomato-envvars.nix
 	];
 

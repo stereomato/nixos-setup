@@ -21,8 +21,8 @@
 			# Not enough ram on my current laptop
 			# I think 2GB x thread is good
 			# I only have 12GB of ram
-			# 4 x 2 = 8, should be fine...
-			cores = 4;
+			# 6 x 2 = 12, should be fine...
+			cores = 6;
 			trusted-substituters = [
 			# nixified-ai
 			"https://ai.cachix.org"
