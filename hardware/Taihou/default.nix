@@ -1,7 +1,12 @@
 { ... }: {
 	# Just imports basically
 	imports = [
-		./sysctl-tweaks.nix
+		./common
+		./boot.nix
 		./kernel.nix
+		./filesystems.nix
+		./security.nix
 	];
+	
+	networking.hostName = "Taihou";
 }

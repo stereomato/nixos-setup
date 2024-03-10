@@ -1,10 +1,7 @@
 { pkgs, ... }:
 {
 	hardware = {
-		ksm = {
-			enable = true;
-			sleep = 1000;
-		};
+		
 		pulseaudio.enable = false; # because of pipewire
 		bluetooth = {
 			# Enabled already because of gnome related toggles.

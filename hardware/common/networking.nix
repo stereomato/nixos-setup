@@ -1,7 +1,6 @@
 { ...}:
 {
 networking = {
-		hostName = "Taihou";
 		networkmanager = {
 			# This is already enabled because of gnome related toggles.
 			wifi = {
