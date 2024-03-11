@@ -1,10 +1,5 @@
 { pkgs, username, ... }:{
-  imports = [
-		./imports/vscode.nix
-		./imports/mpv.nix
-		./imports/fish.nix
-	];
-	
+
 	programs = {
 		home-manager = {
 			enable = true;

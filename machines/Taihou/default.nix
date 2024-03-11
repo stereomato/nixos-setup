@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 	# Just imports basically
 	imports = [
-		./common
+		../common
 		./boot.nix
 		./filesystems.nix
 		./kernel.nix
@@ -16,7 +16,7 @@
 	# I only have 12GB of ram
 	# 6 x 2 = 12, should be fine...
 	nix.settings.cores = 6;
-	
+
 	networking.hostName = "Taihou";
 
 	# Keyboard Layout
@@ -34,9 +34,9 @@
 					enable = true;
 					user = "stereomato";
 				};
+			};
 			# Keyboard layout
 			xkb.layout = "latam";
-			};
 			desktopManager.gnome = {
 				enable = true;
 				extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];

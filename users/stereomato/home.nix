@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
 
 	home = {
 		username = "stereomato";
-		homeDirectory = "/home/stereomato";
+		homeDirectory = lib.mkDefault "/home/stereomato";
 		
 		
 		# Broken https://github.com/nix-community/home-manager/issues/3417

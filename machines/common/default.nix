@@ -15,6 +15,7 @@
 		./pkgs.nix
 		./system.nix
 		./toolkits.nix
+		./users.nix
 		./virtualisation.nix
 	];
 
@@ -25,10 +26,10 @@
 			displayManager = {
 				gdm.enable = true;
 			};
-		};
-		# GNOME as DE
-		desktopManager.gnome = {
-			enable = true;
+			# GNOME as DE
+			desktopManager.gnome = {
+				enable = true;
+			};
 		};
 
 		gnome = {
