@@ -1,5 +1,10 @@
 { pkgs, ... }:
 {
+	imports = [
+		./common
+		./stereomato
+	];
+	
 	users = {
 		users = {
 			stereomato = {

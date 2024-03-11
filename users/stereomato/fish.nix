@@ -1,5 +1,5 @@
 { ... }:{
-	home-manager.users.stereomato.programs.fish = {
+	programs.fish = {
 		enable = true;
 		shellInit = ''
 			if status is-interactive

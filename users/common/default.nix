@@ -10,9 +10,7 @@
     ./nixpkgs.nix
     ./pkgs.nix
     ./programs.nix
-    ./qt.nix
     ./services.nix
-    ./time.nix
   ];
   
 }

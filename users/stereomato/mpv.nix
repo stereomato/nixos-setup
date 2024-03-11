@@ -1,5 +1,5 @@
 { pkgs, ... }:{
-	home-manager.users.stereomato.programs.mpv = {
+	programs.mpv = {
 		enable = true;
 		config = {
 			# Save position on quit

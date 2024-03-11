@@ -1,5 +1,5 @@
 { pkgs, inputs, ... }:{
-  home-manager.users.stereomato.programs = {
+  programs = {
     vscode = {
 			enable = true;
 			mutableExtensionsDir = false;
