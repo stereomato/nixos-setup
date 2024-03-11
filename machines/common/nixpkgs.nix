@@ -257,7 +257,8 @@
 							enableGnomeExtensions = true;
 						};
 					};
-					gimp-stereomato = super.gimp-with-plugins.override {
+					# FIXME: https://github.com/NixOS/nixpkgs/pull/294710
+					gimp-stereomato = super.gimp.override {
 						withPython = true;
 					};
 					# This just installs a hunspell package with these dictionaries
