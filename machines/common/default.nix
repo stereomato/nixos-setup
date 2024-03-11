@@ -1,6 +1,37 @@
-{ pkgs, ... }:{
-  services = {
-    gnome = {
+{ ... }:{
+	imports = [
+		./console.nix
+		./documentation.nix
+		./environment.nix
+		./envvars.nix
+		./fonts.nix
+		./hardware.nix
+		./i18n.nix
+		./monitoring.nix
+		./networking.nix
+		./nix.nix
+		./nixpkgs.nix
+		./performance.nix
+		./pkgs.nix
+		./system.nix
+		./toolkits.nix
+		./virtualisation.nix
+	];
+
+	services = {
+		xserver = {
+			enable = true;
+			# Use GDM globally
+			displayManager = {
+				gdm.enable = true;
+			};
+		};
+		# GNOME as DE
+		desktopManager.gnome = {
+			enable = true;
+		};
+
+		gnome = {
 			# Adds some developer tools for gnome and enables sysprof.
 			core-developer-tools.enable = true;
 			# This enables evince, file-roller, geary, gnome-disks, seahorse, sushi.
@@ -17,32 +48,11 @@
 			games.enable = true;
 		};
 		power-profiles-daemon.enable = true;
-		# UI+UX settings
-		xserver = {
-			enable = true;
-			displayManager = {
-				gdm.enable = true;
-				autoLogin = {
-					enable = true;
-					user = "stereomato";
-				};
-			};
-			desktopManager.gnome = {
-				enable = true;
-				extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
-				extraGSettingsOverrides = ''
-					[org.gnome.mutter]
-					# Disabled 'rt-scheduler' due to https://gitlab.gnome.org/GNOME/mutter/-/issues/3037
-					experimental-features=['scale-monitor-framebuffer']
-				'';
-			};
-		};
-  };
-
-  programs = {
-    # Gnome area
+	};
+	# Remaining GNOME programs
+	programs = {
 		# TODO: ask why these 2 and gnome-power-manager aren't in any of the 3 gnome toggles.
 		gnome-terminal.enable = true;
 		calls.enable = true;
-  };
+	};
 }

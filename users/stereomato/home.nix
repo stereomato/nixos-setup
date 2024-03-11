@@ -1,11 +1,8 @@
 { pkgs, ... }:
 
 {
-	imports = [
-		./imports/stereomato-pkgs.nix
-	];
 
-	home-manager.users.stereomato.home = {
+	home = {
 		username = "stereomato";
 		homeDirectory = "/home/stereomato";
 		

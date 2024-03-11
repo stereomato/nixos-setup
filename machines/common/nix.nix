@@ -1,28 +1,11 @@
-{ inputs, lib, ... }:
-{
-	home-manager.users.stereomato.nix = {
-		settings = {
-			substituters = [
-				# nixpkgs
-				"https://cache.nixos.org"
-				# nixified-ai
-				"https://ai.cachix.org"
-			];
-		};
-	};
-	nix = {
+{ inputs, ... }:{
+  nix = {
 		settings = {
 			auto-optimise-store = true;
 			experimental-features = [ 
 				"nix-command"
 				"flakes"
 			];
-			# nproc / 2, just in case
-			# Not enough ram on my current laptop
-			# I think 2GB x thread is good
-			# I only have 12GB of ram
-			# 6 x 2 = 12, should be fine...
-			cores = 6;
 			trusted-substituters = [
 			# nixified-ai
 			"https://ai.cachix.org"

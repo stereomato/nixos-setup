@@ -1,6 +1,7 @@
 { ... }:{
   imports = [
-    ./DE.nix
+    ./imports
+    
     ./envvars.nix
     ./file.nix
     ./home.nix

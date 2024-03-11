@@ -1,10 +1,4 @@
-{ pkgs, ... }:
-{
-	imports = [
-		./common
-		./stereomato
-	];
-	
+{ pkgs, ... }:{
 	users = {
 		users = {
 			stereomato = {
