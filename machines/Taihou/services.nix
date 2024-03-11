@@ -19,10 +19,9 @@
 			prunePaths = [];
 			pruneNames = [];
 		};
+
 		vnstat.enable = true;
-		smartd = {
-			enable = true;
-		};
+		
 		
 		
 		# Not needed for BTRFS anymore

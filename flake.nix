@@ -19,27 +19,33 @@
 	};
 	
 	outputs = { self, nixpkgs, home-manager, nix-index-database, ... }@inputs: {
-			nixosConfigurations = {
+			nixosConfigurations = rec {
 				Taihou = nixpkgs.lib.nixosSystem {
 					system = "x86_64-linux";
 					modules = [ 
-						./hardware
+						./hardware/Taihou
 						nix-index-database.nixosModules.nix-index
 						
 						home-manager.nixosModules.home-manager {
 							home-manager.useGlobalPkgs = true;
 							home-manager.useUserPackages = true;
-							home-manager.extraSpecialArgs = { inherit inputs; installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup"; };
-							 home-manager.users.stereomato.imports = [
-									./users
-									nix-index-database.hmModules.nix-index
-							 ];
 						}
 						
 						# from hardware-configuration.nix
 						#(modulesPath + "/installer/scan/not-detected.nix")
 					];
+
 					specialArgs = { inherit inputs; username = "stereomato"; };
+				};
+			};
+
+			homeConfigurations = {
+				stereomato = {
+					home-manager.extraSpecialArgs = { inherit inputs; installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup"; };
+					home-manager.users.stereomato.imports = [
+						./users/stereomato
+						nix-index-database.hmModules.nix-index
+					];
 				};
 			};
 		};
