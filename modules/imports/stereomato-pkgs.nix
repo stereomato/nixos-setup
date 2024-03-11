@@ -152,7 +152,7 @@
 			
 			# Image creation and manipulation
 			# imagemagickBig is the one that includes ghostscript
-			drawing gimp-with-plugins imagemagickBig 
+			drawing gimp imagemagickBig 
 			
 			# FTBFS: nix log /nix/store/r3yc4j7a5yrzj5d6hvgz762r52w6b3mz-Real-ESRGAN-ncnn-vulkan-0.2.0.drv
 			#realesrgan-ncnn-vulkan 
