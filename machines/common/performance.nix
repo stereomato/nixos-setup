@@ -2,7 +2,7 @@
 {
   # Sysctl tweaks
   # Mostly memory related
-	import = [
+	imports = [
 		./imports/sysctl-tweaks.nix
 	];
 

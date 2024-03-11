@@ -1,14 +1,12 @@
 { ... }:{
   imports = [
     ./imports
-    
+
     ./envvars.nix
     ./file.nix
     ./home.nix
-    ./mpv.nix
-    ./pkgs.nix
+    ./nix.nix
     ./programs.nix
     ./services.nix
-    ./vscode.nix
   ];
 }
