@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 {
-	home-manager.users.stereomato.systemd.user = {
+	systemd.user = {
 		sessionVariables = {
 			# PATHs for DAW plugins
 			DSSI_PATH   = "$HOME/.dssi:/etc/profiles/per-user/stereomato/lib/dssi:/run/current-system/sw/lib/dssi";

@@ -14,6 +14,22 @@
 			scsiLinkPolicy = "med_power_with_dipm";
 	};
 
+	services = {
+		# BTRFS autoscrubbing
+		btrfs = {
+			autoScrub = {
+				enable = true;
+				interval = "thursday";
+				fileSystems = [
+					"/"
+				];
+			};
+		};
+		# Intel thermal management
+		thermald.enable = true;
+	};
+
+	
   # Disk based swap
   # Unused
   #swapDevices = [{

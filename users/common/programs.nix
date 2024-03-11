@@ -23,10 +23,7 @@
 			#atopgpu.enable = true;
 			netatop.enable = false;
 		};
-		# Gnome area
-		# TODO: ask why these 2 and gnome-power-manager aren't in any of the 3 gnome toggles.
-		gnome-terminal.enable = true;
-		calls.enable = true;
+
 		# nix-index conflicts with this, so let's disable it.
 		command-not-found.enable = false;
 	};

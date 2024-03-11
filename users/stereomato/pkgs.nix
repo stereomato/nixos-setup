@@ -1,5 +1,5 @@
 { pkgs, inputs, ... }:{
-	home-manager.users.stereomato.home.packages = with pkgs; [
+	home.packages = with pkgs; [
 			
 			# TODO: Organize better
 		
