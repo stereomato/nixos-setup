@@ -58,7 +58,8 @@
 			blackbox-terminal
 
 			# Nix tooling
-			rnix-lsp nix-prefetch-scripts niv nixd nil
+			# FIXME: nixd https://github.com/nix-community/nixd/issues/357
+			nix-prefetch-scripts niv nil
 
 			# Debuggers
 			gdb valgrind
@@ -94,7 +95,8 @@
 			waifu2x-converter-cpp minecraft prismlauncher protontricks sl vintagestory stuntrally tome4 gamescope
 			
 			# Emulators
-			dolphin-emu-beta ppsspp-sdl-wayland citra-nightly pcsx2
+			# rip citra-nightly
+			dolphin-emu-beta ppsspp-sdl-wayland pcsx2
 			# Multimedia Libs (commenting out because supposedly we're not supposed to install libs here)
 			# gnome-video-effects gst_all_1.gstreamer gst_all_1.gst-libav gst_all_1.gst-vaapi gst_all_1.gst-plugins-bad gst_all_1.gst-plugins-base gst_all_1.gst-plugins-good gst_all_1.gst-plugins-ugly 
 			
@@ -150,7 +152,7 @@
 			
 			# Image creation and manipulation
 			# imagemagickBig is the one that includes ghostscript
-			drawing gimp-with-plugins imagemagickBig 
+			drawing gimp imagemagickBig 
 			
 			# FTBFS: nix log /nix/store/r3yc4j7a5yrzj5d6hvgz762r52w6b3mz-Real-ESRGAN-ncnn-vulkan-0.2.0.drv
 			#realesrgan-ncnn-vulkan 
