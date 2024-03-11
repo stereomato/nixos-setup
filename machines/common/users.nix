@@ -1,4 +1,6 @@
 { pkgs, ... }:{
+	# Here go things related to users
+	
 	users = {
 		users = {
 			stereomato = {
@@ -9,4 +11,9 @@
 			};
 		};
 	};
+
+	programs.fish = {
+			enable = true; 
+			useBabelfish = true;
+		};
 }

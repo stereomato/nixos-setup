@@ -45,6 +45,7 @@
 		};
 	};
 
+	security.rtkit.enable = true; # for pipewire
 	services = {
 		# Audio + Video backend server
 		# Also important for pro audio

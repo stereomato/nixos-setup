@@ -5,6 +5,7 @@
 		./boot.nix
 		./filesystems.nix
 		./kernel.nix
+		./pro-audio.nix
 		./programs.nix
 		./security.nix
 		./services.nix

@@ -14,7 +14,18 @@
 			scsiLinkPolicy = "med_power_with_dipm";
 	};
 
+		# These used to go on udev.extraRules, I don't use them due to them causing lag in the GNOME UI
+		#SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger"
+		#SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger"
+
 	services = {
+		# Automatic nice daemon
+		# disabled because it disables cgroupsv2 that are needed for systemd-oomd
+		ananicy = {
+			enable = false;
+			# Needs the community rules package to work well, in the meantime, use the original ananicy
+			# package = pkgs.ananicy-cpp;
+		};
 		# BTRFS autoscrubbing
 		btrfs = {
 			autoScrub = {
@@ -25,11 +36,28 @@
 				];
 			};
 		};
+
+		# Not needed for BTRFS anymore
+		#fstrim.enable = false;
+
 		# Intel thermal management
 		thermald.enable = true;
+
+		# Profile sync daemon
+		psd = {
+			enable = true;
+		};
 	};
 
 	
+	# Wifi power saving
+	networking.networkmanager = {
+		# This is already enabled because of gnome related toggles.
+		wifi = {
+			powersave = true;
+		};
+	};
+
   # Disk based swap
   # Unused
   #swapDevices = [{

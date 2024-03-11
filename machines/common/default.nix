@@ -1,23 +1,24 @@
-{ ... }:{
+{ pkgs, ... }:{
 	imports = [
-		./console.nix
-		./documentation.nix
-		./environment.nix
-		./envvars.nix
 		./fonts.nix
 		./hardware.nix
 		./i18n.nix
-		./monitoring.nix
 		./networking.nix
 		./nix.nix
 		./nixpkgs.nix
 		./performance.nix
-		./pkgs.nix
+		./system-management.nix
 		./system.nix
 		./toolkits.nix
 		./users.nix
 		./virtualisation.nix
 	];
+
+	# In this place goes things that are too general or too small that putting them in their own files is just cluttering
+
+	console = {
+		font = "Lat2-Terminus16";
+	};
 
 	services = {
 		xserver = {
@@ -56,4 +57,36 @@
 		gnome-terminal.enable = true;
 		calls.enable = true;
 	};
+
+
+	documentation = {
+		man = {
+			generateCaches = true;
+			mandoc = {
+				enable = true;
+			};
+			man-db = {
+				enable = false;
+			};
+		};
+		dev = {
+			enable = true;
+		};
+	};
+	
+	environment = {
+			localBinInPath = true;
+			shells = with pkgs; [ fish ];
+			etc."current-nixos".source = ./.;
+
+			variables = {
+			# MacOS-like font rendering
+			# Font emboldering
+			# and
+			# fuzziness a la macOS/W95
+			FREETYPE_PROPERTIES = "truetype:interpreter-version=35 cff:no-stem-darkening=0 type1:no-stem-darkening=0 t1cid:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+			EDITOR = "nano";
+		};
+
+		};
 }
