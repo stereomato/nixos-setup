@@ -102,41 +102,18 @@
 			
 			# Multimedia
 
-			# Image encoders
-			libjxl libavif
-
 			# Gstreamer programs
 			gst_all_1.gstreamer
 
 			# Digital books (epubs, manga)
 			foliate
 			
-			# Music/Audio file management
-			# Adding both normal ffmpeg and ffmpeg_5 because at time of writing (14-oct-22) default ffmpeg is 4.4.2
-			wavpack mac fdk-aac-encoder lame flac freac opusTools opustags flacon easytag spek
+			
 			
 			# General multimedia tools
 			mediainfo ffmpeg-fuller handbrake-stereomato
 
-			# Digital media players/readers/streamers
-			celluloid clapper amberol quodlibet rhythmbox spotify gthumb syncplay
 			
-			# Screen/Video recorders
-			obs-studio-with-plugins simplescreenrecorder kooha
-
-			# Music production: DAWs
-			audacity ardour qpwgraph reaper 
-			# FTBFS: nix log /nix/store/9rfkwm2k1sd4x8yy50bhni7ffjd7ar0n-zrythm-1.0.0-beta.4.9.1.drv
-			# zrythm
-
-			# Music production: plugins
-			dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4 calf CHOWTapeModel zam-plugins gxplugins-lv2 tap-plugins
-			
-			# Video Production & manipulation
-			kdenlive mkvtoolnix davinci-resolve 
-			# FTBFS: https://github.com/NixOS/nixpkgs/pull/285803
-			pitivi 
-			olive-editor flowblade
 			
 			# Web Browsers
 			google-chrome vivaldi vivaldi-ffmpeg-codecs 
@@ -150,25 +127,15 @@
 			# Fediverse apps
 			
 			
-			# Image creation and manipulation
-			# imagemagickBig is the one that includes ghostscript
-			drawing gimp imagemagickBig 
 			
-			# FTBFS: nix log /nix/store/r3yc4j7a5yrzj5d6hvgz762r52w6b3mz-Real-ESRGAN-ncnn-vulkan-0.2.0.drv
-			#realesrgan-ncnn-vulkan 
-			gnome-obfuscate eyedropper
+			
+			
 
 
 			# Phone stuff
 			scrcpy
 
-			# Computer Graphics
-			blender
-
-			# Gamedev
-			unityhub godot3-mono godot3-mono-export-templates
-			## This is for godot's C# support
-			msbuild
+			
 
 			# Life managing
 			gtg 

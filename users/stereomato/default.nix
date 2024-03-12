@@ -9,4 +9,11 @@
     ./programs.nix
     ./services.nix
   ];
+
+
+  fonts = {
+		fontconfig = {
+			enable = true;
+		};
+	};
 }

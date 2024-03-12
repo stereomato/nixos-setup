@@ -7,6 +7,7 @@
 		./nix.nix
 		./nixpkgs.nix
 		./performance.nix
+		./security.nix
 		./system-management.nix
 		./system.nix
 		./toolkits.nix

@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:{
+{ pkgs, ... }:{
 
 	programs = {
 		home-manager = {
@@ -8,13 +8,7 @@
 			enable =  true;
 		};
 		
-		direnv = {
-			enable = true;
-			# Fish integration is always enabled
-			#enableFishIntegration = true;
-			enableBashIntegration = true;
-			nix-direnv.enable = true;
-		};
+		
 		# nix-index conflicts with this, so let's disable it.
 		command-not-found.enable = false;
 		micro = {
@@ -27,30 +21,7 @@
 			enable = true;
 			package = pkgs.jdk17;
 		};
-		gpg = {
-			enable = true;
-			# mutableKeys and mutableTrust are enabled by default
-		};
-		git = {
-			enable = true;
-			package = pkgs.gitFull;
-			userName = "${username}";
-			userEmail = "thepearsche@proton.me";
-			delta = {
-				enable = true;
-			};
-			lfs = {
-				enable = true;
-			};
-			signing = {
-				signByDefault = true;
-				key = "AEC0A812DBBE4BC9";
-			};
-
-		};
-		gh = {
-			enable = true;
-		};
+		
 		# Both the settings for btop, htop and mangohud have been removed as they are programs that
 		# update their own settings at runtime thus making them unsuitable for this kind of configuration
 		# Instead, their configuration folders are kept in this repo at ./to-symlink/ and

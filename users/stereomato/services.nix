@@ -9,19 +9,11 @@
 		easyeffects = {
 			enable = true;
 		};
-		lorri = {
-			enable = true;
-			enableNotifications = true;
-			# There's also package and nixPackage.
-		};
+		
 		syncthing = {
 			enable = true;
 		};
-		gpg-agent = {
-			enable = true;
-			enableSshSupport = true;
-			pinentryFlavor = "gnome3";
-		};
+		
 		#home-manager-gc.enable = true;
 	};
 }
