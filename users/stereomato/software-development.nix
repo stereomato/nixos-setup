@@ -5,9 +5,33 @@
   ];
 
   home.packages = with pkgs; [
-    # Computer Graphics
+    # Requires nixos/nixpkgs newer than 22.11
+		toolbox distrobox
+		# Computer Graphics
 		blender
 
+		# Compilers, configurers
+		patchelf
+
+		# Terminals
+		blackbox-terminal
+
+		# Nix tooling
+		# FIXME: nixd https://github.com/nix-community/nixd/issues/357
+		nix-prefetch-scripts niv nil
+
+		# Debuggers
+		gdb valgrind
+
+		# Code editors/IDEs
+		netbeans micro 
+
+		# Documentation tools
+		zeal
+		
+		# Java libraries
+		commonsIo
+		
 		# Gamedev
 		unityhub godot3-mono godot3-mono-export-templates
 		## This is for godot's C# support

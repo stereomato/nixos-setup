@@ -17,10 +17,9 @@
     vnstat.enable = true;
     
 		environment.systemPackages = with pkgs; [
-			# Here go things that can't go in home.nix
 			# System monitoring, managing & benchmarking tools
-			kdiskmark
-			
+			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils gnome.gnome-power-manager powertop btrfs-progs nvtop-intel powerstat iotop smem nix-info kdiskmark file stress-ng
+
 			# System management
 			gparted
 		];

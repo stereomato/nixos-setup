@@ -1,7 +1,8 @@
 { pkgs, ... }:{
 	home.packages = with pkgs; [
 		
-		
+		# General multimedia tools
+		mediainfo ffmpeg-fuller handbrake-stereomato
 		
 		# Screen/Video recorders
 		obs-studio-with-plugins simplescreenrecorder kooha
@@ -25,7 +26,7 @@
 
 		# Image creation and manipulation
 		# imagemagickBig is the one that includes ghostscript
-		drawing gimp imagemagickBig 
+		drawing gimp imagemagickBig waifu2x-converter-cpp
 
 		# Image encoders
 		libjxl libavif

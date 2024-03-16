@@ -1,4 +1,4 @@
-{ ... }:{
+{ pkgs, ... }:{
 	virtualisation = {
 		spiceUSBRedirection.enable = true;
 		libvirtd = {
@@ -15,4 +15,9 @@
 			enable = true;
 		};
 	};
+
+	environment.systemPackages = with pkgs; [
+		# Virtualization and containerization
+		gnome.gnome-boxes
+	];
 }
