@@ -1,5 +1,6 @@
 { lib, pkgs, ... }:{
-  overlays = [(
+  
+	nixpkgs.overlays = [(
 			self: super: {
 				# UGLY, see: https://github.com/NixOS/nix/pull/2911
 				# Also, see: https://github.com/NixOS/nixpkgs/issues/214848
@@ -76,14 +77,14 @@
 					};
 					set = "Iosevka-stereomato";
 				};
-				SF-Pro = super.callPackage ./derivationsYetToUpstream/SF-Pro.nix {};
-				SF-Compact = super.callPackage ./derivationsYetToUpstream/SF-Compact.nix {};
-				SF-Mono = super.callPackage ./derivationsYetToUpstream/SF-Mono.nix {};
-				SF-Arabic = super.callPackage ./derivationsYetToUpstream/SF-Arabic.nix {};
-				New-York = super.callPackage ./derivationsYetToUpstream/New-York.nix {};
-				Bitter-Pro = super.callPackage ./derivationsYetToUpstream/Bitter-Pro.nix {};
-				Playfair-Display = super.callPackage ./derivationsYetToUpstream/Playfair-Display.nix {};
-				ANRT-Baskervville = super.callPackage ./derivationsYetToUpstream/ANRT-Baskervville.nix {};
+				SF-Pro = super.callPackage ../derivationsYetToUpstream/SF-Pro.nix {};
+				SF-Compact = super.callPackage ../derivationsYetToUpstream/SF-Compact.nix {};
+				SF-Mono = super.callPackage ../derivationsYetToUpstream/SF-Mono.nix {};
+				SF-Arabic = super.callPackage ../derivationsYetToUpstream/SF-Arabic.nix {};
+				New-York = super.callPackage ../derivationsYetToUpstream/New-York.nix {};
+				Bitter-Pro = super.callPackage ../derivationsYetToUpstream/Bitter-Pro.nix {};
+				Playfair-Display = super.callPackage ../derivationsYetToUpstream/Playfair-Display.nix {};
+				ANRT-Baskervville = super.callPackage ../derivationsYetToUpstream/ANRT-Baskervville.nix {};
 				input-fonts = super.input-fonts.overrideAttrs (old: {
 					pname = "${super.input-fonts.pname}";
 					version = "${super.input-fonts.version}";
@@ -91,7 +92,7 @@
 						super.fetchzip {
 							name = "${super.input-fonts.pname}-${super.input-fonts.version}";
 							url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-							sha256 = "16yslzk3flg6gwz9v9vkv5jwaq7k6k8cx1w9yhqiidcbpcrl1cfv";
+							sha256 = "15vmng3sfb8ydnbcb7c3l5xnlppnzl9bvzk6v1ggksiccmv632p4";
 							stripRoot = false;
 						};
 					
@@ -152,6 +153,11 @@
 							# Extra zram stuff
 							ZRAM_MEMORY_TRACKING = yes;
 							ZRAM_MULTI_COMP = yes;
+
+							# Module and firmware compression with ZSTD
+							MODULE_COMPRESS_XZ = lib.mkForce no;
+							MODULE_COMPRESS_ZSTD = yes;
+							FW_LOADER_COMPRESS_ZSTD = yes;
 
 							# Accelerator subsystem
 							DRM_ACCEL = yes;
@@ -215,14 +221,9 @@
 					nproc | tr -d '\n' | tee $out/numThreads
 					echo '''$(($(nproc) / 2 ))| tr -d '\n' | tee $out/halfNumThreads
 				'';
-				home-manager-gc-start = super.writeScriptBin "home-manager-gc-start" ''
-          #!${super.bash}/bin/bash
-            set -e
-            exec ${super.nix}/bin/nix-collect-garbage --delete-older-than 15d					
-          '';
-					chowmatrix = super.callPackage ./derivationsYetToUpstream/chowmatrix.nix {};
-					auburn-sounds-graillon-2 = super.callPackage ./derivationsYetToUpstream/auburn-sounds-graillon-2.nix {};
-					tal-reverb-4 = super.callPackage ./derivationsYetToUpstream/tal-reverb-4.nix {};
+					chowmatrix = super.callPackage ../derivationsYetToUpstream/chowmatrix.nix {};
+					auburn-sounds-graillon-2 = super.callPackage ../derivationsYetToUpstream/auburn-sounds-graillon-2.nix {};
+					tal-reverb-4 = super.callPackage ../derivationsYetToUpstream/tal-reverb-4.nix {};
 					nvtop = super.nvtop.override {
 						nvidia = false;
 					};

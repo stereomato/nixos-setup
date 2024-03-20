@@ -1,6 +1,6 @@
 { ... }:{
 	# Limits needed for pro audio
-	pam = {
+	security.pam = {
 		loginLimits = [
 			{
 				domain = "@audio";

@@ -103,8 +103,9 @@
 		scripts  = with pkgs.mpvScripts; [
 			mpris
 			# https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3145
-			inhibit-gnome
+			# inhibit-gnome
 			uosc
+			thumbfast
 		];
 	};
 }

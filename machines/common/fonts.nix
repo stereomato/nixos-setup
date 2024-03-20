@@ -26,7 +26,7 @@
 			roboto-slab
 			roboto-mono
 			jetbrains-mono
-			input-fonts
+			# input-fonts
 			inter
 			source-sans
 			source-serif
@@ -44,6 +44,9 @@
 			ia-writer-duospace
 			Playfair-Display
 			ANRT-Baskervville
+			terminus_font_ttf
+			terminus_font
+			
 		]; 
 		fontDir.enable = true;
 		fontconfig = {
@@ -82,7 +85,7 @@
 					"Cantarell"
 				];
 				serif = [ "Roboto Slab" ];
-				monospace = [ "Input Mono" ];
+				monospace = [ "Jetbrains Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

@@ -77,7 +77,7 @@
   # Zram: memory compression
   zramSwap = {
 		enable = true;
-		algorithm = "zstd";
+		algorithm = "lz4";
 		memoryPercent = 200;
 		#writebackDevice = "/dev/nvme0n1p3";
 	};

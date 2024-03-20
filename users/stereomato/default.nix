@@ -5,13 +5,13 @@
     
     ./envvars.nix
     ./file.nix
-    ./gaming
+    ./gaming.nix
     ./home.nix
     ./internet.nix
     ./nix.nix
     ./programs.nix
     ./services.nix
-    ./software-development
+    ./software-development.nix
   ];
 
 
