@@ -5,9 +5,9 @@
     
     ./envvars.nix
     ./file.nix
-    ./gaming.nix
+    ./pkgs/gaming.nix
     ./home.nix
-    ./internet.nix
+    ./pkgs/internet.nix
     ./nix.nix
     ./programs.nix
     ./services.nix

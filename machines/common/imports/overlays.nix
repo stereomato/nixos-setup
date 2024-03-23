@@ -240,11 +240,6 @@
 						withUnfree = true;
 						# enableLto = true; # fails...
 					};
-					firefox = super.firefox.override {
-						cfg = {
-							enableGnomeExtensions = true;
-						};
-					};
 					# FIXME: https://github.com/NixOS/nixpkgs/pull/294710
 					gimp-stereomato = super.gimp.override {
 						withPython = true;

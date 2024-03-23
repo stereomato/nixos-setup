@@ -4,9 +4,6 @@
 		home-manager = {
 			enable = true;
 		};
-		firefox = {
-			enable =  true;
-		};
 		
 		
 		# nix-index conflicts with this, so let's disable it.
@@ -33,32 +30,16 @@
 			enable = true;
 		};
 		
-		
-		yt-dlp = {
-			enable = true;
-			settings = {
-				# No color output
-				#--no-colors;
-				# Set aria2 as downloader
-				downloader = "aria2c";
-				# aria2 arguments
-				downloader-args = "aria2c:'-x 10'";
-			};
-		};
 		man = {
+			enable = false;
 			# TODO: https://github.com/nix-community/home-manager/issues/4624
 			# package = pkgs.mandoc;
 			generateCaches = true;
 		};
-		mangohud = {
-			enable = true;
-		};
+
 		nix-index = {
 			enable = true;
 		};
-		
-		###
-		
 	};
 
 }

@@ -53,7 +53,7 @@
   };
 
   programs = {
-    direnv = {
+		direnv = {
 			enable = true;
 			# Fish integration is always enabled
 			#enableFishIntegration = true;

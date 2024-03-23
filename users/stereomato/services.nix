@@ -9,11 +9,6 @@
 		easyeffects = {
 			enable = true;
 		};
-		
-		syncthing = {
-			enable = true;
-		};
-		
 		#home-manager-gc.enable = true;
 	};
 }
