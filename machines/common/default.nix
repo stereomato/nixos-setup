@@ -68,10 +68,10 @@
 		man = {
 			generateCaches = true;
 			mandoc = {
-				enable = true;
+				enable = false;
 			};
 			man-db = {
-				enable = false;
+				enable = true;
 			};
 		};
 		dev = {

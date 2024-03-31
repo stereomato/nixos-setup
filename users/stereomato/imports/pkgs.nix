@@ -7,7 +7,7 @@
 			inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
 
 			# Cryptocurrency
-			monero-gui # xmrig-mo
+			monero-gui xmrig-mo
 			# Need to report it so it gets fixed
 			#oxen
 			
@@ -24,7 +24,7 @@
 			bc xdg-utils
 
 			# Font management
-			fontforge font-manager
+			fontforge-gtk font-manager
 
 			# Text editors
 			nano gnome-text-editor

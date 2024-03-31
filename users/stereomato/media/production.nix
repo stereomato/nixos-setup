@@ -2,7 +2,8 @@
 	home.packages = with pkgs; [
 		
 		# General multimedia tools
-		mediainfo ffmpeg-fuller handbrake-stereomato
+		# handbrake: https://github.com/NixOS/nixpkgs/pull/297984
+		mediainfo ffmpeg-fuller # handbrake-stereomato
 		
 		# Screen/Video recorders
 		obs-studio-with-plugins simplescreenrecorder kooha
@@ -14,7 +15,7 @@
 
 		# Music/Audio file management
 		# Adding both normal ffmpeg and ffmpeg_5 because at time of writing (14-oct-22) default ffmpeg is 4.4.2
-		wavpack mac fdk-aac-encoder lame flac freac opusTools opustags flacon easytag spek
+		wavpack fdk-aac-encoder lame flac freac opusTools opustags flacon easytag spek
 
 		# Music production: DAWs
     audacity ardour qpwgraph reaper 

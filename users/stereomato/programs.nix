@@ -31,7 +31,7 @@
 		};
 		
 		man = {
-			enable = false;
+			enable = true;
 			# TODO: https://github.com/nix-community/home-manager/issues/4624
 			# package = pkgs.mandoc;
 			generateCaches = true;

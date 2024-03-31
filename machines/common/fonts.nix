@@ -46,7 +46,7 @@
 			ANRT-Baskervville
 			terminus_font_ttf
 			terminus_font
-			
+			commit-mono
 		]; 
 		fontDir.enable = true;
 		fontconfig = {
@@ -70,6 +70,21 @@
 						<family>Cantarell</family>
 					</prefer>
 				</alias>
+
+				<match target="font">
+					<test name="family" compare="eq" ignore-blanks="true">
+						<string>Commit Mono</string>
+					</test>
+					<edit name="fontfeatures" mode="append">
+						<string>ss03 on</string> <!-- Smart case -->
+						<string>ss04 on</string> <!-- Symbol spacing -->
+						<string>ss05 on</string> <!-- Smart kerning -->
+						<string>cv02 on</string> <!-- Alt g -->
+						<string>cv06 on</string> <!-- Alt 6/9 -->
+						<string>cv10 on</string> <!-- Alt l -->
+					</edit>
+				</match>
+
 				</fontconfig>
 			'';
 			# Do I even need this? 
@@ -85,7 +100,7 @@
 					"Cantarell"
 				];
 				serif = [ "Roboto Slab" ];
-				monospace = [ "Jetbrains Mono" ];
+				monospace = [ "Commit Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

@@ -253,6 +253,9 @@
 					#python3Packages.librosa = super.python3Packages.librosa.#overrideAttrs(old: {
 					#	disabledTests = super.python3Packages.librosa.disabledTests ++ "test_nnls_vector";
 					#});
+					qadwaitadecorations = super.qadwaitadecorations.override {
+						qt5ShadowsSupport = true;
+					};
 				}
 		)];
 }
