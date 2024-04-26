@@ -1,10 +1,16 @@
 { pkgs, inputs, ... }:{
-	home.packages = with pkgs; [
+  imports = [
+    ./gaming.nix
+    ./internet.nix
+  ];
+
+  # Stuff that I either don't know where to put or doesn't have enough items to be put in their own file
+  home.packages = with pkgs; [
 			
 			# TODO: Organize better
 		
 			# AI stuff
-			inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
+			#inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
 
 			# Cryptocurrency
 			monero-gui xmrig-mo
@@ -46,4 +52,13 @@
 			#TODO: Write about this in the future NixOS article I wanna write.
 			hunspellDicts.en_US hunspellDicts.es_PE aspellDicts.en aspellDicts.es aspellDicts.en-science aspellDicts.en-computers
 		];
+
+		programs = {
+			micro = {
+				enable = true;
+				# See this page for configuration settings
+				# https://github.com/zyedidia/micro/blob/master/runtime/help/options.md
+				settings = {};
+			};
+		};
 }

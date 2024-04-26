@@ -27,4 +27,10 @@
 		};
 	};
 
+	services = {
+		easyeffects = {
+			enable = true;
+		};
+	};
+
 }

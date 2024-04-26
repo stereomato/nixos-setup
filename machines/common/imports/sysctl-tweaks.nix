@@ -5,8 +5,8 @@
 			"vm.page-cluster" = 0;
 			# Hugepages configuration, mostly for xmrig
 			# Not needed anymore
-			#"vm.nr_hugepages" = 25;
-			#"vm.nr_overcommit_hugepages" = 150;
+			"vm.nr_hugepages" = 25;
+			"vm.nr_overcommit_hugepages" = 150;
 			# Prefer to keep filesystem cache memory over application memory
 			"vm.vfs_cache_pressure" = 200;
 			# Proper swappiness
@@ -18,8 +18,8 @@
 			# actual value is 1000000000
 			"vm.dirty_bytes" = 500000000;
 			"vm.dirty_background_bytes" = 125000000;
-			# 5% physical ram
-			"vm.min_free_kbytes" = 308229;
+			# 1.25% of RAM
+			"vm.min_free_kbytes" = 154040;
 			# Best value, according to phoronix
 			"vm.page_lock_unfairness" = 3;
 			# Disable watermark boosting
@@ -29,7 +29,7 @@
 			# https://unix.stackexchange.com/a/679203
 			"vm.watermark_scale_factor" = 150;
 			# Increase the compaction activity slightly
-			#"vm.compaction_proactiveness" = 25;
+			"vm.compaction_proactiveness" = 35;
 			# Compact also unevictable memory (testing)
 			#"vm.compact_unevictable_allowed" = 1;
 			

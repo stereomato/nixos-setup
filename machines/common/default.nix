@@ -58,6 +58,9 @@
 		gnome-terminal.enable = true;
 		calls.enable = true;
 	};
+	environment.gnome.excludePackages = with pkgs; [
+		gnome-builder
+	];
 	environment.systemPackages = with pkgs; [
 		# Miscellanous Gnome apps
 		gnome-icon-theme gnome.gnome-tweaks gnome-extension-manager metadata-cleaner warp wike gnome-solanum newsflash

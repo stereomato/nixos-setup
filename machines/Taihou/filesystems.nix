@@ -9,7 +9,7 @@
 			];
 		};
 		"/boot" = {
-			device = "/dev/disk/by-uuid/DBE0-0337";
+			device = "/dev/disk/by-uuid/BD20-53D6";
 			fsType = "vfat";
 			options = [
 				"discard"

@@ -19,9 +19,12 @@
 	};
 	
 	outputs = { self, nixpkgs, home-manager, nix-index-database, ... }@inputs: {
+			
 			nixosConfigurations = rec {
+				
 				Taihou = nixpkgs.lib.nixosSystem {
 					system = "x86_64-linux";
+					
 					modules = [ 
 						./machines/Taihou
 						nix-index-database.nixosModules.nix-index

@@ -1,6 +1,8 @@
 { pkgs, lib, ... }:
 {
-	systemd.user = {
+	# FIXME: This doesnt work right, EDITOR doesn't get set. Investigate why.
+	# systemd.user = {
+	home = {
 		sessionVariables = {
 			# PATHs for DAW plugins
 			DSSI_PATH   = "$HOME/.dssi:/etc/profiles/per-user/stereomato/lib/dssi:/run/current-system/sw/lib/dssi";
@@ -10,7 +12,8 @@
 			VST_PATH    = "$HOME/.vst:/etc/profiles/per-user/stereomato/lib/vst:/etc/profiles/per-user/stereomato/lib/vst3:/run/current-system/sw/lib/vst";
 			# Enable wayland for some apps that don't default to wayland yet
 			QT_QPA_PLATFORM = "wayland";
-			MOZ_ENABLE_WAYLAND = "1";
+			# Not needed anymore
+			# MOZ_ENABLE_WAYLAND = "1";
 			NIXOS_OZONE_WL = "1";
 			# Show FPS in games/apps that use DXVK
 			DXVK_HUD="fps";

@@ -10,7 +10,7 @@
 		# Video Production & manipulation
 		kdenlive mkvtoolnix davinci-resolve 
 		# FTBFS: https://github.com/NixOS/nixpkgs/pull/285803
-		pitivi 
+		# pitivi: need to report but argh lazeh
 		olive-editor flowblade
 
 		# Music/Audio file management

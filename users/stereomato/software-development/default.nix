@@ -1,7 +1,7 @@
 { pkgs, username, ... }:{
   # Here goes everything related to software development 
   imports = [
-    ./imports/vscode.nix
+    ./vscode.nix
   ];
 
   home.packages = with pkgs; [
