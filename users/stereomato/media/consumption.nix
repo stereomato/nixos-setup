@@ -8,7 +8,8 @@
 		# anime
 		ani-cli
 		# Digital media players/readers/streamers
-		celluloid clapper amberol quodlibet rhythmbox spotify gthumb syncplay open-in-mpv
+		# FTBFS: nix log /nix/store/ia6nr3xzzvqpjm4c5c30pnvar1dma6cs-quodlibet-4.6.0.drv
+		celluloid clapper amberol rhythmbox spotify gthumb syncplay open-in-mpv
 		# Gstreamer programs
 		gst_all_1.gstreamer
 		# Digital books (epubs, manga)
