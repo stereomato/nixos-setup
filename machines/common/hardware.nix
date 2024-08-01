@@ -67,6 +67,10 @@
 			cups-pdf = {
 				enable = true;
 			};
+			drivers = with pkgs; [
+				canon-cups-ufr2
+				cnijfilter2
+			];
 		};
 	};
 }

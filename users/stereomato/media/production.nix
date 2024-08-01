@@ -8,10 +8,7 @@
 		# Screen/Video recorders
 		obs-studio-with-plugins simplescreenrecorder kooha
 		# Video Production & manipulation
-		kdenlive mkvtoolnix davinci-resolve 
-		# FTBFS: https://github.com/NixOS/nixpkgs/pull/285803
-		# pitivi: need to report but argh lazeh
-		olive-editor flowblade
+		kdenlive mkvtoolnix davinci-resolve pitivi olive-editor flowblade
 
 		# Music/Audio file management
 		# Adding both normal ffmpeg and ffmpeg_5 because at time of writing (14-oct-22) default ffmpeg is 4.4.2

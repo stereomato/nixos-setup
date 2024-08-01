@@ -11,13 +11,13 @@
 		};
 		
 		initrd = {
-			availableKernelModules = [ "i915" "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" ];
+			availableKernelModules = [ "i915" "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
 			kernelModules = [ ];
 			luks = {
 				mitigateDMAAttacks = true;
 				devices = {
 					"TaihouDisk" = {
-						device = "/dev/disk/by-uuid/f40dcced-9c73-42f9-9b5c-b250e9e3bb6f";
+						device = "/dev/disk/by-uuid/5121e212-32bf-4c26-9030-27158d8dd9de";
 						allowDiscards = true;
 						bypassWorkqueues = true;
 					};
@@ -28,24 +28,30 @@
 		kernelParams = [ 
 			# Find out whether this is a good idea or not
 			#"pcie_aspm=force"
+			
+			# Debugging i915
+			#"drm.debug=0xe" 
+			#"log_buf_len=4M" 
+			#"ignore_loglevel"
+			
 			"preempt=full"
 			# For TGL: only enable the HuC
 			# For ADL and up, GuC is enabled automatically.
-			"i915.enable_guc=2"
+			# "i915.enable_guc=3"
 			# PSR stuff, should help with battery saving on laptop displays that support this
-			#"i915.enable_psr=1"
-			#"i915.enable_psr2_sel_fetch=1"
-			"i915.enable_psr=0"
-			#"i915.enable_psr2_sel_fetch=1"
+			"i915.enable_psr=1"
+			"i915.enable_psr2_sel_fetch=1"
+			# "i915.enable_psr=0"
+			# "i915.enable_psr2_sel_fetch=1"
 			# Powersaving
-			"iwlwifi.power_save=1"
-			"iwlwifi.power_level=3"
+			# "iwlwifi.power_save=1"
+			# "iwlwifi.power_level=3"
 			# Zswap settings
-			"zswap.enabled=N"
+			"zswap.enabled=Y"
 			"zswap.compressor=zstd"
 			"zswap.zpool=zsmalloc"
-			"zswap.max_pool_percent=25"
-			"zswap.accept_threshold_percent=95"
+			"zswap.max_pool_percent=33"
+			"zswap.accept_threshold_percent=80"
 		];
 		loader = {
 			systemd-boot = {

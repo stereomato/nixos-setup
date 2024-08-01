@@ -2,9 +2,9 @@
 	description = "Stereomato's NixOS setup";
 
 	inputs = {
-		nixpkgs.url = "nixpkgs/nixos-unstable";
+		nixpkgs.url = "nixpkgs/nixos-24.05";
 		home-manager = {
-			url = "github:nix-community/home-manager/master";
+			url = "github:nix-community/home-manager/release-24.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
@@ -24,7 +24,6 @@
 				
 				Taihou = nixpkgs.lib.nixosSystem {
 					system = "x86_64-linux";
-					
 					modules = [ 
 						./machines/Taihou
 						nix-index-database.nixosModules.nix-index

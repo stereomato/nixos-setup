@@ -102,4 +102,6 @@
 		programs.firefox = {
 			enable = true;
 		};
+		# Not set by default by any thing else
+		location.provider = "geoclue2";
 }

@@ -6,7 +6,7 @@
 			save-position-on-quit = true;
 
 			# Video
-			vo = "gpu-next";
+			vo = "dmabuf-wayland";
 			hwdec = true;
 			hwdec-codecs = "all";
 			gpu-context = "auto";

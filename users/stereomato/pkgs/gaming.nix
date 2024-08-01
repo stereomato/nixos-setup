@@ -12,7 +12,7 @@
 		
 		# Emulators
 		# rip citra-nightly
-		dolphin-emu-beta ppsspp-sdl-wayland pcsx2
+		dolphin-emu-beta ppsspp-sdl-wayland # pcsx2
 	];
 
 	programs.mangohud = {

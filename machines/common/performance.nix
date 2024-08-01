@@ -59,24 +59,26 @@
 	};
 
   # Disk based swap
-  # Unused
-  #swapDevices = [{
-		#device = "/swap/Taihou-SWAP";
-		#size = 17365;
-		#discardPolicy = "both";
-		#randomEncryption = {
-		#	enable = true; 
-		#	allowDiscards = true;
-		#};
+	# I am using this because I use Zswap now. Seems to be more efficient and faster, and can move stuff to the backing swap file as needed.
+  swapDevices = [{
+		device = "/swap/Taihou-SWAP";
+		size = 17365;
+		discardPolicy = "both";
+		randomEncryption = {
+			enable = true; 
+			allowDiscards = true;
+			keySize = 256;
+		};
 		# This is in case of zram
 		# Currently, the device doesn't exist.
 		#device = "/dev/nvme0n1p3";
 		#options = [ "noauto" ];
-	#}];
+	}];
 
   # Zram: memory compression
+	# Disabled: Using Zswap now.
   zramSwap = {
-		enable = true;
+		enable = false;
 		algorithm = "zstd";
 		memoryPercent = 200;
 		#writebackDevice = "/dev/nvme0n1p3";
@@ -95,6 +97,11 @@
 			# Enable HWP dynamic boosting
 			rules = [ 
 				"w /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost - - - - 1"
+				# Mouse (40,52) and Keyboard (1)
+				# Could be handled by intel_lpmd
+				"w /proc/irq/40/smp_affinity															- - - - 8000"
+				"w /proc/irq/52/smp_affinity															- - - - 8000"
+				"w /proc/irq/1/smp_affinity																- - - - 8000"
 			];
 		};
     # Out Of Memory daemon

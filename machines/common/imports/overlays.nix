@@ -221,41 +221,57 @@
 					nproc | tr -d '\n' | tee $out/numThreads
 					echo '''$(($(nproc) / 2 ))| tr -d '\n' | tee $out/halfNumThreads
 				'';
-					chowmatrix = super.callPackage ../derivationsYetToUpstream/chowmatrix.nix {};
-					auburn-sounds-graillon-2 = super.callPackage ../derivationsYetToUpstream/auburn-sounds-graillon-2.nix {};
-					tal-reverb-4 = super.callPackage ../derivationsYetToUpstream/tal-reverb-4.nix {};
-					nvtop = super.nvtop.override {
-						nvidia = false;
-					};
-					obs-studio-with-plugins = pkgs.wrapOBS {
-						plugins = with pkgs.obs-studio-plugins; [
-							obs-vkcapture
-							obs-vaapi
-						];
-					};
-					handbrake-stereomato = super.handbrake.override {
-						useFdk = true;
-					};
-					ffmpeg-fuller = super.ffmpeg_6-full.override {
-						withUnfree = true;
-						# enableLto = true; # fails...
-					};
-					# FIXME: https://github.com/NixOS/nixpkgs/pull/294710
-					gimp-stereomato = super.gimp.override {
-						withPython = true;
-					};
-					# This just installs a hunspell package with these dictionaries
-					# Not for *other* packages to use them...
-					#hunspell-stereomato = super.hunspellWithDicts [
-					#	super.hunspellDicts.en_US
-					#	super.hunspellDicts.es_PE
-					#];
-					#python3Packages.librosa = super.python3Packages.librosa.#overrideAttrs(old: {
-					#	disabledTests = super.python3Packages.librosa.disabledTests ++ "test_nnls_vector";
-					#});
-					qadwaitadecorations = super.qadwaitadecorations.override {
-						qt5ShadowsSupport = true;
-					};
-				}
-		)];
+				chowmatrix = super.callPackage ../derivationsYetToUpstream/chowmatrix.nix {};
+				auburn-sounds-graillon-2 = super.callPackage ../derivationsYetToUpstream/auburn-sounds-graillon-2.nix {};
+				tal-reverb-4 = super.callPackage ../derivationsYetToUpstream/tal-reverb-4.nix {};
+				nvtop = super.nvtop.override {
+					nvidia = false;
+				};
+				obs-studio-with-plugins = pkgs.wrapOBS {
+					plugins = with pkgs.obs-studio-plugins; [
+						obs-vkcapture
+						obs-vaapi
+					];
+				};
+				handbrake-stereomato = super.handbrake.override {
+					useFdk = true;
+				};
+				ffmpeg-fuller = super.ffmpeg_6-full.override {
+					withUnfree = true;
+					# enableLto = true; # fails...
+				};
+				# FIXME: https://github.com/NixOS/nixpkgs/pull/294710
+				gimp-stereomato = super.gimp.override {
+					withPython = true;
+				};
+				# This just installs a hunspell package with these dictionaries
+				# Not for *other* packages to use them...
+				#hunspell-stereomato = super.hunspellWithDicts [
+				#	super.hunspellDicts.en_US
+				#	super.hunspellDicts.es_PE
+				#];
+				#python3Packages.librosa = super.python3Packages.librosa.#overrideAttrs(old: {
+				#	disabledTests = super.python3Packages.librosa.disabledTests ++ "test_nnls_vector";
+				#});
+				qadwaitadecorations = super.qadwaitadecorations.override {
+					qt5ShadowsSupport = true;
+				};
+				jdk11 = super.jdk11.override {
+					enableJavaFX = true;
+				};
+				# Dynamic triple buffering patch
+				# Kinda buggy
+				gnome = super.gnome.overrideScope (gnomeSelf: gnomeSuper: {
+					mutter = gnomeSuper.mutter.overrideAttrs (old: {
+						src = pkgs.fetchFromGitLab  {
+							domain = "gitlab.gnome.org";
+							owner = "vanvugt";
+							repo = "mutter";
+							rev = "triple-buffering-v4-46";
+							hash = "sha256-nz1Enw1NjxLEF3JUG0qknJgf4328W/VvdMjJmoOEMYs=";
+						};
+					});
+				});
+			}
+	)];
 }

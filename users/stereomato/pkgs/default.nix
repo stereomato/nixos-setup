@@ -50,6 +50,10 @@
 
 			# Life managing
 			gtg 
+
+			# gnome
+			resources
+			
 			# Spellchecking dictionaries
 			#TODO: Write about this in the future NixOS article I wanna write.
 			hunspellDicts.en_US hunspellDicts.es_PE aspellDicts.en aspellDicts.es aspellDicts.en-science aspellDicts.en-computers

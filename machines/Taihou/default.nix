@@ -17,6 +17,11 @@
 	# 6 x 2 = 12, should be fine...
 	nix.settings.cores = 6;
 
+	# This was an experiment, trying to build the system for the CPU architecture of my laptop, but IDK if it's worth it.
+	# nixpkgs.localSystem.gcc.arch = "alderlake";
+	# nixpkgs.localSystem.gcc.tune = "alderlake";
+	# nixpkgs.localSystem.system = "x86_64-linux";
+	# nix.settings.system-features = [ "gccarch-alderlake" ];
 	networking.hostName = "Taihou";
 
 	# Keyboard Layout
@@ -55,6 +60,10 @@
 		'';
 	};
 
+	services.fprintd = {
+		enable = true;
+		# tod.enable = true;
+	};
 
 
 }
