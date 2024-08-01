@@ -68,7 +68,7 @@
 			enable = true;
 			package = pkgs.gitFull;
 			userName = "${username}";
-			userEmail = "thepearsche@proton.me";
+			userEmail = "stereomato@proton.me";
 			delta = {
 				enable = true;
 			};
@@ -77,7 +77,7 @@
 			};
 			signing = {
 				signByDefault = true;
-				key = "E9E7F9567E0E6147";
+				key = "A7C49F67B6D0A76F";
 			};
 
 		};
