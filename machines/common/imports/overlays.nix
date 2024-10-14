@@ -253,25 +253,25 @@
 				#python3Packages.librosa = super.python3Packages.librosa.#overrideAttrs(old: {
 				#	disabledTests = super.python3Packages.librosa.disabledTests ++ "test_nnls_vector";
 				#});
-				qadwaitadecorations = super.qadwaitadecorations.override {
-					qt5ShadowsSupport = true;
-				};
-				jdk11 = super.jdk11.override {
+				#qadwaitadecorations = super.qadwaitadecorations.override {
+					# qt5ShadowsSupport = true;
+				#};
+				jdk17 = super.jdk17.override {
 					enableJavaFX = true;
 				};
 				# Dynamic triple buffering patch
 				# Kinda buggy
-				gnome = super.gnome.overrideScope (gnomeSelf: gnomeSuper: {
-					mutter = gnomeSuper.mutter.overrideAttrs (old: {
-						src = pkgs.fetchFromGitLab  {
-							domain = "gitlab.gnome.org";
-							owner = "vanvugt";
-							repo = "mutter";
-							rev = "triple-buffering-v4-46";
-							hash = "sha256-nz1Enw1NjxLEF3JUG0qknJgf4328W/VvdMjJmoOEMYs=";
-						};
-					});
-				});
+				# gnome = super.gnome.overrideScope (gnomeSelf: gnomeSuper: {
+				#	mutter = gnomeSuper.mutter.overrideAttrs (old: {
+				#		src = pkgs.fetchFromGitLab  {
+				#			domain = "gitlab.gnome.org";
+				#			owner = "vanvugt";
+				#			repo = "mutter";
+				#			rev = "triple-buffering-v4-46";
+				#			hash = "sha256-nz1Enw1NjxLEF3JUG0qknJgf4328W/VvdMjJmoOEMYs=";
+				#		};
+				#	});
+				#});
 			}
 	)];
 }

@@ -62,4 +62,29 @@
 		};
 	};
 
+	# QT look on gnome
+	qt = {
+		enable = true;
+		platformTheme.name = "adwaita";
+	};
+
+	systemd.user.sessionVariables = {
+		# https://github.com/NixOS/nixpkgs/issues/53631
+			# Fixes Kooha, Clapper
+			GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
+				pkgs.gst_all_1.gstreamer.out
+				pkgs.gst_all_1.gst-plugins-base
+				pkgs.gst_all_1.gst-plugins-good
+				pkgs.gst_all_1.gst-plugins-bad
+				pkgs.gst_all_1.gst-plugins-ugly
+				pkgs.gst_all_1.gst-libav
+				pkgs.gst_all_1.gst-vaapi
+				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-base
+				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-good
+				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-bad
+				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-ugly
+				pkgs.pkgsi686Linux.gst_all_1.gst-vaapi
+				pkgs.pkgsi686Linux.gst_all_1.gst-libav
+			];
+	};
 }

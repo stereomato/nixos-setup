@@ -65,7 +65,7 @@
 		size = 17365;
 		discardPolicy = "both";
 		randomEncryption = {
-			enable = true; 
+			enable = false; 
 			allowDiscards = true;
 			keySize = 256;
 		};

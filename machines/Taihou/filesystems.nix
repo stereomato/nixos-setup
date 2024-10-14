@@ -9,7 +9,7 @@
 			];
 		};
 		"/boot" = {
-			device = "/dev/disk/by-uuid/1E20-F1DF";
+			device = "/dev/disk/by-uuid/F1E4-CBEF";
 			fsType = "vfat";
 			options = [
 				"discard"

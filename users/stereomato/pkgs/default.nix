@@ -27,8 +27,8 @@
 			xorg.xeyes 
 			# FTBFS: nix log /nix/store/1swy5s502g4ygqyb799c14vd9z67b5fw-python3.11-certomancer-0.11.0.drv
 			# maigret 
-			bc xdg-utils
-
+			bc xdg-utils trash-cli
+			
 			# Font management
 			fontforge-gtk 
 			# FTBFS nix log /nix/store/q7yjb9yhxq2n2lzfihd12mswpr8igi3i-font-manager-0.8.8.drv
@@ -38,9 +38,8 @@
 			nano gnome-text-editor
 			
 			# Office and LaTeX
-			libreoffice-fresh onlyoffice-bin_latest gnome-latex 
-			# bug https://github.com/NixOS/nixpkgs/issues/249946
-			# apostrophe 
+			#libreoffice-fresh 
+			onlyoffice-bin_latest gnome-latex apostrophe 
 			
 			# QTWebkit shit
 			#mendeley
@@ -57,6 +56,9 @@
 			# Spellchecking dictionaries
 			#TODO: Write about this in the future NixOS article I wanna write.
 			hunspellDicts.en_US hunspellDicts.es_PE aspellDicts.en aspellDicts.es aspellDicts.en-science aspellDicts.en-computers
+
+			# Uni
+			octaveFull
 		];
 
 		programs = {

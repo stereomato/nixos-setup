@@ -2,7 +2,7 @@
 	boot = {
 		kernelModules = [ "kvm-intel" ];
 		extraModulePackages = [ ];
-		kernelPackages = pkgs.linux-stereomato;
+		# kernelPackages = pkgs.linux-stereomato;
 		
 		#kernelPatches = [
 			# Might work in kernel 6.7

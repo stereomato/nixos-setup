@@ -6,7 +6,9 @@
 			save-position-on-quit = true;
 
 			# Video
-			vo = "dmabuf-wayland";
+			# Currently fugged on dmabuf-wayland
+			# vo = "dmabuf-wayland";
+			vo = "gpu-next";
 			hwdec = true;
 			hwdec-codecs = "all";
 			gpu-context = "auto";
