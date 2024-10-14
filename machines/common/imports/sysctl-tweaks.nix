@@ -18,17 +18,17 @@
 			"vm.dirty_bytes" = 498000000;
 			"vm.dirty_background_bytes" = 166000000;
 			# 1.25% of RAM
-			"vm.min_free_kbytes" = 152698;
+			"vm.min_free_kbytes" = 152663;
 			# Best value, according to phoronix
 			"vm.page_lock_unfairness" = 3;
 			# Disable watermark boosting
-			#"vm.watermark_boost_factor" = 0; # Needed when not using the zen-kernel
+			"vm.watermark_boost_factor" = 0; # Needed when not using the zen-kernel
 			# Increase kswapd activity
 			# When free memory is less than 1.5%, make kswapd kick in.
 			# https://unix.stackexchange.com/a/679203
 			"vm.watermark_scale_factor" = 150;
 			# Increase the compaction activity slightly
-			"vm.compaction_proactiveness" = 35;
+			"vm.compaction_proactiveness" = 0;
 			# Compact also unevictable memory (testing)
 			#"vm.compact_unevictable_allowed" = 1;
 			
@@ -51,5 +51,9 @@
 			# Intel GPU
 			# Disable the paranoid mode over some stats
 			"dev.i915.perf_stream_paranoid" = 0;
+
+			# Kernel delay task accounting
+			"kernel.task_delayacct" = 1;
+
 		};
 }

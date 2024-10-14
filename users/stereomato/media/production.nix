@@ -15,12 +15,10 @@
 		wavpack fdk-aac-encoder lame flac freac opusTools opustags flacon easytag spek
 
 		# Music production: DAWs
-    audacity ardour qpwgraph reaper 
-    # FTBFS: nix log /nix/store/9rfkwm2k1sd4x8yy50bhni7ffjd7ar0n-zrythm-1.0.0-beta.4.9.1.drv
-    # zrythm
+		audacity ardour qpwgraph reaper 
 
-    # Music production: plugins
-    dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4 calf CHOWTapeModel zam-plugins gxplugins-lv2 tap-plugins
+		# Music production: plugins
+		dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4 calf CHOWTapeModel zam-plugins gxplugins-lv2 tap-plugins
 
 		# Image creation and manipulation
 		# imagemagickBig is the one that includes ghostscript

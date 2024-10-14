@@ -50,7 +50,7 @@
 			"zswap.enabled=Y"
 			"zswap.compressor=zstd"
 			"zswap.zpool=zsmalloc"
-			"zswap.max_pool_percent=25"
+			"zswap.max_pool_percent=35"
 			"zswap.accept_threshold_percent=80"
 		];
 		loader = {

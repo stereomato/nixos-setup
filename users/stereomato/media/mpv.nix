@@ -8,7 +8,7 @@
 			# Video
 			# Currently fugged on dmabuf-wayland
 			# vo = "dmabuf-wayland";
-			vo = "gpu-next";
+			vo = "dmabuf-wayland";
 			hwdec = true;
 			hwdec-codecs = "all";
 			gpu-context = "auto";
