@@ -1,7 +1,7 @@
 { ... }:{
-  #FIXME: Properly organize these things
-  imports = [
-    #./fish.nix
-    #./pkgs.nix
-  ];
+	#FIXME: Properly organize these things
+	imports = [
+		./overlays.nix
+		#./pkgs.nix
+	];
 }
