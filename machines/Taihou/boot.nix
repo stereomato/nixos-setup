@@ -17,7 +17,7 @@
 				mitigateDMAAttacks = true;
 				devices = {
 					"TaihouDisk" = {
-						device = "/dev/disk/by-uuid/5121e212-32bf-4c26-9030-27158d8dd9de";
+						device = "/dev/disk/by-uuid/f76b90c5-10d5-426a-a43b-cf07ca91b932";
 						allowDiscards = true;
 						bypassWorkqueues = true;
 					};

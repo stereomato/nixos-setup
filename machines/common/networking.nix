@@ -1,6 +1,7 @@
 { ...}:
 {
 networking = {
+		networkmanager.enable = true;
 		nat = {
 			enable = true;
 		};

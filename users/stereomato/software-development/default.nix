@@ -14,7 +14,7 @@
 		patchelf
 
 		# Terminals
-		blackbox-terminal
+		# blackbox-terminal
 
 		# Nix tooling
 		# FIXME: nixd https://github.com/nix-community/nixd/issues/357
@@ -34,6 +34,7 @@
 		
 		# Gamedev
 		unityhub godot3-mono godot3-mono-export-templates
+
 		## This is for godot's C# support
 		msbuild
   ];
@@ -48,7 +49,7 @@
     gpg-agent = {
 			enable = true;
 			enableSshSupport = true;
-			pinentryPackage = pkgs.pinentry-gnome3;
+			pinentryPackage = pkgs.pinentry-qt;
 		};
   };
 

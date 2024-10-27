@@ -2,7 +2,8 @@
   # Here goes things that are used for system management and or monitoring
 	environment.systemPackages = with pkgs; [
 		# System monitoring, managing & benchmarking tools
-		intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils gnome.gnome-power-manager powertop btrfs-progs nvtopPackages.intel powerstat iotop smem nix-info kdiskmark file stress-ng btop
+		# no gnome> gnome.gnome-power-manager
+		intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils powertop btrfs-progs nvtopPackages.intel powerstat iotop smem nix-info kdiskmark file stress-ng btop
 
 		# System management
 		gparted

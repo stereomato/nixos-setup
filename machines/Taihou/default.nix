@@ -15,7 +15,8 @@
 	# I think 2GB x thread is good
 	# I only have 12GB of ram
 	# 6 x 2 = 12, should be fine...
-	nix.settings.cores = 6;
+	# disabling temporarily...
+	# nix.settings.cores = 6;
 
 	# This was an experiment, trying to build the system for the CPU architecture of my laptop, but IDK if it's worth it.
 	# nixpkgs.localSystem.gcc.arch = "alderlake";
@@ -31,26 +32,64 @@
 		timeZone = "America/Lima";
 	};
 
-	services = {
-		xserver = {
-			# Enable autologin for my user
-			displayManager = {
-				autoLogin = {
-					enable = true;
-					user = "stereomato";
+	systemd = {
+		services = {
+			battery-charge-threshold = {
+				enable = true;
+				name = "battery-charge-threshold.service";
+				description = "Set the battery charge threshold";
+				after = ["multi-user.target"];
+				startLimitBurst = 0;
+				serviceConfig = {
+					Type = "oneshot";
+					Restart = "on-failure";
+					ExecStart = "${pkgs.bash}/bin/bash -c 'echo 80 > /sys/class/power_supply/BAT0/charge_control_end_threshold'";
 				};
+				wantedBy = ["multi-user.target"];
 			};
+		};
+		tmpfiles = {
+			rules = [ 
+				# Enable HWP dynamic boosting
+				"w /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost - - - - 1"
+				# Mouse (40,52) and Keyboard (1)
+				# Could be handled by intel_lpmd
+				"w /proc/irq/40/smp_affinity															- - - - 8000"
+				"w /proc/irq/52/smp_affinity															- - - - 8000"
+				"w /proc/irq/1/smp_affinity															- - - - 8000"
+			];
+		};
+	};
+	services = {
+
+		# Enable autologin for my user
+			displayManager = {
+				sddm = {
+					enable = true;
+					wayland.enable = true;
+				
+				};
+			#	autoLogin = {
+			#		enable = true;
+			#		user = "stereomato";
+			#	};
+			};
+
+			desktopManager.plasma6.enable = true;
+			#desktopManager.gnome = {
+			#	enable = true;
+			#	extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
+			#	extraGSettingsOverrides = ''
+			#		[org.gnome.mutter]
+			#		experimental-features=['scale-monitor-framebuffer']
+			#	'';
+			#};
+
+
+		xserver = {
+			
 			# Keyboard layout
 			xkb.layout = "latam";
-			desktopManager.gnome = {
-				enable = true;
-				extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
-				extraGSettingsOverrides = ''
-					[org.gnome.mutter]
-					# Disabled 'rt-scheduler' due to https://gitlab.gnome.org/GNOME/mutter/-/issues/3037
-					experimental-features=['scale-monitor-framebuffer']
-				'';
-			};
 		};
 		# Pro Audio things
 		udev.extraRules = ''
@@ -77,5 +116,19 @@
 		# tod.enable = true;
 	};
 
+	# security.pam.p11.enable = true;
 
+	environment = {
+		sessionVariables = {
+			# https://discourse.nixos.org/t/add-ssh-key-to-agent-at-login-using-kwallet/25175/2?u=stereomato
+			SSH_ASKPASS_REQUIRE="prefer";
+		};
+		# Extra stuff
+		systemPackages = with pkgs; [
+			kdePackages.filelight
+
+			kdePackages.kleopatra
+		];
+	};
 }
+

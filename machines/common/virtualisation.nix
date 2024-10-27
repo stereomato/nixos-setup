@@ -18,6 +18,7 @@
 
 	environment.systemPackages = with pkgs; [
 		# Virtualization and containerization
-		gnome.gnome-boxes
+		# NO GNOME
+		# gnome.gnome-boxes
 	];
 }

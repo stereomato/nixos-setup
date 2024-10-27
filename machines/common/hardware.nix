@@ -4,7 +4,7 @@
 		
 		pulseaudio.enable = false; # because of pipewire
 		bluetooth = {
-			# Enabled already because of gnome related toggles.
+			enable = true;
 			powerOnBoot = true;
 		};
 		enableAllFirmware = true;
@@ -19,14 +19,11 @@
 		};
 		sensor.iio.enable = true;
 
-		opengl = {
+		graphics = {
 			enable = true;
-			driSupport = true;
-			driSupport32Bit = true;
-			# temporary until it's fixed:
-			#package = pkgs.mesa-intel-fix.drivers;
-			#package32 = pkgs.mesa-intel-fix32.drivers;
-			
+			#driSupport = true;
+			enable32Bit = true;
+
 			extraPackages = with pkgs; [ 
 				# HW media acceleration
 				intel-media-sdk
@@ -40,7 +37,7 @@
 			];
 			extraPackages32 = with pkgs; [
 				# Mangohud layers
-				mangohud
+				pkgsi686Linux.mangohud
 			];
 		};
 	};

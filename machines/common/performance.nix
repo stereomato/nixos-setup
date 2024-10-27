@@ -93,18 +93,7 @@
   };
 
 	systemd = {
-		tmpfiles = {
-			# Enable HWP dynamic boosting
-			rules = [ 
-				"w /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost - - - - 1"
-				# Mouse (40,52) and Keyboard (1)
-				# Could be handled by intel_lpmd
-				"w /proc/irq/40/smp_affinity															- - - - 8000"
-				"w /proc/irq/52/smp_affinity															- - - - 8000"
-				"w /proc/irq/1/smp_affinity																- - - - 8000"
-			];
-		};
-    # Out Of Memory daemon
+	# Out Of Memory daemon
 		oomd = {
 			#TODO: Keep an eye on https://github.com/NixOS/nixpkgs/pull/225747
 			# Enabled by default

@@ -25,47 +25,36 @@
 		xserver = {
 			enable = true;
 			# Use GDM globally
-			displayManager = {
-				gdm.enable = true;
-			};
+			#displayManager = {
+			#	gdm.enable = true;
+			#};
 			# GNOME as DE
-			desktopManager.gnome = {
-				enable = true;
-			};
+			#desktopManager.gnome = {
+			#	enable = true;
+			#};
 		};
 
-		gnome = {
-			# Adds some developer tools for gnome and enables sysprof.
-			core-developer-tools.enable = true;
-			# This enables evince, file-roller, geary, gnome-disks, seahorse, sushi.
-			# Also enables bash and zsh integration for vte.
-			# Also configures the files app to find extensions and overrides its default mimeapps
-			core-utilities.enable = true;
-			# This enables colord, glib-networking, gnome-browser-connector, gnome-initial-setup, gnome-remote-desktop, gnome-settings-daemon, gnome-user-share, rygel, avahi, geoclue2 
-			# Also enables printing (system-config-printer) and gvfs
-			core-shell.enable = true;
-			# This toggle enables bluetooth, dconf, polkit, accounts-daemon, dleyna-renderer and -server, power-profiles-daemon, at-spi2-core, evolution-data-server, gnome-keyring, gnome-online-accounts, gnome-online-miners, tracker-miners, tracker, bolt, udisks2, upower, libinput, networkmanager, updateDbusEnvironment
-			# Also obvious stuff like xdg mime, icons, portals.
-			# Also sets qt settings, to look like adwaita.
-			core-os-services.enable = true;
-			games.enable = true;
-		};
+		#gnome = {
+		#	core-developer-tools.enable = true;
+		#	core-utilities.enable = true;
+		#	core-shell.enable = true;
+		#	core-os-services.enable = true;
+		#	games.enable = true;
+		#};
 		power-profiles-daemon.enable = true;
 	};
 	# Remaining GNOME programs
 	programs = {
 		# TODO: ask why these 2 and gnome-power-manager aren't in any of the 3 gnome toggles.
-		gnome-terminal.enable = true;
-		calls.enable = true;
+		# calls.enable = true;
 	};
-	environment.gnome.excludePackages = with pkgs; [
-		gnome-builder
-	];
+	#environment.gnome.excludePackages = with pkgs; [
+	#	gnome-builder
+	#];
 	environment.systemPackages = with pkgs; [
 		# Miscellanous Gnome apps
-		gnome-icon-theme gnome.gnome-tweaks gnome-extension-manager metadata-cleaner warp wike gnome-solanum newsflash
+		#gnome-icon-theme gnome.gnome-tweaks gnome-extension-manager
 	];
-
 
 	documentation = {
 		man = {
@@ -89,9 +78,6 @@
 
 			variables = {
 			# MacOS-like font rendering
-			# Font emboldering
-			# and
-			# fuzziness a la macOS/W95
 			# FREETYPE_PROPERTIES = "truetype:interpreter-version=35 cff:no-stem-darkening=0 type1:no-stem-darkening=0 t1cid:no-stem-darkening=0 autofitter:no-stem-darkening=0";
 			EDITOR = "nano";
 		};
@@ -102,6 +88,19 @@
 		programs.firefox = {
 			enable = true;
 		};
-		# Not set by default by any thing else
+		
+		# GPS
 		location.provider = "geoclue2";
+		services.geoclue2.enable = true;
+
+		services.colord.enable = true;
+		# Thunderbolt
+		services.hardware.bolt.enable = true;
+
+		# Web sharing
+		services.samba.enable = true;
+
+		# wacom tablets
+		services.xserver.wacom.enable = true;
+
 }

@@ -1,4 +1,12 @@
 { pkgs, ... }:{
+
+  nixpkgs.config = {
+    permittedInsecurePackages = [
+      # Neochat
+      "olm-3.2.16"
+    ];
+  };
+
   home.packages = with pkgs; [
     # Web Browsers
     google-chrome vivaldi vivaldi-ffmpeg-codecs 
@@ -7,15 +15,26 @@
     #vivaldi-widevine 
 
     # Chat apps
-    tdesktop discord gnome.polari mumble fractal element-desktop dino
+    # Matrix
+    kdePackages.neochat
+
+    # XMPP
+    kaidan
+
+    # Et cetera
+    tdesktop discord mumble element-desktop
 
     # Password management
-		bitwarden bitwarden-cli
+	bitwarden bitwarden-cli
 
     # Internet tools
-	  curl wget aria fragments megacmd
+	# fragments
+
+	# Downloaders
+	curl wget aria megacmd kget
+
     # VPN
-		protonvpn-gui
+    protonvpn-gui
   ];
 
   services.syncthing = {

@@ -2,9 +2,9 @@
 	description = "Stereomato's NixOS setup";
 
 	inputs = {
-		nixpkgs.url = "nixpkgs/nixos-24.05";
+		nixpkgs.url = "nixpkgs/nixos-unstable";
 		home-manager = {
-			url = "github:nix-community/home-manager/release-24.05";
+			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";

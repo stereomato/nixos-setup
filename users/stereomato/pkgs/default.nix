@@ -9,6 +9,9 @@
 			
 			# TODO: Organize better
 		
+			# gnome stuff
+			# metadata-cleaner warp wike gnome-solanum newsflash
+			
 			# AI stuff
 			#inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
 
@@ -30,16 +33,18 @@
 			bc xdg-utils trash-cli
 			
 			# Font management
-			fontforge-gtk 
+			# fontforge-gtk 
 			# FTBFS nix log /nix/store/q7yjb9yhxq2n2lzfihd12mswpr8igi3i-font-manager-0.8.8.drv
 			#font-manager
 
 			# Text editors
-			nano gnome-text-editor
+			nano 
+			# gnome-text-editor
 			
 			# Office and LaTeX
 			#libreoffice-fresh 
-			onlyoffice-bin_latest gnome-latex apostrophe 
+			onlyoffice-bin_latest 
+			#gnome-latex apostrophe 
 			
 			# QTWebkit shit
 			#mendeley
@@ -48,10 +53,10 @@
 			scrcpy
 
 			# Life managing
-			gtg 
+			# gtg
 
 			# gnome
-			resources
+			# resources
 			
 			# Spellchecking dictionaries
 			#TODO: Write about this in the future NixOS article I wanna write.

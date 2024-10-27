@@ -7,13 +7,21 @@
 	home.packages = with pkgs; [
 		# anime
 		ani-cli
+
 		# Digital media players/readers/streamers
 		# FTBFS: nix log /nix/store/ia6nr3xzzvqpjm4c5c30pnvar1dma6cs-quodlibet-4.6.0.drv
-		celluloid clapper amberol rhythmbox spotify gthumb syncplay open-in-mpv
+		#celluloid clapper amberol rhythmbox  gthumb
+
+		# Music
+		spotify
+
+		# Video
+		syncplay open-in-mpv
+
 		# Gstreamer programs
 		gst_all_1.gstreamer
 		# Digital books (epubs, manga)
-		foliate
+		# foliate
 	];
 
 	programs.yt-dlp = {
