@@ -1,13 +1,9 @@
 { pkgs, ... }:{
-	environment = {
-		localBinInPath = true;
-		shells = with pkgs; [ fish ];
-	};
-	
-	users = {
+  networking.hostName = "Hearts";
+
+  users = {
 		users = {
-			stereomato = {
-				# name = "Luis";
+			diana = {
 				isNormalUser = true;
 				createHome = true;
 				extraGroups = [ "wheel" "audio" "adbusers" "network" "libvirtd" "networkmanager" "doas" "scanners" "lp" ]; 
@@ -15,9 +11,4 @@
 			};
 		};
 	};
-
-	programs.fish = {
-			enable = true; 
-			useBabelfish = true;
-		};
 }

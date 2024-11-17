@@ -15,10 +15,4 @@
 			enable = true;
 		};
 	};
-
-	environment.systemPackages = with pkgs; [
-		# Virtualization and containerization
-		# NO GNOME
-		# gnome.gnome-boxes
-	];
 }

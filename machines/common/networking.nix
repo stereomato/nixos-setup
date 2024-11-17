@@ -20,4 +20,7 @@ networking = {
 			];
 		};
 	};
+
+	# Web sharing
+	services.samba.enable = false;
 }

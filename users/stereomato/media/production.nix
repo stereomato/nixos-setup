@@ -3,11 +3,11 @@
 		
 		# General multimedia tools
 		# handbrake: https://github.com/NixOS/nixpkgs/pull/297984
-		mediainfo ffmpeg-fuller # handbrake-stereomato
+		mediainfo ffmpeg-fuller #handbrake-stereomato
 		
 		# Screen/Video recorders
 		obs-studio-with-plugins simplescreenrecorder 
-		# kooha
+		kooha
 		# Video Production & manipulation
 		kdenlive mkvtoolnix davinci-resolve pitivi olive-editor flowblade
 
@@ -24,7 +24,7 @@
 
 		# Image creation and manipulation
 		# imagemagickBig is the one that includes ghostscript
-		# drawing
+		drawing
 		gimp imagemagickBig waifu2x-converter-cpp krita
 
 		# Image encoders
@@ -32,6 +32,9 @@
 
 		# FTBFS: nix log /nix/store/r3yc4j7a5yrzj5d6hvgz762r52w6b3mz-Real-ESRGAN-ncnn-vulkan-0.2.0.drv
 		#realesrgan-ncnn-vulkan 
-		# gnome-obfuscate eyedropper
+		gnome-obfuscate eyedropper
+
+		# Tag manupulation
+		# kid3
 	];
 }

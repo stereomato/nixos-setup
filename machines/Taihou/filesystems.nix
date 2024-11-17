@@ -9,7 +9,7 @@
 			];
 		};
 		"/boot" = {
-			device = "/dev/disk/by-uuid/8262-F11E";
+			device = "/dev/disk/by-uuid/B759-D80E";
 			fsType = "vfat";
 			options = [
 				"discard"

@@ -2,7 +2,7 @@
   programs = {
     vscode = {
 			enable = true;
-			mutableExtensionsDir = false;
+			mutableExtensionsDir = true;
 			# This shits up userSettings.json by making it read only.
 			#enableUpdateCheck = false;
 			extensions = [

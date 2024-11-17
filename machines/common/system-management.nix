@@ -3,29 +3,17 @@
 	environment.systemPackages = with pkgs; [
 		# System monitoring, managing & benchmarking tools
 		# no gnome> gnome.gnome-power-manager
-		intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils powertop btrfs-progs nvtopPackages.intel powerstat iotop smem nix-info kdiskmark file stress-ng btop
+		intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils powertop btrfs-progs nvtopPackages.intel powerstat iotop smem nix-info kdiskmark file stress-ng btop fastfetch
 
 		# System management
 		gparted
 	];
 	
 	services = {
-    smartd = {
+		smartd = {
 			enable = true;
 		};
-
-    locate = {
-			enable = true;
-			package = pkgs.plocate;
-			interval = "daily";
-			localuser = null;
-			prunePaths = [];
-			pruneNames = [];
-		};
-
-    vnstat.enable = true;
-    
-		
+		vnstat.enable = true;
 	};
 
 	programs = {

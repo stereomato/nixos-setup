@@ -17,7 +17,7 @@
 		# blackbox-terminal
 
 		# Nix tooling
-		# FIXME: nixd https://github.com/nix-community/nixd/issues/357
+		nixd
 		nix-prefetch-scripts niv nil
 
 		# Debuggers
@@ -37,6 +37,9 @@
 
 		## This is for godot's C# support
 		msbuild
+
+		# Arduino
+		arduino-ide
   ];
   
   services = {
@@ -49,7 +52,7 @@
     gpg-agent = {
 			enable = true;
 			enableSshSupport = true;
-			pinentryPackage = pkgs.pinentry-qt;
+			pinentryPackage = pkgs.pinentry-gnome3;
 		};
   };
 

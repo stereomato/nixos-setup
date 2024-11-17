@@ -1,13 +1,12 @@
 { pkgs, ... }:{
 	imports = [
+		./desktop-environment.nix
 		./fonts.nix
 		./hardware.nix
 		./i18n.nix
 		./networking.nix
 		./nix.nix
-		./nixpkgs.nix
 		./performance.nix
-		./security.nix
 		./system-management.nix
 		./system.nix
 		./toolkits.nix
@@ -20,41 +19,6 @@
 	console = {
 		font = "Lat2-Terminus16";
 	};
-
-	services = {
-		xserver = {
-			enable = true;
-			# Use GDM globally
-			#displayManager = {
-			#	gdm.enable = true;
-			#};
-			# GNOME as DE
-			#desktopManager.gnome = {
-			#	enable = true;
-			#};
-		};
-
-		#gnome = {
-		#	core-developer-tools.enable = true;
-		#	core-utilities.enable = true;
-		#	core-shell.enable = true;
-		#	core-os-services.enable = true;
-		#	games.enable = true;
-		#};
-		power-profiles-daemon.enable = true;
-	};
-	# Remaining GNOME programs
-	programs = {
-		# TODO: ask why these 2 and gnome-power-manager aren't in any of the 3 gnome toggles.
-		# calls.enable = true;
-	};
-	#environment.gnome.excludePackages = with pkgs; [
-	#	gnome-builder
-	#];
-	environment.systemPackages = with pkgs; [
-		# Miscellanous Gnome apps
-		#gnome-icon-theme gnome.gnome-tweaks gnome-extension-manager
-	];
 
 	documentation = {
 		man = {
@@ -72,17 +36,13 @@
 	};
 	
 	environment = {
-			localBinInPath = true;
-			shells = with pkgs; [ fish ];
+			
 			etc."current-nixos".source = ./.;
 
 			variables = {
-			# MacOS-like font rendering
-			# FREETYPE_PROPERTIES = "truetype:interpreter-version=35 cff:no-stem-darkening=0 type1:no-stem-darkening=0 t1cid:no-stem-darkening=0 autofitter:no-stem-darkening=0";
 			EDITOR = "nano";
 		};
-
-		};
+	};
 
 		# Firefox
 		programs.firefox = {
@@ -91,16 +51,25 @@
 		
 		# GPS
 		location.provider = "geoclue2";
-		services.geoclue2.enable = true;
-
-		services.colord.enable = true;
-		# Thunderbolt
-		services.hardware.bolt.enable = true;
-
-		# Web sharing
-		services.samba.enable = true;
-
-		# wacom tablets
-		services.xserver.wacom.enable = true;
-
+		services.geoclue2 = {
+			enable = true;
+			# Because MLS is ded, BeaconDB can now be used.
+			# TODO: See how can I help with BeaconDB.
+			# Maybe api.beacondb.net shouldn't be used here, but instead just beacondb.net?
+			# Also see https://github.com/NixOS/nixpkgs/issues/321121
+			# https://github.com/NixOS/nixpkgs/pull/325430
+			geoProviderUrl = "https://beacondb.net/v1/geolocate";
+			submissionUrl = "https://beacondb.net/v2/geosubmit";
+			submissionNick = "stereomato";
+			submitData = true;
+		};
+	security = {
+		protectKernelImage = true;
+		
+		sudo = {
+			enable = true;
+		};
+		
+		polkit.enable = true;
+	};
 }

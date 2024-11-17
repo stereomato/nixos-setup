@@ -2,7 +2,8 @@
 	description = "Stereomato's NixOS setup";
 
 	inputs = {
-		nixpkgs.url = "nixpkgs/nixos-unstable";
+		# TODO: revert to nixos-unstable after https://nixpk.gs/pr-tracker.html?pr=356081 is fixed
+		nixpkgs.url = "nixpkgs/dc460ec76cbff0e66e269457d7b728432263166c";
 		home-manager = {
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -28,9 +29,13 @@
 						./machines/Taihou
 						nix-index-database.nixosModules.nix-index
 						
+						# TODO: refactor this so that it is its own thing so that nixd just works
 						home-manager.nixosModules.home-manager {
+							# Added because changing KDE font settings messes with 10-hm-fonts.conf.
+							# Doesn't even add anything to it, just formats it by deleting the newlines!
+							home-manager.backupFileExtension = "hm-backup";
 							home-manager.useGlobalPkgs = false;
-							home-manager.useUserPackages = true;
+							home-manager.useUserPackages = false;
 							home-manager.extraSpecialArgs = { username = "stereomato"; inherit inputs; installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup"; };
 							 home-manager.users.stereomato.imports = [
 									./users/stereomato
@@ -42,6 +47,14 @@
 						#(modulesPath + "/installer/scan/not-detected.nix")
 					];
 					specialArgs = { inherit inputs; username = "stereomato"; };
+				};
+
+				Hearts = nixpkgs.lib.nixosSystem {
+					system = "x86_64-linux";
+					modules = [
+						./machines/Hearts
+						nix-index-database.nixosModules.nix-index
+					];
 				};
 			};
 		};

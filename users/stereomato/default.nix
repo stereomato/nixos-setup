@@ -76,10 +76,10 @@
 	};
 
 	# QT look on gnome
-	#qt = {
-	#	enable = true;
-	#	platformTheme.name = "adwaita";
-	#};
+	qt = {
+		enable = true;
+		platformTheme.name = "adwaita";
+	};
 
 	systemd.user.sessionVariables = {
 		# https://github.com/NixOS/nixpkgs/issues/53631

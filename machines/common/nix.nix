@@ -1,5 +1,9 @@
 { inputs, ... }:{
-  nix = {
+	imports = [
+		./imports/overlays.nix
+	];
+	
+	nix = {
 		settings = {
 			auto-optimise-store = true;
 			experimental-features = [ 
@@ -31,6 +35,20 @@
 		# Set this thanks to:
 		# https://dataswamp.org/~solene/2022-07-20-nixos-flakes-command-sync-with-system.html
 		registry.nixpkgs.flake = inputs.nixpkgs;
-		
+		nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+	};
+	
+	nixpkgs = {
+		config = {
+			allowUnfree = true;
+			joypixels.acceptLicense = true;
+			input-fonts.acceptLicense = true;
+			permittedInsecurePackages = [
+					# FIXME: https://github.com/NixOS/nixpkgs/issues/269713
+					"openssl-1.1.1w"
+					# FIXME: https://github.com/NixOS/nixpkgs/pull/280835
+					"freeimage-unstable-2021-11-01"
+			];
+		};
 	};
 }

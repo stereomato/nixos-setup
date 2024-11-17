@@ -61,38 +61,17 @@
 		};
 	};
 	services = {
-
-		# Enable autologin for my user
-			displayManager = {
-				sddm = {
-					enable = true;
-					wayland.enable = true;
-				
-				};
-			#	autoLogin = {
-			#		enable = true;
-			#		user = "stereomato";
-			#	};
-			};
-
-			desktopManager.plasma6.enable = true;
-			#desktopManager.gnome = {
-			#	enable = true;
-			#	extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
-			#	extraGSettingsOverrides = ''
-			#		[org.gnome.mutter]
-			#		experimental-features=['scale-monitor-framebuffer']
-			#	'';
-			#};
-
-
 		xserver = {
 			
 			# Keyboard layout
 			xkb.layout = "latam";
 		};
+		
 		# Pro Audio things
 		udev.extraRules = ''
+			# Arduino IDE
+			SUBSYSTEMS=="usb-serial", TAG+="uaccess"
+
 			# This is for real time audio
 			KERNEL=="cpu_dma_latency", GROUP="audio"
 			KERNEL=="rtc0", GROUP="audio"
@@ -110,25 +89,17 @@
 			ACTION=="add", SUBSYSTEM=="block", KERNEL=="mmcblk?",  ATTR{removable}=="0",           ATTR{queue/scheduler}="kyber"
 		'';
 	};
-
+	
 	services.fprintd = {
 		enable = true;
 		# tod.enable = true;
 	};
-
-	# security.pam.p11.enable = true;
 
 	environment = {
 		sessionVariables = {
 			# https://discourse.nixos.org/t/add-ssh-key-to-agent-at-login-using-kwallet/25175/2?u=stereomato
 			SSH_ASKPASS_REQUIRE="prefer";
 		};
-		# Extra stuff
-		systemPackages = with pkgs; [
-			kdePackages.filelight
-
-			kdePackages.kleopatra
-		];
 	};
 }
 

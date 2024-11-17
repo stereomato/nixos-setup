@@ -18,87 +18,7 @@
            DetachAndRemoveGlyphs()
            Generate($1)
          '';
-			iosevka-stereomato = super.iosevka.override {
-				privateBuildPlan = {
-					family = "stereomato's Iosevka setup";
-					spacing = "normal";
-					serifs = "sans";
-					no-cv-ss = false;
-					export-glyph-names = true;
-					no-ligation = true;
-					variants = {
-						design = {
-							capital-g = "toothed-serifless-hooked";
-							capital-j = "serifed";
-							capital-q = "crossing-baseline";
-							f = "flat-hook-serifless";
-							g = "single-storey-flat-hook-serifless";
-							r = "serifed";
-							t = "flat-hook-short-neck2";
-							eight = "two-circles";
-							at = "fourfold-solid-inner";
-						};
-					};
-					widths.normal = {
-						shape = 500;
-						menu = 5;
-						css = "normal";
-					};
-					widths.extended = {
-						shape = 600;
-						menu = 7;
-						css = "expanded";
-					};
-					widths.condensed = {
-						shape = 416;
-						menu = 3;
-						css = "condensed";
-					};
-					widths.semicondensed = {
-						shape = 456;
-						menu = 4;
-						css = "semi-condensed";
-					};
-					widths.semiextended = {
-						shape = 548;
-						menu = 6;
-						css = "semi-expanded";
-					};
-					widths.extraextended = {
-						shape = 658;
-						menu = 8;
-						css = "extra-expanded";
-					};
-					widths.ultraextended = {
-						shape = 720;
-						menu = 9;
-						css = "ultra-expanded";
-					};
-				};
-				set = "Iosevka-stereomato";
-			};
-			
 
-			SF-Pro = super.callPackage ../derivationsYetToUpstream/SF-Pro.nix {};
-			SF-Compact = super.callPackage ../derivationsYetToUpstream/SF-Compact.nix {};
-			SF-Mono = super.callPackage ../derivationsYetToUpstream/SF-Mono.nix {};
-			SF-Arabic = super.callPackage ../derivationsYetToUpstream/SF-Arabic.nix {};
-			New-York = super.callPackage ../derivationsYetToUpstream/New-York.nix {};
-			Bitter-Pro = super.callPackage ../derivationsYetToUpstream/Bitter-Pro.nix {};
-			Playfair-Display = super.callPackage ../derivationsYetToUpstream/Playfair-Display.nix {};
-			ANRT-Baskervville = super.callPackage ../derivationsYetToUpstream/ANRT-Baskervville.nix {};
-			input-fonts = super.input-fonts.overrideAttrs (old: {
-				pname = "${super.input-fonts.pname}";
-				version = "${super.input-fonts.version}";
-				src =
-					super.fetchzip {
-						name = "${super.input-fonts.pname}-${super.input-fonts.version}";
-						url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-						sha256 = "15vmng3sfb8ydnbcb7c3l5xnlppnzl9bvzk6v1ggksiccmv632p4";
-						stripRoot = false;
-					};
-			});
-			
 			steam = super.steam.override {
 				extraPkgs = pkgs: with pkgs; [
 					openssl_1_1
@@ -165,19 +85,8 @@
 			jdk17 = super.jdk17.override {
 				enableJavaFX = true;
 			};
-			# Dynamic triple buffering patch
-			# Kinda buggy
-			# gnome = super.gnome.overrideScope (gnomeSelf: gnomeSuper: {
-			#	mutter = gnomeSuper.mutter.overrideAttrs (old: {
-			#		src = pkgs.fetchFromGitLab  {
-			#			domain = "gitlab.gnome.org";
-			#			owner = "vanvugt";
-			#			repo = "mutter";
-			#			rev = "triple-buffering-v4-46";
-			#			hash = "sha256-nz1Enw1NjxLEF3JUG0qknJgf4328W/VvdMjJmoOEMYs=";
-			#		};
-			#	});
-			#});
+
+			
 		}
 	)];
 }

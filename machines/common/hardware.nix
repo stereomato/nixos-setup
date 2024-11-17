@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
 	hardware = {
 		
@@ -44,6 +44,10 @@
 
 	security.rtkit.enable = true; # for pipewire
 	services = {
+		# power saving
+		# TODO: might be replaced by tuned-ppd someday in the future on nixOS
+		power-profiles-daemon.enable = true;
+		
 		# Audio + Video backend server
 		# Also important for pro audio
 		pipewire = {
@@ -68,6 +72,28 @@
 				canon-cups-ufr2
 				cnijfilter2
 			];
+		};
+	};
+
+	# Thunderbolt
+	services.hardware.bolt.enable = true;
+
+	# wacom tablets
+	services.xserver.wacom.enable = true;
+
+	# Power saving
+  powerManagement = {
+			enable = true;
+			cpuFreqGovernor = lib.mkDefault "powersave";
+			powertop.enable = true;
+			scsiLinkPolicy = "med_power_with_dipm";
+	};
+
+	# Wifi power saving
+	networking.networkmanager = {
+		# This is already enabled because of gnome related toggles.
+		wifi = {
+			powersave = true;
 		};
 	};
 }

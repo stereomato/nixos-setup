@@ -12,6 +12,10 @@
 			VST_PATH    = "$HOME/.vst:/etc/profiles/per-user/stereomato/lib/vst:/etc/profiles/per-user/stereomato/lib/vst3:/run/current-system/sw/lib/vst";
 			# Enable wayland for some apps that don't default to wayland yet
 			QT_QPA_PLATFORM = "wayland";
+			# Revert to ngl because of https://gitlab.gnome.org/GNOME/mutter/-/issues/3517
+			GSK_RENDERER = "ngl";
+			# Diff program
+			DIFFPROG = "delta";
 			# Not needed anymore
 			# MOZ_ENABLE_WAYLAND = "1";
 			NIXOS_OZONE_WL = "1";
@@ -24,7 +28,9 @@
 			# Stop wine from making menu entries.
 			WINEDLLOVERRIDES = "winemenubuilder.exe=d";
 			# QT bug https://bugreports.qt.io/browse/QTBUG-113574
-			QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
+			# Maybe can be disabled, check machines/common/overlays qqc2
+			# Can't lol
+			# QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
 			# Disable this, it breaks many games and perhaps even software. 
 			#	SDL_VIDEODRIVER = "wayland";
 			#

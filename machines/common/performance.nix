@@ -6,14 +6,6 @@
 		./imports/sysctl-tweaks.nix
 	];
 
-  # Power saving
-  powerManagement = {
-			enable = true;
-			cpuFreqGovernor = lib.mkDefault "powersave";
-			powertop.enable = true;
-			scsiLinkPolicy = "med_power_with_dipm";
-	};
-
 		# These used to go on udev.extraRules, I don't use them due to them causing lag in the GNOME UI
 		#SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger"
 		#SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger"
@@ -49,19 +41,11 @@
 		};
 	};
 
-	
-	# Wifi power saving
-	networking.networkmanager = {
-		# This is already enabled because of gnome related toggles.
-		wifi = {
-			powersave = true;
-		};
-	};
-
-  # Disk based swap
+	# Disk based swap
 	# I am using this because I use Zswap now. Seems to be more efficient and faster, and can move stuff to the backing swap file as needed.
   swapDevices = [{
-		device = "/swap/Taihou-SWAP";
+		device = "/swap/swapfile";
+		# TODO: make this adaptive!
 		size = 17365;
 		discardPolicy = "both";
 		randomEncryption = {
@@ -77,7 +61,7 @@
 
   # Zram: memory compression
 	# Disabled: Using Zswap now.
-  zramSwap = {
+	zramSwap = {
 		enable = false;
 		algorithm = "zstd";
 		memoryPercent = 200;
