@@ -85,9 +85,11 @@
 		xserver.desktopManager.gnome = {
 			extraGSettingsOverridePackages = [ pkgs.mutter ];
 			# There's a possible extra setting I could add here, but I don't know if it's necessary considering I modify font settings using fontconfing: https://www.reddit.com/r/gnome/comments/1grtn97/comment/lx9fiib/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+			# Removed 'xwayland-native-scaling' because it's annoying how it's implemented in Gnome, and I don't
+			# give enough of a shit about blurry Xwayland apps honestly. Most end up working on wayland eventually
 			extraGSettingsOverrides = ''
 				[org.gnome.mutter]
-				experimental-features=['scale-monitor-framebuffer', 'xwayland-native-scaling']
+				experimental-features=['scale-monitor-framebuffer']
 			'';
 		};
 		gnome = {

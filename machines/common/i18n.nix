@@ -6,6 +6,7 @@
 			LANG="en_US.UTF-8";
 		};
 		supportedLocales = [ "all" ];
+		
 		# KDE issue with uh... QT_IM_MODULE and GTK_IM_MODULE
 		#inputMethod = {
 		#	enabled = "ibus";
