@@ -1,5 +1,11 @@
 { pkgs, ... }:{
-  networking.hostName = "Hearts";
+  boot.initrd.luks.devices."HeartDisk" = {
+		device = "";
+		allowDiscards = true;
+		bypassWorkqueues = true;
+	};
+	
+	networking.hostName = "Hearts";
 
   users = {
 		users = {

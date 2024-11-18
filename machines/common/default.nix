@@ -1,5 +1,6 @@
 { pkgs, ... }:{
 	imports = [
+		./boot.nix
 		./desktop-environment.nix
 		./fonts.nix
 		./hardware.nix
