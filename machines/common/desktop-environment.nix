@@ -39,75 +39,39 @@
 		}
 	 )];
 	 
-	# Everything else falls apart without this.
-	services.xserver.enable = true;
+	services = {
+		# Everything else falls apart without this.
+		xserver.enable = true;
 
-	# KDE section
-	# Master toggle, this enables everything else for plasma.
-	# desktopManager.plasma6.enable = true;
-	# programs.kdeconnect.enable = lib.mkIf
-	
-	services = lib.mkIf (config.services.desktopManager.plasma6.enable) {
-		displayManager.sddm = {
+		# KDE Master toggle
+		# desktopManager.plasma6.enable = true;
+		displayManager.sddm = lib.mkIf (config.services.desktopManager.plasma6.enable) {
 			enable = true;
 			wayland.enable = true;
 		};
-		colord.enable = true;
-	};
+		colord.enable = config.services.desktopManager.plasma6.enable;
 
-	programs = lib.mkIf (config.services.desktopManager.plasma6.enable) {
-		kdeconnect.enable = true;
-		partition-manager.enable = true;
-		kde-pim = {
-			merkuro = true;
-			kontact = true;
-			kmail = true;
-		};
-		# https://github.com/NixOS/nixpkgs/issues/348919
-		# k3b.enable = true;
-	};
-
-	environment = lib.mkIf (config.services.desktopManager.plasma6.enable) {
-		systemPackages = with pkgs;[
-			#  Extra KDE stuff
-			kdePackages.filelight
-			kdePackages.qtsvg
-			kdePackages.kleopatra
-		];
-	};
-
-	# GNOME section
-	# Master toggle
-	services.xserver.desktopManager.gnome.enable = true;
-
-	services = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) {
-		xserver.displayManager.gdm.enable = true;
+		# Gnome Master toggle
 		xserver.desktopManager.gnome = {
-			extraGSettingsOverridePackages = [ pkgs.mutter ];
+			enable = true;
+			extraGSettingsOverridePackages = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) [ pkgs.mutter ];
 			# There's a possible extra setting I could add here, but I don't know if it's necessary considering I modify font settings using fontconfing: https://www.reddit.com/r/gnome/comments/1grtn97/comment/lx9fiib/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 			# Removed 'xwayland-native-scaling' because it's annoying how it's implemented in Gnome, and I don't
 			# give enough of a shit about blurry Xwayland apps honestly. Most end up working on wayland eventually
-			extraGSettingsOverrides = ''
+			extraGSettingsOverrides = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) ''
 				[org.gnome.mutter]
 				experimental-features=['scale-monitor-framebuffer']
 			'';
 		};
-		gnome = {
+		xserver.displayManager.gdm.enable = config.services.xserver.desktopManager.gnome.enable;
+
+		gnome = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) {
 			core-developer-tools.enable = true;
 			games.enable = true;
 		};
 	};
 
-	environment = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) {
-		systemPackages = with pkgs; [
-			# Miscellanous Gnome apps
-			gnome-icon-theme gnome-tweaks gnome-extension-manager
-			ptyxis
-			gnome-boxes
-		];
-	};
-
-	programs = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) {
+	programs = if (config.services.xserver.desktopManager.gnome.enable) then {
 		# TODO: ask why these 2 and gnome-power-manager aren't in any of the 3 gnome toggles.
 		calls.enable = true;
 	 
@@ -117,5 +81,29 @@
 			enable = true;
 			terminal = "ptyxis";
 		};
+	} else {
+			kdeconnect.enable = true;
+			partition-manager.enable = true;
+			kde-pim = {
+			merkuro = true;
+			kontact = true;
+			kmail = true;
+			};
+			# https://github.com/NixOS/nixpkgs/issues/348919
+			# k3b.enable = true;
+	};
+
+	environment = {
+		systemPackages = with pkgs; if (config.services.xserver.desktopManager.gnome.enable) then [
+			# Miscellanous Gnome apps
+			gnome-icon-theme gnome-tweaks gnome-extension-manager
+			ptyxis
+			gnome-boxes
+		] else [
+			#  Extra KDE stuff
+			kdePackages.filelight
+			kdePackages.qtsvg
+			kdePackages.kleopatra
+		];
 	};
 }

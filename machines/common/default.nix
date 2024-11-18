@@ -17,6 +17,8 @@
 
 	# In this place goes things that are too general or too small that putting them in their own files is just cluttering
 
+	#TODO: consider putting high level toggles here?
+	# Like, stuff like the toggle for enabling kde or gnome, so that I can put better shaped conditionals on desktop-environment.nix
 	console = {
 		font = "Lat2-Terminus16";
 	};
