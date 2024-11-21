@@ -2,8 +2,7 @@
 	description = "Stereomato's NixOS setup";
 
 	inputs = {
-		# TODO: revert to nixos-unstable after https://nixpk.gs/pr-tracker.html?pr=356081 is fixed
-		nixpkgs.url = "nixpkgs/dc460ec76cbff0e66e269457d7b728432263166c";
+		nixpkgs.url = "nixpkgs/nixos-unstable";
 		home-manager = {
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";

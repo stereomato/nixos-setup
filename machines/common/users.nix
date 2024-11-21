@@ -10,7 +10,7 @@
 				# name = "Luis";
 				isNormalUser = true;
 				createHome = true;
-				extraGroups = [ "wheel" "audio" "adbusers" "network" "libvirtd" "networkmanager" "doas" "scanners" "lp" ]; 
+				extraGroups = [ "dialout" "wheel" "audio" "adbusers" "network" "libvirtd" "networkmanager" "doas" "scanners" "lp" ]; 
 				shell = pkgs.fish;
 			};
 		};

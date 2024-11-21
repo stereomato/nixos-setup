@@ -49,7 +49,7 @@
 			enable = true;
 			wayland.enable = true;
 		};
-		colord.enable = config.services.desktopManager.plasma6.enable;
+		colord.enable = lib.mkIf(config.services.desktopManager.plasma6.enable) true;
 
 		# Gnome Master toggle
 		xserver.desktopManager.gnome = {
