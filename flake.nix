@@ -16,6 +16,18 @@
 			url = "github:nixified-ai/flake";
 			#inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		# This is for mutter with the triple buffering patch
+		# taken from https://gitlab.com/MikeTTh/nix-dots/-/blob/e1594af5882a53b4b25f99bdc5361dce4d33770d/flake.nix#L39-47
+		mutter-triple-buffering-src = {
+      url = "gitlab:vanvugt/mutter?ref=triple-buffering-v4-47&host=gitlab.gnome.org";
+      flake = false;
+    };
+
+    gvdb-src = {
+      url = "gitlab:GNOME/gvdb?ref=main&host=gitlab.gnome.org";
+      flake = false;
+    };
 	};
 	
 	outputs = { self, nixpkgs, home-manager, nix-index-database, ... }@inputs: {

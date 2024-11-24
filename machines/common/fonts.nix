@@ -81,6 +81,16 @@
 					};
 			});
 			
+			# Overlay to make jetbrains mono install the variable font only
+			jetbrains-mono-variable = super.jetbrains-mono.overrideAttrs (old: {
+				# From the original, here I only remove the line that installs the non-variable font files
+				installPhase = ''
+					runHook preInstall
+					install -Dm644 -t $out/share/fonts/truetype/ fonts/variable/*.ttf
+					runHook postInstall
+				'';
+			});
+
 			# This is so that the Inter variant I use is the otf one
 			# because KDE/QT do stem darkening on OTF fonts only.
 			inter-otf = super.inter.overrideAttrs (old: {
@@ -122,7 +132,7 @@
 			roboto
 			roboto-slab
 			roboto-mono
-			jetbrains-mono
+			jetbrains-mono-variable
 			# input-fonts
 			inter
 			# inter-otf
@@ -199,7 +209,7 @@
 					"Cantarell"
 				];
 				serif = [ "Roboto Slab" ];
-				monospace = [ "CommitMono" ];
+				monospace = [ "Jetbrains Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

@@ -41,7 +41,7 @@
 			"zswap.compressor=zstd"
 			"zswap.zpool=zsmalloc"
 			"zswap.max_pool_percent=35"
-			"zswap.accept_threshold_percent=80"
+			"zswap.accept_threshold_percent=90"
 		];
 		loader = {
 			systemd-boot = {

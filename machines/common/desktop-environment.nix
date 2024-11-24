@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:{
+{ config, inputs, lib, pkgs, ... }:{
 	 nixpkgs.overlays = [(
 		self: super: {
 			# Gotten from https://aur.archlinux.org/cgit/aur.git/tree/force_qttextrendering.patch?h=qqc2-desktop-style-fractional
@@ -14,28 +14,43 @@
 			#		});
 			#	});
 			#};
-
-			kdePackages = super.kdePackages // {
+			
+			# Until next qqc2-desktop-style release
+			# I'll probably know.
+			kdePackages = super.kdePackages.overrideScope(kdeSelf: kdeSuper: {
 				qqc2-desktop-style = super.kdePackages.qqc2-desktop-style.overrideAttrs (old: {
 					patches = [
-						./patches/force_qttextrendering.patch
+						./patches/e82957f5e6fc72e446239e2ee5139b93d3ceac85.patch
 					];
 				});
-			};
+			});
+			
+			# kdePackages = super.kdePackages // {
+			# 	qqc2-desktop-style = super.kdePackages.qqc2-desktop-style.overrideAttrs (old: {
+			# 		patches = [
+			# 			./patches/e82957f5e6fc72e446239e2ee5139b93d3ceac85.patch
+			# 		];
+			# 	});
+			# };
 			
 			# Dynamic triple buffering patch
 			# Kinda buggy
-			# gnome = super.gnome.overrideScope (gnomeSelf: gnomeSuper: {
-			#	mutter = gnomeSuper.mutter.overrideAttrs (old: {
+			mutter = super.mutter.overrideAttrs (old: {
+  				src = inputs.mutter-triple-buffering-src;
+  				preConfigure = ''
+    				cp -a "${inputs.gvdb-src}" ./subprojects/gvdb
+  				'';
+			});
+
+			#	mutter = super.mutter.overrideAttrs (old: {
 			#		src = pkgs.fetchFromGitLab  {
 			#			domain = "gitlab.gnome.org";
 			#			owner = "vanvugt";
 			#			repo = "mutter";
-			#			rev = "triple-buffering-v4-46";
-			#			hash = "sha256-nz1Enw1NjxLEF3JUG0qknJgf4328W/VvdMjJmoOEMYs=";
+			#			rev = "triple-buffering-v4-47";
+			#			hash = "sha256-JaqJvbuIAFDKJ3y/8j/7hZ+/Eqru+Mm1d3EvjfmCcug=";
 			#		};
 			#	});
-			#});
 		}
 	 )];
 	 
@@ -44,7 +59,7 @@
 		xserver.enable = true;
 
 		# KDE Master toggle
-		# desktopManager.plasma6.enable = true;
+		desktopManager.plasma6.enable = true;
 		displayManager.sddm = lib.mkIf (config.services.desktopManager.plasma6.enable) {
 			enable = true;
 			wayland.enable = true;
@@ -53,7 +68,7 @@
 
 		# Gnome Master toggle
 		xserver.desktopManager.gnome = {
-			enable = true;
+			enable = false;
 			extraGSettingsOverridePackages = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) [ pkgs.mutter ];
 			# There's a possible extra setting I could add here, but I don't know if it's necessary considering I modify font settings using fontconfing: https://www.reddit.com/r/gnome/comments/1grtn97/comment/lx9fiib/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 			# Removed 'xwayland-native-scaling' because it's annoying how it's implemented in Gnome, and I don't
@@ -99,6 +114,7 @@
 			gnome-icon-theme gnome-tweaks gnome-extension-manager
 			ptyxis
 			gnome-boxes
+			showtime
 		] else [
 			#  Extra KDE stuff
 			kdePackages.filelight

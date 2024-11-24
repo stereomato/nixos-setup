@@ -5,8 +5,12 @@
   ];
 
   home.packages = with pkgs; [
-    # Requires nixos/nixpkgs newer than 22.11
-		toolbox distrobox
+		# https://github.com/NixOS/nixpkgs/issues/242322#issuecomment-2264995861
+		jetbrains-toolbox
+
+		zed-editor
+
+    toolbox distrobox
 		# Computer Graphics
 		blender
 

@@ -36,6 +36,10 @@
 			#
 			
 			EDITOR = "code --wait --new-window";
+
+			# TODO: Keep this in mind
+			# https://discourse.gnome.org/t/the-colors-of-gtk/22724
+			# GTK_DEBUG="linear";
 		};
 	};
 }
