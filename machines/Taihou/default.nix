@@ -10,13 +10,8 @@
 		./services.nix
 	];
 	
-	# nproc / 2 * 3, just in case
-	# Not enough ram on my current laptop
-	# I think 2GB x thread is good
-	# I only have 12GB of ram
-	# 6 x 2 = 12, should be fine...
-	# disabling temporarily...
-	# nix.settings.cores = 6;
+	# Half of the number of cores/threads
+	nix.settings.cores = 8;
 
 	# This was an experiment, trying to build the system for the CPU architecture of my laptop, but IDK if it's worth it.
 	# nixpkgs.localSystem.gcc.arch = "alderlake";

@@ -8,9 +8,16 @@
 		# anime
 		ani-cli
 
+		# QT/KDE apps
+		# mpv frontend
+		haruna 
+
+		# music player
+		fooyin
+		
 		# Digital media players/readers/streamers
 		# FTBFS: nix log /nix/store/ia6nr3xzzvqpjm4c5c30pnvar1dma6cs-quodlibet-4.6.0.drv
-		celluloid clapper amberol rhythmbox  gthumb
+		# celluloid clapper amberol rhythmbox  gthumb
 
 		# Music
 		spotify

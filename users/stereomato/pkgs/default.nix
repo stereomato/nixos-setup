@@ -10,7 +10,7 @@
 			# TODO: Organize better
 		
 			# gnome stuff
-			metadata-cleaner warp wike gnome-solanum newsflash
+			# metadata-cleaner warp wike gnome-solanum newsflash
 			
 			# AI stuff
 			#inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
@@ -44,7 +44,7 @@
 			# Office and LaTeX
 			libreoffice-qt-fresh
 			onlyoffice-bin_latest 
-			 enter-tex #apostrophe
+			# enter-tex #apostrophe
 			
 			# QTWebkit shit
 			#mendeley
@@ -53,10 +53,10 @@
 			scrcpy
 
 			# Life managing
-			gtg
+			# gtg
 
 			# gnome
-			resources
+			# resources
 			
 			# Spellchecking dictionaries
 			#TODO: Write about this in the future NixOS article I wanna write.
@@ -65,13 +65,4 @@
 			# Uni
 			octaveFull
 		];
-
-		programs = {
-			micro = {
-				enable = true;
-				# See this page for configuration settings
-				# https://github.com/zyedidia/micro/blob/master/runtime/help/options.md
-				settings = {};
-			};
-		};
 }

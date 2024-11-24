@@ -20,8 +20,8 @@
 
     # Chat apps
     # Matrix
-     fractal
-    #kdePackages.neochat
+    # fractal
+    kdePackages.neochat
 
     # XMPP
     #kaidan
@@ -33,11 +33,11 @@
     bitwarden bitwarden-cli
 
     # Internet tools
-    fragments
+    # fragments
 
     # Downloaders
     curl wget aria megacmd
-    #kget
+    kget
 
     # VPN
     protonvpn-gui

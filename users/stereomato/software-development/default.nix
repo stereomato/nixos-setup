@@ -56,7 +56,7 @@
     gpg-agent = {
 			enable = true;
 			enableSshSupport = true;
-			pinentryPackage = pkgs.pinentry-gnome3;
+			pinentryPackage = pkgs.pinentry-qt;
 		};
   };
 
@@ -71,6 +71,7 @@
     gpg = {
 			enable = true;
 			# mutableKeys and mutableTrust are enabled by default
+			
 		};
 		git = {
 			enable = true;

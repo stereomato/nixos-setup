@@ -17,13 +17,13 @@
 			
 			# Until next qqc2-desktop-style release
 			# I'll probably know.
-			kdePackages = super.kdePackages.overrideScope(kdeSelf: kdeSuper: {
-				qqc2-desktop-style = super.kdePackages.qqc2-desktop-style.overrideAttrs (old: {
-					patches = [
-						./patches/e82957f5e6fc72e446239e2ee5139b93d3ceac85.patch
-					];
-				});
-			});
+			# kdePackages = super.kdePackages.overrideScope(kdeSelf: kdeSuper: {
+			# 	qqc2-desktop-style = super.kdePackages.qqc2-desktop-style.overrideAttrs (old: {
+			# 		patches = [
+			# 			./patches/e82957f5e6fc72e446239e2ee5139b93d3ceac85.patch
+			# 		];
+			# 	});
+			# });
 			
 			# kdePackages = super.kdePackages // {
 			# 	qqc2-desktop-style = super.kdePackages.qqc2-desktop-style.overrideAttrs (old: {
@@ -53,7 +53,18 @@
 			#	});
 		}
 	 )];
-	 
+	
+	# I will remember to remove this, right?
+	# RIGHT?
+	system.replaceDependencies.replacements = [ { 	
+		oldDependency = pkgs.kdePackages.qqc2-desktop-style; 
+		newDependency = pkgs.kdePackages.qqc2-desktop-style.overrideAttrs(old: {
+					patches = [
+			 			./patches/e82957f5e6fc72e446239e2ee5139b93d3ceac85.patch
+			 		];
+			 	}); 
+		} 
+	];
 	services = {
 		# Everything else falls apart without this.
 		xserver.enable = true;
