@@ -8,7 +8,7 @@
 			"vm.nr_hugepages" = 25;
 			"vm.nr_overcommit_hugepages" = 150;
 			# Prefer to keep filesystem cache memory over application memory
-			"vm.vfs_cache_pressure" = 150;
+			"vm.vfs_cache_pressure" = 50;
 			# Proper swappiness
 			"vm.swappiness" = 150;
 			# Set the bytes of my current laptop's storage speed
@@ -18,7 +18,7 @@
 			"vm.dirty_bytes" = 498000000;
 			"vm.dirty_background_bytes" = 166000000;
 			# 1.25% of RAM
-			"vm.min_free_kbytes" = 152663;
+			"vm.min_free_kbytes" = 184320;
 			# Best value, according to phoronix
 			"vm.page_lock_unfairness" = 3;
 			# Disable watermark boosting
@@ -26,7 +26,7 @@
 			# Increase kswapd activity
 			# When free memory is less than 1.5%, make kswapd kick in.
 			# https://unix.stackexchange.com/a/679203
-			"vm.watermark_scale_factor" = 150;
+			"vm.watermark_scale_factor" = 75;
 			# Increase the compaction activity slightly
 			"vm.compaction_proactiveness" = 0;
 			# Compact also unevictable memory (testing)

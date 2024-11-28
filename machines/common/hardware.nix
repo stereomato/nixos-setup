@@ -82,7 +82,7 @@
 	services.xserver.wacom.enable = true;
 
 	# Power saving
-  powerManagement = {
+	powerManagement = {
 			enable = true;
 			cpuFreqGovernor = lib.mkDefault "powersave";
 			powertop.enable = true;

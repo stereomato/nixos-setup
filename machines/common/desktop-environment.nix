@@ -56,30 +56,31 @@
 	
 	# I will remember to remove this, right?
 	# RIGHT?
-	system.replaceDependencies.replacements = [ { 	
-		oldDependency = pkgs.kdePackages.qqc2-desktop-style; 
-		newDependency = pkgs.kdePackages.qqc2-desktop-style.overrideAttrs(old: {
-					patches = [
-			 			./patches/e82957f5e6fc72e446239e2ee5139b93d3ceac85.patch
-			 		];
-			 	}); 
-		} 
-	];
+	# system.replaceDependencies.replacements = [ { 	
+	# 	oldDependency = pkgs.kdePackages.qqc2-desktop-style; 
+	# 	newDependency = pkgs.kdePackages.qqc2-desktop-style.overrideAttrs(old: {
+	# 				patches = [
+	# 		 			./patches/e82957f5e6fc72e446239e2ee5139b93d3ceac85.patch
+	# 		 		];
+	# 		 	}); 
+	# 	} 
+	# ];
 	services = {
 		# Everything else falls apart without this.
 		xserver.enable = true;
 
 		# KDE Master toggle
-		desktopManager.plasma6.enable = true;
+		desktopManager.plasma6.enable = false;
 		displayManager.sddm = lib.mkIf (config.services.desktopManager.plasma6.enable) {
 			enable = true;
 			wayland.enable = true;
 		};
 		colord.enable = lib.mkIf(config.services.desktopManager.plasma6.enable) true;
 
-		# Gnome Master toggle
+		
 		xserver.desktopManager.gnome = {
-			enable = false;
+			# Gnome Master toggle
+			enable = true;
 			extraGSettingsOverridePackages = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) [ pkgs.mutter ];
 			# There's a possible extra setting I could add here, but I don't know if it's necessary considering I modify font settings using fontconfing: https://www.reddit.com/r/gnome/comments/1grtn97/comment/lx9fiib/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 			# Removed 'xwayland-native-scaling' because it's annoying how it's implemented in Gnome, and I don't
@@ -126,6 +127,10 @@
 			ptyxis
 			gnome-boxes
 			showtime
+			morewaita-icon-theme
+
+			# This is needed for file-roller to open .debs
+			binutils
 		] else [
 			#  Extra KDE stuff
 			kdePackages.filelight

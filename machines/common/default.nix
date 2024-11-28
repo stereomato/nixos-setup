@@ -11,7 +11,6 @@
 		./system-management.nix
 		./system.nix
 		./toolkits.nix
-		./users.nix
 		./virtualisation.nix
 	];
 

@@ -11,6 +11,7 @@
 		
 	];
 
+	nix.package = pkgs.nix;
 
 	fonts = {
 		fontconfig = {

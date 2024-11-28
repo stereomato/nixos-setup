@@ -30,29 +30,42 @@
     };
 	};
 	
-	outputs = { self, nixpkgs, home-manager, nix-index-database, ... }@inputs: {
-			
+	outputs = { self, nixpkgs, home-manager, nix-index-database, ... }@inputs: let 
+	system = "x86_64-linux";
+	pkgs = import nixpkgs {
+      inherit system;
+      # TODO: Delete this if overlays work fine under each system.
+			# TODO: Consider making general overlays for multiple machines
+			# overlays = [
+      # ];
+		hostPlatform = system;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
+    };
+			in {
 			nixosConfigurations = rec {
-				
 				Taihou = nixpkgs.lib.nixosSystem {
-					system = "x86_64-linux";
+					system = system;
 					modules = [ 
 						./machines/Taihou
 						nix-index-database.nixosModules.nix-index
 						
-						# TODO: refactor this so that it is its own thing so that nixd just works
-						home-manager.nixosModules.home-manager {
-							# Added because changing KDE font settings messes with 10-hm-fonts.conf.
-							# Doesn't even add anything to it, just formats it by deleting the newlines!
-							home-manager.backupFileExtension = "hm-backup";
-							home-manager.useGlobalPkgs = false;
-							home-manager.useUserPackages = false;
-							home-manager.extraSpecialArgs = { username = "stereomato"; inherit inputs; installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup"; };
-							 home-manager.users.stereomato.imports = [
-									./users/stereomato
-									nix-index-database.hmModules.nix-index
-							 ];
-						}
+						# # TODO: refactor this so that it is its own thing so that nixd just works
+						# home-manager.nixosModules.home-manager {
+						# 	# Added because changing KDE font settings messes with 10-hm-fonts.conf.
+						# 	# Doesn't even add anything to it, just formats it by deleting the newlines!
+						# 	home-manager.backupFileExtension = "hm-backup";
+						# 	home-manager.useGlobalPkgs = false;
+						# 	home-manager.useUserPackages = false;
+						# 	home-manager.extraSpecialArgs = { username = "stereomato"; inherit inputs; installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup"; };
+							
+						# 	home-manager.users.stereomato.imports = [
+						# 			./users/stereomato
+						# 			nix-index-database.hmModules.nix-index
+						# 	 ];
+						# }
 						
 						# from hardware-configuration.nix
 						#(modulesPath + "/installer/scan/not-detected.nix")
@@ -65,6 +78,17 @@
 					modules = [
 						./machines/Hearts
 						nix-index-database.nixosModules.nix-index
+					];
+				};
+			};
+			# TODO: An example of homeConfigurations should be @ the home-manager manual
+			homeConfigurations = {
+				"stereomato@Taihou" = home-manager.lib.homeManagerConfiguration {
+					inherit pkgs;
+					# backupFileExtension = "hm-backup";
+					extraSpecialArgs = { username = "stereomato"; inherit inputs; installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup"; };
+					modules = [
+						./users/stereomato
 					];
 				};
 			};

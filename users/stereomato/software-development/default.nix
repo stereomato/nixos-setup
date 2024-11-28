@@ -56,7 +56,7 @@
     gpg-agent = {
 			enable = true;
 			enableSshSupport = true;
-			pinentryPackage = pkgs.pinentry-qt;
+			pinentryPackage = pkgs.pinentry-gnome3;
 		};
   };
 

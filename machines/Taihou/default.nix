@@ -8,10 +8,26 @@
 		./pro-audio.nix
 		./programs.nix
 		./services.nix
+		./users.nix
 	];
 	
-	# Half of the number of cores/threads
-	nix.settings.cores = 8;
+	nixpkgs.overlays = [
+		(self: super: {
+			ydotool = super.ydotool.overrideAttrs(old: {
+				src = super.fetchFromGitHub {
+    			owner = "stereomato";
+    			repo = "ydotool";
+    			rev = "8e8a3d0776b59bf030c45a1458aa55473faa2400";
+    			hash = "sha256-MtanR+cxz6FsbNBngqLE+ITKPZFHmWGsD1mBDk0OVng=";
+  			};
+			});
+		})
+	];
+	
+	# Since ADL, Intel cpus have a hybrid core system. I use ADL, so
+	# Set this to nproc - 4, so as to at least leave 4 cores free (which would be 1 cluster of E-cores)
+	# Now, this will not happen that way actually, but well, still, it'll leave enough space for the UI and whatever I'm using
+	nix.settings.cores = 12;
 
 	# This was an experiment, trying to build the system for the CPU architecture of my laptop, but IDK if it's worth it.
 	# nixpkgs.localSystem.gcc.arch = "alderlake";
@@ -96,5 +112,8 @@
 			SSH_ASKPASS_REQUIRE="prefer";
 		};
 	};
+
+	# ARGH mouse issues 
+	programs.ydotool.enable = true;
 }
 
