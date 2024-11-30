@@ -8,7 +8,7 @@
 		./envvars.nix
 		./fish.nix
 		./workarounds.nix
-		
+
 	];
 
 	nix.package = pkgs.nix;
@@ -36,13 +36,13 @@
 			# package = pkgs.mandoc;
 			generateCaches = true;
 		};
-		
+
 	# For Minecraft really.
 	programs.java = {
 		enable = true;
 		package = pkgs.jdk17;
 	};
-	
+
 	# nix-index is a tool that gives you a thing like c-n-f but somewhat better.
 	programs.nix-index = {
 			enable = true;
@@ -100,5 +100,73 @@
 				pkgs.pkgsi686Linux.gst_all_1.gst-vaapi
 				pkgs.pkgsi686Linux.gst_all_1.gst-libav
 			];
+	};
+
+	programs.gnome-shell = {
+		enable = true;
+		extensions = [
+			# Alphabetical App Grid
+			{ package = pkgs.gnomeExtensions.alphabetical-app-grid; }
+			# System Monitor
+			{
+				id = "system-monitor@gnome-shell-extensions.gcampax.github.com";
+				package = pkgs.gnome-shell-extensions;
+			}
+			# GTK3 Themes
+			# For adw-gtk3
+			{
+				id = "user-theme@gnome-shell-extensions.gcampax.github.com";
+				package = pkgs.gnome-shell-extensions;
+			}
+		]
+		;
+	};
+
+	home.packages = with pkgs;[
+		# Workaround for gtk.theme.package
+		adw-gtk3
+	];
+	
+	gtk = {
+		enable = true;
+		theme = {
+			name = "adw-gtk3";
+			# package = pkgs.adw-gtk3;
+		};
+		iconTheme = {
+			name = "MoreWaita";
+			package = pkgs.morewaita-icon-theme;
+		};
+	};
+
+	dconf = {
+		enable = true;
+		settings = {
+			"org/gnome/desktop/search-providers" = {
+				enabled = "org.gnome.Weather.desktop";
+			};
+			"org/gnome/shell/app-switcher" = {
+				current-workspace-only = true;
+			};
+			"org/gnome/settings-daemon/plugins/power" = {
+				sleep-inactive-ac-type = true;
+			};
+			"org/gnome/shell/weather" = {
+				automatic-location = true;
+			};
+			"org/gnome/desktop/wm/preferences" = {
+				button-layout = "close:appmenu";
+			};
+			"org/gnome/desktop/datetime" = {
+				automatic-timezone = true;
+			};
+			"org/gnome/desktop/interface" = {
+				# icon-theme = "MoreWaita";
+				font-name = "System-ui 10";
+				document-font-name = "Serif 10";
+				monospace-font-name = "Monospace 10";
+				font-hinting = "none";
+			};
+		};
 	};
 }

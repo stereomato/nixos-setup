@@ -1,5 +1,5 @@
 { pkgs, username, ... }:{
-  # Here goes everything related to software development 
+  # Here goes everything related to software development
   imports = [
     ./vscode.nix
   ];
@@ -28,14 +28,14 @@
 		gdb valgrind
 
 		# Code editors/IDEs
-		netbeans micro 
+		netbeans micro
 
 		# Documentation tools
 		zeal
-		
+
 		# Java libraries
 		commonsIo
-		
+
 		# Gamedev
 		unityhub godot3-mono godot3-mono-export-templates
 
@@ -45,7 +45,7 @@
 		# Arduino
 		arduino-ide
   ];
-  
+
   services = {
     lorri = {
 			enable = true;
@@ -71,7 +71,7 @@
     gpg = {
 			enable = true;
 			# mutableKeys and mutableTrust are enabled by default
-			
+
 		};
 		git = {
 			enable = true;

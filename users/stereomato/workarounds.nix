@@ -20,7 +20,9 @@
 		 	# Set to 12 because of mpv
 		 	# TODO: does this affect other stuff?
 		 	size = 12;
-		 	gtk.enable = true;
+			# Makes the GNOME cursor tiny
+		 	gtk.enable = false;
+			# I only really need this, I think?
 		 	x11.enable = true;
 		 };
 	};
