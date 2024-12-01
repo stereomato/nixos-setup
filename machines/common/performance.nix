@@ -19,18 +19,20 @@
 			# package = pkgs.ananicy-cpp;
 		};
 		# BTRFS autoscrubbing
-		btrfs = {
-			autoScrub = {
-				enable = true;
-				interval = "thursday";
-				fileSystems = [
-					"/"
-				];
-			};
-		};
+		#btrfs = {
+		#	autoScrub = {
+		#		enable = true;
+		#		interval = "thursday";
+		#		fileSystems = [
+		#			"/"
+		#		];
+		#	};
+		#};
 
 		# Not needed for BTRFS anymore
-		#fstrim.enable = false;
+		# Needed for XFS
+		# TODO: Add check for this using config
+		fstrim.enable = true;
 
 		# Intel thermal management
 		thermald.enable = true;

@@ -126,7 +126,7 @@
 		# Workaround for gtk.theme.package
 		adw-gtk3
 	];
-	
+
 	gtk = {
 		enable = true;
 		theme = {
@@ -142,6 +142,18 @@
 	dconf = {
 		enable = true;
 		settings = {
+			"org/gnome/desktop/peripherals/mouse" = {
+				speed = lib.hm.gvariant.mkDouble "-0.72093023255813948";
+			};
+
+			"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+				binding = "<Control><Alt>ntilde";
+				command = "env TERM=xterm-256color fish -c 'dmmm-mouse-fix'";
+				name = "DMMM mouse fix";
+			};
+			"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings" = {
+				custom0 = lib.hm.gvariant.mkArray lib.hm.gvariant.type.string ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
+			};
 			"org/gnome/desktop/search-providers" = {
 				enabled = "org.gnome.Weather.desktop";
 			};
@@ -149,7 +161,7 @@
 				current-workspace-only = true;
 			};
 			"org/gnome/settings-daemon/plugins/power" = {
-				sleep-inactive-ac-type = true;
+				sleep-inactive-ac-type = "nothing";
 			};
 			"org/gnome/shell/weather" = {
 				automatic-location = true;
