@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:{
+{ taihouConfig, pkgs, username, ... }:{
   # Here goes everything related to software development
   imports = [
     ./vscode.nix
@@ -28,7 +28,7 @@
 		gdb valgrind
 
 		# Code editors/IDEs
-		netbeans micro
+		netbeans
 
 		# Documentation tools
 		zeal
@@ -37,10 +37,12 @@
 		commonsIo
 
 		# Gamedev
-		unityhub godot3-mono godot3-mono-export-templates
+		unityhub 
+		
+		# IDC: godot3-mono godot3-mono-export-templates
 
 		## This is for godot's C# support
-		msbuild
+		# msbuild
 
 		# Arduino
 		arduino-ide
@@ -56,7 +58,7 @@
     gpg-agent = {
 			enable = true;
 			enableSshSupport = true;
-			pinentryPackage = pkgs.pinentry-gnome3;
+			pinentryPackage = if taihouConfig.services.desktopManager.plasma6.enable then pkgs.pinentry-qt else pkgs.pinentry-gnome3;
 		};
   };
 

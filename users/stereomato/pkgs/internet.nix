@@ -1,4 +1,4 @@
-{ pkgs, ... }:{
+{ taihouConfig, pkgs, ... }:{
 
   nixpkgs.config = {
 
@@ -20,11 +20,10 @@
 
     # Chat apps
     # Matrix
-    fractal
-    # kdePackages.neochat
+    
+    # 
 
-    # XMPP
-    #kaidan
+    
 
     # Et cetera
     tdesktop discord mumble element-desktop
@@ -32,19 +31,29 @@
     # Password management
     bitwarden bitwarden-cli
 
-    # Internet tools
-    fragments
+    
 
     # Downloaders
     curl wget aria megacmd
-    # kget
+    # 
 
     # VPN
     protonvpn-gui
 
     # Virtual classes
     zoom-us
-  ];
+  ] ++ lib.optionals taihouConfig.services.desktopManager.plasma6.enable [
+      # XMPP
+      #kaidan
+      kget
+
+      kdePackages.neochat
+  ]
+    ++ lib.optionals taihouConfig.services.xserver.desktopManager.gnome.enable  [
+        fractal
+        # Internet tools
+        fragments
+      ];
 
   services.syncthing = {
 		enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, ... }:{
+{ taihouConfig, pkgs, ... }:{
 	home.packages = with pkgs; [
 		
 		# General multimedia tools
@@ -7,13 +7,14 @@
 		
 		# Screen/Video recorders
 		obs-studio-with-plugins simplescreenrecorder 
-		kooha
+
 		# Video Production & manipulation
 		kdenlive mkvtoolnix davinci-resolve pitivi olive-editor flowblade
 
 		# Music/Audio file management
 		# Adding both normal ffmpeg and ffmpeg_5 because at time of writing (14-oct-22) default ffmpeg is 4.4.2
-		wavpack fdk-aac-encoder lame flac freac opusTools opustags flacon easytag spek
+		# Deleted freac because it's broken anywayo
+		wavpack fdk-aac-encoder lame flac opusTools opustags flacon easytag spek
 
 		# Music production: DAWs
 		audacity ardour qpwgraph reaper 
@@ -24,7 +25,7 @@
 
 		# Image creation and manipulation
 		# imagemagickBig is the one that includes ghostscript
-		drawing
+
 		gimp imagemagickBig waifu2x-converter-cpp krita
 
 		# Image encoders
@@ -32,9 +33,15 @@
 
 		# FTBFS: nix log /nix/store/r3yc4j7a5yrzj5d6hvgz762r52w6b3mz-Real-ESRGAN-ncnn-vulkan-0.2.0.drv
 		#realesrgan-ncnn-vulkan 
-		gnome-obfuscate eyedropper
+
 
 		# Tag manupulation
 		# kid3
+	] ++ lib.optionals taihouConfig.services.desktopManager.plasma6.enable []
+	++ lib.optionals taihouConfig.services.xserver.desktopManager.gnome.enable [
+		drawing
+		gnome-obfuscate eyedropper
+		kooha
 	];
+
 }

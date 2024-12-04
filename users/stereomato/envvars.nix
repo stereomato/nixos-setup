@@ -34,9 +34,7 @@
 			# Disable this, it breaks many games and perhaps even software. 
 			#	SDL_VIDEODRIVER = "wayland";
 			#
-			
 			EDITOR = "code --wait --new-window";
-
 			# TODO: Keep this in mind
 			# https://discourse.gnome.org/t/the-colors-of-gtk/22724
 			# GTK_DEBUG="linear";

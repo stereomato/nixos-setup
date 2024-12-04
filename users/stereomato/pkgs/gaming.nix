@@ -5,7 +5,10 @@
 
 		# Games & Fun
 		# minecraft (official launcher) https://github.com/NixOS/nixpkgs/issues/179323
-		prismlauncher protontricks sl vintagestory stuntrally tome4 gamescope
+		prismlauncher protontricks sl stuntrally tome4 gamescope
+		
+		# I don't play this
+		# vintagestory
 		
 		# Marked broken
 		# minecraft

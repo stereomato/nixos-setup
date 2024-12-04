@@ -1,4 +1,4 @@
-{ pkgs, ... }:{
+{ taihouConfig, pkgs, ... }:{
 	# Here go things that are related to media consumption
 	imports = [
 		./mpv.nix
@@ -7,18 +7,7 @@
 	home.packages = with pkgs; [
 		# anime
 		ani-cli
-
-		# QT/KDE apps
-		# mpv frontend
-		haruna 
-
-		# music player
-		fooyin
 		
-		# Digital media players/readers/streamers
-		# FTBFS: nix log /nix/store/ia6nr3xzzvqpjm4c5c30pnvar1dma6cs-quodlibet-4.6.0.drv
-		# celluloid clapper amberol rhythmbox  gthumb
-
 		# Music
 		spotify
 
@@ -27,10 +16,23 @@
 
 		# Gstreamer programs
 		gst_all_1.gstreamer
-		# Digital books (epubs, manga)
-		foliate
-	];
 
+	] ++ lib.optionals taihouConfig.services.desktopManager.plasma6.enable [ 
+			# mpv frontend
+			haruna 
+
+			# music player
+			fooyin
+		]
+	++ lib.optionals taihouConfig.services.xserver.desktopManager.gnome.enable [
+			# Digital books (epubs, manga)
+			foliate
+			# Digital media players/readers/streamers
+		# FTBFS: nix log /nix/store/ia6nr3xzzvqpjm4c5c30pnvar1dma6cs-quodlibet-4.6.0.drv
+		 celluloid clapper amberol rhythmbox  gthumb
+	];
+	
+	
 	programs.yt-dlp = {
 		enable = true;
 		settings = {
@@ -45,7 +47,7 @@
 
 	services = {
 		easyeffects = {
-			enable = true;
+			enable = false;
 		};
 	};
 

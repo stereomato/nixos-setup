@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:{
+{ taihouConfig, pkgs, inputs, ... }:{
   imports = [
     ./gaming.nix
     ./internet.nix
@@ -9,8 +9,7 @@
 			
 			# TODO: Organize better
 		
-			# gnome stuff
-			metadata-cleaner warp wike gnome-solanum newsflash
+			
 			
 			# AI stuff
 			#inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
@@ -32,20 +31,17 @@
 			# maigret 
 			bc xdg-utils trash-cli
 			
-			# Font management
-			fontforge-gtk
-			# FTBFS nix log /nix/store/q7yjb9yhxq2n2lzfihd12mswpr8igi3i-font-manager-0.8.8.drv
-			font-manager
+			
 
 			# Text editors
 			nano 
 			# gnome-text-editor
 			
 			# Office and LaTeX
-			# libreoffice-qt-fresh
-			# libreoffice-fresh
+			# 
+			# 
 			onlyoffice-bin_latest 
-			enter-tex #apostrophe
+			 #apostrophe
 			
 			# QTWebkit shit
 			#mendeley
@@ -53,11 +49,7 @@
 			# Phone stuff
 			scrcpy
 
-			# Life managing
-			gtg
-
-			# gnome
-			resources
+			
 			
 			# Spellchecking dictionaries
 			#TODO: Write about this in the future NixOS article I wanna write.
@@ -65,5 +57,26 @@
 
 			# Uni
 			octaveFull
-		];
+		] ++ lib.optionals taihouConfig.services.desktopManager.plasma6.enable [
+			libreoffice-qt-fresh
+		 ]
+		++ lib.optionals taihouConfig.services.xserver.desktopManager.gnome.enable [
+			libreoffice-fresh
+			
+			# gnome stuff
+			metadata-cleaner warp wike gnome-solanum newsflash
+
+			enter-tex
+
+			# Life managing
+			gtg
+
+			# gnome
+			resources
+
+			# Font management
+			fontforge-gtk
+			# FTBFS nix log /nix/store/q7yjb9yhxq2n2lzfihd12mswpr8igi3i-font-manager-0.8.8.drv
+			font-manager
+		 ];
 }

@@ -1,4 +1,4 @@
-{ config, installPath, pkgs, ...  }: {
+{ taihouConfig, config, installPath, pkgs, ...  }: {
 	home = {
 		# FIXME: https://www.reddit.com/r/NixOS/comments/vh2kf7/home_manager_mkoutofstoresymlink_issues/
 		# Workaround: Symlink configuration files for programs that modify their settings at runtime/exit
@@ -23,7 +23,7 @@
 			# Makes the GNOME cursor tiny
 		 	gtk.enable = false;
 			# I only really need this, I think?
-		 	x11.enable = true;
+		 	x11.enable = taihouConfig.services.xserver.desktopManager.gnome.enable;
 		 };
 	};
 }

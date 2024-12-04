@@ -2,10 +2,10 @@
 	nixpkgs.overlays = [(
 			self: super: {
 				google-chrome = super.google-chrome.override {
-					commandLineArgs = "--enable-features=TouchpadOverscrollHistoryNavigation,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading --disable-font-subpixel-positioning";
+					commandLineArgs = "--enable-features=TouchpadOverscrollHistoryNavigation,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading --disable-font-subpixel-positioning=true";
 				};
 				vscode = super.vscode.override {
-					commandLineArgs = ''--disable-font-subpixel-positioning'';
+					commandLineArgs = "--disable-font-subpixel-positioning=true";
 				};
 				chowmatrix = super.callPackage ./derivationsYetToUpstream/chowmatrix.nix {};
 				auburn-sounds-graillon-2 = super.callPackage ./derivationsYetToUpstream/auburn-sounds-graillon-2.nix {};
@@ -19,7 +19,7 @@
 				handbrake-stereomato = super.handbrake.override {
 					useFdk = true;
 				};
-				ffmpeg-fuller = super.ffmpeg_6-full.override {
+				ffmpeg-fuller = super.ffmpeg-full.override {
 					withUnfree = true;
 					# enableLto = true; # fails...
 				};

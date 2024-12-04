@@ -44,8 +44,8 @@
         allowUnfreePredicate = _: true;
       };
     };
-			in {
-			nixosConfigurations = rec {
+			in rec {
+			nixosConfigurations = {
 				Taihou = nixpkgs.lib.nixosSystem {
 					system = system;
 					modules = [ 
@@ -78,7 +78,8 @@
 					modules = [ 
 						./machines/Taihou
 						./machines/TaihouIso
-						nix-index-database.nixosModules.nix-index
+						# Defined in homeConfigurations for my user, so I don't think it's needed
+						# nix-index-database.nixosModules.nix-index
 						
 						# # TODO: refactor this so that it is its own thing so that nixd just works
 						# home-manager.nixosModules.home-manager {
@@ -114,9 +115,16 @@
 				"stereomato@Taihou" = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
 					# backupFileExtension = "hm-backup";
-					extraSpecialArgs = { username = "stereomato"; inherit inputs; installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup"; };
+					extraSpecialArgs = { 
+						# Read my laptop config
+						taihouConfig = nixosConfigurations.Taihou.config;
+						username = "stereomato"; 
+						inherit inputs; 
+						installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup"; 
+					};
 					modules = [
 						./users/stereomato
+						nix-index-database.hmModules.nix-index
 					];
 				};
 			};

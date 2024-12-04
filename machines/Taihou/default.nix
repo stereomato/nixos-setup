@@ -76,7 +76,12 @@
 			
 			# Keyboard layout
 			xkb.layout = "latam";
+			# Enable for GNOME
+			desktopManager.gnome.enable = true;
 		};
+		# Enable for KDE
+		# Tried enough times, let's leave it disabled until next year
+		desktopManager.plasma6.enable = false;
 		
 		# Pro Audio things
 		udev.extraRules = ''
