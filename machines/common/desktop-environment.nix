@@ -96,7 +96,8 @@
 
 		gnome = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) {
 			core-developer-tools.enable = true;
-			games.enable = true;
+			# I don't need this, lmao
+			games.enable = false;
 		};
 	};
 

@@ -66,7 +66,7 @@
 			submitData = true;
 		};
 	security = {
-		protectKernelImage = true;
+		protectKernelImage = false;
 		
 		sudo = {
 			enable = true;

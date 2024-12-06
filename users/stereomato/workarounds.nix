@@ -11,10 +11,9 @@
 		file.".config/xmrig-mo".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/users/stereomato/to-symlink/xmrig-mo";
 		file.".config/MangoHud".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/users/stereomato/to-symlink/MangoHud";
 	
-	# pointerCursor = config.services.;
 	# Workaround: for cursors broken in gnome by default
 	# affects: mpv and games it seems
-		 pointerCursor = {
+		 pointerCursor = if taihouConfig.services.xserver.desktopManager.gnome.enable then {
 		 	package = pkgs.adwaita-icon-theme;
 		 	name = "Adwaita";
 		 	# Set to 12 because of mpv
@@ -23,7 +22,7 @@
 			# Makes the GNOME cursor tiny
 		 	gtk.enable = false;
 			# I only really need this, I think?
-		 	x11.enable = taihouConfig.services.xserver.desktopManager.gnome.enable;
-		 };
+		 	x11.enable = true;
+		 } else {} ;
 	};
 }

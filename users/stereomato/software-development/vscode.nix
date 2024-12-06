@@ -19,9 +19,9 @@
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-toolsai.jupyter
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-toolsai.jupyter-keymap
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-toolsai.jupyter-renderers
-				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-dotnettools.csdevkit
-				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-dotnettools.csharp
-				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-dotnettools.vscode-dotnet-runtime
+				# inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-dotnettools.csdevkit
+				# inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-dotnettools.csharp
+				# inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-dotnettools.vscode-dotnet-runtime
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.remote-server
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode-remote.remote-ssh
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.cmake-tools

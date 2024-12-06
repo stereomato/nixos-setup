@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
 
 	src = fetchurl {
 		url = https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg;
-		sha256 = "04sq98pldn9q1a1npl6b64karc2228zgjj4xvi6icjzvn5viqrfj";
+		sha256 = "0ncybkrzqazw13azy2s30ss7ml5pxaia6hbmqq9wn7xhlhrxlniy";
 	};
 
 	nativeBuildInputs = [

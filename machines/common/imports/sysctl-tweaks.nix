@@ -8,9 +8,9 @@
 			"vm.nr_hugepages" = 25;
 			"vm.nr_overcommit_hugepages" = 150;
 			# Prefer to keep filesystem cache memory over application memory
-			"vm.vfs_cache_pressure" = 50;
+			"vm.vfs_cache_pressure" = 75;
 			# Proper swappiness
-			"vm.swappiness" = 150;
+			"vm.swappiness" = 200;
 			# Set the bytes of my current laptop's storage speed
 			# dirty_bytes is 3x of the total speed
 			# dirty_background_bytes is the total random writes speed

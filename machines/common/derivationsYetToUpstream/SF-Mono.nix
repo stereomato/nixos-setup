@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
 
 	src = fetchurl {
 		url = "https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg";
-		sha256 = "0cxj1wk6nbz1ysi0cg1w79b7ja48n00dypxkrsc3mvrn1vmdb4dm";
+		hash = "sha256-bUoLeOOqzQb5E/ZCzq0cfbSvNO1IhW1xcaLgtV2aeUU=";
 	};
 
 	nativeBuildInputs = [

@@ -19,11 +19,10 @@
 		;
 	};
 
-	# TODO: Make this work on KDE only
-	#xresources.properties ={
-	#	"Xft.rgba" = "rgb";
-	#	"Xft.lcdfilter" = "lcddefault";
-	#};
+	xresources.properties = if taihouConfig.services.desktopManager.plasma6.enable then {
+		"Xft.rgba" = "rgb";
+		"Xft.lcdfilter" = "lcddefault";
+	} else {};
 
 	home.packages = if taihouConfig.services.xserver.desktopManager.gnome.enable then with pkgs; [
 		# Workaround for gtk.theme.package
@@ -59,6 +58,9 @@
 					"org.gnome.Nautilus.desktop"
 					"code.desktop"
 				];
+			};
+			"system/locale" = {
+				region = "es_PE.UTF-8";
 			};
 			"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
 				binding = "<Control><Alt>ntilde";

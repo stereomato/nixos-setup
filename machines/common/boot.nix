@@ -13,6 +13,7 @@
 			luks = {
 				mitigateDMAAttacks = true;
 			};
+			systemd.enable = true;
 		};
 		
 		kernelParams = [ 

@@ -76,7 +76,8 @@
 					super.fetchzip {
 						name = "${super.input-fonts.pname}-${super.input-fonts.version}";
 						url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-						sha256 = "0sjq478azj93267lzm737fcjaxaddlbh48pq97cnbm3wslqb2rcy";
+						hash = "sha256-trtXHQa/1q21T4SXLq2XzFvU5pa5C4U3zqFqzyYXKVY=";
+						sha256 = "";
 						stripRoot = false;
 					};
 			});
@@ -133,7 +134,7 @@
 			roboto-slab
 			roboto-mono
 			jetbrains-mono-variable
-			# input-fonts
+			input-fonts
 			inter
 			# inter-otf
 			source-sans
@@ -155,6 +156,12 @@
 			terminus_font_ttf
 			terminus_font
 			commit-mono
+
+			SF-Mono
+			SF-Pro
+			SF-Arabic
+			SF-Compact
+			New-York
 		]; 
 		fontDir.enable = true;
 		fontconfig = {
@@ -209,7 +216,7 @@
 					"Cantarell"
 				];
 				serif = [ "Roboto Slab" ];
-				monospace = [ "Jetbrains Mono" ];
+				monospace = [ "Input Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

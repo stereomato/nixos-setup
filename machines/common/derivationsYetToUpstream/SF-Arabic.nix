@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
 
 	src = fetchurl {
 		url = https://devimages-cdn.apple.com/design/resources/download/SF-Arabic.dmg;
-		sha256 = "0habrwbdsffkg2dnnawna8w93psc2n383hyzvsxn3a5n7ai63mp2";
+		sha256 = "1fcpa488vx3xj9f9hq70gxj4qbgcjaijwz2i94n02xrba0nwcq17";
 	};
 
 	nativeBuildInputs = [

@@ -4,7 +4,7 @@
 , writeScript
 , stdenv
 ,	p7zip
-#,	emoji-removal
+,	emoji-removal
 }:
 
 stdenv.mkDerivation rec {
@@ -29,12 +29,12 @@ stdenv.mkDerivation rec {
 
 	src = fetchurl {
 		url = https://devimages-cdn.apple.com/design/resources/download/NY.dmg;
-		sha256 = "1q0b741qiwv5305sm3scd9z2m91gdyaqzr4bd2z54rvy734j1q0y";
+		hash = "sha256-HC7ttFJswPMm+Lfql49aQzdWR2osjFYHJTdgjtuI+PQ=";
 	};
 
 	nativeBuildInputs = [
 		p7zip
-	#	emoji-removal
+		emoji-removal
 	];
 
 	unpackCmd = "7z x $curSrc";
@@ -44,7 +44,7 @@ stdenv.mkDerivation rec {
 		7z x "${specialHandlingBit1}${specialHandlingBit2} ${specialHandlingBit3}.pkg"
 		7z x Payload~
 		# Doesn't work due to the script bug...
-		#find . -name \*.otf -execdir emoji-removal {} \;
+		find . -name \*.otf -execdir emoji-removal {} \;
 		mkdir -p $out/share/fonts/${specialHandlingBit1}${specialHandlingBit2}${specialHandlingBit3}
 		find . -name \*.otf -execdir mv {} $out/share/fonts/${specialHandlingBit1}${specialHandlingBit2}${specialHandlingBit3} \;
 	'';
