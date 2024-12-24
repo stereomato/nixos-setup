@@ -62,7 +62,8 @@
 		tmpfiles = {
 			rules = [ 
 				# Enable HWP dynamic boosting
-				"w /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost - - - - 1"
+				# Probably not a good idea
+				# "w /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost - - - - 1"
 				# Mouse (40,52) and Keyboard (1)
 				# Could be handled by intel_lpmd
 				"w /proc/irq/40/smp_affinity															- - - - 8000"

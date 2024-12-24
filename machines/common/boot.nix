@@ -5,6 +5,9 @@
 		plymouth = {
 			enable = true;
 			font = "${pkgs.inter}/share/fonts/truetype/InterVariable.ttf";
+			# TODO: Make these get enabled when KDE is enabled
+			# theme = "breeze";
+			# themePackages = [pkgs.kdePackages.breeze-plymouth];
 		};
 		
 		initrd = {
@@ -18,12 +21,12 @@
 		
 		kernelParams = [ 
 			# Find out whether this is a good idea or not
-			#"pcie_aspm=force"
+			# "pcie_aspm=force"
 			
 			# Debugging i915
-			#"drm.debug=0xe" 
-			#"log_buf_len=4M" 
-			#"ignore_loglevel"
+			# "drm.debug=0xe" 
+			# "log_buf_len=4M" 
+			# "ignore_loglevel"
 			
 			"preempt=full"
 			# For TGL: only enable the HuC
@@ -43,6 +46,9 @@
 			"zswap.zpool=zsmalloc"
 			"zswap.max_pool_percent=35"
 			"zswap.accept_threshold_percent=90"
+
+			# Enable deep sleep
+			"mem_sleep_default=deep"
 		];
 		loader = {
 			systemd-boot = {

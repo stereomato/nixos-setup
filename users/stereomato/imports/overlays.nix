@@ -2,8 +2,13 @@
 	nixpkgs.overlays = [(
 			self: super: {
 				google-chrome = super.google-chrome.override {
-					commandLineArgs = "--enable-features=TouchpadOverscrollHistoryNavigation,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading --disable-font-subpixel-positioning=true";
+					# commandLineArgs = "--enable-features=Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,TouchpadOverscrollHistoryNavigation,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading,UseMultiPlaneFormatForHardwareVideo --disable-font-subpixel-positioning=true --enable-zero-copy=true --use-vulkan=true";
+					commandLineArgs = "--enable-features=TouchpadOverscrollHistoryNavigation,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading,UseMultiPlaneFormatForHardwareVideo --disable-font-subpixel-positioning=true --enable-zero-copy=true";
 				};
+
+				#google-chrome = super.google-chrome.overrideAttrs (old: {
+				#	buildInputs = super.google-chrome.buildInputs ++ [ super.kdePackages.full ];
+				#});
 				vscode = super.vscode.override {
 					commandLineArgs = "--disable-font-subpixel-positioning=true";
 				};

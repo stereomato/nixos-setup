@@ -1,8 +1,9 @@
 { lib, pkgs, ... }:{
 	nixpkgs.overlays = [(
 		self: super: {
+			# Zen kernel
 			# TODO: Find where this comes from, and how it works? But, https://github.com/shiryel/nixos-dotfiles/blob/master/overlays/overrides/linux/default.nix# helped a lot!
-			linux-stereomato = super.linuxPackages_zen.extend (kself: ksuper: {
+			linux-stereomato-zen = super.linuxPackages_zen.extend (kself: ksuper: {
 				kernel = ksuper.kernel.override {
 					argsOverride = {
 						structuredExtraConfig = with lib.kernel;
@@ -68,8 +69,8 @@
 				};
 			});
 
-			# This is for when there's a new kernel that I WANNA INSTALL ASAP
-			linux-stereomato-newstable = super.linuxPackages_6_12.extend (kself: ksuper: {
+			# Default
+			linux-stereomato = super.linuxPackages_6_12.extend (kself: ksuper: {
 				kernel = ksuper.kernel.override {
 					argsOverride = {
 						structuredExtraConfig = with lib.kernel;
@@ -140,7 +141,7 @@
 	boot = {
 		kernelModules = [ "kvm-intel" ];
 		extraModulePackages = [ ];
-		kernelPackages = pkgs.linux-stereomato-newstable;
+		kernelPackages = pkgs.linux-stereomato;
 		
 		#kernelPatches = [
 			# Might work in kernel 6.7

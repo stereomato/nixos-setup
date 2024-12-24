@@ -1,38 +1,6 @@
 { config, inputs, lib, pkgs, ... }:{
 	 nixpkgs.overlays = [(
 		self: super: {
-			# Gotten from https://aur.archlinux.org/cgit/aur.git/tree/force_qttextrendering.patch?h=qqc2-desktop-style-fractional
-			# https://invent.kde.org/frameworks/qqc2-desktop-style/-/merge_requests/429
-			# https://bugs.kde.org/show_bug.cgi?id=479891#c70
-			#kdePackages = super.kdePackages // {
-			#	qqc2-desktop-style = super.kdePackages.qqc2-desktop-style.override (old: {
-			#		mkKdeDerivation = args: super.kdePackages.mkKdeDerivation ( args // {
-			#			patches = [
-			#			./patches/force_qttextrendering.patch
-			#			# ./patches/force_nativetextrendering.patch
-			#			];
-			#		});
-			#	});
-			#};
-			
-			# Until next qqc2-desktop-style release
-			# I'll probably know.
-			#kdePackages = super.kdePackages.overrideScope(kdeSelf: kdeSuper: {
-			# 	qqc2-desktop-style = super.kdePackages.qqc2-desktop-style.overrideAttrs (old: {
-			# 		patches = [
-			# 			./patches/e82957f5e6fc72e446239e2ee5139b93d3ceac85.patch
-			# 		];
-			# 	});
-			#});
-			
-			# kdePackages = super.kdePackages // {
-			# 	qqc2-desktop-style = super.kdePackages.qqc2-desktop-style.overrideAttrs (old: {
-			# 		patches = [
-			# 			./patches/e82957f5e6fc72e446239e2ee5139b93d3ceac85.patch
-			# 		];
-			# 	});
-			# };
-			
 			# Dynamic triple buffering patch
 			# Kinda buggy
 			mutter = super.mutter.overrideAttrs (old: {
@@ -41,16 +9,6 @@
     				cp -a "${inputs.gvdb-src}" ./subprojects/gvdb
   				'';
 			});
-
-			#	mutter = super.mutter.overrideAttrs (old: {
-			#		src = pkgs.fetchFromGitLab  {
-			#			domain = "gitlab.gnome.org";
-			#			owner = "vanvugt";
-			#			repo = "mutter";
-			#			rev = "triple-buffering-v4-47";
-			#			hash = "sha256-JaqJvbuIAFDKJ3y/8j/7hZ+/Eqru+Mm1d3EvjfmCcug=";
-			#		};
-			#	});
 		}
 	 )];
 	
@@ -78,7 +36,6 @@
 		};
 		colord.enable = lib.mkIf(config.services.desktopManager.plasma6.enable) true;
 
-		
 		xserver.desktopManager.gnome = {
 			# Gnome Master toggle
 			# To enable GNOME, set services.xserver.desktopManager.gnome.enable to true
@@ -124,13 +81,24 @@
 	};
 
 	environment = {
+		gnome.excludePackages = with pkgs; [ 
+			# I use the new app, Papers
+			# TODO: Remove this once Papers is promoted to official and that is installed instead of Evince
+			evince
+			# I use the new app, Showtime
+			totem
+		];
 		systemPackages = with pkgs; if (config.services.xserver.desktopManager.gnome.enable) then [
+			# Default PDF viewer
+			papers
 			# Miscellanous Gnome apps
 			gnome-icon-theme gnome-tweaks gnome-extension-manager
 			ptyxis
 			gnome-boxes
 			showtime
 			morewaita-icon-theme
+			mission-center
+			resources
 
 			# This is needed for file-roller to open .debs
 			binutils
@@ -139,6 +107,7 @@
 			kdePackages.filelight
 			kdePackages.qtsvg
 			kdePackages.kleopatra
+			bibata-cursors
 		];
 	};
 }

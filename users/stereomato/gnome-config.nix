@@ -1,5 +1,5 @@
 { taihouConfig, pkgs, lib, ... }: {
-  programs.gnome-shell = {
+	programs.gnome-shell = {
 		enable = taihouConfig.services.xserver.desktopManager.gnome.enable;
 		extensions = [
 			# Alphabetical App Grid
@@ -15,6 +15,8 @@
 				id = "user-theme@gnome-shell-extensions.gcampax.github.com";
 				package = pkgs.gnome-shell-extensions;
 			}
+			# Lock Keys
+			{ package = pkgs.gnomeExtensions.lock-keys; }
 		]
 		;
 	};
@@ -48,6 +50,22 @@
 	dconf = {
 		enable = taihouConfig.services.xserver.desktopManager.gnome.enable;
 		settings = {
+			"org/gnome/settings-daemon/plugins/color" = {
+				night-light-enabled = true;
+			};
+			"org/gnome/shell/extensions/lockkeys" = {
+				show-hide = true;
+			};
+			"org/gnome/TextEditor" = {
+				show-line-numbers = true;
+				tab-width = lib.hm.gvariant.mkUint32 2;
+				show-grid = true;
+				highlight-current-line = true;
+				show-map = true;
+			};
+			"org/gnome/gnome-system-monitor" = {
+				update-interval = lib.hm.gvariant.mkUint32 1000;
+			};
 			"org/gnome/desktop/peripherals/mouse" = {
 				speed = lib.hm.gvariant.mkDouble "-0.75";
 			};

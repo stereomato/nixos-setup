@@ -8,9 +8,7 @@
   home.packages = with pkgs; [
 			
 			# TODO: Organize better
-		
-			
-			
+	
 			# AI stuff
 			#inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
 
@@ -48,9 +46,6 @@
 			
 			# Phone stuff
 			scrcpy
-
-			
-			
 			# Spellchecking dictionaries
 			#TODO: Write about this in the future NixOS article I wanna write.
 			hunspellDicts.en_US hunspellDicts.es_PE aspellDicts.en aspellDicts.es aspellDicts.en-science aspellDicts.en-computers
@@ -71,12 +66,9 @@
 			# Life managing
 			gtg
 
-			# gnome
-			resources
-
 			# Font management
 			fontforge-gtk
 			# FTBFS nix log /nix/store/q7yjb9yhxq2n2lzfihd12mswpr8igi3i-font-manager-0.8.8.drv
-			font-manager
+			# font-manager
 		 ];
 }

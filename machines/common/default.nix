@@ -22,6 +22,9 @@
 		font = "Lat2-Terminus16";
 	};
 
+	# Do suspend-then-hibernate
+	systemd.services."systemd-suspend-then-hibernate".aliases = [ "systemd-suspend.service" ];
+
 	documentation = {
 		man = {
 			generateCaches = true;

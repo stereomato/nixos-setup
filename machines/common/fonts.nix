@@ -1,7 +1,23 @@
-{ pkgs, ... }:{
+{ config, lib, pkgs, ... }:{
 
 	nixpkgs.overlays = [(
 		self: super: {
+			# UGLY, see: https://github.com/NixOS/nix/pull/2911
+			# Also, see: https://github.com/NixOS/nixpkgs/issues/214848
+			emoji-removal = super.writeScriptBin "emoji-removal" ''
+           #!/usr/bin/env -S ${super.fontforge}/bin/fontforge -lang=ff -script
+           Open($1)
+           SetTTFName(0x409,13,"")
+           Select(0u2600,0u26ff)
+           DetachAndRemoveGlyphs()
+           Generate($1)
+           Select(0u2700,0u27bf)
+           DetachAndRemoveGlyphs()
+           Generate($1)
+           Select(0u10000,0u1fffd)
+           DetachAndRemoveGlyphs()
+           Generate($1)
+         '';
 			iosevka-stereomato = super.iosevka.override {
 				privateBuildPlan = {
 					family = "stereomato's Iosevka setup";
@@ -81,7 +97,7 @@
 						stripRoot = false;
 					};
 			});
-			
+
 			# Overlay to make jetbrains mono install the variable font only
 			jetbrains-mono-variable = super.jetbrains-mono.overrideAttrs (old: {
 				# From the original, here I only remove the line that installs the non-variable font files
@@ -135,8 +151,6 @@
 			roboto-mono
 			jetbrains-mono-variable
 			input-fonts
-			inter
-			# inter-otf
 			source-sans
 			source-serif
 			source-code-pro
@@ -157,17 +171,22 @@
 			terminus_font
 			commit-mono
 
-			SF-Mono
-			SF-Pro
-			SF-Arabic
-			SF-Compact
-			New-York
-		]; 
+			# SF-Mono
+			# SF-Pro
+			# SF-Arabic
+			# SF-Compact
+			# New-York
+		] ++ lib.optionals config.services.desktopManager.plasma6.enable [ inter-otf ]
+		++ lib.optionals config.services.xserver.desktopManager.gnome.enable [ inter ];
+
 		fontDir.enable = true;
 		fontconfig = {
 			cache32Bit = true;
 			useEmbeddedBitmaps = false;
-			subpixel = {
+			subpixel = if config.services.desktopManager.plasma6.enable then {
+				rgba = "rgb";
+				lcdfilter = "default";
+			} else {
 				rgba = "none";
 				lcdfilter = "none";
 			};
@@ -181,7 +200,7 @@
 				<alias>
 					<family>system-ui</family>
 					<prefer>
-						<family>Inter Variable</family>
+						<family>Inter</family>
 						<family>Cantarell</family>
 					</prefer>
 				</alias>
@@ -202,31 +221,38 @@
 
 				</fontconfig>
 			'';
-			# Do I even need this? 
+			# Do I even need this?
 			#<match target="font">
 			#		<edit name="dpi" mode="assign" binding="strong">
 			#			<double>141.0</double>
 			#		</edit>
 			#	</match>
-				
+
 			defaultFonts = {
-				sansSerif = [ 
-					# "Inter"
-					"Inter Variable"
-					"Cantarell"
-				];
-				serif = [ "Roboto Slab" ];
-				monospace = [ "Input Mono" ];
+				sansSerif = 
+					if config.services.xserver.desktopManager.gnome.enable 
+						then [
+							"Inter Variable"
+						] else [ 
+								"Inter"
+							]
+					# Other fonts
+					++ [
+						# "IBM Plex Sans"
+						"Cantarell"
+					];
+				serif = [ "IBM Plex Serif" ];
+				monospace = [ "Jetbrains Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};
 	};
-	# MacOS-like font rendering
-	# Font emboldering
-	# FREETYPE_PROPERTIES="cff:no-stem-darkening=0 type1:no-stem-darkening=0 t1cid:no-stem-darkening=0 autofitter:no-stem-darkening=0";
-	
-	# fuzziness a la macOS/W95
+
 	environment.variables = {
-		FREETYPE_PROPERTIES = "truetype:interpreter-version=35";
+		# MacOS-like font rendering
+		# fuzziness a la macOS/W95
+		#	FREETYPE_PROPERTIES = "truetype:interpreter-version=35";
+		# Font emboldening
+		FREETYPE_PROPERTIES = if config.services.desktopManager.plasma6.enable then "cff:no-stem-darkening=0 type1:no-stem-darkening=0 t1cid:no-stem-darkening=0 autofitter:no-stem-darkening=0" else "";
 	};
 }

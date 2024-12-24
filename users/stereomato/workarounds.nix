@@ -1,4 +1,4 @@
-{ taihouConfig, config, installPath, pkgs, ...  }: {
+{ taihouConfig, config, installPath, lib, pkgs, ...  }: {
 	home = {
 		# FIXME: https://www.reddit.com/r/NixOS/comments/vh2kf7/home_manager_mkoutofstoresymlink_issues/
 		# Workaround: Symlink configuration files for programs that modify their settings at runtime/exit
@@ -13,7 +13,7 @@
 	
 	# Workaround: for cursors broken in gnome by default
 	# affects: mpv and games it seems
-		 pointerCursor = if taihouConfig.services.xserver.desktopManager.gnome.enable then {
+		 pointerCursor = lib.mkIf taihouConfig.services.xserver.desktopManager.gnome.enable {
 		 	package = pkgs.adwaita-icon-theme;
 		 	name = "Adwaita";
 		 	# Set to 12 because of mpv
@@ -23,6 +23,6 @@
 		 	gtk.enable = false;
 			# I only really need this, I think?
 		 	x11.enable = true;
-		 } else {} ;
+		 }  ;
 	};
 }
