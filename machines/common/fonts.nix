@@ -150,7 +150,7 @@
 			roboto-slab
 			roboto-mono
 			jetbrains-mono-variable
-			input-fonts
+			# input-fonts
 			source-sans
 			source-serif
 			source-code-pro
@@ -242,7 +242,7 @@
 						"Cantarell"
 					];
 				serif = [ "IBM Plex Serif" ];
-				monospace = [ "Jetbrains Mono" ];
+				monospace = [ "CommitMono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

@@ -2,14 +2,15 @@
 {
 	# FIXME: This doesnt work right, EDITOR doesn't get set. Investigate why.
 	# systemd.user = {
-	home = {
+	systemd.user = {
 		sessionVariables = {
 			# PATHs for DAW plugins
-			DSSI_PATH   = "$HOME/.dssi:/etc/profiles/per-user/stereomato/lib/dssi:/run/current-system/sw/lib/dssi";
-			LADSPA_PATH = "$HOME/.ladspa:/etc/profiles/per-user/stereomato/lib/ladspa:/run/current-system/sw/lib/ladspa";
-			LV2_PATH    = "$HOME/.lv2:/etc/profiles/per-user/stereomato/lib/lv2:/run/current-system/sw/lib/lv2";
-			LXVST_PATH  = "$HOME/.lxvst:/etc/profiles/per-user/stereomato/lib/lxvst:/run/current-system/sw/lib/lxvst:$HOME/.vst:/etc/profiles/per-user/stereomato/lib/vst:/run/current-system/sw/lib/vst";
-			VST_PATH    = "$HOME/.vst:/etc/profiles/per-user/stereomato/lib/vst:/etc/profiles/per-user/stereomato/lib/vst3:/run/current-system/sw/lib/vst";
+			DSSI_PATH   = "$HOME/.nix-profile/lib/dssi:$HOME/.dssi:/etc/profiles/per-user/stereomato/lib/dssi:/run/current-system/sw/lib/dssi";
+			LADSPA_PATH = "$HOME/.nix-profile/lib/ladspa:$HOME/.ladspa:/etc/profiles/per-user/stereomato/lib/ladspa:/run/current-system/sw/lib/ladspa";
+			LV2_PATH    = "$HOME/.nix-profile/lib/lv2:$HOME/.lv2:/etc/profiles/per-user/stereomato/lib/lv2:/run/current-system/sw/lib/lv2";
+			LXVST_PATH  = "$HOME/.nix-profile/lib/lxvst:$HOME/.lxvst:/etc/profiles/per-user/stereomato/lib/lxvst:/run/current-system/sw/lib/lxvst:$HOME/.vst:/etc/profiles/per-user/stereomato/lib/vst:/run/current-system/sw/lib/vst";
+			VST_PATH    = "$HOME/.nix-profile/lib/vst:$HOME/.vst:/etc/profiles/per-user/stereomato/lib/vst:/etc/profiles/per-user/stereomato/lib/vst:/run/current-system/sw/lib/vst";
+			VST3_PATH    = "$HOME/.nix-profile/lib/vst3:$HOME/.vst3:/etc/profiles/per-user/stereomato/lib/vst3:/etc/profiles/per-user/stereomato/lib/vst3:/run/current-system/sw/lib/vst3";
 			# Enable wayland for some apps that don't default to wayland yet
 			QT_QPA_PLATFORM = "wayland";
 			# Revert to ngl because of https://gitlab.gnome.org/GNOME/mutter/-/issues/3517

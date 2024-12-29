@@ -1,17 +1,18 @@
 { pkgs, ... }:{
 	imports = [
 		./boot.nix
-		./desktop-environment.nix
+		# ./desktop-environment.nix
 		./fonts.nix
+		./software.nix
 		./hardware.nix
-		./i18n.nix
-		./networking.nix
-		./nix.nix
-		./performance.nix
+		# ./i18n.nix
+		#./networking.nix
+		#./nix.nix
+		# ./performance.nix
 		./system-management.nix
-		./system.nix
+		#./system.nix
 		./toolkits.nix
-		./virtualisation.nix
+		# ./virtualisation.nix
 	];
 
 	# In this place goes things that are too general or too small that putting them in their own files is just cluttering
@@ -21,9 +22,6 @@
 	console = {
 		font = "Lat2-Terminus16";
 	};
-
-	# Do suspend-then-hibernate
-	systemd.services."systemd-suspend-then-hibernate".aliases = [ "systemd-suspend.service" ];
 
 	documentation = {
 		man = {
@@ -41,40 +39,11 @@
 	};
 	
 	environment = {
-			
 			etc."current-nixos".source = ./.;
-
 			variables = {
-			EDITOR = "nano";
-		};
+				EDITOR = "nano";
+			};
 	};
 
-		# Firefox
-		programs.firefox = {
-			enable = true;
-		};
 		
-		# GPS
-		location.provider = "geoclue2";
-		services.geoclue2 = {
-			enable = true;
-			# Because MLS is ded, BeaconDB can now be used.
-			# TODO: See how can I help with BeaconDB.
-			# Maybe api.beacondb.net shouldn't be used here, but instead just beacondb.net?
-			# Also see https://github.com/NixOS/nixpkgs/issues/321121
-			# https://github.com/NixOS/nixpkgs/pull/325430
-			geoProviderUrl = "https://beacondb.net/v1/geolocate";
-			submissionUrl = "https://beacondb.net/v2/geosubmit";
-			submissionNick = "stereomato";
-			submitData = true;
-		};
-	security = {
-		protectKernelImage = false;
-		
-		sudo = {
-			enable = true;
-		};
-		
-		polkit.enable = true;
-	};
 }

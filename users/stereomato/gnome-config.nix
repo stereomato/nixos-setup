@@ -30,7 +30,7 @@
 		# Workaround for gtk.theme.package
 		adw-gtk3
 	] else [];
-	
+
 	# TODO: does this break anything in KDE?
 	# Probably not
 	gtk = {
@@ -54,7 +54,7 @@
 				night-light-enabled = true;
 			};
 			"org/gnome/shell/extensions/lockkeys" = {
-				show-hide = true;
+				style = "show-hide";
 			};
 			"org/gnome/TextEditor" = {
 				show-line-numbers = true;
