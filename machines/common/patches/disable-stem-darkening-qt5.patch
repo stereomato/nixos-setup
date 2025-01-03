@@ -1,0 +1,14 @@
+diff --git a/src/platformsupport/fontdatabases/freetype/qfontengine_ft.cpp b/src/platformsupport/fontdatabases/freetype/qfontengine_ft.cpp
+index 52ce36b0..9b449cac 100644
+--- a/src/platformsupport/fontdatabases/freetype/qfontengine_ft.cpp
++++ b/src/platformsupport/fontdatabases/freetype/qfontengine_ft.cpp
+@@ -150,7 +150,8 @@ QtFreetypeData *qt_getFreetypeData()
+         FT_Init_FreeType(&freetypeData->library);
+ #if defined(FT_FONT_FORMATS_H)
+         // Freetype defaults to disabling stem-darkening on CFF, we re-enable it.
+-        FT_Bool no_darkening = false;
++       // KDE has inconsistent text rendering with this, so disable it.
++        FT_Bool no_darkening = true;
+         FT_Property_Set(freetypeData->library, "cff", "no-stem-darkening", &no_darkening);
+ #endif
+     }
