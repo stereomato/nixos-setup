@@ -1,5 +1,5 @@
-{ taihouConfig, pkgs, ... }:{
-	home.packages = with pkgs; [
+{ config, pkgs, ... }:{
+	users.users.stereomato.packages = with pkgs; [
 		
 		# General multimedia tools
 		# handbrake: https://github.com/NixOS/nixpkgs/pull/297984
@@ -9,15 +9,16 @@
 		obs-studio-with-plugins simplescreenrecorder 
 
 		# Video Production & manipulation
-		kdenlive mkvtoolnix davinci-resolve pitivi olive-editor flowblade
+		kdePackages.kdenlive mkvtoolnix pitivi olive-editor flowblade
+		# davinci-resolve don't use it
 
 		# Music/Audio file management
 		# Adding both normal ffmpeg and ffmpeg_5 because at time of writing (14-oct-22) default ffmpeg is 4.4.2
 		# Deleted freac because it's broken anywayo
-		wavpack fdk-aac-encoder lame flac opusTools opustags flacon easytag spek
+		wavpack fdk-aac-encoder lame flac opusTools opustags easytag spek # flacon
 
 		# Music production: DAWs
-		audacity ardour qpwgraph reaper 
+		audacity qpwgraph reaper ardour # https://nixpk.gs/pr-tracker.html?pr=369048
 
 		# Music production: plugins
 		# FTBFS: distrho
@@ -37,8 +38,8 @@
 
 		# Tag manupulation
 		# kid3
-	] ++ lib.optionals taihouConfig.services.desktopManager.plasma6.enable []
-	++ lib.optionals taihouConfig.services.xserver.desktopManager.gnome.enable [
+	] ++ lib.optionals config.services.desktopManager.plasma6.enable []
+	++ lib.optionals config.services.xserver.desktopManager.gnome.enable [
 		drawing
 		gnome-obfuscate eyedropper
 		kooha

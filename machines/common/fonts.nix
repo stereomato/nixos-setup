@@ -252,7 +252,8 @@
 		# MacOS-like font rendering
 		# fuzziness a la macOS/W95
 		#	FREETYPE_PROPERTIES = "truetype:interpreter-version=35";
-		# Font emboldening
-		FREETYPE_PROPERTIES = if config.services.desktopManager.plasma6.enable then "cff:no-stem-darkening=0 type1:no-stem-darkening=0 t1cid:no-stem-darkening=0 autofitter:no-stem-darkening=0" else "";
+		# type1:no-stem-darkening=1 t1cid:no-stem-darkening=1 autofitter:no-stem-darkening=1" 
+		# Disable stem darkening on KDE Plasma
+		# FREETYPE_PROPERTIES = if config.services.desktopManager.plasma6.enable then "cff:no-stem-darkening=1" else "";
 	};
 }

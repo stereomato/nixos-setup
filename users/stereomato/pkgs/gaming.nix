@@ -1,7 +1,7 @@
-{ pkgs, ... }:{
-	home.packages = with pkgs; [
+{config, lib, pkgs, ... }:{
+  users.users.stereomato.packages = with pkgs; [
 		# Windows related stuff
-		wineWowPackages.stagingFull dxvk  winetricks proton-caller bottles
+		wineWowPackages.stagingFull dxvk  winetricks proton-caller bottles #https://nixpk.gs/pr-tracker.html?pr=368882
 
 		# Games & Fun
 		# minecraft (official launcher) https://github.com/NixOS/nixpkgs/issues/179323
@@ -14,8 +14,4 @@
 		# rip citra-nightly
 		dolphin-emu-beta ppsspp-sdl-wayland # pcsx2
 	];
-
-	programs.mangohud = {
-		enable = true;
-	};
 }

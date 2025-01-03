@@ -1,18 +1,8 @@
-{ pkgs, ... }:{
+{ config, lib, pkgs, ... }:{
 	imports = [
-		./boot.nix
-		# ./desktop-environment.nix
 		./fonts.nix
 		./software.nix
 		./hardware.nix
-		# ./i18n.nix
-		#./networking.nix
-		#./nix.nix
-		# ./performance.nix
-		./system-management.nix
-		#./system.nix
-		./toolkits.nix
-		# ./virtualisation.nix
 	];
 
 	# In this place goes things that are too general or too small that putting them in their own files is just cluttering
@@ -23,27 +13,82 @@
 		font = "Lat2-Terminus16";
 	};
 
-	documentation = {
-		man = {
-			generateCaches = true;
-			mandoc = {
-				enable = false;
-			};
-			man-db = {
-				enable = true;
-			};
-		};
-		dev = {
-			enable = true;
-		};
-	};
 	
-	environment = {
-			etc."current-nixos".source = ./.;
-			variables = {
-				EDITOR = "nano";
+	boot = {
+		plymouth = {
+			enable = true;
+			font = "${pkgs.inter}/share/fonts/truetype/InterVariable.ttf";
+			
+		} // lib.optionalAttrs (config.services.desktopManager.plasma6.enable) {
+			theme = "breeze";
+			themePackages = [pkgs.kdePackages.breeze-plymouth];
+		};
+		
+		initrd = {
+			availableKernelModules = [ "i915" "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+			kernelModules = [ ];
+			luks = {
+				mitigateDMAAttacks = true;
 			};
+			systemd.enable = true;
+		};
+		
+		kernelParams = [ 
+			# Find out whether this is a good idea or not
+			# "pcie_aspm=force"
+			
+			# Debugging i915
+			# "drm.debug=0xe" 
+			# "log_buf_len=4M" 
+			# "ignore_loglevel"
+			
+			"preempt=full"
+			# PSR stuff, should help with battery saving on laptop displays that support this
+			"i915.enable_psr=1"
+			"i915.enable_psr2_sel_fetch=1"
+			# Powersaving
+			# "iwlwifi.power_save=1"
+			# "iwlwifi.power_level=3"
+			# Zswap settings
+			"zswap.enabled=Y"
+			"zswap.compressor=zstd"
+			"zswap.zpool=zsmalloc"
+			"zswap.max_pool_percent=35"
+			"zswap.accept_threshold_percent=90"
+
+			
+		];
+		loader = {
+			systemd-boot = {
+				enable = true;
+				# configurationLimit = 10;
+			};
+			efi = {
+				canTouchEfiVariables = true;
+				efiSysMountPoint = "/boot";
+			};
+		};
 	};
 
-		
+	environment = {
+		# Create a folder in /etc that has a link to the current NixOS configuration
+		# Very good in case of... an accident
+		etc."current-nixos".source = ./.;
+	};
+
+	system = {
+		# Determines the NixOS version whose format for stateful data will be used.
+		# Upgrading this number isn't really neccessary, but possible. Read the NixOS changelogs if so.
+		stateVersion = "24.11";
+		# Copy the running system's configuration.nix to /run/current-system/configuration.nix
+		#copySystemConfiguration = true;
+		autoUpgrade = {
+			# Can also use the flags knob for adding flags like --upgrade-all. --upgrade is already set, duh.
+			# Disable because of the input fonts messing with the execution.
+			enable = false;
+			dates = "sunday";
+			persistent = true;
+			operation = "boot";
+		};
+	};
 }

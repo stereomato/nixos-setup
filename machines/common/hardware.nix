@@ -165,7 +165,7 @@
 								# 102 (balance_performance) + 192 (balance_power) / 2 = 147
 								set preference 147
 						end
-						echo $preference | tee /sys/devices/system/cpu/cpufreq/policy?/energy_performance_preference
+						echo $preference | tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
 					else
 						echo "You need to provide a proper mode for this script to actually do something, either --mode=charger or --mode=battery."
 						return 1
@@ -226,7 +226,7 @@
 
 	security.rtkit.enable = true; # for pipewire
 	services = {
-		
+		# TODO: tabs break this, so don't add tabs, but spaces
 		udev.extraRules = ''
 			# This is to circumvent PPD setting epp to balance_power
 			SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger"

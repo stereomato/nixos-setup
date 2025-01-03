@@ -1,14 +1,12 @@
-{ taihouConfig, pkgs, inputs, ... }:{
+{config, lib, pkgs, ...}:{
   imports = [
+    ./imports
+    ./media
     ./gaming.nix
     ./internet.nix
   ];
-
-  # Stuff that I either don't know where to put or doesn't have enough items to be put in their own file
-  home.packages = with pkgs; [
-			
-			# TODO: Organize better
-	
+  users.users.stereomato.packages = with pkgs; [ 
+    # TODO: Organize better
 			# AI stuff
 			#inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
 
@@ -18,7 +16,7 @@
 			#oxen
 			
 			# Zrythm bug https://github.com/NixOS/nixpkgs/issues/184839
-			libsForQt5.breeze-icons
+			# libsForQt5.breeze-icons
 
 			# File compressors
 			rar p7zip
@@ -52,10 +50,10 @@
 
 			# Uni
 			octaveFull
-		] ++ lib.optionals taihouConfig.services.desktopManager.plasma6.enable [
+		] ++ lib.optionals config.services.desktopManager.plasma6.enable [
 			libreoffice-qt-fresh
 		 ]
-		++ lib.optionals taihouConfig.services.xserver.desktopManager.gnome.enable [
+		++ lib.optionals config.services.xserver.desktopManager.gnome.enable [
 			libreoffice-fresh
 			
 			# gnome stuff
@@ -71,4 +69,5 @@
 			# FTBFS nix log /nix/store/q7yjb9yhxq2n2lzfihd12mswpr8igi3i-font-manager-0.8.8.drv
 			# font-manager
 		 ];
+
 }

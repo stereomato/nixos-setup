@@ -1,17 +1,5 @@
-{ taihouConfig, pkgs, ... }:{
-
-	nixpkgs.config = {
-
-		# Doesn't work due to https://github.com/nix-community/home-manager/issues/6015
-		#permittedInsecurePackages = [
-			# Neochat
-		 # "olm-3.2.16"
-		#];
-
-		
-	};
-
-	home.packages = with pkgs; [
+{config, libs, pkgs, ... }:{
+  users.users.stereomato.packages = with pkgs; [
 		# Web Browsers
 		google-chrome vivaldi vivaldi-ffmpeg-codecs 
 		
@@ -40,7 +28,7 @@
 
 		# Virtual classes
 		zoom-us
-	] ++ lib.optionals taihouConfig.services.desktopManager.plasma6.enable [
+	] ++ lib.optionals config.services.desktopManager.plasma6.enable [
 			# XMPP
 			#kaidan
 			# Downloaders
@@ -52,13 +40,10 @@
 			# Web browser
 			kdePackages.falkon kdePackages.angelfish
 	]
-		++ lib.optionals taihouConfig.services.xserver.desktopManager.gnome.enable  [
+		++ lib.optionals config.services.xserver.desktopManager.gnome.enable  [
 				fractal
 				# Internet tools
 				fragments
 			];
 
-	services.syncthing = {
-		enable = true;
-	};
 }

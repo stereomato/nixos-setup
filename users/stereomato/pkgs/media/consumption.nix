@@ -1,10 +1,9 @@
 { taihouConfig, pkgs, ... }:{
 	# Here go things that are related to media consumption
 	imports = [
-		./mpv.nix
 	];
 
-	home.packages = with pkgs; [
+	users.users.stereomato.packages = with pkgs; [
 		# anime
 		ani-cli
 		
@@ -17,14 +16,20 @@
 		# Gstreamer programs
 		gst_all_1.gstreamer
 
-	] ++ lib.optionals taihouConfig.services.desktopManager.plasma6.enable [ 
+		# Downloader
+		popcorntime
+
+		# Streamer
+		stremio
+
+	] ++ lib.optionals config.services.desktopManager.plasma6.enable [ 
 			# mpv frontend
 			haruna 
 
 			# music player
 			fooyin
 		]
-	++ lib.optionals taihouConfig.services.xserver.desktopManager.gnome.enable [
+	++ lib.optionals config.services.xserver.desktopManager.gnome.enable [
 			# Digital books (epubs, manga)
 			foliate
 			# Digital media players/readers/streamers

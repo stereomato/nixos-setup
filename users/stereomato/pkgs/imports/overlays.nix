@@ -1,6 +1,20 @@
 { pkgs, ... }:{
 	nixpkgs.overlays = [(
 			self: super: {
+
+				# These two are self explanatory
+				# Need to assign them to each thingy so that well, it'll get overriden as necessary.
+				# I don't think overriding everything
+				qtbase-no-stem-darkening = pkgs.kdePackages.qtbase.overrideAttrs(old: {
+					patches = pkgs.kdePackages.qtbase.patches ++ [
+						./patches/disable-stem-darkening.patch
+					];
+				});
+				qt5base-no-stem-darkening = pkgs.libsForQt5.qt5.qtbase.overrideAttrs(old: {
+					patches = pkgs.libsForQt5.qt5.qtbase.patches ++ [
+						./patches/disable-stem-darkening-qt5.patch
+					];
+				});
 				google-chrome = super.google-chrome.override {
 					commandLineArgs = "--enable-features=Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,TouchpadOverscrollHistoryNavigation,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading,UseMultiPlaneFormatForHardwareVideo --disable-font-subpixel-positioning=true --enable-zero-copy=true --use-vulkan=true";
 					# commandLineArgs = "--enable-features=TouchpadOverscrollHistoryNavigation,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading,UseMultiPlaneFormatForHardwareVideo --disable-font-subpixel-positioning=true --enable-zero-copy=true";
@@ -32,6 +46,9 @@
 				gimp-stereomato = super.gimp.override {
 					withPython = true;
 				};
+				patool = super.patool.overridePythonAttrs (old: {
+					disabledTests = super.patool.disabledTests ++ [ "test_nested_gzip" ];
+				});
 			}
 	)];
 }
