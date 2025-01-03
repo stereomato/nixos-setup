@@ -7,7 +7,6 @@
 
 	imports = [
 		./performance
-		./overlays
 		./support
 	];
 }

@@ -1,11 +1,6 @@
 {config, lib, pkgs, ... }:{
   nixpkgs.overlays = [(
 		self: super: {
-			# https://github.com/NixOS/nixpkgs/issues/368651
-			cnijfilter2 = super.cnijfilter2.overrideAttrs (old: {
-				patches = super.cnijfilter2.patches ++ [ ./patches/fix-cnijfilter2.patch ];
-			});
-
 			# Zen kernel
 			# TODO: Find where this comes from, and how it works? But, https://github.com/shiryel/nixos-dotfiles/blob/master/overlays/overrides/linux/default.nix# helped a lot!
 			linux-stereomato-zen = super.linuxPackages_zen.extend (kself: ksuper: {
@@ -140,40 +135,60 @@
 					ignoreConfigErrors = true;
 				};
 			});
-
-			optimizeIntelCPUperformancePolicy = super.writers.writeFishBin "scriptOptimizeIntelCPUperformancePolicy" ''
-				set -l options 'mode=?'
-				argparse $options -- $argv
-				set bootComplete (systemctl is-active graphical.target)
-				while test $bootComplete != "active"
-					sleep 1
-					set bootComplete (systemctl is-active graphical.target)
-				end
-
-				if test -n "$_flag_mode"
-					# Wait a second in case there's a race condition between ppd and this script
-					sleep 1
-					if test "$_flag_mode" = "battery" -o "$_flag_mode" = "charger" -o "$_flag_mode" = "testing"
-						switch $_flag_mode
-							case battery
-								set preference balance_power
-							case charger
-								set preference balance_performance
-							case testing
-								# https://github.com/torvalds/linux/blob/bcde95ce32b666478d6737219caa4f8005a8f201/drivers/cpufreq/intel_pstate.c#L3655
-								# 102 (balance_performance) + 192 (balance_power) / 2 = 147
-								set preference 147
-						end
-						echo $preference | tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference
-					else
-						echo "You need to provide a proper mode for this script to actually do something, either --mode=charger or --mode=battery."
-						return 1
-					end
-				else
-					echo "You need to provide a mode for this script to actually do something, either --mode=charger or --mode=battery."
-					return 1
-				end
-			'';
 		}
 	)];
+
+	boot = {
+		plymouth = {
+			enable = true;
+			font = "${pkgs.inter}/share/fonts/truetype/InterVariable.ttf";
+		} // lib.optionalAttrs (config.services.desktopManager.plasma6.enable) {
+			theme = "breeze";
+			themePackages = [pkgs.kdePackages.breeze-plymouth];
+		};
+		initrd = {
+			availableKernelModules = [ "i915" "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+			kernelModules = [ ];
+			luks = {
+				mitigateDMAAttacks = true;
+			};
+			systemd.enable = true;
+		};
+		kernelModules = [ "kvm-intel" ];
+		extraModulePackages = [ ];
+		kernelPackages = pkgs.linux-stereomato;
+		kernelParams = [ 
+			# Find out whether this is a good idea or not
+			# "pcie_aspm=force"
+			
+			# Debugging i915
+			# "drm.debug=0xe" 
+			# "log_buf_len=4M" 
+			# "ignore_loglevel"
+			
+			"preempt=full"
+			# PSR stuff, should help with battery saving on laptop displays that support this
+			"i915.enable_psr=1"
+			"i915.enable_psr2_sel_fetch=1"
+			# Powersaving
+			# "iwlwifi.power_save=1"
+			# "iwlwifi.power_level=3"
+			# Zswap settings
+			"zswap.enabled=Y"
+			"zswap.compressor=zstd"
+			"zswap.zpool=zsmalloc"
+			"zswap.max_pool_percent=35"
+			"zswap.accept_threshold_percent=90"
+		];
+		loader = {
+			systemd-boot = {
+				enable = true;
+				# configurationLimit = 10;
+			};
+			efi = {
+				canTouchEfiVariables = true;
+				efiSysMountPoint = "/boot";
+			};
+		};
+	};
 }
