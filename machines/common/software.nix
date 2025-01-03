@@ -178,6 +178,12 @@
 		variables = {
 			EDITOR = "nano";
 		};
+		gnome.excludePackages = with pkgs; lib.optionals (config.services.xserver.desktopManager.gnome.enable) [ 
+			# I use the new app, Papers
+			# TODO: Remove this once Papers is promoted to official and that is installed instead of Evince
+			evince
+		];
+
 		systemPackages = with pkgs; [
 			# System monitoring, managing & benchmarking tools
 			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils powertop btrfs-progs nvtopPackages.intel powerstat iotop smem nix-info kdiskmark file stress-ng btop fastfetch
@@ -189,29 +195,22 @@
 				kdePackages.qtsvg
 				kdePackages.kleopatra
 				bibata-cursors
+			]
+			++ lib.optionals (config.services.xserver.desktopManager.gnome.enable) [
+					# Default PDF viewer
+					papers
+					# Miscellanous Gnome apps
+					gnome-icon-theme gnome-tweaks # gnome-extension-manager
+					ptyxis
+					gnome-boxes
+					showtime
+					morewaita-icon-theme
+					mission-center
+					resources
+					gnome-power-manager
+					# This is needed for file-roller to open .debs
+					binutils
 			];
-	} // lib.optionalAttrs (config.services.xserver.desktopManager.gnome.enable) {
-		gnome.excludePackages = with pkgs; [ 
-			# I use the new app, Papers
-			# TODO: Remove this once Papers is promoted to official and that is installed instead of Evince
-			evince
-		];
-		systemPackages = with pkgs; [
-			# Default PDF viewer
-			papers
-			# Miscellanous Gnome apps
-			gnome-icon-theme gnome-tweaks # gnome-extension-manager
-			ptyxis
-			gnome-boxes
-			showtime
-			morewaita-icon-theme
-			mission-center
-			resources
-			gnome-power-manager
-
-			# This is needed for file-roller to open .debs
-			binutils
-		];
 	};
 
 	i18n = {
@@ -304,4 +303,28 @@
   # This is system-wide
   gtk = {};
   qt = {};
+
+	# Limits needed for pro audio
+	security.pam = {
+		loginLimits = [
+			{
+				domain = "@audio";
+				type = "-";
+				item = "rtprio";
+				value = 98;
+			}
+			{
+				domain = "@audio";
+				type = "-";
+				item = "memlock";
+				value = "unlimited";
+			}
+			{
+				domain = "@audio";
+				type = "-";
+				item = "nice";
+				value = -11;
+			}
+		];
+	};
 }

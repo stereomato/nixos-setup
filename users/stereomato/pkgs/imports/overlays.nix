@@ -23,9 +23,6 @@
 				#google-chrome = super.google-chrome.overrideAttrs (old: {
 				#	buildInputs = super.google-chrome.buildInputs ++ [ super.kdePackages.full ];
 				#});
-				vscode = super.vscode.override {
-					commandLineArgs = "--disable-font-subpixel-positioning=true";
-				};
 				chowmatrix = super.callPackage ./derivationsYetToUpstream/chowmatrix.nix {};
 				auburn-sounds-graillon-2 = super.callPackage ./derivationsYetToUpstream/auburn-sounds-graillon-2.nix {};
 				tal-reverb-4 = super.callPackage ./derivationsYetToUpstream/tal-reverb-4.nix {};

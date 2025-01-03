@@ -169,15 +169,16 @@
 			ANRT-Baskervville
 			terminus_font_ttf
 			terminus_font
-			commit-mono
 
+			# OTF fonts area
+			inter-otf
+			commit-mono
 			# SF-Mono
 			# SF-Pro
 			# SF-Arabic
 			# SF-Compact
 			# New-York
-		] ++ lib.optionals config.services.desktopManager.plasma6.enable [ inter-otf ]
-		++ lib.optionals config.services.xserver.desktopManager.gnome.enable [ inter ];
+		];
 
 		fontDir.enable = true;
 		fontconfig = {

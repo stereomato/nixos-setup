@@ -189,6 +189,10 @@
 		./imports/sysctl-tweaks.nix
 	];
 
+	# Keyboard Layout
+	# Not gonna have any other kind of keyboard layout anytime soon, so put this in common
+	console.keyMap = "la-latin1";
+	
 	hardware = {
 		pulseaudio.enable = false; # because of pipewire
 		enableAllFirmware = true;
@@ -226,6 +230,7 @@
 
 	security.rtkit.enable = true; # for pipewire
 	services = {
+		
 		# TODO: tabs break this, so don't add tabs, but spaces
 		udev.extraRules = ''
 			# This is to circumvent PPD setting epp to balance_power
@@ -256,8 +261,12 @@
 		# Thunderbolt
 		hardware.bolt.enable = true;
 
-		# Wacom tablets
-		xserver.wacom.enable = true;
+		xserver = {
+			# Wacom tablets
+			wacom.enable = true;
+			# Keyboard layout
+			xkb.layout = "latam";
+		};
 	
 		# Audio + Video backend server
 		# Also important for pro audio

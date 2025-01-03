@@ -35,7 +35,5 @@
 		adb.enable = true;
 		# nix-index conflicts with this, so let's disable it.
 		command-not-found.enable = false;
-
-
 	};
 }

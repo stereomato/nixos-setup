@@ -14,9 +14,10 @@
 			#qadwaitadecorations = super.qadwaitadecorations.override {
 				# qt5ShadowsSupport = true;
 			#};
-			jdk17 = super.jdk17.override {
-				enableJavaFX = true;
-			};
+			
+			#jdk17 = super.jdk17.override {
+			#	enableJavaFX = true;
+			#};
 
 			
 		}

@@ -4,6 +4,7 @@
     ./media
     ./gaming.nix
     ./internet.nix
+		./software-development.nix
   ];
   users.users.stereomato.packages = with pkgs; [ 
     # TODO: Organize better

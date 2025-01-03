@@ -31,17 +31,12 @@
 		# Since ADL, Intel cpus have a hybrid core system. I use ADL, so
 		# Set this to nproc - 4, so as to at least leave 4 cores free (which would be 1 cluster of E-cores)
 		# Now, this will not happen that way actually, but well, still, it'll leave enough space for the UI and whatever I'm using
+		# 3/4 of nproc essentially
 		nix.settings.cores = 12;
 
-		# This was an experiment, trying to build the system for the CPU architecture of my laptop, but IDK if it's worth it.
-		# nixpkgs.localSystem.gcc.arch = "alderlake";
-		# nixpkgs.localSystem.gcc.tune = "alderlake";
-		# nixpkgs.localSystem.system = "x86_64-linux";
-		# nix.settings.system-features = [ "gccarch-alderlake" ];
 		networking.hostName = "Taihou";
 
-		# Keyboard Layout
-		console.keyMap = "la-latin1";
+		
 
 		time = {
 			timeZone = "America/Lima";
@@ -78,9 +73,6 @@
 		};
 		services = {
 			xserver = {
-
-				# Keyboard layout
-				xkb.layout = "latam";
 				# Enable for GNOME
 				desktopManager.gnome.enable = true;
 			};

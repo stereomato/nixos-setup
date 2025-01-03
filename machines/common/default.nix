@@ -33,6 +33,10 @@
 			systemd.enable = true;
 		};
 		
+		kernelModules = [ "kvm-intel" ];
+		extraModulePackages = [ ];
+		kernelPackages = pkgs.linux-stereomato;
+
 		kernelParams = [ 
 			# Find out whether this is a good idea or not
 			# "pcie_aspm=force"
@@ -70,10 +74,23 @@
 		};
 	};
 
+	
+
+	boot = {
+		
+	};
+
+	programs.fish = {
+		enable = true; 
+		useBabelfish = true;
+	};
+
 	environment = {
 		# Create a folder in /etc that has a link to the current NixOS configuration
 		# Very good in case of... an accident
 		etc."current-nixos".source = ./.;
+		localBinInPath = true;
+		shells = with pkgs; [ fish ];
 	};
 
 	system = {

@@ -1,7 +1,10 @@
 { ... }:{
 	
+	# TODO: I only want to populate this if we're in the installed system, but what if I'm on install media?
+	# Need a way to keep some stuff private to Taihou?
+	# Too many ideas...
 	disko.devices = {
-		   disk = {
+		disk = {
 				internalNVME = {
 					type = "disk";
 					device = "/dev/nvme0n1";
@@ -67,8 +70,8 @@
 
 				};
 
-			};
 		};
+	};
 
 	# These are the pre-disko configs
 	# TODO: remove these when I no longer have a use for them
