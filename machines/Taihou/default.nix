@@ -5,11 +5,11 @@
 			./boot.nix
 			# bc of disko
 			./filesystems.nix
-			./kernel.nix
-			./pro-audio.nix
+			# ./kernel.nix
+			# ./pro-audio.nix
 			./programs.nix
 			# ./services.nix
-			./users.nix
+			# ./users.nix
 			../../users/stereomato
 		];
 

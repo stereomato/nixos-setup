@@ -13,11 +13,7 @@
 			});
 		}
 	 )];
-	
-	imports = [
-		./imports/overlays.nix
-	];
-	
+
 	system.replaceDependencies.replacements = [
 		# Disable stem darkening on QT
 		{
