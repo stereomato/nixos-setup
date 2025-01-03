@@ -1,39 +1,9 @@
 { config, inputs, lib, pkgs, ... }:{
 	imports = [
 		./overlays.nix
+		./deskEnv.nix
 	];
-	nixpkgs.overlays = [(
-		self: super: {
-			# Dynamic triple buffering patch
-			mutter = super.mutter.overrideAttrs (old: {
-  				src = inputs.mutter-triple-buffering-src;
-  				preConfigure = ''
-    				cp -a "${inputs.gvdb-src}" ./subprojects/gvdb
-  				'';
-			});
-		}
-	 )];
-
-	system.replaceDependencies.replacements = [
-		# Disable stem darkening on QT
-		{
-			oldDependency = pkgs.kdePackages.qtbase;
-			newDependency = pkgs.kdePackages.qtbase.overrideAttrs(old: {
-				patches = pkgs.kdePackages.qtbase.patches ++ [
-					./patches/disable-stem-darkening.patch
-				];
-			});
-		}
-		{
-			oldDependency = pkgs.libsForQt5.qt5.qtbase;
-			newDependency = pkgs.libsForQt5.qt5.qtbase.overrideAttrs(old: {
-				patches = pkgs.libsForQt5.qt5.qtbase.patches ++ [
-					./patches/disable-stem-darkening-qt5.patch
-				];
-			});
-		}
-	];
-
+	
 	nix = {
 		settings = {
 			auto-optimise-store = true;
@@ -50,19 +20,6 @@
 			"ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
 			];
 		};
-		gc = {
-			persistent = true;
-			automatic = true;
-			dates = "sunday";
-			options = "--delete-older-than 7d";
-		};
-		optimise = {
-			# This running at the same time as the garbage collector might cause issues.
-			dates = [ "saturday" ];
-			automatic = true;
-		};
-		daemonIOSchedClass = "idle";
-		daemonCPUSchedPolicy = "idle";
 		# Set this thanks to:
 		# https://dataswamp.org/~solene/2022-07-20-nixos-flakes-command-sync-with-system.html
 		registry.nixpkgs.flake = inputs.nixpkgs;
@@ -84,11 +41,6 @@
 	};
 
 	services = {
-		# SMART daemon
-		smartd = {
-			enable = true;
-		};
-
 		vnstat.enable = true;
 		# Needed for anything GUI
 		xserver.enable = true;
@@ -109,32 +61,6 @@
 			submitData = true;
 		};
 	 #lib.mkIf (config.services.desktopManager.plasma6.enable) 
-	
-		colord.enable = lib.mkIf (config.services.desktopManager.plasma6.enable) true;
-		displayManager.sddm = {
-			enable = config.services.desktopManager.plasma6.enable;
-			wayland.enable = true;
-		};
-
-		xserver.desktopManager.gnome = {
-			extraGSettingsOverridePackages = [ pkgs.mutter ];
-			# There's a possible extra setting I could add here, but I don't know if it's necessary considering I modify font settings using fontconfing: https://www.reddit.com/r/gnome/comments/1grtn97/comment/lx9fiib/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-			# Removed 'xwayland-native-scaling' because it's annoying how it's implemented in Gnome, and I don't
-			# give enough of a shit about blurry Xwayland apps honestly. Most end up working on wayland eventually
-			extraGSettingsOverrides = ''
-				[org.gnome.mutter]
-				experimental-features=['scale-monitor-framebuffer']
-			'';
-		};
-		# The Gnome Display Manager
-		xserver.displayManager.gdm.enable = config.services.xserver.desktopManager.gnome.enable;
-
-		# Extra gnome apps
-		gnome = lib.mkIf (config.services.xserver.desktopManager.gnome.enable) {
-			core-developer-tools.enable = true;
-			# I don't need this, lmao
-			games.enable = false;
-		};
 	};
 
 	programs = {
@@ -150,66 +76,18 @@
 			#atopgpu.enable = true;
 			netatop.enable = false;
 		};
-	} // lib.optionalAttrs (config.services.xserver.desktopManager.gnome.enable) {
-		# TODO: ask why these 2 and gnome-power-manager aren't in any of the 3 gnome toggles.
-		# TODO: https://github.com/NixOS/nixpkgs/pull/368610/commits/8c17fbe4656087e9a86a573b5a0d76e939225f21
-		calls.enable = false;
-	 
-		# There's no "Open in Ptyxis" element in the right click menu of Files so... add it
-		# Ptyxis has to be installed.
-		nautilus-open-any-terminal = {
-			enable = true;
-			terminal = "ptyxis";
-		};
-	} // lib.optionalAttrs (config.services.desktopManager.plasma6.enable) {
-		kdeconnect.enable = true;
-			partition-manager.enable = true;
-			kde-pim = {
-				merkuro = true;
-				kontact = true;
-				kmail = true;
-			};
-			# https://github.com/NixOS/nixpkgs/issues/348919
-			# k3b.enable = true;
 	};
 
 	environment = {
 		variables = {
 			EDITOR = "nano";
 		};
-		gnome.excludePackages = with pkgs; lib.optionals (config.services.xserver.desktopManager.gnome.enable) [ 
-			# I use the new app, Papers
-			# TODO: Remove this once Papers is promoted to official and that is installed instead of Evince
-			evince
-		];
-
 		systemPackages = with pkgs; [
 			# System monitoring, managing & benchmarking tools
 			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils powertop btrfs-progs nvtopPackages.intel powerstat iotop smem nix-info kdiskmark file stress-ng btop fastfetch
 			# System management
 			gparted
-		] ++ lib.optionals (config.services.desktopManager.plasma6.enable) [
-				#  Extra KDE stuff
-				kdePackages.filelight
-				kdePackages.qtsvg
-				kdePackages.kleopatra
-				bibata-cursors
-			]
-			++ lib.optionals (config.services.xserver.desktopManager.gnome.enable) [
-					# Default PDF viewer
-					papers
-					# Miscellanous Gnome apps
-					gnome-icon-theme gnome-tweaks # gnome-extension-manager
-					ptyxis
-					gnome-boxes
-					showtime
-					morewaita-icon-theme
-					mission-center
-					resources
-					gnome-power-manager
-					# This is needed for file-roller to open .debs
-					binutils
-			];
+		];
 	};
 
 	i18n = {
@@ -218,19 +96,6 @@
 			LANG="en_US.UTF-8";
 		};
 		supportedLocales = [ "all" ];
-		
-		# KDE issue with uh... QT_IM_MODULE and GTK_IM_MODULE
-		#inputMethod = {
-		#	enabled = "ibus";
-		#	ibus = {
-		#		engines = with pkgs.ibus-engines; [
-		#			typing-booster
-		#			# https://github.com/NixOS/nixpkgs/pull/282148
-		#			# mozc
-		#			uniemoji
-		#		];
-		#	};
-		#};
 	};
 
 	networking = {
@@ -303,27 +168,5 @@
   gtk = {};
   qt = {};
 
-	# Limits needed for pro audio
-	security.pam = {
-		loginLimits = [
-			{
-				domain = "@audio";
-				type = "-";
-				item = "rtprio";
-				value = 98;
-			}
-			{
-				domain = "@audio";
-				type = "-";
-				item = "memlock";
-				value = "unlimited";
-			}
-			{
-				domain = "@audio";
-				type = "-";
-				item = "nice";
-				value = -11;
-			}
-		];
-	};
+	
 }

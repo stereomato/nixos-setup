@@ -230,15 +230,8 @@
 			#	</match>
 
 			defaultFonts = {
-				sansSerif = 
-					if config.services.xserver.desktopManager.gnome.enable 
-						then [
-							"Inter Variable"
-						] else [ 
-								"Inter"
-							]
-					# Other fonts
-					++ [
+				sansSerif = [
+						"Inter"
 						# "IBM Plex Sans"
 						"Cantarell"
 					];

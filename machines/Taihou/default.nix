@@ -3,13 +3,8 @@
 		imports = [
 			../common
 			./boot.nix
-			# bc of disko
 			./filesystems.nix
-			# ./kernel.nix
-			# ./pro-audio.nix
 			./programs.nix
-			# ./services.nix
-			# ./users.nix
 			../../users/stereomato
 		];
 
@@ -26,22 +21,15 @@
 			})
 		];
 
-		
-
 		# Since ADL, Intel cpus have a hybrid core system. I use ADL, so
 		# Set this to nproc - 4, so as to at least leave 4 cores free (which would be 1 cluster of E-cores)
 		# Now, this will not happen that way actually, but well, still, it'll leave enough space for the UI and whatever I'm using
 		# 3/4 of nproc essentially
 		nix.settings.cores = 12;
-
 		networking.hostName = "Taihou";
-
-		
-
 		time = {
 			timeZone = "America/Lima";
 		};
-
 		systemd = {
 			services = {
 				battery-charge-threshold = {

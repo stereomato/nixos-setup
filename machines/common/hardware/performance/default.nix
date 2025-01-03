@@ -41,12 +41,32 @@
 		}
 	)];
 
+	nix = {
+		gc = {
+			persistent = true;
+			automatic = true;
+			dates = "sunday";
+			options = "--delete-older-than 7d";
+		};
+		optimise = {
+			# This running at the same time as the garbage collector might cause issues.
+			dates = [ "saturday" ];
+			automatic = true;
+		};
+		daemonIOSchedClass = "idle";
+		daemonCPUSchedPolicy = "idle";
+	};
 	services = {
+		# SMART daemon
+		smartd = {
+			enable = true;
+		};
 		# TODO: tabs break this, so don't add tabs, but spaces
 		udev.extraRules = ''
 			# This is to circumvent PPD setting epp to balance_power
-			SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger"
-			SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger"
+			SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", TAG+="systemd", ENV{SYSTEMD_WANTS}="fix-intel-epp.service""
+			SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", TAG+="systemd", ENV{SYSTEMD_WANTS}="fix-intel-epp.service"
+"
 		'';
 		# BTRFS autoscrubbing
 		btrfs = {
@@ -115,7 +135,23 @@
 
 	systemd = {
 		# Do suspend-then-hibernate
-		services."systemd-suspend-then-hibernate".aliases = [ "systemd-suspend.service" ];
+		services = {
+		"systemd-suspend-then-hibernate".aliases = [ "systemd-suspend.service" ];
+		fix-intel-epp = {
+					# enable = true;
+					name = "fix-intel-epp.service";
+					description = "Set the epp to balance_performance after going to battery";
+					after = ["graphical.target"];
+					startLimitBurst = 0;
+					serviceConfig = {
+						Type = "oneshot";
+						Restart = "on-failure";
+						ExecStart = "${pkgs.bash}/bin/bash -c 'echo balance_performance | tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference'";
+					};
+					# wantedBy = ["multi-user.target"];
+					requires = [ "graphical.target" ];
+				};
+		};
 		# Out Of Memory daemon
 		oomd = {
 			#TODO: Keep an eye on https://github.com/NixOS/nixpkgs/pull/225747
