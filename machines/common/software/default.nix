@@ -1,5 +1,8 @@
 { config, inputs, lib, pkgs, ... }:{
-	 nixpkgs.overlays = [(
+	imports = [
+		./overlays.nix
+	];
+	nixpkgs.overlays = [(
 		self: super: {
 			# Dynamic triple buffering patch
 			mutter = super.mutter.overrideAttrs (old: {

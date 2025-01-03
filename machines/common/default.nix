@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:{
 	imports = [
 		./fonts.nix
-		./software.nix
-		./hardware.nix
+		./hardware
+		./software
 	];
 
 	# In this place goes things that are too general or too small that putting them in their own files is just cluttering
