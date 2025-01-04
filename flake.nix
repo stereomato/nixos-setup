@@ -2,7 +2,7 @@
 	description = "Stereomato's NixOS setup";
 
 	inputs = {
-		nixpkgs.url = "nixpkgs/374743509c6dc9c3cff7a41c8e2363ba0d12afec";
+		nixpkgs.url = "nixpkgs/nixos-unstable";
 		home-manager = {
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";

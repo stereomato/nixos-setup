@@ -64,9 +64,8 @@
 		# TODO: tabs break this, so don't add tabs, but spaces
 		udev.extraRules = ''
 			# This is to circumvent PPD setting epp to balance_power
-			SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", TAG+="systemd", ENV{SYSTEMD_WANTS}="fix-intel-epp.service""
+			SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="0", TAG+="systemd", ENV{SYSTEMD_WANTS}="fix-intel-epp.service"
 			SUBSYSTEM=="power_supply", ENV{POWER_SUPPLY_ONLINE}=="1", TAG+="systemd", ENV{SYSTEMD_WANTS}="fix-intel-epp.service"
-"
 		'';
 		# BTRFS autoscrubbing
 		btrfs = {
@@ -146,7 +145,7 @@
 					serviceConfig = {
 						Type = "oneshot";
 						Restart = "on-failure";
-						ExecStart = "${pkgs.bash}/bin/bash -c 'echo balance_performance | tee /sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference'";
+						ExecStart = "${pkgs.optimizeIntelCPUperformancePolicy}/bin/scriptOptimizeIntelCPUperformancePolicy --mode=charger";
 					};
 					# wantedBy = ["multi-user.target"];
 					requires = [ "graphical.target" ];
