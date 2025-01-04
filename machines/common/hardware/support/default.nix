@@ -33,6 +33,10 @@
 				cnijfilter2
 			];
 		};
+		udev.extraRules = ''
+				# Arduino
+				SUBSYSTEMS=="usb-serial", TAG+="uaccess"
+		'';
   };
 
   hardware = {

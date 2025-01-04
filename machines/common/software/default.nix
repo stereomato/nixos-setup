@@ -168,5 +168,8 @@
   gtk = {};
   qt = {};
 
-	
+	# I am... here
+	time = {
+			timeZone = "America/Lima";
+		};
 }

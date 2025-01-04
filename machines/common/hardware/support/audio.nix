@@ -13,6 +13,13 @@
 			pulse.enable = true;
 			jack.enable = true;
 		};
+		
+		udev.extraRules = ''
+			# This is for real time audio
+			KERNEL=="cpu_dma_latency", GROUP="audio"
+			KERNEL=="rtc0", GROUP="audio"
+			KERNEL=="hpet", GROUP="audio"
+		'';
   };
 	
 	security = {

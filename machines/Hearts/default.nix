@@ -1,5 +1,5 @@
 { config, pkgs, ... }:{
-	boot.kernelParams = config.boot.kernelParams ++ [ 
+	boot.kernelParams = [ 
 		# Enable HuC
 		"i915.enable_guc=2"
 		# Powersaving
@@ -22,6 +22,13 @@
 				extraGroups = [ "wheel" "audio" "adbusers" "network" "libvirtd" "networkmanager" "doas" "scanners" "lp" ]; 
 				shell = pkgs.fish;
 			};
+		};
+	};
+
+	services = {
+		xserver = {
+			# Enable for GNOME
+			desktopManager.gnome.enable = true;
 		};
 	};
 }

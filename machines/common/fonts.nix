@@ -170,8 +170,7 @@
 			terminus_font_ttf
 			terminus_font
 
-			# OTF fonts area
-			inter-otf
+			inter
 			commit-mono
 			# SF-Mono
 			# SF-Pro
@@ -201,7 +200,7 @@
 				<alias>
 					<family>system-ui</family>
 					<prefer>
-						<family>Inter</family>
+						<family>Inter Variable</family>
 						<family>Cantarell</family>
 					</prefer>
 				</alias>
@@ -231,7 +230,7 @@
 
 			defaultFonts = {
 				sansSerif = [
-						"Inter"
+						"Inter Variable"
 						# "IBM Plex Sans"
 						"Cantarell"
 					];
