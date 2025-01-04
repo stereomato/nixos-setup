@@ -1,4 +1,7 @@
 { config, pkgs, ... }:{
+	imports = [
+		../common
+	];
 	boot.kernelParams = [ 
 		# Enable HuC
 		"i915.enable_guc=2"
