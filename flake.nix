@@ -56,6 +56,7 @@
 					modules = [
 						nix-index-database.nixosModules.nix-index
 						disko.nixosModules.disko
+						./modules/default.nix
 						./machines/Taihou
 					];
 					specialArgs = { inherit inputs; username = "stereomato"; };

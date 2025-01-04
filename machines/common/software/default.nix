@@ -1,7 +1,6 @@
 { config, inputs, lib, pkgs, ... }:{
 	imports = [
 		./overlays.nix
-		./deskEnv.nix
 	];
 	
 	nix = {

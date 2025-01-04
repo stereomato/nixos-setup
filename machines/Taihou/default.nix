@@ -62,14 +62,16 @@
 				];
 			};
 		};
+
+		localModule.gnome.enable = true;
 		services = {
 			xserver = {
 				# Enable for GNOME
-				desktopManager.gnome.enable = true;
+				#desktopManager.gnome.enable = true;
 			};
 			# Enable for KDE
 			# Tried enough times, let's leave it disabled until next year
-			desktopManager.plasma6.enable = false;
+			#desktopManager.plasma6.enable = false;
 			# intel-lpmd.enable = true;
 			# # # intel-lpmd.package = pkgs.intel-lpmd;
 			#  intel-lpmd.settings = {
