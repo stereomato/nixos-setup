@@ -75,6 +75,7 @@
 						./machines/Hearts
 						nix-index-database.nixosModules.nix-index
 					];
+					specialArgs = { inherit inputs; };
 				};
 			};
 			# TODO: An example of homeConfigurations should be @ the home-manager manual
