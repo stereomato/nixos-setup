@@ -40,8 +40,9 @@
       inherit system;
       # TODO: Delete this if overlays work fine under each system.
 			# TODO: Consider making general overlays for multiple machines
-			# overlays = [
-      # ];
+			overlays = [(self: super: {
+				# intel-lpmd = inputs.intel-lmpd-module.outputs.legacyPackages.x86_64-linux.intel-lpmd;
+			})];
 		hostPlatform = system;
       config = {
         allowUnfree = true;

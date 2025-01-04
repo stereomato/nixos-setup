@@ -1,4 +1,4 @@
-	{ pkgs, ... }: {
+	{ inputs, pkgs, ... }: {
 		# Just imports basically
 		imports = [
 			../common
@@ -6,18 +6,24 @@
 			./filesystems.nix
 			./programs.nix
 			../../users/stereomato
+
+			#./extModules/intel-lpmd.nix 
+			#inputs.intel-lpmd-module
+
+			#"${inputs.intel-lpmd-module.outPath}/nixos/modules/services/hardware/intel-lpmd.nix"
 		];
 
 		nixpkgs.overlays = [
 			(self: super: {
 				ydotool = super.ydotool.overrideAttrs(old: {
 					src = super.fetchFromGitHub {
-	 			owner = "stereomato";
-	 			repo = "ydotool";
-	 			rev = "8e8a3d0776b59bf030c45a1458aa55473faa2400";
-	 			hash = "sha256-MtanR+cxz6FsbNBngqLE+ITKPZFHmWGsD1mBDk0OVng=";
-	 			};
+	 					owner = "stereomato";
+	 					repo = "ydotool";
+	 					rev = "8e8a3d0776b59bf030c45a1458aa55473faa2400";
+	 					hash = "sha256-MtanR+cxz6FsbNBngqLE+ITKPZFHmWGsD1mBDk0OVng=";
+	 				};
 				});
+				intel-lpmd = super.callPackage ./extDerivations/intel-lpmd.nix {};
 			})
 		];
 
@@ -64,6 +70,19 @@
 			# Enable for KDE
 			# Tried enough times, let's leave it disabled until next year
 			desktopManager.plasma6.enable = false;
+			# intel-lpmd.enable = true;
+			# # # intel-lpmd.package = pkgs.intel-lpmd;
+			#  intel-lpmd.settings = {
+			#  	entry = {
+			# 		Mode = "0";
+			# 		PerformanceDef = "0";
+			# 		BalancedDef = "0";
+			# 		PowersaverDef = "0";
+			# 		WLTHintEnable = true;
+			# 		WLTProxyEnable = true;
+			# 		States = [];
+			# 	};
+			# };
 		};
 
 		services.fprintd = {
