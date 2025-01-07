@@ -64,6 +64,7 @@
 		};
 
 		localModule.gnome.enable = true;
+		
 		services = {
 			xserver = {
 				# Enable for GNOME

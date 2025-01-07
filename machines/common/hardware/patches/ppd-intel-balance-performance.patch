@@ -1,0 +1,44 @@
+diff --git a/src/ppd-driver-intel-pstate.c b/src/ppd-driver-intel-pstate.c
+index 8696506..c782792 100644
+--- a/src/ppd-driver-intel-pstate.c
++++ b/src/ppd-driver-intel-pstate.c
+@@ -299,7 +299,7 @@ profile_to_epp_pref (PpdProfile profile, gboolean battery)
+   case PPD_PROFILE_POWER_SAVER:
+     return "power";
+   case PPD_PROFILE_BALANCED:
+-    return battery ? "balance_power" : "balance_performance";
++    return "balance_performance";
+   case PPD_PROFILE_PERFORMANCE:
+     return "performance";
+   }
+diff --git a/tests/integration_test.py b/tests/integration_test.py
+index c110b08..245ee34 100644
+--- a/tests/integration_test.py
++++ b/tests/integration_test.py
+@@ -2388,7 +2388,7 @@ class Tests(dbusmock.DBusTestCase):
+         energy_prefs = os.path.join(dir1, "energy_performance_preference")
+         scaling_governor = os.path.join(dir1, "scaling_governor")
+ 
+-        self.assert_file_eventually_contains(energy_prefs, "balance_power")
++        self.assert_file_eventually_contains(energy_prefs, "balance_performance")
+         self.assert_file_eventually_contains(scaling_governor, "powersave")
+ 
+         stop_upowerd()
+@@ -2403,7 +2403,7 @@ class Tests(dbusmock.DBusTestCase):
+         self.assert_file_eventually_contains(energy_prefs, "balance_performance")
+ 
+         upowerd_obj.Set("org.freedesktop.UPower", "OnBattery", True)
+-        self.assert_file_eventually_contains(energy_prefs, "balance_power")
++        self.assert_file_eventually_contains(energy_prefs, "balance_performance")
+ 
+         upowerd_obj.Set("org.freedesktop.UPower", "OnBattery", False)
+         self.assert_file_eventually_contains(energy_prefs, "balance_performance")
+@@ -2424,7 +2424,7 @@ class Tests(dbusmock.DBusTestCase):
+         self.assert_file_eventually_contains(energy_prefs, "balance_performance")
+ 
+         upowerd_obj.Set("org.freedesktop.UPower", "OnBattery", True)
+-        self.assert_file_eventually_contains(energy_prefs, "balance_power")
++        self.assert_file_eventually_contains(energy_prefs, "balance_performance")
+ 
+     def test_intel_pstate_noturbo(self):
+         """Intel P-State driver (balance)"""

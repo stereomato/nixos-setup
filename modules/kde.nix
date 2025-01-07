@@ -8,6 +8,7 @@
 
 		config = lib.mkIf cfg.plasma.enable {
 			services = {
+				desktopManager.plasma6.enable = true;
 				colord.enable = true;
 				displayManager.sddm = {
 					enable = true;

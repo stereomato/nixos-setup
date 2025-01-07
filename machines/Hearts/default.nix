@@ -28,13 +28,8 @@
 		};
 	};
 
-	services = {
-		xserver = {
-			# Enable for GNOME
-			desktopManager.gnome.enable = true;
-		};
-	};
-
+	localModule.gnome.enable = true;
+	
 	fileSystems = {
 		"/" = {
 			device = "/dev/mapper/HeartsDisk";

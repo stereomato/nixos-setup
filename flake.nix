@@ -75,6 +75,7 @@
 					system = "x86_64-linux";
 					modules = [
 						./machines/Hearts
+						./modules/default.nix
 						nix-index-database.nixosModules.nix-index
 					];
 					specialArgs = { inherit inputs; };
