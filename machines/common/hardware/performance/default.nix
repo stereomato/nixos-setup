@@ -86,33 +86,6 @@
 		};
 	};
 
-		# Disk based swap
-	# I am using this because I use Zswap now. Seems to be more efficient and faster, and can move stuff to the backing swap file as needed.
-	swapDevices = [{
-		device = "/swap/swapfile";
-		# TODO: make this adaptive!
-		size = 17365;
-		discardPolicy = "both";
-		randomEncryption = {
-			enable = false; 
-			allowDiscards = true;
-			keySize = 256;
-		};
-		# This is in case of zram
-		# Currently, the device doesn't exist.
-		#device = "/dev/nvme0n1p3";
-		#options = [ "noauto" ];
-	}];
-
-	# Zram: memory compression
-	# Disabled: Using Zswap now.
-	zramSwap = {
-		enable = false;
-		algorithm = "zstd";
-		memoryPercent = 200;
-		#writebackDevice = "/dev/nvme0n1p3";
-	};
-
 	systemd = {
 		# Do suspend-then-hibernate
 		services = {

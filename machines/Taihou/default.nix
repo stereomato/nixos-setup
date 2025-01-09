@@ -63,8 +63,20 @@
 			};
 		};
 
+
 		localModule.gnome.enable = true;
 		
+		localModule.performance.memory = {
+			zswap = {
+				enable = false;
+				size = 23726;
+			};
+			zram = {
+				enable = true;
+				size = 200;
+			};
+		};
+
 		services = {
 			xserver = {
 				# Enable for GNOME

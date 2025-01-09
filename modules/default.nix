@@ -2,5 +2,6 @@
   imports = [
     ./gnome.nix
     ./kde.nix
+    ./memory.nix
   ];
 }

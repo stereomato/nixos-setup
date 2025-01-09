@@ -3,7 +3,7 @@
 	in
 	{
 		options.localModule = {
-			plasma.enable = lib.mkEnableOption "Enable the KDE Plasma desktop environment";
+			plasma.enable = lib.mkEnableOption "the KDE Plasma desktop environment";
 		};
 
 		config = lib.mkIf cfg.plasma.enable {

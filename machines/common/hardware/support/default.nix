@@ -7,10 +7,6 @@
 
   nixpkgs.overlays = [(
 		self: super: {
-			# https://github.com/NixOS/nixpkgs/issues/368651
-			cnijfilter2 = super.cnijfilter2.overrideAttrs (old: {
-				patches = super.cnijfilter2.patches ++ [ ../patches/fix-cnijfilter2.patch ];
-			});
 		}
 	)];
   

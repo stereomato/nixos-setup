@@ -3,7 +3,7 @@
 	in
 	{
 		options.localModule = {
-			gnome.enable = lib.mkEnableOption "Enable the GNOME desktop environment";
+			gnome.enable = lib.mkEnableOption "the GNOME desktop environment";
 			#plasma.enable = lib.mkEnableOption "Enable the KDE Plasma desktop environment";
 			#minimal.enable = lib.mkEnableOption "Build a minimal system, for like a live environment";
 		};
