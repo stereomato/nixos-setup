@@ -6,14 +6,20 @@
 				../patches/32967.patch
 			];
 		});
+		mesa-wuwa32 = super.pkgsi686Linux.mesa.overrideAttrs (old: {
+			patches = super.mesa.patches ++ [
+				# https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/32967
+				../patches/32967.patch
+			];
+		});
 	})];
 	
 	# GPU support
 	hardware.graphics = {
 		enable = true;
 		# Remember to comment this out once not needed.
-		package = pkgs.mesa-wuwa;
-		package32 = pkgs.mesa-wuwa32;
+		package = pkgs.mesa-wuwa.drivers;
+		package32 = pkgs.mesa-wuwa32.drivers;
 		enable32Bit = true;
 
 		extraPackages = with pkgs; [ 
