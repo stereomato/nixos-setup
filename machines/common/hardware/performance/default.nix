@@ -1,6 +1,6 @@
 {config, lib, pkgs, ...}:{
 	# The line between saving power and increasing performance in these settings is way too blurry
-	
+
 	imports = [
 		./sysctl-tweaks.nix
 	];
@@ -58,27 +58,22 @@
 			];
 			};
 		};
-		
+
 		# Intel thermal management
 		thermald.enable = true;
 
-		# Profile sync daemon
-		psd = {
-			enable = true;
-			resyncTimer = "30min";
-		};
 		# Firmware updates
 		fwupd.enable = true;
 	};
 
-	
+
 	# Power saving
 	powerManagement = {
 			enable = true;
 			powertop.enable = true;
 			scsiLinkPolicy = "med_power_with_dipm";
 	};
-	
+
 	# Wifi power saving
 	networking.networkmanager = {
 		wifi = {

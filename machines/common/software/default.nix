@@ -2,11 +2,11 @@
 	imports = [
 		./overlays.nix
 	];
-	
+
 	nix = {
 		settings = {
 			auto-optimise-store = true;
-			experimental-features = [ 
+			experimental-features = [
 				"nix-command"
 				"flakes"
 			];
@@ -24,7 +24,7 @@
 		registry.nixpkgs.flake = inputs.nixpkgs;
 		nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 	};
-	
+
 	nixpkgs = {
 		config = {
 			allowUnfree = true;
@@ -35,6 +35,8 @@
 					"openssl-1.1.1w"
 					# FIXME: https://github.com/NixOS/nixpkgs/pull/280835
 					"freeimage-unstable-2021-11-01"
+					# FIXME: https://discourse.nixos.org/t/nixpkgs-config-permittedinsecurepackages-cannot-be-set-in-multiple-files-at-the-same-time/56128
+					"olm-3.2.16"
 			];
 		};
 	};
@@ -59,7 +61,7 @@
 			submissionNick = "stereomato";
 			submitData = true;
 		};
-	 #lib.mkIf (config.services.desktopManager.plasma6.enable) 
+	 #lib.mkIf (config.services.desktopManager.plasma6.enable)
 	};
 
 	programs = {
@@ -119,6 +121,9 @@
 	};
 
 	virtualisation = {
+		vmware = {
+			# host.enable = true;
+		};
 		spiceUSBRedirection.enable = true;
 		# efi.OVMF = pkgs.OVMFFull;
 		libvirtd = {
@@ -127,7 +132,9 @@
 				runAsRoot = false;
 				swtpm.enable = true;
 				ovmf.packages = [ pkgs.OVMFFull.fd ];
+				vhostUserPackages = [ pkgs.virtiofsd ];
 			};
+			
 		};
 		podman = {
 			enable = true;

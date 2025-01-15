@@ -17,38 +17,38 @@
 			#inputs.nixpkgs.follows = "nixpkgs";
 		};
 		disko = {
-		    url = "github:nix-community/disko/latest";
+				url = "github:nix-community/disko/latest";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
 		# This is for mutter with the triple buffering patch
 		# taken from https://gitlab.com/MikeTTh/nix-dots/-/blob/e1594af5882a53b4b25f99bdc5361dce4d33770d/flake.nix#L39-47
 		mutter-triple-buffering-src = {
-      url = "gitlab:vanvugt/mutter?ref=triple-buffering-v4-47&host=gitlab.gnome.org";
-      flake = false;
-    };
+			url = "gitlab:vanvugt/mutter?ref=triple-buffering-v4-47&host=gitlab.gnome.org";
+			flake = false;
+		};
 
-    gvdb-src = {
-      url = "gitlab:GNOME/gvdb?ref=main&host=gitlab.gnome.org";
-      flake = false;
-    };
+		gvdb-src = {
+			url = "gitlab:GNOME/gvdb?ref=main&host=gitlab.gnome.org";
+			flake = false;
+		};
 	};
 
 	outputs = { self, nixpkgs, home-manager, nix-index-database, disko, ... }@inputs: let
 	system = "x86_64-linux";
 	pkgs = import nixpkgs {
-      inherit system;
-      # TODO: Delete this if overlays work fine under each system.
+			inherit system;
+			# TODO: Delete this if overlays work fine under each system.
 			# TODO: Consider making general overlays for multiple machines
 			overlays = [(self: super: {
 				# intel-lpmd = inputs.intel-lmpd-module.outputs.legacyPackages.x86_64-linux.intel-lpmd;
 			})];
 		hostPlatform = system;
-      config = {
-        allowUnfree = true;
-        allowUnfreePredicate = _: true;
-      };
-    };
+			config = {
+				allowUnfree = true;
+				allowUnfreePredicate = _: true;
+			};
+		};
 			in rec {
 			nixosConfigurations = {
 				Taihou = nixpkgs.lib.nixosSystem {

@@ -7,7 +7,7 @@
 			./programs.nix
 			../../users/stereomato
 
-			#./extModules/intel-lpmd.nix 
+			#./extModules/intel-lpmd.nix
 			#inputs.intel-lpmd-module
 
 			#"${inputs.intel-lpmd-module.outPath}/nixos/modules/services/hardware/intel-lpmd.nix"
@@ -65,7 +65,7 @@
 
 
 		localModule.gnome.enable = true;
-		
+
 		localModule.performance.memory = {
 			zswap = {
 				enable = false;

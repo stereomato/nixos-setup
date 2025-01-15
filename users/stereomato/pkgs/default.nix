@@ -4,45 +4,37 @@
     ./media
     ./gaming.nix
     ./internet.nix
-		./software-development.nix
+	./software-development.nix
   ];
-  users.users.stereomato.packages = with pkgs; [ 
-    # TODO: Organize better
+  users.users.stereomato.packages = with pkgs; [
+		
+		# TODO: Organize better
+
+			# Virt
+			virt-manager
 			# AI stuff
 			#inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
 
 			# Cryptocurrency
 			monero-gui xmrig-mo
-			# Need to report it so it gets fixed
-			#oxen
-			
-			# Zrythm bug https://github.com/NixOS/nixpkgs/issues/184839
-			# libsForQt5.breeze-icons
 
 			# File compressors
 			rar p7zip
-			
+
 			# Miscellanous cli apps
-			xorg.xeyes 
-			# FTBFS: nix log /nix/store/1swy5s502g4ygqyb799c14vd9z67b5fw-python3.11-certomancer-0.11.0.drv
-			# maigret 
+			xorg.xeyes maigret
 			bc xdg-utils trash-cli
-			
-			
 
 			# Text editors
-			nano 
+			nano
 			# gnome-text-editor
-			
+
 			# Office and LaTeX
-			# 
-			# 
-			onlyoffice-bin_latest 
-			 #apostrophe
-			
+			onlyoffice-bin_latest
+
 			# QTWebkit shit
 			#mendeley
-			
+
 			# Phone stuff
 			scrcpy
 			# Spellchecking dictionaries
@@ -56,7 +48,7 @@
 		 ]
 		++ lib.optionals config.services.xserver.desktopManager.gnome.enable [
 			libreoffice-fresh
-			
+
 			# gnome stuff
 			metadata-cleaner warp wike gnome-solanum newsflash
 
@@ -67,8 +59,6 @@
 
 			# Font management
 			fontforge-gtk
-			# FTBFS nix log /nix/store/q7yjb9yhxq2n2lzfihd12mswpr8igi3i-font-manager-0.8.8.drv
-			# font-manager
 		 ];
 
 }

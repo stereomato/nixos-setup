@@ -1,17 +1,17 @@
-{config, libs, pkgs, ... }:{
+{config, lib, pkgs, ... }:{
+nixpkgs.config.permittedInsecurePackages = lib.mkMerge [
+                "olm-3.2.16"
+              ];
+
   users.users.stereomato.packages = with pkgs; [
 		# Web Browsers
-		google-chrome vivaldi vivaldi-ffmpeg-codecs 
-		
+		google-chrome vivaldi vivaldi-ffmpeg-codecs
+
 		# Ask for it to be fixed someday
-		#vivaldi-widevine 
+		#vivaldi-widevine
 
 		# Chat apps
 		# Matrix
-		
-		# 
-
-		
 
 		# Et cetera
 		tdesktop discord mumble element-desktop
@@ -21,13 +21,13 @@
 
 		# Downloaders
 		curl wget aria megacmd
-		# 
+		#
 
 		# VPN
 		protonvpn-gui
 
 		# Virtual classes
-		zoom-us
+		# zoom-us
 	] ++ lib.optionals config.services.desktopManager.plasma6.enable [
 			# XMPP
 			#kaidan

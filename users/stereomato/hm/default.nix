@@ -100,10 +100,4 @@
 			downloader-args = "aria2c:'-x 10'";
 		};
 	};
-
-	services = {
-		easyeffects = {
-			enable = true;
-		};
-	};
 }

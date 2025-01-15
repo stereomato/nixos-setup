@@ -21,14 +21,6 @@
 		;
 	};
 
-	#home.file.".config/plasma-environment/stem-darkening-fix.sh" = {
-	#	enable = taihouConfig.services.desktopManager.plasma6.enable;
-	#	text = ''
-	#	  #!/bin/sh
-	#	  export FREETYPE_PROPERTIES="cff:no-stem-darkening=1"
-	#	'';
-	#};
-
 	xresources.properties = if taihouConfig.services.desktopManager.plasma6.enable then {
 		"Xft.rgba" = "rgb";
 		"Xft.lcdfilter" = "lcddefault";

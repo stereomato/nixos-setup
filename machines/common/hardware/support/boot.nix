@@ -173,12 +173,6 @@
 			# Powersaving
 			# "iwlwifi.power_save=1"
 			# "iwlwifi.power_level=3"
-			# Zswap settings
-			"zswap.enabled=Y"
-			"zswap.compressor=zstd"
-			"zswap.zpool=zsmalloc"
-			"zswap.max_pool_percent=35"
-			"zswap.accept_threshold_percent=90"
 		];
 		loader = {
 			systemd-boot = {

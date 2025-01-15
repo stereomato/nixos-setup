@@ -23,6 +23,14 @@ in
   };
 
   config = lib.mkIf (cfg.zswap.enable) {
+    boot.kernelParams = [ 
+      # Zswap settings
+			"zswap.enabled=Y"
+			"zswap.compressor=zstd"
+			"zswap.zpool=zsmalloc"
+			"zswap.max_pool_percent=35"
+			"zswap.accept_threshold_percent=90"
+    ] ++ lib.mkIf (cfg.zswap.encryption) ["nohibernate"];
     # Disk based swap
 	  swapDevices = [{
       device = "/swap/swapfile";
@@ -35,8 +43,8 @@ in
         keySize = 256;
       };
     }];
-    boot.kernelParams = lib.mkIf (cfg.zswap.encryption) ["nohibernate"];
   } // lib.mkIf (cfg.zram.enable) {
+    boot.kernelParams = [ "zswap.enabled=N" ];
     zramSwap = {
       enable = true;
       memoryPercent = cfg.zram.size;

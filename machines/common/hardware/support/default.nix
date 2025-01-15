@@ -2,7 +2,7 @@
   imports = [
     ./audio.nix
     ./boot.nix
-		./gpu.nix
+	./gpu.nix
   ];
 
   nixpkgs.overlays = [(
@@ -10,16 +10,16 @@
 		}
 	)];
   
-  # Thunderbolt
+	# Thunderbolt
 	services = {
-    hardware.bolt.enable = true;
-    xserver = {
+		hardware.bolt.enable = true;
+		xserver = {
 			# Wacom tablets
 			wacom.enable = true;
 			# Keyboard layout
 			xkb.layout = "latam";
 		};
-    printing = {
+		printing = {
 			enable = true;
 			cups-pdf = {
 				enable = true;
@@ -36,6 +36,7 @@
   };
 
   hardware = {
+	bluetooth.enable = true;
     enableAllFirmware = true;
 		cpu.intel.updateMicrocode = true;
 		#xone.enable = true; # xbox one controllers
@@ -47,7 +48,7 @@
 		sensor.iio.enable = true;
   };
 
-  # Keyboard Layout
+	# Keyboard Layout
 	# Not gonna have any other kind of keyboard layout anytime soon, so put this in common
 	console.keyMap = "la-latin1";
 }

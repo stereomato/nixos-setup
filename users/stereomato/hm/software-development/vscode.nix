@@ -41,7 +41,7 @@
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.vscjava.vscode-java-test
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.vscjava.vscode-maven
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.vadimcn.vscode-lldb
-				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.kosz78.nim
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.nimlang.nimlang
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.cschlosser.doxdocgen
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jeff-hykin.better-cpp-syntax
 				# inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jgclark.vscode-todo-highlight
