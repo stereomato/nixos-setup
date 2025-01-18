@@ -62,11 +62,11 @@
 					specialArgs = { inherit inputs; username = "stereomato"; };
 				};
 
-				TaihouIso = nixpkgs.lib.nixosSystem {
+				TaihouLite = nixpkgs.lib.nixosSystem {
 					system = system;
 					modules = [
-						./machines/Taihou
-						./machines/TaihouIso
+						# ./machines/Taihou
+						./machines/TaihouLite
 					];
 					specialArgs = { inherit inputs; username = "stereomato"; };
 				};

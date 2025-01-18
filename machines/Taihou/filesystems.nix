@@ -1,9 +1,9 @@
-{ ... }:{
+{ config, ... }:{
 	
 	# TODO: I only want to populate this if we're in the installed system, but what if I'm on install media?
 	# Need a way to keep some stuff private to Taihou?
 	# Too many ideas...
-	disko.devices = {
+	disko.devices = if (config.networking.hostName == "Taihou") then {
 		disk = {
 				internalNVME = {
 					type = "disk";
@@ -70,7 +70,6 @@
 					};
 
 				};
-
 		};
-	};
+	} else {};
 }
