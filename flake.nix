@@ -62,10 +62,13 @@
 					specialArgs = { inherit inputs; username = "stereomato"; };
 				};
 
+				# nix build .#nixosConfigurations.TaihouLite.config.system.build.isoImage
 				TaihouLite = nixpkgs.lib.nixosSystem {
 					system = system;
 					modules = [
-						# ./machines/Taihou
+						nix-index-database.nixosModules.nix-index
+						disko.nixosModules.disko
+						./modules/default.nix
 						./machines/TaihouLite
 					];
 					specialArgs = { inherit inputs; username = "stereomato"; };

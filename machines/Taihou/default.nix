@@ -87,8 +87,6 @@
 			# 	};
 			# };
 
-      # This laptop might not need it.
-      thermald.enable = lib.mkForce false;
 		};
 
 		services.fprintd = {
