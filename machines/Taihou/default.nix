@@ -59,7 +59,7 @@
 		};
 
 
-		localModule.gnome.enable = true;
+		localModule.plasma.enable = true;
 
 		localModule.performance.memory = {
 			zswap = {

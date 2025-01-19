@@ -8,7 +8,8 @@
 		./mpv.nix
 	];
 
-	nix.package = pkgs.nix;
+	# TODO: Need to fix this on the non-module hm config
+	# nix.package = pkgs.nix;
 
 	fonts = {
 		fontconfig = {
@@ -60,24 +61,24 @@
 		};
 	};
 
-	nixpkgs = {
-		config = {
-			allowUnfree = true;
-			permittedInsecurePackages = [
-					"olm-3.2.16"
-					# FIXME: https://github.com/NixOS/nixpkgs/issues/269713
-					"openssl-1.1.1w"
-					# FIXME: https://github.com/NixOS/nixpkgs/pull/280835
-					"freeimage-unstable-2021-11-01"
-			];
-		};
-		overlays = [(
-			self: super: {
-				vscode = super.vscode.override {
-					commandLineArgs = "--disable-font-subpixel-positioning=true";
-				};
-			})];
-	};
+	# nixpkgs = {
+	# 	config = {
+	# 		allowUnfree = true;
+	# 		permittedInsecurePackages = [
+	# 				"olm-3.2.16"
+	# 				# FIXME: https://github.com/NixOS/nixpkgs/issues/269713
+	# 				"openssl-1.1.1w"
+	# 				# FIXME: https://github.com/NixOS/nixpkgs/pull/280835
+	# 				"freeimage-unstable-2021-11-01"
+	# 		];
+	# 	};
+	# 	overlays = [(
+	# 		self: super: {
+	# 			vscode = super.vscode.override {
+	# 				commandLineArgs = "--disable-font-subpixel-positioning=true";
+	# 			};
+	# 		})];
+	# };
 
 	services.syncthing = {
 		enable = true;

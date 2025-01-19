@@ -58,6 +58,21 @@
 						disko.nixosModules.disko
 						./modules/default.nix
 						./machines/Taihou
+
+						home-manager.nixosModules.home-manager {
+          	  home-manager.useGlobalPkgs = true;
+        	    home-manager.useUserPackages = true;
+      	      home-manager.users.stereomato = import ./users/stereomato/hm;
+							home-manager.extraSpecialArgs = {
+								# Read my laptop config
+								taihouConfig = nixosConfigurations.Taihou.config;
+								username = "stereomato";
+								inherit inputs;
+								installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup";
+							};
+    	        # Optionally, use home-manager.extraSpecialArgs to pass
+  	          # arguments to home.nix
+	          }
 					];
 					specialArgs = { inherit inputs; username = "stereomato"; };
 				};
@@ -70,6 +85,9 @@
 						disko.nixosModules.disko
 						./modules/default.nix
 						./machines/TaihouLite
+
+						
+
 					];
 					specialArgs = { inherit inputs; username = "stereomato"; };
 				};
