@@ -134,6 +134,13 @@
 				ovmf.packages = [ pkgs.OVMFFull.fd ];
 				vhostUserPackages = [ pkgs.virtiofsd ];
 			};
+			hooks = {
+				qemu = {
+					start-network = pkgs.writers.writeFishBin "start-network" ''
+						virsh net-start default
+					'';
+				};
+			};
 			
 		};
 		podman = {

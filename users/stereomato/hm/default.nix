@@ -1,4 +1,4 @@
-{ taihouConfig, lib, pkgs, ... }:{
+{ inputs, taihouConfig, lib, pkgs, ... }:{
 	imports = [
 		./software-development
 		./envvars.nix
@@ -6,10 +6,13 @@
 		./deskEnv-config.nix
 		./workarounds.nix
 		./mpv.nix
+		#TODO: I might have to fix this when using home manager as standalone
+		inputs.nix-index-database.hmModules.nix-index
+
 	];
 
 	# TODO: Need to fix this on the non-module hm config
-	# nix.package = pkgs.nix;
+	nix.package = lib.mkIf (!taihouConfig.home-manager.users.stereomato.programs.home-manager.enable) pkgs.nix;
 
 	fonts = {
 		fontconfig = {

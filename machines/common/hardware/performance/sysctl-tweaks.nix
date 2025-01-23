@@ -18,7 +18,7 @@
 			"vm.dirty_bytes" = 498000000;
 			"vm.dirty_background_bytes" = 166000000;
 			# 1.25% of RAM
-			"vm.min_free_kbytes" = 184320;
+			"vm.min_free_kbytes" = 310984;
 			# Best value, according to phoronix
 			"vm.page_lock_unfairness" = 3;
 			# Disable watermark boosting

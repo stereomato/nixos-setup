@@ -18,14 +18,66 @@
            DetachAndRemoveGlyphs()
            Generate($1)
          '';
+			# [buildPlans.IosevkaCustom]
+			# family = "Iosevka Custom"
+			# spacing = "normal"
+			# serifs = "sans"
+			# noCvSs = false
+			# exportGlyphNames = true
+
+			# [buildPlans.IosevkaCustom.variants.design]
+			# eight = "two-circles"
+			# capital-g = "toothed-serifed-hooked"
+			# capital-q = "crossing-baseline"
+			# f = "flat-hook-serifless"
+			# g = "single-storey-flat-hook-serifless"
+			# r = "serifed"
+			# t = "flat-hook-short-neck2"
+			# paren = "flat-arc"
+			# brace = "straight"
+			# guillemet = "straight"
+			# at = "fourfold-solid-inner"
+			# [buildPlans.IosevkaCustom.widths.Normal]
+			# shape = 500
+			# menu = 5
+			# css = "normal"
+
+			# [buildPlans.IosevkaCustom.widths.Extended]
+			# shape = 600
+			# menu = 7
+			# css = "expanded"
+
+			# [buildPlans.IosevkaCustom.widths.Condensed]
+			# shape = 416
+			# menu = 3
+			# css = "condensed"
+
+			# [buildPlans.IosevkaCustom.widths.SemiCondensed]
+			# shape = 456
+			# menu = 4
+			# css = "semi-condensed"
+
+			# [buildPlans.IosevkaCustom.widths.SemiExtended]
+			# shape = 548
+			# menu = 6
+			# css = "semi-expanded"
+
+			# [buildPlans.IosevkaCustom.widths.ExtraExtended]
+			# shape = 658
+			# menu = 8
+			# css = "extra-expanded"
+
+			# [buildPlans.IosevkaCustom.widths.UltraExtended]
+			# shape = 720
+			# menu = 9
+			# css = "ultra-expanded"
 			iosevka-stereomato = super.iosevka.override {
 				privateBuildPlan = {
 					family = "stereomato's Iosevka setup";
 					spacing = "normal";
 					serifs = "sans";
-					no-cv-ss = false;
-					export-glyph-names = true;
-					no-ligation = true;
+					noCvSs = false;
+					exportGlyphNames = true;
 					variants = {
 						design = {
 							capital-g = "toothed-serifless-hooked";
@@ -37,6 +89,9 @@
 							t = "flat-hook-short-neck2";
 							eight = "two-circles";
 							at = "fourfold-solid-inner";
+							paren = "flat-arc";
+							brace = "straight";
+							guillemet = "straight";
 						};
 					};
 					widths.normal = {
@@ -144,7 +199,7 @@
 			fira-code
 			# joypixels
 			ibm-plex
-			#iosevka-stereomato
+			# iosevka-stereomato
 			manrope
 			roboto
 			roboto-slab
@@ -235,7 +290,7 @@
 						"Cantarell"
 					];
 				serif = [ "IBM Plex Serif" ];
-				monospace = [ "CommitMono" ];
+				monospace = [ "Jetbrains Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};
