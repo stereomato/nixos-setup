@@ -12,6 +12,7 @@
 	];
 
 	# This checks if the non-module home-manager is being used
+	# Might be undeeded, but keep it just in case
 	nix.package = lib.mkIf (!config ? home-manager.users) pkgs.nix;
 
 	fonts = {

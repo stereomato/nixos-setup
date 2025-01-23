@@ -72,6 +72,10 @@
 								cp -a "${inputs.gvdb-src}" ./subprojects/gvdb
 							'';
 					});
+
+					wike = super.wike.overrideAttrs (old: {
+						
+					});
 				}
 			)];
 		};

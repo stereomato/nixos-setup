@@ -104,22 +104,23 @@
 				};
 			};
 			# TODO: An example of homeConfigurations should be @ the home-manager manual
-			homeConfigurations = {
-				"stereomato@Taihou" = home-manager.lib.homeManagerConfiguration {
-					inherit pkgs;
-					# backupFileExtension = "hm-backup";
-					extraSpecialArgs = {
-						# Read my laptop config
-						taihouConfig = nixosConfigurations.Taihou.config;
-						username = "stereomato";
-						inherit inputs;
-						installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup";
-					};
-					modules = [
-						./users/stereomato/hm
-						nix-index-database.hmModules.nix-index
-					];
-				};
-			};
+			# Unneeded now
+			# homeConfigurations = {
+			# 	"stereomato@Taihou" = home-manager.lib.homeManagerConfiguration {
+			# 		inherit pkgs;
+			# 		# backupFileExtension = "hm-backup";
+			# 		extraSpecialArgs = {
+			# 			# Read my laptop config
+			# 			taihouConfig = nixosConfigurations.Taihou.config;
+			# 			username = "stereomato";
+			# 			inherit inputs;
+			# 			installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup";
+			# 		};
+			# 		modules = [
+			# 			./users/stereomato/hm
+			# 			nix-index-database.hmModules.nix-index
+			# 		];
+			# 	};
+			# };
 		};
 }
