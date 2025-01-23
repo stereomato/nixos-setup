@@ -290,7 +290,7 @@
 						"Cantarell"
 					];
 				serif = [ "IBM Plex Serif" ];
-				monospace = [ "Jetbrains Mono" ];
+				monospace = [ "JetBrains Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

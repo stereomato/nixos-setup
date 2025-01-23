@@ -1,4 +1,4 @@
-{ inputs, taihouConfig, lib, pkgs, ... }:{
+{ inputs, taihouConfig, config, lib, pkgs, ... }:{
 	imports = [
 		./software-development
 		./envvars.nix
@@ -11,8 +11,8 @@
 
 	];
 
-	# TODO: Need to fix this on the non-module hm config
-	nix.package = lib.mkIf (!taihouConfig.home-manager.users.stereomato.programs.home-manager.enable) pkgs.nix;
+	# This checks if the non-module home-manager is being used
+	nix.package = lib.mkIf (!config ? home-manager.users) pkgs.nix;
 
 	fonts = {
 		fontconfig = {

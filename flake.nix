@@ -118,7 +118,6 @@
 					modules = [
 						./users/stereomato/hm
 						nix-index-database.hmModules.nix-index
-						
 					];
 				};
 			};
