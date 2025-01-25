@@ -1,7 +1,7 @@
 { pkgs, inputs,  ... }:{
   programs = {
     vscode = {
-			enable = true;
+			enable = false;
 			mutableExtensionsDir = true;
 			# This shits up userSettings.json by making it read only.
 			#enableUpdateCheck = false;

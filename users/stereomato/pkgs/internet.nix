@@ -15,15 +15,7 @@ nixpkgs = {
 };
   users.users.stereomato.packages = with pkgs; [
 		# Web Browsers
-		# google-chrome
-		vivaldi vivaldi-ffmpeg-codecs
-
-		google-chrome-qt
-		# Ask for it to be fixed someday
-		#vivaldi-widevine
-
-		# Chat apps
-		# Matrix
+		google-chrome
 
 		# Et cetera
 		tdesktop discord mumble element-desktop
@@ -39,7 +31,7 @@ nixpkgs = {
 		protonvpn-gui
 
 		# Virtual classes
-		# zoom-us
+		zoom-us
 	] ++ lib.optionals config.services.desktopManager.plasma6.enable [
 			# XMPP
 			#kaidan

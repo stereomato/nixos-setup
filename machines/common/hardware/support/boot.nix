@@ -156,7 +156,7 @@
 		};
 		kernelModules = [ "kvm-intel" ];
 		extraModulePackages = [ ];
-		kernelPackages = pkgs.linux-stereomato;
+		kernelPackages = pkgs.linux-stereomato-zen;
 		kernelParams = [ 
 			# Find out whether this is a good idea or not
 			# "pcie_aspm=force"

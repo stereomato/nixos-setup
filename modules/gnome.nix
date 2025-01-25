@@ -73,9 +73,7 @@
 							'';
 					});
 
-					wike = super.wike.overrideAttrs (old: {
-						
-					});
+					wike = super.callPackage ./wike.nix {};
 				}
 			)];
 		};
