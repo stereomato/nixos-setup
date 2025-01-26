@@ -21,6 +21,10 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		nixpkgs-ardour = {
+			url = "github:nixos/nixpkgs/5df43628fdf08d642be8ba5b3625a6c70731c19c";
+		};
+
 		# This is for mutter with the triple buffering patch
 		# taken from https://gitlab.com/MikeTTh/nix-dots/-/blob/e1594af5882a53b4b25f99bdc5361dce4d33770d/flake.nix#L39-47
 		mutter-triple-buffering-src = {

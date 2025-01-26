@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:{
+{ inputs, config, pkgs, ... }:{
 	users.users.stereomato.packages = with pkgs; [
 		
 		# General multimedia tools
@@ -18,7 +18,11 @@
 		wavpack fdk-aac-encoder lame flac opusTools opustags easytag spek # flacon
 
 		# Music production: DAWs
-		audacity qpwgraph reaper ardour # https://nixpk.gs/pr-tracker.html?pr=369048
+		audacity qpwgraph reaper 
+		
+		# https://github.com/NixOS/nixpkgs/issues/376099
+		#ardour
+		inputs.nixpkgs-ardour.legacyPackages.x86_64-linux.ardour
 
 		# Music production: plugins
 		# FTBFS: distrho

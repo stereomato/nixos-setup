@@ -18,8 +18,8 @@
 	hardware.graphics = {
 		enable = true;
 		# Remember to comment this out once not needed.
-		package = pkgs.mesa-wuwa.drivers;
-		package32 = pkgs.mesa-wuwa32.drivers;
+		# package = pkgs.mesa-wuwa.drivers;
+		# package32 = pkgs.mesa-wuwa32.drivers;
 		enable32Bit = true;
 
 		extraPackages = with pkgs; [ 

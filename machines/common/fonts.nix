@@ -227,6 +227,8 @@
 
 			inter
 			commit-mono
+			nerd-fonts.geist-mono
+			geist-font
 			# SF-Mono
 			# SF-Pro
 			# SF-Arabic
@@ -290,7 +292,7 @@
 						"Cantarell"
 					];
 				serif = [ "IBM Plex Serif" ];
-				monospace = [ "JetBrains Mono" ];
+				monospace = [ "GeistMono Nerd Font" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

@@ -25,7 +25,8 @@
 		# Set this to nproc - 4, so as to at least leave 4 cores free (which would be 1 cluster of E-cores)
 		# Now, this will not happen that way actually, but well, still, it'll leave enough space for the UI and whatever I'm using
 		# 3/4 of nproc essentially
-		nix.settings.cores = 12;
+		# TODO: testing with this not set, since I have 24 GB of ram, 24/48 GB of zswap/zram, and the linux-zen kernel
+		# nix.settings.cores = 12;
 		networking.hostName = "Taihou";
 		
 		systemd = {
@@ -59,7 +60,7 @@
 		};
 
 
-		localModule.gnome.enable = true;
+		localModule.plasma.enable = true;
 
 		localModule.performance.memory = {
 			zswap = {
