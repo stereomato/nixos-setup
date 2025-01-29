@@ -28,9 +28,22 @@
 		# TODO: testing with this not set, since I have 24 GB of ram, 24/48 GB of zswap/zram, and the linux-zen kernel
 		# nix.settings.cores = 12;
 		networking.hostName = "Taihou";
-		
+
 		systemd = {
 			services = {
+				adl-smp-affinity-list = {
+					enable = true;
+					name = "adl-smp-affinity-list.service";
+					description = "Set the smp_affinity_list to the last 4 E-cores";
+					after = [ "multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
+					serviceConfig = {
+						Type = "oneshot";
+						# Some IRQs can't be modified, so use || true to work around this
+						ExecStart = "${pkgs.bash}/bin/bash -c 'echo 11-15 | tee /proc/irq/*/smp_affinity_list || true'";
+					};
+					wantedBy = [ "multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
+				};
+
 				battery-charge-threshold = {
 					enable = true;
 					name = "battery-charge-threshold.service";
@@ -52,15 +65,16 @@
 					# "w /sys/devices/system/cpu/intel_pstate/hwp_dynamic_boost - - - - 1"
 					# Mouse (40,52) and Keyboard (1)
 					# Could be handled by intel_lpmd
-					"w /proc/irq/40/smp_affinity															- - - - 8000"
-					"w /proc/irq/52/smp_affinity															- - - - 8000"
-					"w /proc/irq/1/smp_affinity															- - - - 8000"
+					# "w /proc/irq/*/smp_affinity_list														- - - - 11-15"
+					#"w /proc/irq/40/smp_affinity															- - - - 8000"
+					#"w /proc/irq/52/smp_affinity															- - - - 8000"
+					#"w /proc/irq/1/smp_affinity															- - - - 8000"
 				];
 			};
 		};
 
 
-		localModule.plasma.enable = true;
+		localModule.gnome.enable = true;
 
 		localModule.performance.memory = {
 			zswap = {

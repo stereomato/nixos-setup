@@ -1,6 +1,5 @@
 {inputs, config, lib, pkgs, ...}:{
   nixpkgs.overlays = [(
-
 		self: super: {
 			my-vscode = super.vscode-with-extensions.override { 
 				vscodeExtensions = [
@@ -76,29 +75,23 @@
 	)];
 	users.users.stereomato.packages = with pkgs; [
 		# https://github.com/NixOS/nixpkgs/issues/242322#issuecomment-2264995861
-		jetbrains-toolbox
+		
 
-		zed-editor
+		# Text editors, IDEs
+		zed-editor jetbrains-toolbox netbeans arduino-ide my-vscode octaveFull
 
 		toolbox distrobox
 		# Computer Graphics
-		# blender builds from source lmfao fuck that
-
+		blender 
+		
 		# Compilers, configurers
 		patchelf
 
-		# Terminals
-		# blackbox-terminal
-
 		# Nix tooling
-		nixd
-		nix-prefetch-scripts niv nil
+		nixd nix-prefetch-scripts 
 
 		# Debuggers
 		gdb valgrind
-
-		# Code editors/IDEs
-		netbeans
 
 		# Documentation tools
 		zeal
@@ -108,16 +101,5 @@
 
 		# Gamedev
 		unityhub # https://nixpk.gs/pr-tracker.html?pr=368851
-		
-		# IDC: godot3-mono godot3-mono-export-templates
-
-		## This is for godot's C# support
-		# msbuild
-
-		# Arduino
-		arduino-ide
-
-		# Vscode
-		my-vscode
   ];
 }

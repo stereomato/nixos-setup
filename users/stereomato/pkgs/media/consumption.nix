@@ -23,21 +23,17 @@
 		stremio
 
 	] ++ lib.optionals config.services.desktopManager.plasma6.enable [ 
-			# mpv frontend
+			# Video players/MPV Frontends
 			haruna 
 
-			# music player
+			# Audio players
 			fooyin
 		]
 	++ lib.optionals config.services.xserver.desktopManager.gnome.enable [
 			# Digital books (epubs, manga)
 			foliate
-			# Digital media players/readers/streamers
-		# FTBFS: nix log /nix/store/ia6nr3xzzvqpjm4c5c30pnvar1dma6cs-quodlibet-4.6.0.drv
-		 celluloid clapper amberol rhythmbox  gthumb
+			# Digital media players/readers/streamers/frontends
+			# FTBFS: nix log /nix/store/ia6nr3xzzvqpjm4c5c30pnvar1dma6cs-quodlibet-4.6.0.drv
+			amberol gthumb# celluloid
 	];
-	
-	
-	
-
 }

@@ -7,13 +7,10 @@
 	./software-development.nix
   ];
   users.users.stereomato.packages = with pkgs; [
-		
 		# TODO: Organize better
 
 			# Virt
 			virt-manager
-			# AI stuff
-			#inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
 
 			# Cryptocurrency
 			monero-gui xmrig-mo
@@ -22,40 +19,26 @@
 			rar p7zip
 
 			# Miscellanous cli apps
-			xorg.xeyes maigret
-			bc xdg-utils trash-cli
-
-			# Text editors
-			nano
-			# gnome-text-editor
-
-			# Office and LaTeX
-			onlyoffice-bin_latest
-
-			# QTWebkit shit
-			#mendeley
+			xorg.xeyes maigret bc xdg-utils trash-cli
 
 			# Phone stuff
 			scrcpy
+			
 			# Spellchecking dictionaries
 			#TODO: Write about this in the future NixOS article I wanna write.
 			hunspellDicts.en_US hunspellDicts.es_PE aspellDicts.en aspellDicts.es aspellDicts.en-science aspellDicts.en-computers
-
-			# Uni
-			octaveFull
-		] ++ lib.optionals config.services.desktopManager.plasma6.enable [
+			
+		]
+		++ lib.optionals config.services.desktopManager.plasma6.enable [
+			# QT LO
 			libreoffice-qt-fresh
 		 ]
 		++ lib.optionals config.services.xserver.desktopManager.gnome.enable [
+			# Normal LO
 			libreoffice-fresh
 
-			# gnome stuff
-			metadata-cleaner warp wike gnome-solanum newsflash
-
-			enter-tex
-
-			# Life managing
-			gtg
+			# Extra Gnome Circle apps
+			metadata-cleaner warp wike gnome-solanum newsflash gtg
 
 			# Font management
 			fontforge-gtk

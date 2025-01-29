@@ -70,7 +70,7 @@
 			});
 
 			# Default
-			linux-stereomato = super.linuxPackages_6_12.extend (kself: ksuper: {
+			linux-stereomato = super.linuxPackages_6_13.extend (kself: ksuper: {
 				kernel = ksuper.kernel.override {
 					argsOverride = {
 						structuredExtraConfig = with lib.kernel;
@@ -131,7 +131,6 @@
 								MODULE_COMPRESS_ZSTD = yes;
 							};
 					};
-					
 					ignoreConfigErrors = true;
 				};
 			});
@@ -156,7 +155,7 @@
 		};
 		kernelModules = [ "kvm-intel" ];
 		extraModulePackages = [ ];
-		kernelPackages = pkgs.linux-stereomato-zen;
+		kernelPackages = pkgs.linux-stereomato;
 		kernelParams = [ 
 			# Find out whether this is a good idea or not
 			# "pcie_aspm=force"

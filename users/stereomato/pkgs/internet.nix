@@ -1,31 +1,22 @@
 {config, lib, pkgs, ... }:{
 nixpkgs = {
-		config.permittedInsecurePackages = lib.mkMerge [
-                "olm-3.2.16"
-              ];
-		overlays = [(self: super: {
-				#chrome-with-qt = super.google-chrome.overrideAttrs (old: {
-				#		nativeBuildInputs = super.google-chrome.nativeBuildInputs ++ [super.kdePackages.wrapQtAppsHook];
-				#});
-
-				google-chrome-qt = super.callPackage ./google-chrome-qt.nix {
-						commandLineArgs = "--enable-features=Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,TouchpadOverscrollHistoryNavigation,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading,UseMultiPlaneFormatForHardwareVideo --disable-font-subpixel-positioning=true --enable-zero-copy=true --use-vulkan=true";
-				};
-		})];
+		overlays = [(
+			self: super: {
+			}
+		)];
 };
-  users.users.stereomato.packages = with pkgs; [
+	users.users.stereomato.packages = with pkgs; [
 		# Web Browsers
 		google-chrome
 
-		# Et cetera
+		# Chat/Voice Chat apps
 		tdesktop discord mumble element-desktop
 
 		# Password management
-		bitwarden bitwarden-cli
+		bitwarden 
 
 		# Downloaders
 		curl wget aria megacmd
-		#
 
 		# VPN
 		protonvpn-gui
@@ -33,20 +24,20 @@ nixpkgs = {
 		# Virtual classes
 		zoom-us
 	] ++ lib.optionals config.services.desktopManager.plasma6.enable [
-			# XMPP
-			#kaidan
+			# Chat Apps
+			kdePackages.neochat nheko kaidan
+			
 			# Downloaders
 			kdePackages.kget
-
-			# Matrix
-			kdePackages.neochat nheko
 
 			# Web browser
 			kdePackages.falkon kdePackages.angelfish
 	]
 		++ lib.optionals config.services.xserver.desktopManager.gnome.enable  [
+				# Chat apps
 				fractal
-				# Internet tools
+				
+				# Downloaders
 				fragments
 			];
 

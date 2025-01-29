@@ -66,12 +66,13 @@
 			nixpkgs.overlays = [(
 				self: super: {
 					# Dynamic triple buffering patch
-					mutter = super.mutter.overrideAttrs (old: {
-							src = inputs.mutter-triple-buffering-src;
-							preConfigure = ''
-								cp -a "${inputs.gvdb-src}" ./subprojects/gvdb
-							'';
-					});
+					# Bugged currently
+					#mutter = super.mutter.overrideAttrs (old: {
+					#		src = inputs.mutter-triple-buffering-src;
+					#		preConfigure = ''
+					#			cp -a "${inputs.gvdb-src}" ./subprojects/gvdb
+					#		'';
+					#});
 
 					wike = super.callPackage ./wike.nix {};
 				}

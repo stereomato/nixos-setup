@@ -88,7 +88,29 @@
 			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils powertop btrfs-progs nvtopPackages.intel powerstat iotop smem nix-info kdiskmark file stress-ng btop fastfetch
 			# System management
 			gparted
+
+			# Extra
+			nano
 		];
+		sessionVariables = {
+			# https://github.com/NixOS/nixpkgs/issues/53631
+			# Fixes Kooha, Clapper
+			GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
+				pkgs.gst_all_1.gstreamer.out
+				pkgs.gst_all_1.gst-plugins-base
+				pkgs.gst_all_1.gst-plugins-good
+				pkgs.gst_all_1.gst-plugins-bad
+				pkgs.gst_all_1.gst-plugins-ugly
+				pkgs.gst_all_1.gst-libav
+				pkgs.gst_all_1.gst-vaapi
+				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-base
+				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-good
+				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-bad
+				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-ugly
+				pkgs.pkgsi686Linux.gst_all_1.gst-vaapi
+				pkgs.pkgsi686Linux.gst_all_1.gst-libav
+			];
+		};
 	};
 
 	i18n = {
@@ -136,12 +158,18 @@
 			};
 			hooks = {
 				qemu = {
-					start-network = pkgs.writers.writeFishBin "start-network" ''
-						virsh net-start default
+					# TODO: Should I make this just autostart?
+					start-network = pkgs.writers.writeFish "start-network" ''
+						set command ${pkgs.libvirt}/bin/virsh
+						set default_info ($command net-info default)
+						set active (echo $default_info[3] | grep -o yes)
+						
+						if test $active != yes
+							$command net-start default
+						end
 					'';
 				};
 			};
-			
 		};
 		podman = {
 			enable = true;
@@ -177,34 +205,9 @@
 		};
 	};
 
-	# Historical really
-  # No need to use it for now
-  # This is system-wide
-  gtk = {};
-  qt = {};
-
 	# I am... here
 	time = {
 			timeZone = "America/Lima";
 		};
 
-	environment.sessionVariables = {
-		# https://github.com/NixOS/nixpkgs/issues/53631
-			# Fixes Kooha, Clapper
-			GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
-				pkgs.gst_all_1.gstreamer.out
-				pkgs.gst_all_1.gst-plugins-base
-				pkgs.gst_all_1.gst-plugins-good
-				pkgs.gst_all_1.gst-plugins-bad
-				pkgs.gst_all_1.gst-plugins-ugly
-				pkgs.gst_all_1.gst-libav
-				pkgs.gst_all_1.gst-vaapi
-				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-base
-				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-good
-				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-bad
-				pkgs.pkgsi686Linux.gst_all_1.gst-plugins-ugly
-				pkgs.pkgsi686Linux.gst_all_1.gst-vaapi
-				pkgs.pkgsi686Linux.gst_all_1.gst-libav
-			];
-	};
 }
