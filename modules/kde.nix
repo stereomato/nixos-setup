@@ -7,6 +7,14 @@
 		};
 
 		config = lib.mkIf cfg.plasma.enable {
+			#nixpkgs.overlays = [(self: super: {
+			#	kdePackages.plasma-activities-stats = super.kdePackages.plasma-activities-stats.overrideAttrs(old: {
+			#			# Doesn't have patches
+			#			patches =  [
+			#				./patches/fix-kde-recents-loading.patch
+			#			];
+			#		});
+			#})];
 			services = {
 				desktopManager.plasma6.enable = true;
 				colord.enable = true;
@@ -53,6 +61,15 @@
 					newDependency = pkgs.libsForQt5.qt5.qtbase.overrideAttrs(old: {
 						patches = pkgs.libsForQt5.qt5.qtbase.patches ++ [
 							./patches/disable-stem-darkening-qt5.patch
+						];
+					});
+				}
+				{
+					oldDependency = pkgs.kdePackages.plasma-activities-stats;
+					newDependency = pkgs.kdePackages.plasma-activities-stats.overrideAttrs(old: {
+						# Doesn't have patches
+						patches =  [
+							./patches/fix-kde-recents-loading.patch
 						];
 					});
 				}

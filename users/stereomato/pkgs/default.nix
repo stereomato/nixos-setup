@@ -38,7 +38,7 @@
 			libreoffice-fresh
 
 			# Extra Gnome Circle apps
-			metadata-cleaner warp wike gnome-solanum newsflash gtg
+			metadata-cleaner warp wike gnome-solanum newsflash gtg gnome-graphs
 
 			# Font management
 			fontforge-gtk

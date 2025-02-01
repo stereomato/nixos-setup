@@ -61,18 +61,21 @@
 					# This is needed for file-roller to open .debs
 					binutils
 				];
+				#variables = {
+				#	MUTTER_DEBUG_FORCE_KMS_MODE = "simple";
+				#};
 			};
 
 			nixpkgs.overlays = [(
 				self: super: {
 					# Dynamic triple buffering patch
 					# Bugged currently
-					#mutter = super.mutter.overrideAttrs (old: {
-					#		src = inputs.mutter-triple-buffering-src;
-					#		preConfigure = ''
-					#			cp -a "${inputs.gvdb-src}" ./subprojects/gvdb
-					#		'';
-					#});
+					mutter = super.mutter.overrideAttrs (old: {
+							src = inputs.mutter-triple-buffering-src;
+							preConfigure = ''
+								cp -a "${inputs.gvdb-src}" ./subprojects/gvdb
+							'';
+					});
 
 					wike = super.callPackage ./wike.nix {};
 				}

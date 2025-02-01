@@ -31,7 +31,7 @@ nixpkgs = {
 			kdePackages.kget
 
 			# Web browser
-			kdePackages.falkon kdePackages.angelfish
+			kdePackages.falkon # kdePackages.angelfish
 	]
 		++ lib.optionals config.services.xserver.desktopManager.gnome.enable  [
 				# Chat apps

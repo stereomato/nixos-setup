@@ -5,6 +5,7 @@
 		./boot.nix
 		./programs.nix
 		../../users/stereomato
+		../../users/testuser
   ];
 
 		nixpkgs.overlays = [
@@ -74,7 +75,7 @@
 		};
 
 
-		localModule.gnome.enable = true;
+		localModule.plasma.enable = true;
 
 		localModule.performance.memory = {
 			zswap = {
@@ -112,7 +113,7 @@
 		environment = {
 			sessionVariables = {
 				# https://discourse.nixos.org/t/add-ssh-key-to-agent-at-login-using-kwallet/25175/2?u=stereomato
-				SSH_ASKPASS_REQUIRE="prefer";
+				SSH_ASKPASS_REQUIRE = "prefer";
 			};
 		};
 
