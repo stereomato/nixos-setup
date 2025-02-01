@@ -77,6 +77,10 @@
 			#atopgpu.enable = true;
 			netatop.enable = false;
 		};
+		chromium = {
+			enable = true;
+			enablePlasmaBrowserIntegration = true;
+		};
 	};
 
 	environment = {

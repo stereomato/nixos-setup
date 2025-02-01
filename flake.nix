@@ -60,10 +60,10 @@
 						./machines/Taihou
 
 						home-manager.nixosModules.home-manager {
-          	  home-manager.useGlobalPkgs = true;
-        	    home-manager.useUserPackages = true;
-        	    home-manager.backupFileExtension = "backup";
-      	      home-manager.users.stereomato = import ./users/stereomato/hm;
+							home-manager.useGlobalPkgs = true;
+							home-manager.useUserPackages = true;
+							home-manager.backupFileExtension = "homeManagerBackupFile";
+							home-manager.users.stereomato = import ./users/stereomato/hm;
 							home-manager.extraSpecialArgs = {
 								# Read my laptop config
 								taihouConfig = nixosConfigurations.Taihou.config;

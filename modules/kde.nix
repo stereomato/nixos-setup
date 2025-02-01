@@ -43,6 +43,7 @@
 					kdePackages.qtsvg
 					kdePackages.kleopatra
 					bibata-cursors
+					kdePackages.kdevelop
 				];
 			};
 
