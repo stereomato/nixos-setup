@@ -55,7 +55,7 @@
 				interval = "thursday";
 				fileSystems = [
 					"/"
-			];
+				];
 			};
 		};
 
@@ -69,9 +69,9 @@
 
 	# Power saving
 	powerManagement = {
-			enable = true;
-			powertop.enable = true;
-			scsiLinkPolicy = "med_power_with_dipm";
+		enable = true;
+		powertop.enable = true;
+		scsiLinkPolicy = "med_power_with_dipm";
 	};
 
 	# Wifi power saving

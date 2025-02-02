@@ -3,6 +3,25 @@
 		./overlays.nix
 	];
 
+	system.replaceDependencies.replacements = [
+		# Disable stem darkening on QT
+		{
+			oldDependency = pkgs.kdePackages.qtbase;
+			newDependency = pkgs.kdePackages.qtbase.overrideAttrs(old: {
+				patches = pkgs.kdePackages.qtbase.patches ++ [
+					./patches/disable-stem-darkening.patch
+				];
+			});
+		}
+		{
+			oldDependency = pkgs.libsForQt5.qt5.qtbase;
+			newDependency = pkgs.libsForQt5.qt5.qtbase.overrideAttrs(old: {
+				patches = pkgs.libsForQt5.qt5.qtbase.patches ++ [
+					./patches/disable-stem-darkening-qt5.patch
+				];
+			});
+		}
+	];
 	nix = {
 		settings = {
 			auto-optimise-store = true;

@@ -225,7 +225,7 @@
 			terminus_font_ttf
 			terminus_font
 
-			inter
+			inter-otf
 			commit-mono
 			nerd-fonts.geist-mono
 			geist-font
@@ -257,7 +257,7 @@
 				<alias>
 					<family>system-ui</family>
 					<prefer>
-						<family>Inter Variable</family>
+						<family>Inter</family>
 						<family>Cantarell</family>
 					</prefer>
 				</alias>
@@ -287,12 +287,12 @@
 
 			defaultFonts = {
 				sansSerif = [
-						"Inter Variable"
+						"Inter"
 						# "IBM Plex Sans"
 						"Cantarell"
 					];
 				serif = [ "IBM Plex Serif" ];
-				monospace = [ "GeistMono Nerd Font" ];
+				monospace = [ "Geist Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

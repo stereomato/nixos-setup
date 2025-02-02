@@ -61,9 +61,6 @@
 					# This is needed for file-roller to open .debs
 					binutils
 				];
-				#variables = {
-				#	MUTTER_DEBUG_FORCE_KMS_MODE = "simple";
-				#};
 			};
 
 			nixpkgs.overlays = [(

@@ -1,6 +1,9 @@
 {inputs, config, lib, pkgs, ...}:{
   nixpkgs.overlays = [(
 		self: super: {
+			vscode = super.vscode.override {
+				commandLineArgs = "--disable-font-subpixel-positioning=true";
+			};
 			my-vscode = super.vscode-with-extensions.override { 
 				vscodeExtensions = [
 					# Superseded by the direnv extension

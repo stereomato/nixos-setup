@@ -17,8 +17,7 @@
 			}
 			# Lock Keys
 			{ package = pkgs.gnomeExtensions.lock-keys; }
-		]
-		;
+		];
 	};
 
 	xresources.properties = if taihouConfig.services.desktopManager.plasma6.enable then {
@@ -51,8 +50,7 @@
 		enable = taihouConfig.services.xserver.desktopManager.gnome.enable;
 		settings = {
 			"org/gnome/settings-daemon/plugins/color" = {
-				night-light-enabled = true;
-			};
+				};
 			"org/gnome/shell/extensions/lockkeys" = {
 				style = "show-hide";
 			};

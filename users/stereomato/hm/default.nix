@@ -78,9 +78,7 @@
 	# 	};
 	# 	overlays = [(
 	# 		self: super: {
-	# 			vscode = super.vscode.override {
-	# 				commandLineArgs = "--disable-font-subpixel-positioning=true";
-	# 			};
+	# 			
 	# 		})];
 	# };
 
