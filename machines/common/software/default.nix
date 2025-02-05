@@ -22,6 +22,7 @@
 			});
 		}
 	];
+
 	nix = {
 		settings = {
 			auto-optimise-store = true;
@@ -61,7 +62,6 @@
 	};
 
 	services = {
-		vnstat.enable = true;
 		# Needed for anything GUI
 		xserver.enable = true;
 		# Web sharing
@@ -87,15 +87,6 @@
 		firefox.enable = true;
 		mtr.enable = true;
 		usbtop.enable = true;
-		atop = {
-			enable = true;
-			setuidWrapper.enable = true;
-			atopService.enable = true;
-			atopacctService.enable = true;
-			# Nah, only supports Nvidia. #intelFTW
-			#atopgpu.enable = true;
-			netatop.enable = false;
-		};
 		chromium = {
 			enable = true;
 			enablePlasmaBrowserIntegration = true;
@@ -145,7 +136,10 @@
 	};
 
 	networking = {
-		networkmanager.enable = true;
+		networkmanager = {
+			enable = true;
+			wifi.backend = "iwd";
+		};
 		nat = {
 			enable = true;
 		};
@@ -185,7 +179,7 @@
 					start-network = pkgs.writers.writeFish "start-network" ''
 						set command ${pkgs.libvirt}/bin/virsh
 						set default_info ($command net-info default)
-						set active (echo $default_info[3] | grep -o yes)
+						set active (echo $default_info[3] | grep -o -E "yes|no")
 						
 						if test $active != yes
 							$command net-start default

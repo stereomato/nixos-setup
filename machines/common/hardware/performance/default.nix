@@ -81,6 +81,16 @@
 		};
 	};
 
+	# Disable Watchdog
+	boot = {
+		extraModprobeConfig = ''
+			blacklist iTCO_wdt
+		'';
+		kernelParams = [
+			"nowatchdog"
+		];
+	};
+
 	systemd = {
 		# Do suspend-then-hibernate
 		services = {
@@ -104,9 +114,10 @@
 	};
 
 	# Kernel Samepage Merging
+	# TODO: Historic, not needed.
 	hardware = {
 		ksm = {
-			enable = true;
+			enable = false;
 			sleep = 1000;
 		};
 	};

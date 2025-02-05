@@ -1,6 +1,6 @@
 {config, lib, pkgs, ...}:{
-  hardware.pulseaudio.enable = false; # because of pipewire
   services = {
+		pulseaudio.enable = false; # because of pipewire
     # Audio + Video backend server
 		# Also important for pro audio
 		pipewire = {

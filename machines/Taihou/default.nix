@@ -75,7 +75,7 @@
 		};
 
 
-		localModule.gnome.enable = true;
+		localModule.plasma.enable = true;
 
 		localModule.performance.memory = {
 			zswap = {
@@ -89,6 +89,7 @@
 		};
 
 		services = {
+			thermald.enable = lib.mkForce false;
 			# intel-lpmd.enable = true;
 			# # # intel-lpmd.package = pkgs.intel-lpmd;
 			#  intel-lpmd.settings = {
@@ -120,3 +121,4 @@
 		# ARGH mouse issues
 		programs.ydotool.enable = true;
 }
+
