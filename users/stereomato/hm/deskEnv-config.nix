@@ -110,9 +110,9 @@
 			};
 			"org/gnome/desktop/interface" = {
 				# icon-theme = "MoreWaita";
-				font-name = "system-ui 11";
-				document-font-name = "serif 11";
-				monospace-font-name = "monospace 11";
+				font-name = "system-ui 10.5";
+				document-font-name = "serif 10.5";
+				monospace-font-name = "monospace 10.5";
 				font-hinting = "none";
 			};
 		};

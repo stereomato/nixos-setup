@@ -165,10 +165,9 @@
 			# "log_buf_len=4M" 
 			# "ignore_loglevel"
 			
-			"preempt=full"
-			# PSR stuff, should help with battery saving on laptop displays that support this
-			"i915.enable_psr=1"
-			"i915.enable_psr2_sel_fetch=1"
+			# Switch to lazy preemption
+			# https://lwn.net/Articles/994322/
+			"preempt=lazy"
 			# Powersaving
 			# "iwlwifi.power_save=1"
 			# "iwlwifi.power_level=3"

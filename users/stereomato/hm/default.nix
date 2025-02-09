@@ -65,23 +65,6 @@
 		};
 	};
 
-	# nixpkgs = {
-	# 	config = {
-	# 		allowUnfree = true;
-	# 		permittedInsecurePackages = [
-	# 				"olm-3.2.16"
-	# 				# FIXME: https://github.com/NixOS/nixpkgs/issues/269713
-	# 				"openssl-1.1.1w"
-	# 				# FIXME: https://github.com/NixOS/nixpkgs/pull/280835
-	# 				"freeimage-unstable-2021-11-01"
-	# 		];
-	# 	};
-	# 	overlays = [(
-	# 		self: super: {
-	# 			
-	# 		})];
-	# };
-
 	services.syncthing = {
 		enable = true;
 	};

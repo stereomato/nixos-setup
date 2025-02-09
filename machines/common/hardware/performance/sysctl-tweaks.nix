@@ -28,7 +28,7 @@
 			# https://unix.stackexchange.com/a/679203
 			"vm.watermark_scale_factor" = 75;
 			# Increase the compaction activity slightly
-			"vm.compaction_proactiveness" = 0;
+			"vm.compaction_proactiveness" = 25;
 			# Compact also unevictable memory (testing)
 			#"vm.compact_unevictable_allowed" = 1;
 			

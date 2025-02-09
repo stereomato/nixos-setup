@@ -6,6 +6,19 @@
     ./internet.nix
 	./software-development.nix
   ];
+
+	nixpkgs.overlays = [(self: super: {
+		alpaca = super.alpaca.overridePythonAttrs(old: rec {
+			version = "4.0.1";
+			src = super.fetchFromGitHub {
+    		owner = "Jeffser";
+    		repo = "Alpaca";
+    		tag = version;
+    		hash = "sha256-BTTqSYoyhtFh+sk95hTNpg9AK/mdnXKz3hy/nqSbSTQ=";
+  		};
+		});
+	})];
+
   users.users.stereomato.packages = with pkgs; [
 		# TODO: Organize better
 
@@ -42,6 +55,9 @@
 
 			# Font management
 			fontforge-gtk
+
+			# AI
+			alpaca
 		 ];
 
 }

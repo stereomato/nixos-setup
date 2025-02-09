@@ -17,8 +17,7 @@
 			GSK_RENDERER = "ngl";
 			# Diff program
 			DIFFPROG = "delta";
-			# Not needed anymore
-			# MOZ_ENABLE_WAYLAND = "1";
+			# Electron on Wayland
 			NIXOS_OZONE_WL = "1";
 			# Show FPS in games/apps that use DXVK
 			DXVK_HUD="fps";
@@ -28,17 +27,10 @@
 			USE_SYMENGINE = "1";
 			# Stop wine from making menu entries.
 			WINEDLLOVERRIDES = "winemenubuilder.exe=d";
-			# QT bug https://bugreports.qt.io/browse/QTBUG-113574
-			# Maybe can be disabled, check machines/common/overlays qqc2
-			# Can't lol
-			# QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
 			# Disable this, it breaks many games and perhaps even software. 
 			#	SDL_VIDEODRIVER = "wayland";
 			#
 			EDITOR = "code --wait --new-window";
-			# TODO: Keep this in mind
-			# https://discourse.gnome.org/t/the-colors-of-gtk/22724
-			# GTK_DEBUG="linear";
 		};
 	};
 }
