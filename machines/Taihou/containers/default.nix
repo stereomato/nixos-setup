@@ -2,7 +2,9 @@
 	virtualisation.oci-containers.containers = {
 		ollama-intel = {
 			# TODO: evaluate buildImage vs buildStreamedImage
-			imageFile = ./ollama-intel.nix;
+			# WHY DO I HAVE TO DO this?
+			image = "ollama-intel:latest";
+			imageFile = pkgs.callPackage ./ollama-intel.nix {};
 			volumes = [
 				"ollama-volume:/root/.ollama"
 			];
@@ -12,6 +14,9 @@
 			devices = [
 				"/dev/dri:/dev/dri"
 			];
+			# networks = [ "host" ];
+
+			# entrypoint = "/usr/share/lib/serve.sh";
 		};
 	};
 }

@@ -2,10 +2,11 @@
 	imports = [
 	./filesystems.nix
 	../common
-		./boot.nix
-		./programs.nix
-		../../users/stereomato
-		../../users/testuser
+	./boot.nix
+	./programs.nix
+	./containers
+	../../users/stereomato
+	../../users/testuser
 	];
 
 	nixpkgs.overlays = [
