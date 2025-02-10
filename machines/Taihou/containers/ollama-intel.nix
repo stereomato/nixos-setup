@@ -19,10 +19,10 @@
 	serve-script = pkgs.writers.writeText "serve.sh" ''
 		#!/bin/bash
 
-		FILE="/intel-setup-done"
+		FILE="/root/.ollama/intel-setup-done"
 
 		# Check if the file does not exist or does not contain "1"
-		if [[ ! -f "$FILE" || "$(cat "$FILE")" != "1" ]]; then
+		if [[ ! -f "$FILE" || "$(tr -d '[:space:]' < "$FILE")" != "1" ]]; then
 			echo "File is missing or does not contain '1'. Running setup..."
 			intel-support-setup.sh
 			# exit 1
@@ -54,6 +54,12 @@
 		'';
 	};
 	
+	# This was for testing, will be eventually removed.
+	# intel-support-setup-script = pkgs.writers.writeText "intel-support-setup.sh" ''
+	# 	echo "This is a dummy that just sets the file";
+	# 	echo 1 | tee /root/.ollama/intel-setup-done
+	# '';
+
 	intel-support-setup-script = pkgs.writers.writeText "intel-support-setup.sh" ''
 		#!/bin/bash
 		# Base packages
@@ -77,7 +83,7 @@
 		pip install --pre --upgrade ipex-llm[cpp]
 
 		# Mark as done
-		echo 1 | tee /intel-setup-done
+		echo 1 | tee /root/.ollama/intel-setup-done
 	'';
 	
 	ubuntu-image = pkgs.dockerTools.pullImage {
