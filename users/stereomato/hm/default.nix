@@ -86,4 +86,14 @@
 			downloader-args = "aria2c:'-x 10'";
 		};
 	};
+
+	systemd.services = {
+		ollama-intel-arc = {
+			serviceConfig = {
+				ExecStart = "podman run --rm -p 127.0.0.1:11434:11434 -v $HOME/models:/mnt -v ollama-volume:/root/.ollama -e SYCL_PI_LEVEL_ZERO_USE_IMMEDIATE_COMMANDLISTS=1 -e OLLAMA_MAX_LOADED_MODELS=1 -e OLLAMA_FLASH_ATTENTION=1 -e OLLAMA_NUM_GPU=999 -e DEVICE=iGPU --device /dev/dri --name=ollama-intel-arc localhost/ollama-intel-arc:latest";
+				Restart = "on-failure";
+			};
+			wantedBy = [ "graphical-session.target" ];
+		};
+	};
 }
