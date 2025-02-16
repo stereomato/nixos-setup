@@ -69,12 +69,11 @@
 	# 	# };
 
 	# 	open-webui = {
-	# 		# TODO: https://github.com/open-webui/open-webui/discussions/8999
-	# 		image = "ghcr.io/open-webui/open-webui:0.5.4";
-
+	 		# TODO: https://github.com/open-webui/open-webui/discussions/8999
+	# 		image = "ghcr.io/open-webui/open-webui:latest";
 	# 		volumes = [ "open-webui-volume:/app/backend/data" ];
 
-	# 		# dependsOn = [ "ollama-intel" ];
+	 		# dependsOn = [ "ollama-intel" ];
 	# 		ports = [ "127.0.0.1:3000:8080" ];
 	# 		environment = {
 	# 			WEBUI_AUTH = "False";
@@ -82,10 +81,9 @@
 	# 			ENABLE_OLLAMA_API = "True";
 	# 			OLLAMA_BASE_URL = "http://127.0.0.1:11434";
 	# 		};
-			
-	# 		extraOptions = [ "--network=host" ];
+	 		# extraOptions = [ ];
 	# 	};
-	# };
+	#};
 
 	# This uses localhost/ollama-intel-arc:latest because this is locally built
 	# to circumvent the fact that I can't build a docker image like ollama-intel-arc

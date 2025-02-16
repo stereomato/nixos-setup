@@ -13,8 +13,6 @@
 			VST3_PATH    = "$HOME/.nix-profile/lib/vst3:$HOME/.vst3:/etc/profiles/per-user/stereomato/lib/vst3:/etc/profiles/per-user/stereomato/lib/vst3:/run/current-system/sw/lib/vst3";
 			# Enable wayland for some apps that don't default to wayland yet
 			QT_QPA_PLATFORM = "wayland";
-			# Revert to ngl because of https://gitlab.gnome.org/GNOME/mutter/-/issues/3517
-			GSK_RENDERER = "ngl";
 			# Diff program
 			DIFFPROG = "delta";
 			# Electron on Wayland

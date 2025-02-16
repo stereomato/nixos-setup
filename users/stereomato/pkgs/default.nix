@@ -45,6 +45,9 @@
 		++ lib.optionals config.services.desktopManager.plasma6.enable [
 			# QT LO
 			libreoffice-qt-fresh
+
+			# AI
+			kdePackages.alpaka
 		 ]
 		++ lib.optionals config.services.xserver.desktopManager.gnome.enable [
 			# Normal LO

@@ -62,7 +62,7 @@
 				show-map = true;
 			};
 			"org/gnome/gnome-system-monitor" = {
-				update-interval = lib.hm.gvariant.mkUint32 1000;
+				update-interval = lib.hm.gvariant.mkInt32 1000;
 				show-whose-processes = "all";
 			};
 			"org/gnome/desktop/peripherals/mouse" = {

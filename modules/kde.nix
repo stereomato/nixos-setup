@@ -45,18 +45,13 @@
 					bibata-cursors
 					kdePackages.kdevelop
 				];
+				sessionVariables = {
+					# System wide stem darkening
+					FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+				};
 			};
 
 			system.replaceDependencies.replacements = [
-				{
-					oldDependency = pkgs.kdePackages.plasma-activities-stats;
-					newDependency = pkgs.kdePackages.plasma-activities-stats.overrideAttrs(old: {
-						# Doesn't have patches
-						patches =  [
-							./patches/fix-kde-recents-loading.patch
-						];
-					});
-				}
 			];
 		};
 	}

@@ -11,3 +11,6 @@ Then, the systemd service defined on the home-manager settings on `users/stereom
 
 # Notes
 As of writing (11 Feb 2025), there's a bug that doesn't let any software upload models to the running ollama. As such, entering the container, running the commands on serve.sh to set up the environment, and using the ollama command in that file with `create modelname -f /path/to/Modelfile` can be used to add models
+
+# Todo
+Script to make adding models easier

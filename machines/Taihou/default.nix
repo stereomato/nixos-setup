@@ -33,9 +33,20 @@
 
 	systemd = {
 		services = {
+			bt-mouse-fix = {
+				enable = true;
+				description = "Fixes the usb suspend mouse problem thing.";
+				after = [ "multi-user.target" "powertop.service" ];
+				serviceConfig = {
+					Type = "oneshot";
+					# Using "|| true" in case
+					ExecStart = "${pkgs.bash}/bin/bash -c 'echo on | tee \'/sys/bus/usb/devices/1-3/power/control\' || true'";
+				};
+				wantedBy = [ "multi-user.target" ];
+			};
+
 			adl-smp-affinity-list = {
 				enable = true;
-				name = "adl-smp-affinity-list.service";
 				description = "Set the smp_affinity_list to the last 4 E-cores";
 				after = [ "multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
 				serviceConfig = {
@@ -48,7 +59,6 @@
 
 			battery-charge-threshold = {
 				enable = true;
-				name = "battery-charge-threshold.service";
 				description = "Set the battery charge threshold";
 				after = ["multi-user.target"];
 				startLimitBurst = 0;

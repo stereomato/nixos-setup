@@ -64,7 +64,6 @@
 								MODULE_COMPRESS_ZSTD = yes;
 							};
 					};
-					
 					ignoreConfigErrors = true;
 				};
 			});

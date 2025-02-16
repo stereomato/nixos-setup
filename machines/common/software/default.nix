@@ -3,26 +3,6 @@
 		./overlays.nix
 	];
 
-	system.replaceDependencies.replacements = [
-		# Disable stem darkening on QT
-		{
-			oldDependency = pkgs.kdePackages.qtbase;
-			newDependency = pkgs.kdePackages.qtbase.overrideAttrs(old: {
-				patches = pkgs.kdePackages.qtbase.patches ++ [
-					./patches/disable-stem-darkening.patch
-				];
-			});
-		}
-		{
-			oldDependency = pkgs.libsForQt5.qt5.qtbase;
-			newDependency = pkgs.libsForQt5.qt5.qtbase.overrideAttrs(old: {
-				patches = pkgs.libsForQt5.qt5.qtbase.patches ++ [
-					./patches/disable-stem-darkening-qt5.patch
-				];
-			});
-		}
-	];
-
 	nix = {
 		settings = {
 			auto-optimise-store = true;
@@ -71,12 +51,10 @@
 		geoclue2 = {
 			enable = true;
 			# Because MLS is ded, BeaconDB can now be used.
-			# TODO: See how can I help with BeaconDB.
-			# Maybe api.beacondb.net shouldn't be used here, but instead just beacondb.net?
 			# Also see https://github.com/NixOS/nixpkgs/issues/321121
 			# https://github.com/NixOS/nixpkgs/pull/325430
-			geoProviderUrl = "https://beacondb.net/v1/geolocate";
-			submissionUrl = "https://beacondb.net/v2/geosubmit";
+			geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
+			submissionUrl = "https://api.beacondb.net/v2/geosubmit";
 			submissionNick = "stereomato";
 			submitData = true;
 		};

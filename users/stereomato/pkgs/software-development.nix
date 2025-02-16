@@ -85,7 +85,7 @@
 
 		toolbox distrobox
 		# Computer Graphics
-		blender 
+		# blender 
 		
 		# Compilers, configurers
 		patchelf
