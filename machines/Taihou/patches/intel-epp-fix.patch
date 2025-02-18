@@ -1,0 +1,22 @@
+diff --git a/drivers/cpufreq/intel_pstate.c b/drivers/cpufreq/intel_pstate.c
+index 9c4cc01fd..49dd5431c 100644
+--- a/drivers/cpufreq/intel_pstate.c
++++ b/drivers/cpufreq/intel_pstate.c
+@@ -3656,7 +3656,16 @@ static const struct x86_cpu_id intel_epp_default[] = {
+ 	 * which can result in one core turbo frequency for
+ 	 * AlderLake Mobile CPUs.
+ 	 */
+-	X86_MATCH_VFM(INTEL_ALDERLAKE_L, HWP_SET_DEF_BALANCE_PERF_EPP(102)),
++	
++	/*
++	 *  Setting the EPP to 119.
++	 *  On https://lore.kernel.org/lkml/20221027220056.1534264-1-srinivas.pandruvada@linux.intel.com/
++	 *  EPB is set to 7, from 6. But EPB is ignored by intel_pstate.
++	 *  The maximum value of EPP is 255, the maximum of EPB is 15.
++	 *  255/15 = 17, 7 * 17 = 199
++	 */
++	
++	X86_MATCH_VFM(INTEL_ALDERLAKE_L, HWP_SET_DEF_BALANCE_PERF_EPP(119)),
+ 	X86_MATCH_VFM(INTEL_SAPPHIRERAPIDS_X, HWP_SET_DEF_BALANCE_PERF_EPP(32)),
+ 	X86_MATCH_VFM(INTEL_EMERALDRAPIDS_X, HWP_SET_DEF_BALANCE_PERF_EPP(32)),
+ 	X86_MATCH_VFM(INTEL_GRANITERAPIDS_X, HWP_SET_DEF_BALANCE_PERF_EPP(32)),

@@ -11,8 +11,8 @@
 		kernelPatches = [
 			{
 				# https://www.phoronix.com/news/Linux-6.2-Power-Management
-				name = "Set the Intel EPB change to ADL as a whole. Check comment for details.";
-				patch = ./patches/intel-epb-fix.patch;
+				name = "Set the Intel EPP change to ADL, adapted from EPB. Check patch comment for details.";
+				patch = ./patches/intel-epp-fix.patch;
 			}
 		];
 		kernelParams = [
