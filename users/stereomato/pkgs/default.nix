@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}:{
+{pkgs, ...}:{
   imports = [
     ./imports
     ./media
@@ -32,26 +32,5 @@
 			#TODO: Write about this in the future NixOS article I wanna write.
 			hunspellDicts.en_US hunspellDicts.es_PE aspellDicts.en aspellDicts.es aspellDicts.en-science aspellDicts.en-computers
 			
-		]
-		++ lib.optionals config.services.desktopManager.plasma6.enable [
-			# QT LO
-			libreoffice-qt-fresh
-
-			# AI
-			kdePackages.alpaka
-		 ]
-		++ lib.optionals config.services.xserver.desktopManager.gnome.enable [
-			# Normal LO
-			libreoffice-fresh
-
-			# Extra Gnome Circle apps
-			metadata-cleaner warp wike gnome-solanum newsflash gtg gnome-graphs
-
-			# Font management
-			fontforge-gtk
-
-			# AI
-			alpaca
-		 ];
-
+	];
 }

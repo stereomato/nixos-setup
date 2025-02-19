@@ -87,6 +87,7 @@
 
 
 	localModule.gnome.enable = true;
+	localModule.gnome.minimal.enable = false;
 
 	localModule.performance.memory = {
 		zswap = {

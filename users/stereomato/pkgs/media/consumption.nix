@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:{
+{pkgs, ... }:{
 	# Here go things that are related to media consumption
 	imports = [
 	];
@@ -22,18 +22,5 @@
 		# Streamer
 		stremio
 
-	] ++ lib.optionals config.services.desktopManager.plasma6.enable [ 
-			# Video players/MPV Frontends
-			haruna 
-
-			# Audio players
-			fooyin
-		]
-	++ lib.optionals config.services.xserver.desktopManager.gnome.enable [
-			# Digital books (epubs, manga)
-			foliate
-			# Digital media players/readers/streamers/frontends
-			# FTBFS: nix log /nix/store/ia6nr3xzzvqpjm4c5c30pnvar1dma6cs-quodlibet-4.6.0.drv
-			amberol gthumb# celluloid
 	];
 }

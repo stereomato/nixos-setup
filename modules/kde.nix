@@ -4,6 +4,7 @@
 	{
 		options.localModule = {
 			plasma.enable = lib.mkEnableOption "the KDE Plasma desktop environment";
+			plasma.minimal.enable = lib.mkEnableOption "a minimal KDE Plasma installation";
 		};
 
 		config = lib.mkIf cfg.plasma.enable {
@@ -44,6 +45,30 @@
 					kdePackages.kleopatra
 					bibata-cursors
 					kdePackages.kdevelop
+				] ++ lib.optionals (! cfg.kde.minimal.enable) [
+					# Sound
+					kid3-kde
+
+					# Video players/MPV Frontends
+					haruna 
+
+					# Audio players
+					fooyin
+
+					# Chat Apps
+					kdePackages.neochat nheko kaidan
+			
+					# Downloaders
+					kdePackages.kget
+
+					# Web browser
+					kdePackages.falkon # kdePackages.angelfish
+
+					# QT LO
+					libreoffice-qt-fresh
+
+					# AI
+					kdePackages.alpaka
 				];
 				sessionVariables = {
 					# System wide stem darkening

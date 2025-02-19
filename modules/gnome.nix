@@ -4,6 +4,7 @@
 	{
 		options.localModule = {
 			gnome.enable = lib.mkEnableOption "the GNOME desktop environment";
+			gnome.minimal.enable = lib.mkEnableOption "a minimal GNOME setup.";
 			#plasma.enable = lib.mkEnableOption "Enable the KDE Plasma desktop environment";
 			#minimal.enable = lib.mkEnableOption "Build a minimal system, for like a live environment";
 		};
@@ -60,6 +61,35 @@
 					gnome-power-manager
 					# This is needed for file-roller to open .debs
 					binutils
+				] ++ lib.optionals (! cfg.gnome.minimal.enable) [
+					# Normal LO
+					libreoffice-fresh
+
+					# Extra Gnome Circle apps
+					metadata-cleaner warp wike gnome-solanum newsflash gtg gnome-graphs
+
+					# Font management
+					fontforge-gtk
+
+					# AI
+					alpaca
+
+					# Chat apps
+					fractal
+					
+					# Downloaders
+					fragments
+
+					# Digital books (epubs, manga)
+					foliate
+					# Digital media players/readers/streamers/frontends
+					# FTBFS: nix log /nix/store/ia6nr3xzzvqpjm4c5c30pnvar1dma6cs-quodlibet-4.6.0.drv
+					amberol gthumb# celluloid
+
+					# Images
+					drawing gnome-obfuscate eyedropper
+					# Video
+					kooha
 				];
 			};
 

@@ -1,4 +1,4 @@
-{config, lib, pkgs, ... }:{
+{pkgs, ... }:{
 nixpkgs = {
 		overlays = [(
 			self: super: {
@@ -27,22 +27,5 @@ nixpkgs = {
 
 		# Virtual classes
 		zoom-us
-	] ++ lib.optionals config.services.desktopManager.plasma6.enable [
-			# Chat Apps
-			kdePackages.neochat nheko kaidan
-			
-			# Downloaders
-			kdePackages.kget
-
-			# Web browser
-			kdePackages.falkon # kdePackages.angelfish
-	]
-		++ lib.optionals config.services.xserver.desktopManager.gnome.enable  [
-				# Chat apps
-				fractal
-				
-				# Downloaders
-				fragments
-			];
-
+	];
 }

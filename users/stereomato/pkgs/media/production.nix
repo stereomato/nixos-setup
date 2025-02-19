@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:{
+{ pkgs, ... }:{
 	users.users.stereomato.packages = with pkgs; [
 		
 		# General multimedia tools
@@ -21,14 +21,5 @@
 
 		# Images
 		gimp imagemagickBig waifu2x-converter-cpp krita libjxl libavif upscaler
-	] 
-	++ lib.optionals config.services.desktopManager.plasma6.enable [ 
-		# Sound
-		kid3-kde
-	]
-	++ lib.optionals config.services.xserver.desktopManager.gnome.enable [
-		# Images
-		drawing gnome-obfuscate eyedropper
-		kooha
 	];
 }

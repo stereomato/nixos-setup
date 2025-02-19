@@ -1,4 +1,4 @@
-{inputs, config, lib, pkgs, ...}:{
+{inputs, pkgs, ...}:{
   nixpkgs.overlays = [(
 		self: super: {
 			vscode = super.vscode.override {
@@ -78,8 +78,6 @@
 	)];
 	users.users.stereomato.packages = with pkgs; [
 		# https://github.com/NixOS/nixpkgs/issues/242322#issuecomment-2264995861
-		
-
 		# Text editors, IDEs
 		zed-editor jetbrains-toolbox netbeans arduino-ide my-vscode octaveFull
 

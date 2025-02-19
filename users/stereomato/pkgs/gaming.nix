@@ -1,4 +1,4 @@
-{config, lib, pkgs, ... }:{
+{ pkgs, ... }:{
   users.users.stereomato.packages = with pkgs; [
 		# Windows related stuff
 		wineWowPackages.stagingFull dxvk  winetricks proton-caller bottles

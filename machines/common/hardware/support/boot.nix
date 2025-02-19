@@ -90,10 +90,6 @@
 								#RCU_TORTURE_TEST = module;
 								#BUG_ON_DATA_CORRUPTION = yes;
 								#LOCK_TORTURE_TEST = module;
-								#SCHEDSTATS = yes;
-								#HARDLOCKUP_DETECTOR = yes;
-								#SOFTLOCKUP_DETECTOR = yes;
-								#WATCH_QUEUE = yes;
 								#6PACK = module;
 								# PCIE Advanced Error Reporting
 								PCIEAER = yes;

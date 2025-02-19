@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}:{
+{pkgs, ...}:{
   # This is where I put NixOS *user* config
   # hm configs go on the hm folder xDDDDD
   imports = [
