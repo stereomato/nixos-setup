@@ -31,6 +31,5 @@
 		# https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/tasks/filesystems/zfs.nix#L19
 		supportedFilesystems.zfs = lib.mkForce false;
 		initrd.supportedFilesystems.zfs = lib.mkForce false;
-		# kernelPackages = lib.mkForce pkgs.linux-stereomato-zen;
 	};
 }

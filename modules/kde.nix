@@ -69,6 +69,9 @@
 
 					# AI
 					kdePackages.alpaka
+
+					# Video Production
+					kdePackages.kdenlive
 				];
 				sessionVariables = {
 					# System wide stem darkening

@@ -8,15 +8,17 @@
 			"vm.nr_hugepages" = 25;
 			"vm.nr_overcommit_hugepages" = 150;
 			# Prefer to keep filesystem cache memory over application memory
-			"vm.vfs_cache_pressure" = 50;
+			"vm.vfs_cache_pressure" = 25;
 			# Proper swappiness
 			"vm.swappiness" = 200;
 			# Set the bytes of my current laptop's storage speed
 			# dirty_bytes is 3x of the total speed
 			# dirty_background_bytes is the total random writes speed
 			# as shown by kdiskmark
-			"vm.dirty_bytes" = 498000000;
-			"vm.dirty_background_bytes" = 166000000;
+			# "vm.dirty_bytes" = 498000000;
+			# "vm.dirty_background_bytes" = 166000000;
+			"vm.dirty_ratio" = 15;
+			"vm.dirty_background_ratio" = 5;
 			# 1.25% of RAM
 			"vm.min_free_kbytes" = 310984;
 			# Best value, according to phoronix

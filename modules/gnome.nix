@@ -75,21 +75,23 @@
 					alpaca
 
 					# Chat apps
-					fractal
+					fractal dino
 					
 					# Downloaders
 					fragments
 
 					# Digital books (epubs, manga)
 					foliate
+
 					# Digital media players/readers/streamers/frontends
 					# FTBFS: nix log /nix/store/ia6nr3xzzvqpjm4c5c30pnvar1dma6cs-quodlibet-4.6.0.drv
 					amberol gthumb# celluloid
 
 					# Images
 					drawing gnome-obfuscate eyedropper
+					
 					# Video
-					kooha
+					kooha pitivi
 				];
 			};
 

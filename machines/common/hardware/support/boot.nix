@@ -9,55 +9,19 @@
 						structuredExtraConfig = with lib.kernel;
 							# Merge the zen kernel's own config with this one using the // operator
 							super.linuxPackages_zen.kernel.structuredExtraConfig // {
-								# Fedora configuration mimicking
-								#RV = yes;
-								#TRACE_EVAL_MAP_FILE = yes;
-								#RING_BUFFER_BENCHMARK = module;
-								#HIST_TRIGGERS = yes;
-								#SYNTH_EVENTS = yes;
-								#HWLAT_TRACER = yes;
-								#OSNOISE_TRACER = yes;
-								#TIMERLAT_TRACER = yes;
-								#BOOTTIME_TRACING = yes;
-								#MMIOTRACE = yes;
-								#LATENCYTOP = yes;
-								#RCU_TORTURE_TEST = module;
-								#BUG_ON_DATA_CORRUPTION = yes;
-								#LOCK_TORTURE_TEST = module;
-								#SCHEDSTATS = yes;
-								#HARDLOCKUP_DETECTOR = yes;
-								#SOFTLOCKUP_DETECTOR = yes;
-								#WATCH_QUEUE = yes;
-								#6PACK = module;
-								# PCIE Advanced Error Reporting
-								PCIEAER = yes;
-								# Extra ACPI features
-								ACPI_APEI_MEMORY_FAILURE = yes;
-								ACPI_APEI_PCIEAER = yes;
-								ACPI_I2C_OPREGION = yes;
-								# I2C built-in is needed by ACPI_I2C_OPREGION
-								I2C = yes;
-								# Extra DMABUF features
-								DMABUF_HEAPS = yes;
-								DMABUF_HEAPS_CMA = yes;
-								DMABUF_HEAPS_SYSTEM = yes;
-								# Enable compressors to use with zswap or zram.
-								CRYPTO_ZSTD = yes;
-								ZSTD_COMPRESS = yes;
-								CRYPTO_LZ4 = yes;
-								LZ4_COMPRESS = yes;
-								CRYPTO_LZ4HC = yes;
-								LZ4HC_COMPRESS = yes;
 								# Zswap stuff
 								ZSWAP_SHRINKER_DEFAULT_ON = yes;
 								ZSMALLOC_STAT = yes;
+								# This needs "freeform"
+								# from https://github.com/NixOS/nixpkgs/blob/73cf49b8ad837ade2de76f87eb53fc85ed5d4680/pkgs/os-specific/linux/kernel/zen-kernels.nix#L82
+								ZSMALLOC_CHAIN_SIZE = freeform "10";
 								# mgLRU statistics support
 								LRU_GEN_STATS = yes;
 								# Compile the kernel with optimizations for my Intel laptop.
-								MNATIVE_INTEL = yes;
+								# MNATIVE_INTEL = yes;
 								# Extra zram stuff
 								ZRAM_MEMORY_TRACKING = yes;
-								ZRAM_MULTI_COMP = yes;
+								ZRAM_TRACK_ENTRY_ACTIME = yes;
 
 								# Module compression with ZSTD
 								MODULE_COMPRESS_XZ = lib.mkForce no;
@@ -69,57 +33,25 @@
 			});
 
 			# Default
-			linux-stereomato = super.linuxPackages_6_13.extend (kself: ksuper: {
+			linux-stereomato = super.linuxPackages_latest.extend (kself: ksuper: {
 				kernel = ksuper.kernel.override {
 					argsOverride = {
 						structuredExtraConfig = with lib.kernel;
-							# Merge the zen kernel's own config with this one using the // operator
-							super.linuxPackages_zen.kernel.structuredExtraConfig // {
-								# Fedora configuration mimicking
-								#RV = yes;
-								#TRACE_EVAL_MAP_FILE = yes;
-								#RING_BUFFER_BENCHMARK = module;
-								#HIST_TRIGGERS = yes;
-								#SYNTH_EVENTS = yes;
-								#HWLAT_TRACER = yes;
-								#OSNOISE_TRACER = yes;
-								#TIMERLAT_TRACER = yes;
-								#BOOTTIME_TRACING = yes;
-								#MMIOTRACE = yes;
-								#LATENCYTOP = yes;
-								#RCU_TORTURE_TEST = module;
-								#BUG_ON_DATA_CORRUPTION = yes;
-								#LOCK_TORTURE_TEST = module;
-								#6PACK = module;
-								# PCIE Advanced Error Reporting
-								PCIEAER = yes;
-								# Extra ACPI features
-								ACPI_APEI_MEMORY_FAILURE = yes;
-								ACPI_APEI_PCIEAER = yes;
-								ACPI_I2C_OPREGION = yes;
-								# I2C built-in is needed by ACPI_I2C_OPREGION
-								I2C = yes;
-								# Extra DMABUF features
-								DMABUF_HEAPS = yes;
-								DMABUF_HEAPS_CMA = yes;
-								DMABUF_HEAPS_SYSTEM = yes;
-								# Enable compressors to use with zswap or zram.
-								CRYPTO_ZSTD = yes;
-								ZSTD_COMPRESS = yes;
-								CRYPTO_LZ4 = yes;
-								LZ4_COMPRESS = yes;
-								CRYPTO_LZ4HC = yes;
-								LZ4HC_COMPRESS = yes;
+							# Merge the kernel's own config with this one using the // operator
+							super.linuxPackages_latest.kernel.structuredExtraConfig // {
 								# Zswap stuff
 								ZSWAP_SHRINKER_DEFAULT_ON = yes;
 								ZSMALLOC_STAT = yes;
+								# This needs "freeform"
+								# from https://github.com/NixOS/nixpkgs/blob/73cf49b8ad837ade2de76f87eb53fc85ed5d4680/pkgs/os-specific/linux/kernel/zen-kernels.nix#L82
+								ZSMALLOC_CHAIN_SIZE = freeform "10";
 								# mgLRU statistics support
 								LRU_GEN_STATS = yes;
 								# Compile the kernel with optimizations for my Intel laptop.
 								# MNATIVE_INTEL = yes;
 								# Extra zram stuff
 								ZRAM_MEMORY_TRACKING = yes;
-								ZRAM_MULTI_COMP = yes;
+								ZRAM_TRACK_ENTRY_ACTIME = yes;
 
 								# Module compression with ZSTD
 								MODULE_COMPRESS_XZ = lib.mkForce no;

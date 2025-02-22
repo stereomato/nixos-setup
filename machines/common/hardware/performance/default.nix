@@ -112,13 +112,4 @@
 			};
 		};
 	};
-
-	# Kernel Samepage Merging
-	# TODO: Historic, not needed.
-	hardware = {
-		ksm = {
-			enable = false;
-			sleep = 1000;
-		};
-	};
 }

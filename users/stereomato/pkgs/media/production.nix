@@ -8,7 +8,7 @@
 		obs-studio-with-plugins
 
 		# Video Production & manipulation
-		kdePackages.kdenlive mkvtoolnix pitivi 
+		mkvtoolnix 
 
 		# Music/Audio file management
 		wavpack fdk-aac-encoder lame flac opusTools opustags easytag spek flacon

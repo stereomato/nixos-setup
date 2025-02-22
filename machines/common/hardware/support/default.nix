@@ -1,8 +1,8 @@
 {config, lib, pkgs, ...}:{
   imports = [
-    ./audio.nix
-    ./boot.nix
-	./gpu.nix
+		./audio.nix
+		./boot.nix
+		./gpu.nix
   ];
 
   nixpkgs.overlays = [(
@@ -36,7 +36,7 @@
 
   hardware = {
 	bluetooth.enable = true;
-    enableAllFirmware = true;
+	enableAllFirmware = true;
 		cpu.intel.updateMicrocode = true;
 		#xone.enable = true; # xbox one controllers
 		# scanners and printers
@@ -45,7 +45,7 @@
 			openFirewall = true;
 		};
 		sensor.iio.enable = true;
-  };
+	};
 
 	# Keyboard Layout
 	# Not gonna have any other kind of keyboard layout anytime soon, so put this in common

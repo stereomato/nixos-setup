@@ -17,6 +17,8 @@
 			}
 			# Lock Keys
 			{ package = pkgs.gnomeExtensions.lock-keys; }
+			# Dash to Dock
+			{ package = pkgs.gnomeExtensions.dash-to-dock; }
 		];
 	};
 

@@ -55,8 +55,9 @@
 			# https://github.com/NixOS/nixpkgs/pull/325430
 			geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
 			submissionUrl = "https://api.beacondb.net/v2/geosubmit";
-			submissionNick = "stereomato";
-			submitData = true;
+			submissionNick = "geoclue";
+			# Disabled since I don't have a GPS antenna
+			submitData = false;
 		};
 	 #lib.mkIf (config.services.desktopManager.plasma6.enable)
 	};
