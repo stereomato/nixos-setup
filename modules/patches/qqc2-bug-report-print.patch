@@ -1,0 +1,15 @@
+diff --git a/kirigami-plasmadesktop-integration/plasmadesktoptheme.cpp b/kirigami-plasmadesktop-integration/plasmadesktoptheme.cpp
+index fac0831..f40fe9a 100644
+--- a/kirigami-plasmadesktop-integration/plasmadesktoptheme.cpp
++++ b/kirigami-plasmadesktop-integration/plasmadesktoptheme.cpp
+@@ -56,8 +56,10 @@ public:
+         // QTBUG-126577
+         if (qApp->devicePixelRatio() == 1.0) {
+             QQuickWindow::setTextRenderType(QQuickWindow::NativeTextRendering);
++            qWarning() << qApp->devicePixelRatio();
+         } else {
+             QQuickWindow::setTextRenderType(QQuickWindow::QtTextRendering);
++            qWarning() << qApp->devicePixelRatio();
+         }
+         smallFont = loadSmallFont();
+     }

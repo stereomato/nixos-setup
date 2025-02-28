@@ -19,6 +19,8 @@
 			{ package = pkgs.gnomeExtensions.lock-keys; }
 			# Dash to Dock
 			{ package = pkgs.gnomeExtensions.dash-to-dock; }
+			# Quake Terminal
+			{ package = pkgs.gnomeExtensions.quake-terminal; }
 		];
 	};
 
@@ -51,6 +53,26 @@
 	dconf = {
 		enable = taihouConfig.services.xserver.desktopManager.gnome.enable;
 		settings = {
+
+			"org/gnome/shell/extensions/quake-terminal" = {
+				terminal-id = "org.gnome.Console.desktop";
+				always-on-top = true;
+				terminal-shortcut = lib.hm.gvariant.mkArray lib.hm.gvariant.type.string [ "F12" ];
+			};
+			"org/gnome/shell/extensions/dash-to-dock" = {
+				show-show-apps-button = false;
+				preferred-monitor-by-connector = "eDP-1";
+				intellihide-mode = "FOCUS_APPLICATIONS_WINDOWS";
+				pressure-threshold = lib.hm.gvariant.mkDouble "50.0";
+				show-trash = false;
+				show-mounts-network = true;
+				click-action = "minimize-or-previews";
+				apply-custom-theme = true;
+				dash-max-icon-size = lib.hm.gvariant.mkInt32 64;
+			};
+			"org/gnome/Console" = {
+				ignore-scrollback-limit = true;
+			};
 			"org/gnome/settings-daemon/plugins/color" = {
 				};
 			"org/gnome/shell/extensions/lockkeys" = {

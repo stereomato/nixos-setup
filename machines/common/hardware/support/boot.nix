@@ -95,6 +95,7 @@
 			# Switch to lazy preemption
 			# https://lwn.net/Articles/994322/
 			"preempt=lazy"
+
 			# Powersaving
 			# "iwlwifi.power_save=1"
 			# "iwlwifi.power_level=3"

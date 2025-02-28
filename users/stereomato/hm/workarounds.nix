@@ -13,12 +13,13 @@
 	
 	# Workaround: for cursors broken in gnome by default
 	# affects: mpv and games it seems
+	# This might be uneeded when gtk 4.18 drops
 		 pointerCursor = lib.mkIf taihouConfig.services.xserver.desktopManager.gnome.enable {
 		 	package = pkgs.adwaita-icon-theme;
 		 	name = "Adwaita";
 		 	# Set to 12 because of mpv
 		 	# TODO: does this affect other stuff?
-		 	size = 12;
+		 	size = 24;
 			# Makes the GNOME cursor tiny
 		 	gtk.enable = false;
 			# I only really need this, I think?

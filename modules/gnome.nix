@@ -51,7 +51,7 @@
 					# Default PDF viewer
 					papers
 					# Miscellanous Gnome apps
-					gnome-icon-theme gnome-tweaks # gnome-extension-manager
+					gnome-icon-theme gnome-tweaks
 					ptyxis
 					gnome-boxes
 					showtime
@@ -61,9 +61,13 @@
 					gnome-power-manager
 					# This is needed for file-roller to open .debs
 					binutils
-				] ++ lib.optionals (! cfg.gnome.minimal.enable) [
+
+					ghostty
+
 					# Normal LO
 					libreoffice-fresh
+				] ++ lib.optionals (! cfg.gnome.minimal.enable) [
+					
 
 					# Extra Gnome Circle apps
 					metadata-cleaner warp wike gnome-solanum newsflash gtg gnome-graphs
@@ -84,14 +88,13 @@
 					foliate
 
 					# Digital media players/readers/streamers/frontends
-					# FTBFS: nix log /nix/store/ia6nr3xzzvqpjm4c5c30pnvar1dma6cs-quodlibet-4.6.0.drv
-					amberol gthumb# celluloid
+					g4music gthumb# celluloid
 
 					# Images
-					drawing gnome-obfuscate eyedropper
+					pinta gnome-obfuscate eyedropper
 					
 					# Video
-					kooha pitivi
+					pitivi
 				];
 			};
 
@@ -110,24 +113,5 @@
 				}
 			)];
 
-			system.replaceDependencies.replacements = [
-				# Disable stem darkening on QT
-				{
-					oldDependency = pkgs.kdePackages.qtbase;
-					newDependency = pkgs.kdePackages.qtbase.overrideAttrs(old: {
-						patches = pkgs.kdePackages.qtbase.patches ++ [
-							./patches/disable-stem-darkening.patch
-						];
-					});
-				}
-				{
-					oldDependency = pkgs.libsForQt5.qt5.qtbase;
-					newDependency = pkgs.libsForQt5.qt5.qtbase.overrideAttrs(old: {
-						patches = pkgs.libsForQt5.qt5.qtbase.patches ++ [
-							./patches/disable-stem-darkening-qt5.patch
-						];
-					});
-				}
-			];
 		};
 	}

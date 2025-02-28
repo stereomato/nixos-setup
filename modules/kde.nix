@@ -45,12 +45,12 @@
 					kdePackages.kleopatra
 					bibata-cursors
 					kdePackages.kdevelop
-				] ++ lib.optionals (! cfg.kde.minimal.enable) [
+				] ++ lib.optionals (! cfg.plasma.minimal.enable) [
 					# Sound
 					kid3-kde
 
 					# Video players/MPV Frontends
-					haruna 
+					haruna vlc
 
 					# Audio players
 					fooyin
@@ -72,14 +72,27 @@
 
 					# Video Production
 					kdePackages.kdenlive
+
+					# Extras
+					kdePackages.yakuake
+
+
 				];
 				sessionVariables = {
 					# System wide stem darkening
-					FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+					# Disabled: Inconsistent in plasma/QT
+					# FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
 				};
 			};
-
 			system.replaceDependencies.replacements = [
+				# https://bugs.kde.org/show_bug.cgi?id=479891#c114
+				{
+					oldDependency = pkgs.kdePackages.qqc2-desktop-style;
+					newDependency = pkgs.kdePackages.qqc2-desktop-style.overrideAttrs (old: {
+						# Doesn't have a patches attribute
+						patches = [ ./patches/qqc2-bug-report-print.patch ];
+					});
+				}
 			];
 		};
 	}

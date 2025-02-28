@@ -5,6 +5,27 @@
 		./software
 	];
 
+	system.replaceDependencies.replacements = [
+				# Disable stem darkening on QT
+				{
+					oldDependency = pkgs.kdePackages.qtbase;
+					newDependency = pkgs.kdePackages.qtbase.overrideAttrs(old: {
+						patches = pkgs.kdePackages.qtbase.patches ++ [
+							./patches/disable-stem-darkening.patch
+						];
+					});
+				}
+				{
+					oldDependency = pkgs.libsForQt5.qt5.qtbase;
+					newDependency = pkgs.libsForQt5.qt5.qtbase.overrideAttrs(old: {
+						patches = pkgs.libsForQt5.qt5.qtbase.patches ++ [
+							./patches/disable-stem-darkening-qt5.patch
+						];
+					});
+				}
+			];
+
+
 	# In this place goes things that are too general or too small that putting them in their own files is just cluttering
 
 	#TODO: consider putting high level toggles here?

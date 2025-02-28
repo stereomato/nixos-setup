@@ -85,6 +85,7 @@
 	boot = {
 		extraModprobeConfig = ''
 			blacklist iTCO_wdt
+			options cfg80211 ieee80211_regdom="PE"
 		'';
 		kernelParams = [
 			"nowatchdog"

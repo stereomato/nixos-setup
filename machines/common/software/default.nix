@@ -78,7 +78,7 @@
 		};
 		systemPackages = with pkgs; [
 			# System monitoring, managing & benchmarking tools
-			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils powertop btrfs-progs nvtopPackages.intel powerstat iotop smem nix-info kdiskmark file stress-ng btop fastfetch
+			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop clinfo s-tui compsize smartmontools nvme-cli btop pciutils usbutils powertop btrfs-progs nvtopPackages.intel powerstat iotop smem nix-info kdiskmark file stress-ng btop fastfetch
 			# System management
 			gparted
 
@@ -118,9 +118,6 @@
 		networkmanager = {
 			enable = true;
 			wifi.backend = "iwd";
-		};
-		nat = {
-			enable = true;
 		};
 		firewall = {
 			enable = true;
@@ -203,7 +200,7 @@
 
 	# I am... here
 	time = {
-			timeZone = "America/Lima";
-		};
+		timeZone = "America/Lima";
+	};
 
 }

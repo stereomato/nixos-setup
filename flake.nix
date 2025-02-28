@@ -12,10 +12,6 @@
 			url = "github:Mic92/nix-index-database";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		nixified-ai = {
-			url = "github:nixified-ai/flake";
-			#inputs.nixpkgs.follows = "nixpkgs";
-		};
 		disko = {
 				url = "github:nix-community/disko/latest";
 			inputs.nixpkgs.follows = "nixpkgs";

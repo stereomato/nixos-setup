@@ -37,7 +37,8 @@
 			# Fedora change, for some games. Shouldn't affect most things
 			# Higher memory map count for some games that need it
 			# https://www.phoronix.com/news/Fedora-39-Max-Map-Count-Approve
-			"vm.max_map_count" = 1048576;
+			# Already set on NixOS
+			# "vm.max_map_count" = 1048576;
 
 			# Internet
 			"net.ipv4.tcp_fastopen" = 3;

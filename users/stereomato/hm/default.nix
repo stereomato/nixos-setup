@@ -70,8 +70,8 @@
 	};
 
 	# QT look on gnome
-	qt = {
-		enable = taihouConfig.services.xserver.desktopManager.gnome.enable;
+	qt = {} // lib.mkIf (taihouConfig.services.xserver.desktopManager.gnome.enable) {
+		enable = true;
 		platformTheme.name = "adwaita";
 	};
 
