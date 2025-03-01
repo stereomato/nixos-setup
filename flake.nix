@@ -40,15 +40,26 @@
 				# intel-lpmd = inputs.intel-lmpd-module.outputs.legacyPackages.x86_64-linux.intel-lpmd;
 			})];
 		hostPlatform = system;
-			config = {
-				allowUnfree = true;
-				allowUnfreePredicate = _: true;
-			};
+		config = {
+			allowUnfree = true;
+			allowUnfreePredicate = _: true;
+			joypixels.acceptLicense = true;
+			input-fonts.acceptLicense = true;
+			permittedInsecurePackages = [
+					# FIXME: https://github.com/NixOS/nixpkgs/issues/269713
+					"openssl-1.1.1w"
+					# FIXME: https://github.com/NixOS/nixpkgs/pull/280835
+					"freeimage-unstable-2021-11-01"
+					# FIXME: https://discourse.nixos.org/t/nixpkgs-config-permittedinsecurepackages-cannot-be-set-in-multiple-files-at-the-same-time/56128
+					"olm-3.2.16"
+			];
 		};
-			in rec {
+	};
+		in rec {
 			nixosConfigurations = {
 				Taihou = nixpkgs.lib.nixosSystem {
 					system = system;
+					pkgs = pkgs;
 					modules = [
 						nix-index-database.nixosModules.nix-index
 						disko.nixosModules.disko
@@ -77,14 +88,12 @@
 				# nix build .#nixosConfigurations.TaihouLite.config.system.build.isoImage
 				TaihouLite = nixpkgs.lib.nixosSystem {
 					system = system;
+					pkgs = pkgs;
 					modules = [
 						nix-index-database.nixosModules.nix-index
 						disko.nixosModules.disko
 						./modules/default.nix
 						./machines/TaihouLite
-
-						
-
 					];
 					specialArgs = { inherit inputs; username = "stereomato"; };
 				};

@@ -25,22 +25,6 @@
 		nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 	};
 
-	nixpkgs = {
-		config = {
-			allowUnfree = true;
-			joypixels.acceptLicense = true;
-			input-fonts.acceptLicense = true;
-			permittedInsecurePackages = [
-					# FIXME: https://github.com/NixOS/nixpkgs/issues/269713
-					"openssl-1.1.1w"
-					# FIXME: https://github.com/NixOS/nixpkgs/pull/280835
-					"freeimage-unstable-2021-11-01"
-					# FIXME: https://discourse.nixos.org/t/nixpkgs-config-permittedinsecurepackages-cannot-be-set-in-multiple-files-at-the-same-time/56128
-					"olm-3.2.16"
-			];
-		};
-	};
-
 	services = {
 		# Needed for anything GUI
 		xserver.enable = true;

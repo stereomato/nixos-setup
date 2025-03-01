@@ -15,7 +15,8 @@
 					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.github.vscode-pull-request-github
 					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jnoortheen.nix-ide
 					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.mkhl.direnv
-					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-python.python
+					# https://github.com/nix-community/nix-vscode-extensions/issues/98
+					# inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-python.python
 					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-toolsai.jupyter
 					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-toolsai.jupyter-keymap
 					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-toolsai.jupyter-renderers
@@ -55,7 +56,8 @@
 					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.cpptools-extension-pack
 					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.cpptools-themes
 					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.remote-explorer
-					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vsliveshare.vsliveshare
+					# https://github.com/nix-community/nix-vscode-extensions/issues/97
+					#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vsliveshare.vsliveshare
 					inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jdinhlife.gruvbox
 					#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.VisualStudioExptTeam.intellicode-api-usage-examples
 					#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.VisualStudioExptTeam.vscodeintellicode
@@ -76,6 +78,7 @@
 			 };
 		}
 	)];
+	
 	users.users.stereomato.packages = with pkgs; [
 		# https://github.com/NixOS/nixpkgs/issues/242322#issuecomment-2264995861
 		# Text editors, IDEs

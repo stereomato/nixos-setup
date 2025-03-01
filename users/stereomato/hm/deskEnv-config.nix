@@ -115,7 +115,7 @@
 				enabled = "org.gnome.Weather.desktop";
 			};
 			"org/gnome/shell/app-switcher" = {
-				current-workspace-only = true;
+				current-workspace-only = false;
 			};
 			"org/gnome/settings-daemon/plugins/power" = {
 				sleep-inactive-ac-type = "nothing";

@@ -1,8 +1,5 @@
 { taihouConfig, pkgs, username, ... }:{
   # Here goes everything related to software development
-  imports = [
-    ./vscode.nix
-  ];
 	
   services = {
     lorri = {
