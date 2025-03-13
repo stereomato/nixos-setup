@@ -8,7 +8,7 @@
 		obs-studio-with-plugins
 
 		# Video Production & manipulation
-		mkvtoolnix 
+		mkvtoolnix davinci-resolve
 
 		# Music/Audio file management
 		wavpack fdk-aac-encoder lame flac opusTools opustags easytag spek flacon

@@ -16,9 +16,6 @@
 		# Gstreamer programs
 		gst_all_1.gstreamer
 
-		# Downloader
-		popcorntime
-
 		# Streamer
 		stremio
 

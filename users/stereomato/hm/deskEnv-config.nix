@@ -17,10 +17,14 @@
 			}
 			# Lock Keys
 			{ package = pkgs.gnomeExtensions.lock-keys; }
-			# Dash to Dock
-			{ package = pkgs.gnomeExtensions.dash-to-dock; }
-			# Quake Terminal
-			{ package = pkgs.gnomeExtensions.quake-terminal; }
+			# Dock from dash
+			# Disabled until these 2 issues are fixed!
+			# https://github.com/fthx/dock-from-dash/issues/102
+			# https://github.com/fthx/dock-from-dash/issues/99
+			#{ package = pkgs.gnomeExtensions.dock-from-dash; }
+			# ddterm
+			# Re-enable once https://github.com/ddterm/gnome-shell-extension-ddterm/pull/1209 is dealt with
+			#{ package = pkgs.gnomeExtensions.ddterm; }
 		];
 	};
 
@@ -54,22 +58,11 @@
 		enable = taihouConfig.services.xserver.desktopManager.gnome.enable;
 		settings = {
 
-			"org/gnome/shell/extensions/quake-terminal" = {
-				terminal-id = "org.gnome.Console.desktop";
-				always-on-top = true;
-				terminal-shortcut = lib.hm.gvariant.mkArray lib.hm.gvariant.type.string [ "F12" ];
-			};
-			"org/gnome/shell/extensions/dash-to-dock" = {
-				show-show-apps-button = false;
-				preferred-monitor-by-connector = "eDP-1";
-				intellihide-mode = "FOCUS_APPLICATIONS_WINDOWS";
-				pressure-threshold = lib.hm.gvariant.mkDouble "50.0";
-				show-trash = false;
-				show-mounts-network = true;
-				click-action = "minimize-or-previews";
-				apply-custom-theme = true;
-				dash-max-icon-size = lib.hm.gvariant.mkInt32 64;
-			};
+			# "com/github/amezin/ddterm" = {
+			# 	panel-icon-type = "none";
+			# 	transparent-background = false;
+			# 	window-position = "bottom";
+			# };
 			"org/gnome/Console" = {
 				ignore-scrollback-limit = true;
 			};
@@ -108,8 +101,13 @@
 				command = "env TERM=xterm-256color fish -c 'dmmm-mouse-fix'";
 				name = "DMMM mouse fix";
 			};
+			"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+				binding = "F12";
+				command = "kgx";
+				name = "Open terminal";
+			};
 			"org/gnome/settings-daemon/plugins/media-keys" = {
-				custom-keybindings = lib.hm.gvariant.mkArray lib.hm.gvariant.type.string ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
+				custom-keybindings = lib.hm.gvariant.mkArray lib.hm.gvariant.type.string ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
 			};
 			"org/gnome/desktop/search-providers" = {
 				enabled = "org.gnome.Weather.desktop";

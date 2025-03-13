@@ -36,8 +36,11 @@
 			inherit system;
 			# TODO: Delete this if overlays work fine under each system.
 			# TODO: Consider making general overlays for multiple machines
-			overlays = [(self: super: {
+			overlays = [
+				inputs.nix-vscode-extensions.overlays.default
+				(self: super: {
 				# intel-lpmd = inputs.intel-lmpd-module.outputs.legacyPackages.x86_64-linux.intel-lpmd;
+				
 			})];
 		hostPlatform = system;
 		config = {
@@ -47,9 +50,8 @@
 			input-fonts.acceptLicense = true;
 			permittedInsecurePackages = [
 					# FIXME: https://github.com/NixOS/nixpkgs/issues/269713
+					# It's for steam
 					"openssl-1.1.1w"
-					# FIXME: https://github.com/NixOS/nixpkgs/pull/280835
-					"freeimage-unstable-2021-11-01"
 					# FIXME: https://discourse.nixos.org/t/nixpkgs-config-permittedinsecurepackages-cannot-be-set-in-multiple-files-at-the-same-time/56128
 					"olm-3.2.16"
 			];
@@ -65,7 +67,8 @@
 						disko.nixosModules.disko
 						./modules/default.nix
 						./machines/Taihou
-
+						./machines/Taihou/extModules/intel-lpmd.nix
+						# pkgs.thermald
 						home-manager.nixosModules.home-manager {
 							home-manager.useGlobalPkgs = true;
 							home-manager.useUserPackages = true;
