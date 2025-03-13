@@ -21,9 +21,9 @@
 
   writers,
 }:
-# This is needed because neither intel-lpmd or thermald can read configuration files in the system put in
+# This is needed because neither intel_lpmd or thermald can read configuration files in the system put in
 # /etc, for some reason.
-# And, intel-lpmd doesn't have a flag to load a configuration file directly, at least until
+# And, intel_lpmd doesn't have a flag to load a configuration file directly, at least until
 # https://github.com/intel/intel-lpmd/issues/84 is fixed
 let workaround = writers.writeText "config-file.xml" ''
     <?xml version="1.0"?>
@@ -134,7 +134,7 @@ let workaround = writers.writeText "config-file.xml" ''
 
 '';
 in stdenv.mkDerivation (finalAttrs: {
-  pname = "intel-lpmd";
+  pname = "intel_lpmd";
   version = "0.0.8";
 
   src = fetchFromGitHub {

@@ -39,8 +39,7 @@
 			overlays = [
 				inputs.nix-vscode-extensions.overlays.default
 				(self: super: {
-				# intel-lpmd = inputs.intel-lmpd-module.outputs.legacyPackages.x86_64-linux.intel-lpmd;
-				
+				intel_lpmd = super.callPackage ./modules/pkgs/intel_lpmd.nix {};
 			})];
 		hostPlatform = system;
 		config = {
@@ -67,8 +66,6 @@
 						disko.nixosModules.disko
 						./modules/default.nix
 						./machines/Taihou
-						./machines/Taihou/extModules/intel-lpmd.nix
-						# pkgs.thermald
 						home-manager.nixosModules.home-manager {
 							home-manager.useGlobalPkgs = true;
 							home-manager.useUserPackages = true;
