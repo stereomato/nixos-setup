@@ -91,6 +91,7 @@
 					"org.gnome.Console.desktop"
 					"org.gnome.Nautilus.desktop"
 					"code.desktop"
+					"com.usebottles.bottles.desktop"
 				];
 			};
 			"system/locale" = {

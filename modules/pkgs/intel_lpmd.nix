@@ -84,20 +84,19 @@ let workaround = writers.writeText "config-file.xml" ''
         1 : Yes
       -->
       <HfiSuvEnable>0</HfiSuvEnable>
-
       <!--
         System utilization threshold to enter LP mode
         from 0 - 100
         clear both util_entry_threshold and util_exit_threshold to disable util monitor
       -->
-      <util_entry_threshold>10</util_entry_threshold>
+      <util_entry_threshold>25</util_entry_threshold>
 
       <!--
         System utilization threshold to exit LP mode
         from 0 - 100
         clear both util_entry_threshold and util_exit_threshold to disable util monitor
       -->
-      <util_exit_threshold>95</util_exit_threshold>
+      <util_exit_threshold>50</util_exit_threshold>
 
       <!--
         Entry delay. Minimum delay in non Low Power mode to
@@ -115,13 +114,13 @@ let workaround = writers.writeText "config-file.xml" ''
         Lowest hysteresis average in-LP-mode time in msec to enter LP mode
         0: to disable hysteresis support
       -->
-      <EntryHystMS>0</EntryHystMS>
+      <EntryHystMS>2500</EntryHystMS>
 
       <!--
         Lowest hysteresis average out-of-LP-mode time in msec to exit LP mode
         0: to disable hysteresis support
       -->
-      <ExitHystMS>0</ExitHystMS>
+      <ExitHystMS>3125</ExitHystMS>
 
       <!--
         Ignore ITMT setting during LP-mode enter/exit
