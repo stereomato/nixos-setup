@@ -234,6 +234,8 @@
 			# SF-Arabic
 			# SF-Compact
 			# New-York
+
+			adwaita-fonts
 		];
 
 		fontDir.enable = true;
@@ -292,7 +294,7 @@
 						"Cantarell"
 					];
 				serif = [ "IBM Plex Serif" ];
-				monospace = [ "Geist Mono" ];
+				monospace = [ "CommitMono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};

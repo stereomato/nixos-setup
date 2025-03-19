@@ -37,7 +37,7 @@ let workaround = writers.writeText "config-file.xml" ''
       <!--
         CPU format example: 1,2,4..6,8-10
       -->
-      <lp_mode_cpus></lp_mode_cpus>
+      <lp_mode_cpus>8-15</lp_mode_cpus>
 
       <!--
         Mode values
@@ -89,14 +89,14 @@ let workaround = writers.writeText "config-file.xml" ''
         from 0 - 100
         clear both util_entry_threshold and util_exit_threshold to disable util monitor
       -->
-      <util_entry_threshold>25</util_entry_threshold>
+      <util_entry_threshold>35</util_entry_threshold>
 
       <!--
         System utilization threshold to exit LP mode
         from 0 - 100
         clear both util_entry_threshold and util_exit_threshold to disable util monitor
       -->
-      <util_exit_threshold>50</util_exit_threshold>
+      <util_exit_threshold>75</util_exit_threshold>
 
       <!--
         Entry delay. Minimum delay in non Low Power mode to

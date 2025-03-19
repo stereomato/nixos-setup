@@ -68,6 +68,7 @@
 	services.syncthing = {
 		enable = true;
 	};
+	services.easyeffects.enable = true;
 
 	# QT look on gnome
 	qt = {} // lib.mkIf (taihouConfig.services.xserver.desktopManager.gnome.enable) {
