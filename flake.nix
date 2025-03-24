@@ -3,6 +3,8 @@
 
 	inputs = {
 		nixpkgs.url = "nixpkgs/nixos-unstable";
+		# Trying out the GNOME 48 PR!
+		# nixpkgs.url = "github:NixOS/nixpkgs/pull/386514/head";
 		home-manager = {
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";

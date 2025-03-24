@@ -73,7 +73,7 @@
 			themePackages = [pkgs.kdePackages.breeze-plymouth];
 		};
 		initrd = {
-			availableKernelModules = [ "i915" "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+			availableKernelModules = [ "xe" "i915" "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
 			kernelModules = [ ];
 			luks = {
 				mitigateDMAAttacks = true;

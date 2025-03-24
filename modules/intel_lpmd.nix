@@ -45,9 +45,9 @@ in
 		systemd.services.intel_lpmd.wantedBy = [ "multi-user.target" ];
 		# TODO: document this on a personal database thing
 		# https://github.com/NixOS/nixpkgs/issues/63703#issuecomment-504836857
-		systemd.services.intel_lpmd.serviceConfig.ExecStart = [
-			""
-			"${cfg.intel_lpmd.package}/sbin/intel_lpmd --systemd --dbus-enable --loglevel=debug"
-		];
+		# systemd.services.intel_lpmd.serviceConfig.ExecStart = [
+		# 	""
+		# 	"${cfg.intel_lpmd.package}/sbin/intel_lpmd --systemd --dbus-enable --loglevel=debug"
+		# ];
 	};
 }

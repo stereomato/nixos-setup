@@ -1,7 +1,7 @@
 {
     "output": {
         "bass_enhancer#0": {
-            "amount": 12.6,
+            "amount": 10.000000000000009,
             "blend": 10.0,
             "bypass": false,
             "floor": 10.0,
@@ -39,7 +39,7 @@
             "input-gain": 0.0,
             "lookahead": 4.000000000000021,
             "mode": "Herm Thin",
-            "output-gain": -0.2,
+            "output-gain": 5.0,
             "oversampling": "Half x4(3L)",
             "release": 8.0,
             "sidechain-preamp": 0.0,
@@ -288,7 +288,7 @@
         "stereo_tools#0": {
             "balance-in": 0.0,
             "balance-out": 0.0,
-            "bypass": true,
+            "bypass": false,
             "delay": 0.0,
             "input-gain": 0.0,
             "middle-level": 0.0,
