@@ -5,8 +5,8 @@
 			"vm.page-cluster" = 0;
 			# Hugepages configuration, mostly for xmrig
 			# Not needed anymore
-			"vm.nr_hugepages" = 25;
-			"vm.nr_overcommit_hugepages" = 150;
+			#"vm.nr_hugepages" = 25;
+			#"vm.nr_overcommit_hugepages" = 150;
 			# Prefer to keep filesystem cache memory over application memory
 			"vm.vfs_cache_pressure" = 25;
 			# Proper swappiness
@@ -34,12 +34,6 @@
 			# Compact also unevictable memory (testing)
 			#"vm.compact_unevictable_allowed" = 1;
 			
-			# Fedora change, for some games. Shouldn't affect most things
-			# Higher memory map count for some games that need it
-			# https://www.phoronix.com/news/Fedora-39-Max-Map-Count-Approve
-			# Already set on NixOS
-			# "vm.max_map_count" = 1048576;
-
 			# Internet
 			"net.ipv4.tcp_fastopen" = 3;
 			"net.ipv4.tcp_low_latency" = 1;

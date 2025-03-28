@@ -26,7 +26,7 @@
 # And, intel_lpmd doesn't have a flag to load a configuration file directly, at least until
 # https://github.com/intel/intel-lpmd/issues/84 is fixed
 let workaround = writers.writeText "config-file.xml" ''
-    <?xml version="1.0"?>
+  <?xml version="1.0"?>
 
     <!--
     Specifies the configuration data
@@ -84,6 +84,28 @@ let workaround = writers.writeText "config-file.xml" ''
         1 : Yes
       -->
       <HfiSuvEnable>0</HfiSuvEnable>
+      
+      <!--
+        Use WLT hints
+        0 : No
+        1 : Yes
+      -->
+      <WLTHintEnable>1</WLTHintEnable>
+      
+      <!--
+        Use WLT hint Poll enable
+        0 : No
+        1 : Yes
+      -->
+      <WLTHintPollEnable>1</WLTHintPollEnable>
+
+      <!--
+        Use WLT software proxy hints
+        0 : No
+        1 : Yes
+      -->
+    <WLTProxyEnable>1</WLTProxyEnable>
+
       <!--
         System utilization threshold to enter LP mode
         from 0 - 100
@@ -129,18 +151,80 @@ let workaround = writers.writeText "config-file.xml" ''
       -->
       <IgnoreITMT>0</IgnoreITMT>
 
-    </Configuration>
+    <States>
+      <CPUFamily> 6 </CPUFamily>
+      <CPUModel> 154 </CPUModel>
+      <CPUConfig> * </CPUConfig>
+      <State>
+          <ID> 1 </ID> <!-- no significance. number can be anything -->
+          <Name> WLT_IDLE </Name>
+          <WLTType> 0 </WLTType> <!-- WLTType mapped to Name -->
+          <EnterGFXLoadThres>25</EnterGFXLoadThres>
+          <EPP> 221 </EPP>
+          <EPB> 13 </EPB>
+          <MinPollInterval> 1000 </MinPollInterval>
+          <PollIntervalIncrement> 500 </PollIntervalIncrement>
+          <MaxPollInterval> 2000 </MaxPollInterval>
+          <ActiveCPUs>12-15</ActiveCPUs>
+          <ITMTState> -1 </ITMTState>
+          <IRQMigrate> -1 </IRQMigrate>
+      </State>
+      <State>
+          <ID> 2 </ID>
+          <Name> WLT_BATTERY_LIFE </Name>
+          <WLTType> 1 </WLTType>
+          <EnterGFXLoadThres>25</EnterGFXLoadThres>
+          <EPP> 170 </EPP>
+          <EPB> 10 </EPB>
+          <MinPollInterval> 1000 </MinPollInterval>
+          <PollIntervalIncrement> 500 </PollIntervalIncrement>
+          <MaxPollInterval> 2000 </MaxPollInterval>
+          <ActiveCPUs>8-15</ActiveCPUs>
+          <ITMTState> -1 </ITMTState>
+          <IRQMigrate> -1 </IRQMigrate>
+      </State>
+      <State>
+          <ID> 3 </ID>
+          <Name> WLT_SUSTAINED </Name>
+          <WLTType> 2 </WLTType>
+          <EnterGFXLoadThres>50</EnterGFXLoadThres>
+          <EPP> 119 </EPP>
+          <EPB> 7 </EPB>
+          <MinPollInterval> 1000 </MinPollInterval>
+          <PollIntervalIncrement> 500 </PollIntervalIncrement>
+          <MaxPollInterval> 2000 </MaxPollInterval>
+          <ActiveCPUs>0-15</ActiveCPUs>
+          <ITMTState> -1 </ITMTState>
+          <IRQMigrate> -1 </IRQMigrate>
+      </State>
+      <State>
+          <ID> 4 </ID>
+          <Name> WLT_BURSTY </Name>
+          <WLTType> 3 </WLTType>
+          <EnterGFXLoadThres>75</EnterGFXLoadThres>
+          <EPP> 17 </EPP>
+          <EPB> 1 </EPB>
+          <MinPollInterval> 1000 </MinPollInterval>
+          <PollIntervalIncrement> 500 </PollIntervalIncrement>
+          <MaxPollInterval> 2000 </MaxPollInterval>
+          <ActiveCPUs>0-15</ActiveCPUs>
+          <ITMTState> -1 </ITMTState>
+          <IRQMigrate> -1 </IRQMigrate>
+      </State>
+    </States>
+
+  </Configuration>
 
 '';
 in stdenv.mkDerivation (finalAttrs: {
   pname = "intel_lpmd";
-  version = "0.0.8";
+  version = "0.0.9";
 
   src = fetchFromGitHub {
     owner = "intel";
     repo = "intel-lpmd";
     rev = "refs/tags/v${finalAttrs.version}";
-    hash = "sha256-Af8H+hX9S7+AlFxFvClsRgEgt+bYqy9T+IWUkbUPVEw=";
+    hash = "sha256-hM52KFgzHuXqadQ9TgRhEwFJsyiv8DyNdpGTWZAC0jU=";
   };
 
   nativeBuildInputs = [

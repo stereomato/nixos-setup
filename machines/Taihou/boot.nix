@@ -20,15 +20,15 @@
 			# "mem_sleep_default=deep"
 
 			# Testing the Xe kernel driver
-			"i915.force_probe=!46a6"
-			"xe.force_probe=46a6"
+			# "i915.force_probe=!46a6"
+			# "xe.force_probe=46a6"
 
 			# Enable Intel IOMMU
 			"intel_iommu=on"
 		];
 		extraModprobeConfig = ''
 			# Godforsaken MT7921
-			# options mt7921e disable_aspm=Y
+			options mt7921e disable_aspm=Y
 		'';
 		# initrd.availableKernelModules = [ "" ];
 		# https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/tasks/filesystems/zfs.nix#L18

@@ -45,14 +45,14 @@
 			};
 
 			adl-smp-affinity-list = {
-				# Disabled due to intel lpmd
-				enable = false;
-				description = "Set the smp_affinity_list to the last 4 E-cores";
+				# Do not enable when using to intel lpmd
+				enable = true;
+				description = "Set the smp_affinity_list to the E-cores";
 				after = [ "multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
 				serviceConfig = {
 					Type = "oneshot";
 					# Some IRQs can't be modified, so use || true to work around this
-					ExecStart = "${pkgs.bash}/bin/bash -c 'echo 11-15 | tee /proc/irq/*/smp_affinity_list || true'";
+					ExecStart = "${pkgs.bash}/bin/bash -c 'echo 8-15 | tee /proc/irq/*/smp_affinity_list || true'";
 				};
 				wantedBy = [ "multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
 			};
@@ -86,10 +86,10 @@
 	};
 
 
-	localModule.gnome.enable = true;
-	localModule.gnome.minimal.enable = false;
+	localModule.plasma.enable = true;
+	localModule.plasma.minimal.enable = false;
 
-	localModule.intel_lpmd.enable = true;
+	localModule.intel_lpmd.enable = false;
 	localModule.performance.memory = {
 		zswap = {
 			enable = false;

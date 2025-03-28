@@ -68,7 +68,9 @@
 					libreoffice-fresh
 				] ++ lib.optionals (! cfg.gnome.minimal.enable) [
 					
-
+					# Fedi
+					tuba
+					
 					# Extra Gnome Circle apps
 					metadata-cleaner warp wike gnome-solanum newsflash gtg gnome-graphs
 
@@ -94,7 +96,7 @@
 					pinta gnome-obfuscate eyedropper
 					
 					# Video
-					pitivi
+					# pitivi
 				];
 			};
 
@@ -109,9 +111,30 @@
 					# 		'';
 					# });
 
+					start-ollama-on-demand-fish = pkgs.writers.writeFishBin "start-ollama-on-demand" ''
+						# Need to write a script that starts ollama-intel-gpu, waits until it's finished
+						# And then starts alpaca.
+						# When alpaca is closed, the script stops ollama-intel-gpu
+
+						systemctl start --user ollama-intel-gpu.service
+
+						# TODO: Need to figure out how to properly detect that ollama is already listening
+						sleep 5
+
+						alpaca
+
+						systemctl stop --user ollama-intel-gpu.service
+					''; 
+
 					wike = super.callPackage ./wike.nix {};
+
+					# TODO: until https://github.com/ollama/ollama/pull/8072 is fixed
+					alpaca = super.alpaca.overrideAttrs (old: {
+						postInstall = ''
+							substituteInPlace $out/share/applications/com.jeffser.Alpaca.desktop --replace-fail Exec=alpaca Exec=${pkgs.start-ollama-on-demand-fish}/bin/start-ollama-on-demand
+						'';
+					});
 				}
 			)];
-
 		};
 	}

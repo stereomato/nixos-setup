@@ -1,4 +1,5 @@
-{ inputs, taihouConfig, config, lib, pkgs, ... }:{
+{ inputs, taihouConfig, config, lib, pkgs, ... }:
+{
 	imports = [
 		./software-development
 		./envvars.nix
@@ -57,10 +58,6 @@
 	nix = {
 		settings = {
 			substituters = [
-				# nixpkgs
-				"https://cache.nixos.org"
-				# nixified-ai
-				"https://ai.cachix.org"
 			];
 		};
 	};
@@ -90,16 +87,42 @@
 
 	systemd.user = {
 		enable = true;
+		sockets = {
+			# TODO: https://github.com/ollama/ollama/pull/8072
+			# Needs that to work
+
+			# ollama-intel-gpu = {
+			# 	Unit = {
+			# 		Description = "Socket for ollama-intel-gpu";
+			# 		Before = [ "ollama-intel-gpu.service" ];
+			# 	};
+			# 	Socket = {
+			# 		ListenStream = "127.0.0.1:11434";
+			# 		Accept = false;
+			# 	};
+			# };
+		};
 		services = {
 			ollama-intel-gpu = {
+				Unit = {
+					# StopWhenUnneeded = false;
+					Description = "Ollama with Intel GPU (oneAPI) support, uses the ollama-intel-gpu podman container.";
+					# Requires = [ "ollama-intel-gpu.socket" ];
+					# After = [ "ollama-intel-gpu.socket" ];
+				};
 				Service = {
+					# Type = "exec";
+					# ExecStart = "/usr/bin/env bash -c 'echo $LISTEN_FDS'";
+					# TODO: When the TODO above is dealt with , put --network=pasta:--fd,3 instead of the address
+					
 					ExecStart = "/run/current-system/sw/bin/podman run --rm -p 127.0.0.1:11434:11434 -v /home/stereomato/models:/mnt -v ollama-volume:/root/.ollama -e OLLAMA_MAX_LOADED_MODELS=1 -e OLLAMA_FLASH_ATTENTION=1 -e OLLAMA_NUM_GPU=999 -e DEVICE=iGPU --device /dev/dri --name=ollama-intel-gpu localhost/ollama-intel-gpu:latest";
 					ExecStop = "/run/current-system/sw/bin/podman stop ollama-intel-gpu";
 					Restart = "never";
 				};
-			Install = {
-				WantedBy = [ "graphical-session.target" ];
-			};
+				# TODO: Comment this out when I can use socket activation
+				# Install = {
+				# 	WantedBy = [ "graphical-session.target" ];
+				# };
 			};
 		};
 	};

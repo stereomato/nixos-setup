@@ -11,12 +11,8 @@
 				"flakes"
 			];
 			trusted-substituters = [
-			# nixified-ai
-			"https://ai.cachix.org"
 			];
 			trusted-public-keys = [
-			# nixified-ai
-			"ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
 			];
 		};
 		# Set this thanks to:
