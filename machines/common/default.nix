@@ -23,7 +23,7 @@
 						];
 					});
 				}
-			];
+	];
 
 
 	# In this place goes things that are too general or too small that putting them in their own files is just cluttering
@@ -45,6 +45,10 @@
 		etc."current-nixos".source = ./.;
 		localBinInPath = true;
 		shells = with pkgs; [ fish ];
+		sessionVariables = {
+			# QT apps look better this way
+			QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
+		};
 	};
 
 	system = {

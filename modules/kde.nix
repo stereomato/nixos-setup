@@ -8,14 +8,6 @@
 		};
 
 		config = lib.mkIf cfg.plasma.enable {
-			#nixpkgs.overlays = [(self: super: {
-			#	kdePackages.plasma-activities-stats = super.kdePackages.plasma-activities-stats.overrideAttrs(old: {
-			#			# Doesn't have patches
-			#			patches =  [
-			#				./patches/fix-kde-recents-loading.patch
-			#			];
-			#		});
-			#})];
 			services = {
 				desktopManager.plasma6.enable = true;
 				colord.enable = true;
@@ -82,17 +74,19 @@
 					# System wide stem darkening
 					# Disabled: Inconsistent in plasma/QT
 					# FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+
+					
 				};
 			};
-			system.replaceDependencies.replacements = [
-				# https://bugs.kde.org/show_bug.cgi?id=479891#c114
-				{
-					oldDependency = pkgs.kdePackages.qqc2-desktop-style;
-					newDependency = pkgs.kdePackages.qqc2-desktop-style.overrideAttrs (old: {
-						# Doesn't have a patches attribute
-						patches = [ ./patches/qqc2-bug-report-print.patch ];
-					});
-				}
-			];
+			# system.replaceDependencies.replacements = [
+			# 	# https://bugs.kde.org/show_bug.cgi?id=479891#c114
+			# 	{
+			# 		oldDependency = pkgs.kdePackages.qqc2-desktop-style;
+			# 		newDependency = pkgs.kdePackages.qqc2-desktop-style.overrideAttrs (old: {
+			# 			# Doesn't have a patches attribute
+			# 			patches = [ ./patches/qqc2-bug-report-print.patch ];
+			# 		});
+			# 	}
+			# ];
 		};
 	}

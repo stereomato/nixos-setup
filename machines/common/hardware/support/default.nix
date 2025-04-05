@@ -5,11 +5,6 @@
 		./gpu.nix
   ];
 
-  nixpkgs.overlays = [(
-		self: super: {
-		}
-	)];
-  
 	# Thunderbolt
 	services = {
 		hardware.bolt.enable = true;

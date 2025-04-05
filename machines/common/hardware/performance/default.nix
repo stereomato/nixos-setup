@@ -4,17 +4,6 @@
 	imports = [
 		./sysctl-tweaks.nix
 	];
-
-	nixpkgs.overlays = [(
-		self: super: {
-			# Make ppd only use balance-performance
-			# TODO: https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/issues/151
-			power-profiles-daemon = super.power-profiles-daemon.overrideAttrs (old: {
-				patches = super.power-profiles-daemon.patches ++ [ ../patches/ppd-intel-balance-performance.patch ];
-			});
-		}
-	)];
-
 	nix = {
 		gc = {
 			persistent = true;

@@ -57,8 +57,6 @@
 	# Enable cache for the nixified-ai flake.
 	nix = {
 		settings = {
-			substituters = [
-			];
 		};
 	};
 

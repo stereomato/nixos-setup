@@ -1,6 +1,5 @@
 { config, inputs, lib, pkgs, ... }:{
 	imports = [
-		./overlays.nix
 	];
 
 	nix = {
@@ -9,10 +8,6 @@
 			experimental-features = [
 				"nix-command"
 				"flakes"
-			];
-			trusted-substituters = [
-			];
-			trusted-public-keys = [
 			];
 		};
 		# Set this thanks to:

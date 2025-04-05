@@ -30,7 +30,7 @@ in
 			"zswap.zpool=zsmalloc"
 			"zswap.max_pool_percent=35"
 			"zswap.accept_threshold_percent=90"
-    ] ++ lib.mkIf (cfg.zswap.encryption) ["nohibernate"];
+    ] ++ lib.optionals (cfg.zswap.encryption) ["nohibernate"];
     # Disk based swap
 	  swapDevices = [{
       device = "/swap/swapfile";
@@ -43,11 +43,12 @@ in
         keySize = 256;
       };
     }];
-  } // lib.mkIf (cfg.zram.enable) {
-    boot.kernelParams = [ "zswap.enabled=N" ];
-    zramSwap = {
-      enable = true;
-      memoryPercent = cfg.zram.size;
-    };
+		# TODO: Fix this
+  # } // lib.optionalAttrs (cfg.zram.enable) {
+  #   boot.kernelParams = [ "zswap.enabled=N" ];
+  #   zramSwap = {
+  #     enable = true;
+  #     memoryPercent = cfg.zram.size;
+  #   };
   };
 }

@@ -63,6 +63,13 @@
 			# 	transparent-background = false;
 			# 	window-position = "bottom";
 			# };
+			"org/gtk/gtk4/settings/file-chooser" = {
+				show-hidden = true;
+			};
+			"org/gnome/nautilus" = {
+				show-create-link = true;
+				show-delete-permanently = true;
+			};
 			"org/gnome/Console" = {
 				ignore-scrollback-limit = true;
 			};

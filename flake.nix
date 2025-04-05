@@ -37,9 +37,12 @@
 			# TODO: Delete this if overlays work fine under each system.
 			# TODO: Consider making general overlays for multiple machines
 			overlays = [
+				# TODO: Someday get how the n-v-e overlay works/is constructed
 				inputs.nix-vscode-extensions.overlays.default
+				# This was also confusing, but it makes sense
+				# the overlays list *wants* functions, this imports a function
+				(import ./myOverlays.nix)
 				(self: super: {
-				intel_lpmd = super.callPackage ./modules/pkgs/intel_lpmd.nix {};
 			})];
 		hostPlatform = system;
 		config = {

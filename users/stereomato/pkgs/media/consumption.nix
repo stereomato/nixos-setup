@@ -8,7 +8,7 @@
 		ani-cli
 		
 		# Music
-		spotify
+		# spotify
 
 		# Video
 		syncplay open-in-mpv

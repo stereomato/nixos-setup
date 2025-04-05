@@ -1,7 +1,5 @@
 {config, lib, pkgs, ... }: {
-	nixpkgs.overlays = [( self: super: {
-	})];
-	
+
 	# GPU support
 	hardware.graphics = {
 		enable = true;

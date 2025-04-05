@@ -1,11 +1,6 @@
 { config, lib, pkgs, ... }:
 {
 
-	nixpkgs.overlays = [
-		(self: super: {
-		})
-	];
-
 	boot = {
 		kernelPackages = lib.mkForce pkgs.linux-stereomato-zen;
 		kernelPatches = [

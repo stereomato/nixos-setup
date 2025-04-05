@@ -7,9 +7,6 @@
 	./software-development.nix
   ];
 
-	nixpkgs.overlays = [(self: super: {
-	})];
-
   users.users.stereomato.packages = with pkgs; [
 		# TODO: Organize better
 

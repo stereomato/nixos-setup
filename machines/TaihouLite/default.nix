@@ -11,4 +11,5 @@
 		networking.hostName = lib.mkForce "TaihouLite";
 
 		localModule.gnome.minimal.enable = lib.mkForce true;
+		# boot.kernelPackages = lib.mkForce null;
 	}
