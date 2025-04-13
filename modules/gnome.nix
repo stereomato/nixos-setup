@@ -19,7 +19,7 @@
 					# give enough of a shit about blurry Xwayland apps honestly. Most end up working on wayland eventually
 					extraGSettingsOverrides = ''
 						[org.gnome.mutter]
-						experimental-features=['scale-monitor-framebuffer', 'xwayland-native-scaling' ]
+						experimental-features=['scale-monitor-framebuffer' ]
 					'';
 				};
 				# The Gnome Display Manager

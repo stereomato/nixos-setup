@@ -48,7 +48,9 @@
 			terminus_font
 
 			inter-otf
-			commit-mono
+			# Using commit-mono-stereomato due to QT and Electron not respecting freetype font feature settings
+			# commit-mono
+			commit-mono-stereomato
 			nerd-fonts.geist-mono
 			geist-font
 			# SF-Mono
@@ -116,18 +118,9 @@
 						"Cantarell"
 					];
 				serif = [ "IBM Plex Serif" ];
-				monospace = [ "CommitMono" ];
+				monospace = [ "JetBrains Mono" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};
-	};
-
-	environment.variables = {
-		# MacOS-like font rendering
-		# fuzziness a la macOS/W95
-		#	FREETYPE_PROPERTIES = "truetype:interpreter-version=35";
-		# type1:no-stem-darkening=1 t1cid:no-stem-darkening=1 autofitter:no-stem-darkening=1" 
-		# Disable stem darkening on KDE Plasma
-		# FREETYPE_PROPERTIES = if config.services.desktopManager.plasma6.enable then "cff:no-stem-darkening=1" else "";
 	};
 }

@@ -25,6 +25,8 @@
 # /etc, for some reason.
 # And, intel_lpmd doesn't have a flag to load a configuration file directly, at least until
 # https://github.com/intel/intel-lpmd/issues/84 is fixed
+# Accepts           <EnterGFXLoadThres>50</EnterGFXLoadThres> for gpu stuff
+
 let workaround = writers.writeText "config-file.xml" ''
   <?xml version="1.0"?>
 
@@ -111,14 +113,14 @@ let workaround = writers.writeText "config-file.xml" ''
         from 0 - 100
         clear both util_entry_threshold and util_exit_threshold to disable util monitor
       -->
-      <util_entry_threshold>35</util_entry_threshold>
+      <util_entry_threshold></util_entry_threshold>
 
       <!--
         System utilization threshold to exit LP mode
         from 0 - 100
         clear both util_entry_threshold and util_exit_threshold to disable util monitor
       -->
-      <util_exit_threshold>75</util_exit_threshold>
+      <util_exit_threshold></util_exit_threshold>
 
       <!--
         Entry delay. Minimum delay in non Low Power mode to
@@ -142,7 +144,7 @@ let workaround = writers.writeText "config-file.xml" ''
         Lowest hysteresis average out-of-LP-mode time in msec to exit LP mode
         0: to disable hysteresis support
       -->
-      <ExitHystMS>3125</ExitHystMS>
+      <ExitHystMS>3500</ExitHystMS>
 
       <!--
         Ignore ITMT setting during LP-mode enter/exit
@@ -159,12 +161,11 @@ let workaround = writers.writeText "config-file.xml" ''
           <ID> 1 </ID> <!-- no significance. number can be anything -->
           <Name> WLT_IDLE </Name>
           <WLTType> 0 </WLTType> <!-- WLTType mapped to Name -->
-          <EnterGFXLoadThres>25</EnterGFXLoadThres>
           <EPP> 221 </EPP>
           <EPB> 13 </EPB>
-          <MinPollInterval> 1000 </MinPollInterval>
+          <MinPollInterval> 500 </MinPollInterval>
           <PollIntervalIncrement> 500 </PollIntervalIncrement>
-          <MaxPollInterval> 2000 </MaxPollInterval>
+          <MaxPollInterval> 1500 </MaxPollInterval>
           <ActiveCPUs>12-15</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>
@@ -173,12 +174,11 @@ let workaround = writers.writeText "config-file.xml" ''
           <ID> 2 </ID>
           <Name> WLT_BATTERY_LIFE </Name>
           <WLTType> 1 </WLTType>
-          <EnterGFXLoadThres>25</EnterGFXLoadThres>
           <EPP> 170 </EPP>
           <EPB> 10 </EPB>
-          <MinPollInterval> 1000 </MinPollInterval>
+          <MinPollInterval> 500 </MinPollInterval>
           <PollIntervalIncrement> 500 </PollIntervalIncrement>
-          <MaxPollInterval> 2000 </MaxPollInterval>
+          <MaxPollInterval> 1500 </MaxPollInterval>
           <ActiveCPUs>8-15</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>
@@ -187,12 +187,11 @@ let workaround = writers.writeText "config-file.xml" ''
           <ID> 3 </ID>
           <Name> WLT_SUSTAINED </Name>
           <WLTType> 2 </WLTType>
-          <EnterGFXLoadThres>50</EnterGFXLoadThres>
           <EPP> 119 </EPP>
           <EPB> 7 </EPB>
-          <MinPollInterval> 1000 </MinPollInterval>
+          <MinPollInterval> 500 </MinPollInterval>
           <PollIntervalIncrement> 500 </PollIntervalIncrement>
-          <MaxPollInterval> 2000 </MaxPollInterval>
+          <MaxPollInterval> 5000 </MaxPollInterval>
           <ActiveCPUs>0-15</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>
@@ -201,12 +200,11 @@ let workaround = writers.writeText "config-file.xml" ''
           <ID> 4 </ID>
           <Name> WLT_BURSTY </Name>
           <WLTType> 3 </WLTType>
-          <EnterGFXLoadThres>75</EnterGFXLoadThres>
           <EPP> 17 </EPP>
           <EPB> 1 </EPB>
-          <MinPollInterval> 1000 </MinPollInterval>
+          <MinPollInterval> 500 </MinPollInterval>
           <PollIntervalIncrement> 500 </PollIntervalIncrement>
-          <MaxPollInterval> 2000 </MaxPollInterval>
+          <MaxPollInterval> 5000 </MaxPollInterval>
           <ActiveCPUs>0-15</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>

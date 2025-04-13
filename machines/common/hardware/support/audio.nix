@@ -9,6 +9,14 @@
 			alsa = {
 				enable = true;
 			};
+			extraConfig.pipewire = {
+				"10-reasonable-quantum" = {
+					"context.properties" = {
+						# This should be enough, in theory
+						"default.clock.min-quantum" = 512;
+					};
+				};
+			};
 			pulse.enable = true;
 			jack.enable = true;
 		};

@@ -6,7 +6,7 @@ let myOverlays = (
     # Make ppd only use balance-performance
 		# TODO: https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/issues/151
 		power-profiles-daemon = prev.power-profiles-daemon.overrideAttrs (old: {
-			patches = prev.power-profiles-daemon.patches ++ [ ../patches/ppd-intel-balance-performance.patch ];
+			patches = prev.power-profiles-daemon.patches ++ [ ./patches/ppd-intel-balance-performance.patch ];
 		});
     # Zen kernel
     # TODO: Find where this comes from, and how it works? But, https://github.com/shiryel/nixos-dotfiles/blob/master/overlays/overrides/linux/default.nix# helped a lot!
@@ -238,6 +238,31 @@ let myOverlays = (
         runHook postInstall
       '';
     });
+
+    commit-mono-stereomato-script = prev.writers.writeFishBin "cmsc" ''
+      set -l options 'srcPath=' 'localPath=' 'fontFormat='
+      argparse $options -- $argv
+
+      set command ${prev.python3Packages.opentype-feature-freezer}/bin/pyftfeatfreeze
+
+      for font in "$_flag_srcPath"/*."$_flag_fontFormat"
+        # This enables those flags, and gets the font filename (without the .otf) to save the font file
+        $command -f 'ss03,ss04,ss05,cv02,cv06,cv10' -S -U Stereomato -R 'CommitMonoV143/CommitMono' $font "$_flag_localPath"/(string replace .otf "" (string replace "$_flag_srcPath" "" $font))-Stereomato."$_flag_fontFormat"
+        
+        # Delete the original fonts
+        rm $_flag_localPath/(string replace "$_flag_srcPath" "" $font)
+      end
+    '';
+
+    commit-mono-stereomato = prev.callPackage ./localDerivations/commit-mono-stereomato.nix {};
+
+
+    # prev.commit-mono.overrideAttrs(old: {
+    #   postInstall = ''
+    #     ${prev.commit-mono-stereomato-script}/bin/cmsc
+    #   '';
+    # });
+
 
     # This is so that the Inter variant I use is the otf one
     # because KDE/QT do stem darkening on OTF fonts only.
