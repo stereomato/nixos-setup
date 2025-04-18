@@ -2,6 +2,9 @@
 # given personal experience
 let myOverlays = (
   final: prev: {
+    winetricks = prev.winetricks.overrideAttrs (old: {
+      patches = [ ./patches/winetricks-fix.patch ];
+    });
     intel_lpmd = prev.callPackage ./modules/pkgs/intel_lpmd.nix {};
     # Make ppd only use balance-performance
 		# TODO: https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/issues/151
@@ -33,6 +36,10 @@ let myOverlays = (
               # Module compression with ZSTD
               MODULE_COMPRESS_XZ = prev.lib.mkForce no;
               MODULE_COMPRESS_ZSTD = yes;
+
+              # Hibernation compressor set to LZ4
+              HIBERNATION_COMP_LZ4 = yes;
+              HIBERNATION_DEF_COMP = freeform "lz4";
             };
         };
         ignoreConfigErrors = true;
@@ -63,6 +70,10 @@ let myOverlays = (
               # Module compression with ZSTD
               MODULE_COMPRESS_XZ = prev.lib.mkForce no;
               MODULE_COMPRESS_ZSTD = yes;
+
+              # Hibernation compressor set to LZ4
+              HIBERNATION_COMP_LZ4 = yes;
+              HIBERNATION_DEF_COMP = freeform "lz4";
             };
         };
         ignoreConfigErrors = true;

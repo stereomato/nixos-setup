@@ -30,5 +30,8 @@
 
 		# Containers
 		arion
+
+		# mysql
+		mysql-workbench
   ];
 }

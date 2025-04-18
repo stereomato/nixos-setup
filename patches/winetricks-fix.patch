@@ -1,0 +1,50 @@
+From 1d441b422d9a9cc8b0a53fa203557957ca1adc44 Mon Sep 17 00:00:00 2001
+From: Janne Pulkkinen <janne.pulkkinen@protonmail.com>
+Date: Sun, 12 Jan 2025 11:55:20 +0200
+Subject: [PATCH] Allow {WINE,WINESERVER}_BIN env vars
+
+Make it possible to set `WINE_BIN` and `WINESERVER_BIN` using
+environment variables outside Winetricks. These affect binary bitness
+detection during startup.
+
+Winetricks performs a Wine binary bitness detection to print a warning.
+In some environments such as Protontricks and Nix, the Wine executables are
+wrappers that call binaries that are located elsewhere. In those
+situations we want to provide the path to the binary that's only used
+for the check to avoid printing unnecessary warnings.
+
+Closes: #2183
+---
+ src/winetricks | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/winetricks b/src/winetricks
+index a3ae72456..3f3014a1d 100755
+--- a/src/winetricks
++++ b/src/winetricks
+@@ -4402,7 +4402,13 @@ winetricks_set_wineprefix()
+     if test -d "${W_DRIVE_C}/windows/syswow64"; then
+         # Check the bitness of wineserver + wine binary, used later to determine if we're on a WOW setup (no wine64)
+         # https://github.com/Winetricks/winetricks/issues/2030
+-        WINESERVER_BIN="$(command -v "${WINESERVER}")"
++        # WINE_BIN and WINESERVER_BIN can be set outside Winetricks in case
++        # the `wine` and `wineserver` executables and the actual Wine binaries
++        # are located in different locations (usually the case for wrappers);
++        # this helps to avoid spurious "unknown file arch" warnings.
++        if [ -z "${WINESERVER_BIN}" ]; then
++            WINESERVER_BIN="$(command -v "${WINESERVER}")"
++        fi
+ 
+         # wineboot often is a link pointing to wineapploader in Wine's bindir. If we don't find binaries we may look for them there later
+         if [ -n "${READLINK_F}" ]; then
+@@ -4436,7 +4442,9 @@ winetricks_set_wineprefix()
+             w_warn "Unknown file arch of ${WINESERVER_BIN}."
+         fi
+ 
+-        WINE_BIN="$(command -v "${WINE}")"
++        if [ -z "${WINE_BIN}" ]; then
++            WINE_BIN="$(command -v "${WINE}")"
++        fi
+         _W_wine_binary_arch="$(winetricks_get_file_arch "${WINE_BIN}")"
+         if [ -z "${_W_wine_binary_arch}" ]; then
+             # wine might be a script calling a binary in Wine's bindir.

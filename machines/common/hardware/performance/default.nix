@@ -9,7 +9,7 @@
 			persistent = true;
 			automatic = true;
 			dates = "sunday";
-			options = "--delete-older-than 7d";
+			options = "-d";
 		};
 		optimise = {
 			# This running at the same time as the garbage collector might cause issues.

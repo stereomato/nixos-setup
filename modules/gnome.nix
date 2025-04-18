@@ -93,7 +93,7 @@
 					g4music gthumb# celluloid
 
 					# Images
-					pinta gnome-obfuscate eyedropper
+					pinta gnome-obfuscate eyedropper upscaler
 					
 					# Video
 					# pitivi

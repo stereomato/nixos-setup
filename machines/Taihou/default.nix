@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, modulesPath, ...}:{
+{ config, inputs, lib, pkgs, modulesPath, ...}:{
 	imports = [
 	./filesystems.nix
 	../common
@@ -9,12 +9,6 @@
 	../../users/testuser
 	];
 
-	# Since ADL, Intel cpus have a hybrid core system. I use ADL, so
-	# Set this to nproc - 4, so as to at least leave 4 cores free (which would be 1 cluster of E-cores)
-	# Now, this will not happen that way actually, but well, still, it'll leave enough space for the UI and whatever I'm using
-	# 3/4 of nproc essentially
-	# TODO: testing with this not set, since I have 24 GB of ram, 24/48 GB of zswap/zram, and the linux-zen kernel
-	# nix.settings.cores = 12;
 	networking.hostName = "Taihou";
 
 	systemd = {
@@ -64,14 +58,19 @@
 	};
 
 
-	localModule.gnome.enable = true;
-	localModule.gnome.minimal.enable = false;
+	localModule.plasma.enable = true;
+	localModule.plasma.minimal.enable = false;
 
 	localModule.intel_lpmd.enable = false;
 	localModule.performance.memory = {
 		zswap = {
 			enable = true;
 			size = 23726;
+			hibernation = {
+				enable = false;
+				device = "/dev/mapper/${config.disko.devices.disk.internalNVME.content.partitions.TaihouDisk.name}";
+				resumeOffset = 10828120;
+			};
 		};
 		zram = {
 			enable = false;
@@ -80,116 +79,11 @@
 	};
 
 	services = {
+		mysql = {
+			enable = true;
+			package = pkgs.mariadb;
+		};
 		thermald.enable = lib.mkForce false;
-		# intel-lpmd.enable = true;
-		# # # intel-lpmd.package = pkgs.intel-lpmd;
-		# intel-lpmd.settings = ''
-		# 	<?xml version="1.0"?>
-
-		# 	<!--
-		# 	Specifies the configuration data
-		# 	for Intel Energy Optimizer (LPMD) daemon
-		# 	-->
-
-		# 	<Configuration>
-		# 		<!--
-		# 			CPU format example: 1,2,4..6,8-10
-		# 		-->
-		# 		<lp_mode_cpus></lp_mode_cpus>
-
-		# 		<!--
-		# 			Mode values
-		# 			0: Cgroup v2
-		# 			1: Cgroup v2 isolate
-		# 			2: CPU idle injection
-		# 		-->
-		# 		<Mode>0</Mode>
-
-		# 		<!--
-		# 			Default behavior when Performance power setting is used
-		# 			-1: force off. (Never enter Low Power Mode)
-		# 			1: force on. (Always stay in Low Power Mode)
-		# 			0: auto. (opportunistic Low Power Mode enter/exit)
-		# 		-->
-		# 		<PerformanceDef>-1</PerformanceDef>
-
-		# 		<!--
-		# 			Default behavior when Balanced power setting is used
-		# 			-1: force off. (Never enter Low Power Mode)
-		# 			1: force on. (Always stay in Low Power Mode)
-		# 			0: auto. (opportunistic Low Power Mode enter/exit)
-		# 		-->
-		# 		<BalancedDef>0</BalancedDef>
-
-		# 		<!--
-		# 			Default behavior when Power saver setting is used
-		# 			-1: force off. (Never enter Low Power Mode)
-		# 			1: force on. (Always stay in Low Power Mode)
-		# 			0: auto. (opportunistic Low Power Mode enter/exit)
-		# 		-->
-		# 		<PowersaverDef>0</PowersaverDef>
-
-		# 		<!--
-		# 			Use HFI LPM hints
-		# 			0 : No
-		# 			1 : Yes
-		# 		-->
-		# 		<HfiLpmEnable>0</HfiLpmEnable>
-
-		# 		<!--
-		# 			Use HFI SUV hints
-		# 			0 : No
-		# 			1 : Yes
-		# 		-->
-		# 		<HfiSuvEnable>0</HfiSuvEnable>
-
-		# 		<!--
-		# 			System utilization threshold to enter LP mode
-		# 			from 0 - 100
-		# 			clear both util_entry_threshold and util_exit_threshold to disable util monitor
-		# 		-->
-		# 		<util_entry_threshold>10</util_entry_threshold>
-
-		# 		<!--
-		# 			System utilization threshold to exit LP mode
-		# 			from 0 - 100
-		# 			clear both util_entry_threshold and util_exit_threshold to disable util monitor
-		# 		-->
-		# 		<util_exit_threshold>95</util_exit_threshold>
-
-		# 		<!--
-		# 			Entry delay. Minimum delay in non Low Power mode to
-		# 			enter LPM mode.
-		# 		-->
-		# 		<EntryDelayMS>0</EntryDelayMS>
-
-		# 		<!--
-		# 			Exit delay. Minimum delay in Low Power mode to
-		# 			exit LPM mode.
-		# 		-->
-		# 		<ExitDelayMS>0</ExitDelayMS>
-
-		# 		<!--
-		# 			Lowest hysteresis average in-LP-mode time in msec to enter LP mode
-		# 			0: to disable hysteresis support
-		# 		-->
-		# 		<EntryHystMS>0</EntryHystMS>
-
-		# 		<!--
-		# 			Lowest hysteresis average out-of-LP-mode time in msec to exit LP mode
-		# 			0: to disable hysteresis support
-		# 		-->
-		# 		<ExitHystMS>0</ExitHystMS>
-
-		# 		<!--
-		# 			Ignore ITMT setting during LP-mode enter/exit
-		# 			0: disable ITMT upon LP-mode enter and re-enable ITMT upon LP-mode exit
-		# 			1: do not touch ITMT setting during LP-mode enter/exit
-		# 		-->
-		# 		<IgnoreITMT>0</IgnoreITMT>
-
-		# 	</Configuration>
-		# '';
 
 		ollama = {
 			enable = false;

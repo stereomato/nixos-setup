@@ -9,13 +9,13 @@ index 9c4cc01fd..6991306c4 100644
 -	X86_MATCH_VFM(INTEL_ALDERLAKE_L, HWP_SET_DEF_BALANCE_PERF_EPP(102)),
 +	
 +	/*
-+	 *  Setting the EPP to 119.
++	 *  Reconfigure EPP.
 +	 *  On https://lore.kernel.org/lkml/20221027220056.1534264-1-srinivas.pandruvada@linux.intel.com/
-+	 *  EPB is set to 7, from 6. But EPB is ignored by intel_pstate.
++	 *  EPB is set to 7, from 6. But EPB is ignored by intel_pstate in active mode.
 +	 *  The maximum value of EPP is 255, the maximum of EPB is 15.
 +	 *  255/15 = 17, 7 * 17 = 119
 +	 * 
-+	 *  Also, set:
++	 *  So, set:
 +	 *  Power: 221
 +	 *  Balance power: 170
 +	 *  Balance performance: 119

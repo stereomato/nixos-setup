@@ -45,10 +45,11 @@
 					haruna vlc
 
 					# Audio players
-					fooyin
+					# FTBFS https://github.com/NixOS/nixpkgs/issues/399801
+					# fooyin
 
 					# Chat Apps
-					kdePackages.neochat nheko kaidan
+					kdePackages.neochat nheko kaidan zapzap
 			
 					# Downloaders
 					kdePackages.kget
@@ -67,6 +68,9 @@
 
 					# Extras
 					kdePackages.yakuake
+
+					# Images
+					krita
 
 
 				];
