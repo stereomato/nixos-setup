@@ -58,13 +58,13 @@
 	};
 
 
-	localModule.plasma.enable = true;
-	localModule.plasma.minimal.enable = false;
+	localModule.gnome.enable = true;
+	localModule.gnome.minimal.enable = false;
 
 	localModule.intel_lpmd.enable = false;
 	localModule.performance.memory = {
 		zswap = {
-			enable = true;
+			enable = false;
 			size = 23726;
 			hibernation = {
 				enable = false;
@@ -73,7 +73,7 @@
 			};
 		};
 		zram = {
-			enable = false;
+			enable = true;
 			size = 200;
 		};
 	};

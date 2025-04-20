@@ -53,7 +53,7 @@
 		};
 		systemPackages = with pkgs; [
 			# System monitoring, managing & benchmarking tools
-			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop clinfo s-tui compsize smartmontools nvme-cli btop pciutils usbutils powertop btrfs-progs nvtopPackages.intel powerstat iotop smem nix-info kdiskmark file stress-ng btop fastfetch
+			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop clinfo s-tui compsize smartmontools nvme-cli btop pciutils usbutils powertop btrfs-progs nvtopPackages.intel powerstat iotop smem nix-info kdiskmark file stress-ng btop fastfetch cpu-x
 			# System management
 			gparted
 

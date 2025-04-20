@@ -34,17 +34,17 @@ in
     };
   };
 
-  config = lib.mkIf (cfg.zswap.enable) {
+  config = lib.mkIf (cfg.zswap.enable || cfg.zram.enable) {
     boot = {
       # resumeDevice = lib.mkIf (cfg.zswap.hibernation.enable) cfg.zswap.hibernation.device;
       kernelParams = [ 
         # Zswap settings
-        "zswap.enabled=Y"
         "zswap.compressor=zstd"
         "zswap.zpool=zsmalloc"
         "zswap.max_pool_percent=35"
         "zswap.accept_threshold_percent=90"
-      ] ++ lib.optionals (cfg.zswap.encryption) ["nohibernate"]
+      ] ++ lib.optionals (! cfg.zram.enable) [ "zswap.enabled=N" ]
+        ++ lib.optionals (cfg.zswap.encryption) ["nohibernate"]
         ++ lib.optionals (cfg.zswap.hibernation.enable) [ 
             # Parameters needed to use hibernation
             "resume=${cfg.zswap.hibernation.device}"
@@ -52,7 +52,7 @@ in
             # "hibernator.compressor=lz4"
           ];
     };
-	  swapDevices = [{
+	  swapDevices = lib.optionals (cfg.zswap.enable) [{
       device = "/swap/swapfile";
       # TODO: make this adaptive!
       size = cfg.zswap.size;
@@ -63,12 +63,9 @@ in
         keySize = 256;
       };
     }];
-		# TODO: Fix this
-  # } // lib.optionalAttrs (cfg.zram.enable) {
-  #   boot.kernelParams = [ "zswap.enabled=N" ];
-  #   zramSwap = {
-  #     enable = true;
-  #     memoryPercent = cfg.zram.size;
-  #   };
+    zramSwap = {
+      enable = cfg.zram.enable;
+      memoryPercent = cfg.zram.size;
+    };
   };
 }

@@ -3,6 +3,7 @@
 		./audio.nix
 		./boot.nix
 		./gpu.nix
+		./workarounds.nix
   ];
 
 	# Thunderbolt
