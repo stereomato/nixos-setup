@@ -28,9 +28,14 @@
 			url = "gitlab:GNOME/gvdb?ref=main&host=gitlab.gnome.org";
 			flake = false;
 		};
+
+		aagl = {
+			url = "github:ezKEa/aagl-gtk-on-nix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
-	outputs = { self, nixpkgs, home-manager, nix-index-database, disko, ... }@inputs: let
+	outputs = { self, nixpkgs, home-manager, nix-index-database, disko, aagl, ... }@inputs: let
 	system = "x86_64-linux";
 	pkgs = import nixpkgs {
 			inherit system;
@@ -65,6 +70,7 @@
 					system = system;
 					pkgs = pkgs;
 					modules = [
+						aagl.nixosModules.default
 						nix-index-database.nixosModules.nix-index
 						disko.nixosModules.disko
 						./modules/default.nix
@@ -79,7 +85,7 @@
 								taihouConfig = nixosConfigurations.Taihou.config;
 								username = "stereomato";
 								inherit inputs;
-								installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/nixos-setup";
+								installPath = "/etc/nixos";
 							};
     	        # Optionally, use home-manager.extraSpecialArgs to pass
   	          # arguments to home.nix

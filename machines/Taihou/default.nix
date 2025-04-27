@@ -50,6 +50,18 @@
 				};
 				wantedBy = ["multi-user.target"];
 			};
+
+			resume-touchpad-fix = {
+				enable = true;
+				description = "Fixes the touchpad after resuming from suspend.";
+				after = [ "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
+				serviceConfig = {
+					Type = "oneshot";
+					# Some IRQs can't be modified, so use || true to work around this
+					ExecStart = "${pkgs.bash}/bin/bash -c 'rmmod hid_generic && rmmod hid_multitouch && modprobe hid_generic && modprobe hid_multitouch'";
+				};
+				wantedBy = [ "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
+			};
 		};
 		tmpfiles = {
 			rules = [
@@ -80,8 +92,22 @@
 
 	services = {
 		mysql = {
+			# Enabled because of Uni
+			# /run/mysqld/mysqld.sock is where the socket is
+			# can be checked by running
+			# $ mysql -u stereomato
+			# $ show variables like 'socket';
 			enable = true;
 			package = pkgs.mariadb;
+			ensureUsers = [
+				{
+					name = "stereomato";
+					ensurePermissions = {
+						"*.*" = "ALL PRIVILEGES";
+					};
+				}
+			]
+			;
 		};
 		thermald.enable = lib.mkForce false;
 

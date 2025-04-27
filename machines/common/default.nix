@@ -47,7 +47,7 @@
 		shells = with pkgs; [ fish ];
 		sessionVariables = {
 			# QT apps look better this way
-			# QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
+			# QT_SCALE_FACTOR_ROUNDING_POLICY = "Round";
 		};
 	};
 

@@ -76,7 +76,7 @@
 				];
 				sessionVariables = {
 					# System wide stem darkening
-					# Disabled: Inconsistent in plasma/QT
+					# Testing: Inconsistent in plasma/QT
 					# FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
 
 					

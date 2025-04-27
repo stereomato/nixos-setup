@@ -14,6 +14,9 @@
 			# Enable deep sleep
 			"mem_sleep_default=deep"
 
+			# Might be needed for suspend to ram
+			"atkbd.reset=1"
+
 			# Testing the Xe kernel driver
 			# "i915.force_probe=!46a6"
 			# "xe.force_probe=46a6"

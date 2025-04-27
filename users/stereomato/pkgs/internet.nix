@@ -13,7 +13,7 @@
 		curl wget aria megacmd
 
 		# VPN
-		protonvpn-gui
+		# protonvpn-gui
 
 		# Virtual classes
 		zoom-us

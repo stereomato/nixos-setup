@@ -17,6 +17,9 @@
 			}
 			# Lock Keys
 			{ package = pkgs.gnomeExtensions.lock-keys; }
+
+			# Wallpaper slideshow
+			{ package = pkgs.gnomeExtensions.wallpaper-slideshow; }
 			# Dock from dash
 			# Disabled until these 2 issues are fixed!
 			# https://github.com/fthx/dock-from-dash/issues/102
@@ -63,6 +66,11 @@
 			# 	transparent-background = false;
 			# 	window-position = "bottom";
 			# };
+
+			"org/gnome/shell/extensions/azwallpaper" = {
+				slideshow-directory = "/home/stereomato/Pictures/Wallpapers";
+				slideshow-slide-duration = lib.hm.gvariant.mkTuple [1 0 0];
+			};
 			"org/gtk/gtk4/settings/file-chooser" = {
 				show-hidden = true;
 			};

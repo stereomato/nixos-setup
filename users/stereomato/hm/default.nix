@@ -115,7 +115,7 @@
 					
 					ExecStart = "/run/current-system/sw/bin/podman run --rm -p 127.0.0.1:11434:11434 -v /home/stereomato/models:/mnt -v ollama-volume:/root/.ollama -e OLLAMA_MAX_LOADED_MODELS=1 -e OLLAMA_FLASH_ATTENTION=1 -e OLLAMA_NUM_GPU=999 -e DEVICE=iGPU --device /dev/dri --name=ollama-intel-gpu localhost/ollama-intel-gpu:latest";
 					ExecStop = "/run/current-system/sw/bin/podman stop ollama-intel-gpu";
-					Restart = "never";
+					Restart = "no";
 				};
 				# TODO: Comment this out when I can use socket activation
 				# Install = {

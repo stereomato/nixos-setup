@@ -66,10 +66,7 @@
 		fontconfig = {
 			cache32Bit = true;
 			useEmbeddedBitmaps = false;
-			subpixel = if config.services.desktopManager.plasma6.enable then {
-				rgba = "rgb";
-				lcdfilter = "default";
-			} else {
+			subpixel = {
 				rgba = "none";
 				lcdfilter = "none";
 			};
@@ -104,13 +101,6 @@
 
 				</fontconfig>
 			'';
-			# Do I even need this?
-			#<match target="font">
-			#		<edit name="dpi" mode="assign" binding="strong">
-			#			<double>141.0</double>
-			#		</edit>
-			#	</match>
-
 			defaultFonts = {
 				sansSerif = [
 						"Inter"
@@ -118,7 +108,7 @@
 						"Cantarell"
 					];
 				serif = [ "IBM Plex Serif" ];
-				monospace = [ "JetBrains Mono" ];
+				monospace = [ "CommitMono Stereomato" ];
 				emoji = [ "Blobmoji" ];
 			};
 		};
