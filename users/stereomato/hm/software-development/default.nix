@@ -11,7 +11,7 @@
     gpg-agent = {
 			enable = true;
 			enableSshSupport = true;
-			pinentryPackage = if taihouConfig.services.desktopManager.plasma6.enable then pkgs.pinentry-qt else pkgs.pinentry-gnome3;
+			pinentry.package = if taihouConfig.services.desktopManager.plasma6.enable then pkgs.pinentry-qt else pkgs.pinentry-gnome3;
 		};
   };
 

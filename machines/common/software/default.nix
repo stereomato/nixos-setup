@@ -88,7 +88,9 @@
 		extraLocaleSettings = {
 			LANG="en_US.UTF-8";
 		};
-		supportedLocales = [ "all" ];
+		extraLocales = [
+			"en_US.UTF-8"
+		];
 	};
 
 	networking = {

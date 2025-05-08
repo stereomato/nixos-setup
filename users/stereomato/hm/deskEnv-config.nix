@@ -20,6 +20,7 @@
 
 			# Wallpaper slideshow
 			{ package = pkgs.gnomeExtensions.wallpaper-slideshow; }
+			
 			# Dock from dash
 			# Disabled until these 2 issues are fixed!
 			# https://github.com/fthx/dock-from-dash/issues/102
@@ -100,6 +101,9 @@
 			"org/gnome/desktop/peripherals/mouse" = {
 				speed = lib.hm.gvariant.mkDouble "-0.75";
 			};
+			"org/gnome/desktop/sound" = {
+				allow-volume-above-100-percent = true;
+			};
 			"org/gnome/shell" = {
 				favorite-apps = lib.hm.gvariant.mkArray lib.hm.gvariant.type.string [
 					"google-chrome.desktop"
@@ -148,10 +152,11 @@
 			};
 			"org/gnome/desktop/interface" = {
 				# icon-theme = "MoreWaita";
-				font-name = "system-ui 10";
-				document-font-name = "serif 10";
-				monospace-font-name = "monospace 10";
+				font-name = "system-ui 10.5";
+				document-font-name = "serif 10.5";
+				monospace-font-name = "monospace 10.5";
 				font-hinting = "none";
+				font-rendering = "manual";
 			};
 		};
 	};

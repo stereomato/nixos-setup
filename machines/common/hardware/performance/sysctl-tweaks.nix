@@ -28,9 +28,9 @@
 			# Increase kswapd activity
 			# When free memory is less than 1.5%, make kswapd kick in.
 			# https://unix.stackexchange.com/a/679203
-			"vm.watermark_scale_factor" = 75;
-			# Increase the compaction activity slightly
-			"vm.compaction_proactiveness" = 25;
+			"vm.watermark_scale_factor" = 150;
+			# TODO: Testing, disable the compaction activity
+			"vm.compaction_proactiveness" = 0;
 			# Compact also unevictable memory (testing)
 			#"vm.compact_unevictable_allowed" = 1;
 			

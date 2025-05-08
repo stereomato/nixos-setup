@@ -234,8 +234,7 @@ let myOverlays = (
         prev.fetchzip {
           name = "${prev.input-fonts.pname}-${prev.input-fonts.version}";
           url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-          hash = "sha256-trtXHQa/1q21T4SXLq2XzFvU5pa5C4U3zqFqzyYXKVY=";
-          sha256 = "";
+          hash = "sha256-Rfd8jM3rPuPeGEZWKfczX7IfHwWHyJNfGEDOkJ/aenY=";
           stripRoot = false;
         };
     });
@@ -297,29 +296,6 @@ let myOverlays = (
         hash = "sha256-MtanR+cxz6FsbNBngqLE+ITKPZFHmWGsD1mBDk0OVng=";
       };
     });
-
-    steam = prev.steam.override {
-      extraPkgs = pkgs: with pkgs; [
-        openssl_1_1
-        curl
-        libssh2
-        openal
-        zlib
-        libpng
-        # https://github.com/NixOS/nixpkgs/issues/236561
-        attr
-        xorg.libXcursor
-        xorg.libXi
-        xorg.libXinerama
-        xorg.libXScrnSaver
-        libpng
-        libpulseaudio
-        libvorbis
-        stdenv.cc.cc.lib
-        libkrb5
-        keyutils
-      ];
-    };
 
     chowmatrix = prev.callPackage ./localDerivations/chowmatrix.nix {};
     auburn-sounds-graillon-2 = prev.callPackage ./localDerivations/auburn-sounds-graillon-2.nix {};

@@ -66,7 +66,9 @@
 	services.easyeffects.enable = true;
 
 	# QT look on gnome
-	qt = {} // lib.mkIf (taihouConfig.services.xserver.desktopManager.gnome.enable) {
+	qt = {
+		style.name = "kde";
+	} // lib.mkIf (taihouConfig.services.xserver.desktopManager.gnome.enable) {
 		enable = true;
 		platformTheme.name = "adwaita";
 	};
@@ -113,7 +115,7 @@
 					# ExecStart = "/usr/bin/env bash -c 'echo $LISTEN_FDS'";
 					# TODO: When the TODO above is dealt with , put --network=pasta:--fd,3 instead of the address
 					
-					ExecStart = "/run/current-system/sw/bin/podman run --rm -p 127.0.0.1:11434:11434 -v /home/stereomato/models:/mnt -v ollama-volume:/root/.ollama -e OLLAMA_MAX_LOADED_MODELS=1 -e OLLAMA_FLASH_ATTENTION=1 -e OLLAMA_NUM_GPU=999 -e DEVICE=iGPU --device /dev/dri --name=ollama-intel-gpu localhost/ollama-intel-gpu:latest";
+					ExecStart = "/run/current-system/sw/bin/podman run --rm -p 127.0.0.1:11434:11434 -v /home/stereomato/models:/mnt -v ollama-volume:/root/.ollama -e OLLAMA_NUM_PARALLEL=1 -e OLLAMA_MAX_LOADED_MODELS=1 -e OLLAMA_FLASH_ATTENTION=1 -e OLLAMA_NUM_GPU=999 -e DEVICE=iGPU --device /dev/dri --name=ollama-intel-gpu localhost/ollama-intel-gpu:latest";
 					ExecStop = "/run/current-system/sw/bin/podman stop ollama-intel-gpu";
 					Restart = "no";
 				};

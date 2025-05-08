@@ -73,23 +73,32 @@
 		};
 	} else {};
 
-	# Other mounts
-	fileSystems = {
-		"/mnt/stereomato-hdd" = {
-			# device = "/dev/disk/by-uuid/27c24c84-9b54-49fd-83f9-d0b683ad0eb0";
-			label = "stereomato-hdd";
-			fsType = "btrfs";
-			options = [ 
-				# This is an HDD, this probably helps a LOT with the slowness inherent to them.
-				"compress=zstd:5"
-				"lazytime"
-				"user"
-				"nofail"
-				"noauto"
-				"x-systemd.automount"
-				# Show on GNOME
-				"x-gvfs-show"
-			];
+	services.udisks2.settings = {
+		"mount_options.conf" = {
+			"/dev/disk/by-label/stereomato-hdd" = {
+				defaults = "lazytime";
+				btrfs_defaults = "compress=zstd:5";
+			};
 		};
 	};
+
+	# Other mounts
+	# fileSystems = {
+	# 	"/mnt/stereomato-hdd" = {
+	# 		# device = "/dev/disk/by-uuid/27c24c84-9b54-49fd-83f9-d0b683ad0eb0";
+	# 		label = "stereomato-hdd";
+	# 		fsType = "btrfs";
+	# 		options = [ 
+	# 			# This is an HDD, this probably helps a LOT with the slowness inherent to them.
+	# 			"compress=zstd:5"
+	# 			"lazytime"
+	# 			"user"
+	# 			"nofail"
+	# 			"noauto"
+	# 			"x-systemd.automount"
+	# 			# Show on GNOME
+	# 			"x-gvfs-show"
+	# 		];
+	# 	};
+	# };
 }

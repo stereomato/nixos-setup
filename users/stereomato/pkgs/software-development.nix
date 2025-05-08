@@ -33,5 +33,7 @@
 
 		# mysql
 		mysql-workbench
+		# Misc
+		swi-prolog-gui
   ];
 }
