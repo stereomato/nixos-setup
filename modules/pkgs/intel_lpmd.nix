@@ -113,14 +113,14 @@ let workaround = writers.writeText "config-file.xml" ''
         from 0 - 100
         clear both util_entry_threshold and util_exit_threshold to disable util monitor
       -->
-      <util_entry_threshold></util_entry_threshold>
+      <util_entry_threshold>20</util_entry_threshold>
 
       <!--
         System utilization threshold to exit LP mode
         from 0 - 100
         clear both util_entry_threshold and util_exit_threshold to disable util monitor
       -->
-      <util_exit_threshold></util_exit_threshold>
+      <util_exit_threshold>50</util_exit_threshold>
 
       <!--
         Entry delay. Minimum delay in non Low Power mode to
@@ -163,10 +163,10 @@ let workaround = writers.writeText "config-file.xml" ''
           <WLTType> 0 </WLTType> <!-- WLTType mapped to Name -->
           <EPP> 221 </EPP>
           <EPB> 13 </EPB>
-          <MinPollInterval> 500 </MinPollInterval>
-          <PollIntervalIncrement> 500 </PollIntervalIncrement>
-          <MaxPollInterval> 1500 </MaxPollInterval>
-          <ActiveCPUs>12-15</ActiveCPUs>
+          <MinPollInterval> 125 </MinPollInterval>
+          <PollIntervalIncrement> 75 </PollIntervalIncrement>
+          <MaxPollInterval> 500 </MaxPollInterval>
+          <ActiveCPUs>8-15</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>
       </State>
@@ -176,9 +176,9 @@ let workaround = writers.writeText "config-file.xml" ''
           <WLTType> 1 </WLTType>
           <EPP> 170 </EPP>
           <EPB> 10 </EPB>
-          <MinPollInterval> 500 </MinPollInterval>
-          <PollIntervalIncrement> 500 </PollIntervalIncrement>
-          <MaxPollInterval> 1500 </MaxPollInterval>
+          <MinPollInterval> 125 </MinPollInterval>
+          <PollIntervalIncrement> 75 </PollIntervalIncrement>
+          <MaxPollInterval> 500 </MaxPollInterval>
           <ActiveCPUs>8-15</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>
@@ -189,9 +189,9 @@ let workaround = writers.writeText "config-file.xml" ''
           <WLTType> 2 </WLTType>
           <EPP> 119 </EPP>
           <EPB> 7 </EPB>
-          <MinPollInterval> 500 </MinPollInterval>
-          <PollIntervalIncrement> 500 </PollIntervalIncrement>
-          <MaxPollInterval> 5000 </MaxPollInterval>
+          <MinPollInterval> 125 </MinPollInterval>
+          <PollIntervalIncrement> 75 </PollIntervalIncrement>
+          <MaxPollInterval> 500 </MaxPollInterval>
           <ActiveCPUs>0-15</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>
@@ -202,9 +202,9 @@ let workaround = writers.writeText "config-file.xml" ''
           <WLTType> 3 </WLTType>
           <EPP> 17 </EPP>
           <EPB> 1 </EPB>
-          <MinPollInterval> 500 </MinPollInterval>
-          <PollIntervalIncrement> 500 </PollIntervalIncrement>
-          <MaxPollInterval> 5000 </MaxPollInterval>
+          <MinPollInterval> 125 </MinPollInterval>
+          <PollIntervalIncrement> 75 </PollIntervalIncrement>
+          <MaxPollInterval> 500 </MaxPollInterval>
           <ActiveCPUs>0-15</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>

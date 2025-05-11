@@ -44,11 +44,7 @@
 			overlays = [
 				# TODO: Someday get how the n-v-e overlay works/is constructed
 				inputs.nix-vscode-extensions.overlays.default
-				# This was also confusing, but it makes sense
-				# the overlays list *wants* functions, this imports a function
-				(import ./myOverlays.nix)
-				(self: super: {
-			})];
+				] ++ import ./overlay;
 		hostPlatform = system;
 		config = {
 			allowUnfree = true;
