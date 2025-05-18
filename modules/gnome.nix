@@ -102,14 +102,6 @@
 
 			nixpkgs.overlays = [(
 				self: super: {
-					# Dynamic triple buffering patch
-					# Bugged currently
-					# mutter = super.mutter.overrideAttrs (old: {
-					# 		src = inputs.mutter-triple-buffering-src;
-					# 		preConfigure = ''
-					# 			cp -a "${inputs.gvdb-src}" ./subprojects/gvdb
-					# 		'';
-					# });
 
 					start-ollama-on-demand-fish = pkgs.writers.writeFishBin "start-ollama-on-demand" ''
 						# Need to write a script that starts ollama-intel-gpu, waits until it's finished

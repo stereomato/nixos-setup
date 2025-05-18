@@ -145,7 +145,7 @@ let fontsOverlay = (
 				prev.fetchzip {
 					name = "${prev.input-fonts.pname}-${prev.input-fonts.version}";
 					url = "https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip";
-					hash = "sha256-Rfd8jM3rPuPeGEZWKfczX7IfHwWHyJNfGEDOkJ/aenY=";
+					hash = "sha256-FHzzrocshUEq4aXfX5nsJRyByQ0xwt7GqbGUN1iWYYA=";
 					stripRoot = false;
 				};
 		});

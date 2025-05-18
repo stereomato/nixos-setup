@@ -26,11 +26,11 @@
 									];
 								};
 							};
-							TaihouDisk = {
+							everything = {
 								size = "100%";
 								content = {
 									type = "luks";
-									name = "TaihouDisk";
+									name = "everything";
 									initrdUnlock = true;
 									extraOpenArgs = [ "--allow-discards" "--perf-no_read_workqueue" "--perf-no_write_workqueue"  ];
 									# if you want to use the key for interactive login be sure there is no trailing newline
