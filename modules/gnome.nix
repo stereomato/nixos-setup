@@ -48,6 +48,8 @@
 				gnome.excludePackages = with pkgs; [ 
 				];
 				systemPackages = with pkgs; [
+					# gdctl
+					mutter
 					# Default PDF viewer
 					papers
 					# Miscellanous Gnome apps
@@ -121,11 +123,11 @@
 					wike = super.callPackage ./wike.nix {};
 
 					# TODO: until https://github.com/ollama/ollama/pull/8072 is fixed
-					alpaca = super.alpaca.overrideAttrs (old: {
-						postInstall = ''
-							substituteInPlace $out/share/applications/com.jeffser.Alpaca.desktop --replace-fail Exec=alpaca Exec=${pkgs.start-ollama-on-demand-fish}/bin/start-ollama-on-demand
-						'';
-					});
+					# alpaca = super.alpaca.overrideAttrs (old: {
+					# 	postInstall = ''
+					# 		substituteInPlace $out/share/applications/com.jeffser.Alpaca.desktop --replace-fail Exec=alpaca Exec=${pkgs.start-ollama-on-demand-fish}/bin/start-ollama-on-demand
+					# 	'';
+					# });
 				}
 			)];
 		};

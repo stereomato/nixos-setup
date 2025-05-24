@@ -32,7 +32,11 @@
 									type = "luks";
 									name = "everything";
 									initrdUnlock = true;
-									extraOpenArgs = [ "--allow-discards" "--perf-no_read_workqueue" "--perf-no_write_workqueue"  ];
+									settings = {
+										allowDiscards = true;
+										bypassWorkqueues = true;
+									};
+									# extraOpenArgs = [ "--allow-discards" "--perf-no_read_workqueue" "--perf-no_write_workqueue" ];
 									# if you want to use the key for interactive login be sure there is no trailing newline
 									# for example use `echo -n "password" > /tmp/secret.key`
 									#passwordFile = "/tmp/secret.key"; # Interactive

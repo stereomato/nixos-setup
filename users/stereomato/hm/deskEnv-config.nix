@@ -68,6 +68,12 @@
 			# 	window-position = "bottom";
 			# };
 
+			"net/nokyan/Resources" = {
+				sidebar-details = true;
+				sidebar-description = true;
+				sidebar-meter-type = "ProgressBar";
+			};
+
 			"org/gnome/shell/extensions/azwallpaper" = {
 				slideshow-directory = "/home/stereomato/Pictures/Wallpapers";
 				slideshow-slide-duration = lib.hm.gvariant.mkTuple [1 0 0];
@@ -152,9 +158,9 @@
 			};
 			"org/gnome/desktop/interface" = {
 				# icon-theme = "MoreWaita";
-				font-name = "system-ui 10.5";
-				document-font-name = "serif 10.5";
-				monospace-font-name = "monospace 10.5";
+				font-name = "system-ui 10";
+				document-font-name = "serif 10";
+				monospace-font-name = "monospace 10";
 				font-hinting = "none";
 				font-rendering = "manual";
 			};

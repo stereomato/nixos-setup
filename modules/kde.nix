@@ -78,8 +78,6 @@
 					# System wide stem darkening
 					# Testing: Inconsistent in plasma/QT
 					# FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
-
-					
 				};
 			};
 			# system.replaceDependencies.replacements = [

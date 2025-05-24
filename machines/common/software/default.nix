@@ -86,10 +86,10 @@
 	i18n = {
 		defaultLocale = "es_PE.UTF-8";
 		extraLocaleSettings = {
-			LANG="en_US.UTF-8";
+			LANG = "en_US.UTF-8";
 		};
 		extraLocales = [
-			"en_US.UTF-8"
+			"en_US.UTF-8/UTF-8"
 		];
 	};
 

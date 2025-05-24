@@ -68,22 +68,22 @@
 	# 	# 	# entrypoint = "/usr/share/lib/serve.sh";
 	# 	# };
 
-		# open-webui = {
-		# 	# TODO: https://github.com/open-webui/open-webui/discussions/8999
-		# 	image = "ghcr.io/open-webui/open-webui:v0.6.5";
-		# 	volumes = [ "open-webui-volume:/app/backend/data" ];
+		open-webui = {
+			# TODO: https://github.com/open-webui/open-webui/discussions/8999
+			image = "ghcr.io/open-webui/open-webui:v0.6.5";
+			volumes = [ "open-webui-volume:/app/backend/data" ];
 
-	 	# 	# dependsOn = [ "ollama-intel" ];
-		# 	ports = [ "127.0.0.1:3000:8080" ];
-		# 	# TODO: This is annoying
-		# 	environment = {
-		# 		WEBUI_AUTH = "False";
-		# 		ENABLE_OPENAI_API = "False";
-		# 		ENABLE_OLLAMA_API = "True";
-		# 		OLLAMA_BASE_URL = "http://127.0.0.1:11434";
-		# 	};
-	 	# 	extraOptions = [ "--network=host" ];
-		# };
+	 		# dependsOn = [ "ollama-intel" ];
+			ports = [ "127.0.0.1:3000:8080" ];
+			# TODO: This is annoying
+			environment = {
+				WEBUI_AUTH = "False";
+				ENABLE_OPENAI_API = "False";
+				ENABLE_OLLAMA_API = "True";
+				OLLAMA_BASE_URL = "http://127.0.0.1:11434";
+			};
+	 		extraOptions = [ "--network=host" ];
+		};
 	};
 
 	# This uses localhost/ollama-intel-arc:latest because this is locally built

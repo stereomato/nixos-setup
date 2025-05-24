@@ -4,7 +4,7 @@
 		google-chrome
 
 		# Chat/Voice Chat apps
-		tdesktop discord mumble element-desktop
+		tdesktop discord mumble
 
 		# Password management
 		bitwarden 
