@@ -1,6 +1,6 @@
 { taihouConfig, pkgs, lib, ... }: {
 	programs.gnome-shell = {
-		enable = taihouConfig.services.xserver.desktopManager.gnome.enable;
+		enable = taihouConfig.services.desktopManager.gnome.enable;
 		extensions = [
 			# Alphabetical App Grid
 			{ package = pkgs.gnomeExtensions.alphabetical-app-grid; }
@@ -20,6 +20,12 @@
 
 			# Wallpaper slideshow
 			{ package = pkgs.gnomeExtensions.wallpaper-slideshow; }
+
+			# Caffeine
+			{ package = pkgs.gnomeExtensions.caffeine; }
+
+			# CamPeek
+			{ package = pkgs.gnomeExtensions.campeek; }
 			
 			# Dock from dash
 			# Disabled until these 2 issues are fixed!
@@ -37,7 +43,7 @@
 		"Xft.lcdfilter" = "lcddefault";
 	} else {};
 
-	home.packages = if taihouConfig.services.xserver.desktopManager.gnome.enable then with pkgs; [
+	home.packages = if taihouConfig.services.desktopManager.gnome.enable then with pkgs; [
 		# Workaround for gtk.theme.package
 		adw-gtk3
 	] else [];
@@ -45,7 +51,7 @@
 	# TODO: does this break anything in KDE?
 	# Probably not
 	gtk = {
-		enable = taihouConfig.services.xserver.desktopManager.gnome.enable;
+		enable = taihouConfig.services.desktopManager.gnome.enable;
 		theme = {
 			name = "adw-gtk3";
 			# package = pkgs.adw-gtk3;
@@ -59,7 +65,7 @@
 	# TODO: does this break anything in KDE?
 	# Probably not
 	dconf = {
-		enable = taihouConfig.services.xserver.desktopManager.gnome.enable;
+		enable = taihouConfig.services.desktopManager.gnome.enable;
 		settings = {
 
 			# "com/github/amezin/ddterm" = {
@@ -67,7 +73,9 @@
 			# 	transparent-background = false;
 			# 	window-position = "bottom";
 			# };
-
+			"org/gnome/shell/extensions/caffeine" = {
+				trigger-apps-mode = "on-active-workspace";
+			};
 			"net/nokyan/Resources" = {
 				sidebar-details = true;
 				sidebar-description = true;

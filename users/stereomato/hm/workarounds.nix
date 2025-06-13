@@ -14,7 +14,7 @@
 	# Workaround: for cursors broken in gnome by default
 	# affects: mpv and games it seems
 	# This might be uneeded when gtk 4.18 drops
-		 pointerCursor = lib.mkIf taihouConfig.services.xserver.desktopManager.gnome.enable {
+		 pointerCursor = lib.mkIf taihouConfig.services.desktopManager.gnome.enable {
 		 	package = pkgs.adwaita-icon-theme;
 		 	name = "Adwaita";
 		 	# Set to 12 because of mpv

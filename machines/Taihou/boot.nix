@@ -2,7 +2,7 @@
 {
 
 	boot = {
-		kernelPackages = lib.mkForce pkgs.linux-stereomato-zen;
+		kernelPackages = lib.mkForce pkgs.linux-stereomato;
 		kernelPatches = [
 			{
 				# https://www.phoronix.com/news/Linux-6.2-Power-Management

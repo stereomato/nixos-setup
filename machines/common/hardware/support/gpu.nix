@@ -23,6 +23,9 @@
 			mangohud
 		];
 		extraPackages32 = with pkgs; [
+			# HW media acceleration
+			driversi686Linux.intel-media-driver
+			
 			# Mangohud layers
 			pkgsi686Linux.mangohud
 		];

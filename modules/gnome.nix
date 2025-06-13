@@ -11,7 +11,7 @@
 
 		config = lib.mkIf (cfg.gnome.enable) {
 			services= {
-				xserver.desktopManager.gnome = {
+				desktopManager.gnome = {
 					enable = true;
 					extraGSettingsOverridePackages = [ pkgs.mutter ];
 					# There's a possible extra setting I could add here, but I don't know if it's necessary considering I modify font settings using fontconfing: https://www.reddit.com/r/gnome/comments/1grtn97/comment/lx9fiib/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
@@ -23,7 +23,7 @@
 					'';
 				};
 				# The Gnome Display Manager
-				xserver.displayManager.gdm.enable = true;
+				displayManager.gdm.enable = true;
 				# Extra gnome apps
 				gnome = {
 					core-developer-tools.enable = true;
@@ -104,7 +104,9 @@
 
 			nixpkgs.overlays = [(
 				self: super: {
-
+					zoom-us = super.zoom-us.override {
+						gnomeXdgDesktopPortalSupport = true;
+					};
 					start-ollama-on-demand-fish = pkgs.writers.writeFishBin "start-ollama-on-demand" ''
 						# Need to write a script that starts ollama-intel-gpu, waits until it's finished
 						# And then starts alpaca.

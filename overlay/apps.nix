@@ -8,9 +8,9 @@ let appsOverlay = (
 			# enableLto = true; # fails...
 		};
 		# FIXME: https://github.com/NixOS/nixpkgs/pull/294710
-		gimp-stereomato = prev.gimp.override {
-			withPython = true;
-		};
+		# gimp-stereomato = prev.gimp.override {
+		# 	withPython = true;
+		# };
 
 		vscode = prev.vscode.override {
 			commandLineArgs = "--disable-font-subpixel-positioning=true";
@@ -51,7 +51,8 @@ let appsOverlay = (
 				prev.vscode-marketplace.vscjava.vscode-java-dependency
 				prev.vscode-marketplace.vscjava.vscode-java-test
 				prev.vscode-marketplace.vscjava.vscode-maven
-				prev.vscode-marketplace.vadimcn.vscode-lldb
+				# https://github.com/nix-community/nix-vscode-extensions/issues/127
+				# prev.vscode-marketplace.vadimcn.vscode-lldb
 				prev.vscode-marketplace.nimlang.nimlang
 				prev.vscode-marketplace.cschlosser.doxdocgen
 				prev.vscode-marketplace.jeff-hykin.better-cpp-syntax
@@ -89,8 +90,9 @@ let appsOverlay = (
 		};
 
 		google-chrome = prev.google-chrome.override {
-			commandLineArgs = "--enable-features=Vulkan,VulkanFromANGLE,TouchpadOverscrollHistoryNavigation,AcceleratedVideoEncoder,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading,UseMultiPlaneFormatForHardwareVideo,WaylandLinuxDrmSyncobj,WaylandPerSurfaceScale,WaylandTextInputV3,WaylandUiScale --disable-font-subpixel-positioning=true --enable-zero-copy=true --use-vulkan=true --enable-hardware-overlays=true";
-			# commandLineArgs = "--enable-features=TouchpadOverscrollHistoryNavigation,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading,UseMultiPlaneFormatForHardwareVideo,WaylandLinuxDrmSyncobj,WaylandPerSurfaceScale,WaylandTextInputV3,WaylandUiScale --disable-font-subpixel-positioning=true --enable-zero-copy=true";
+			# Testing: No vulkan
+			# commandLineArgs = "--enable-features=TouchpadOverscrollHistoryNavigation,AcceleratedVideoEncoder,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading,UseMultiPlaneFormatForHardwareVideo,WaylandLinuxDrmSyncobj,WaylandPerSurfaceScale,WaylandTextInputV3,WaylandUiScale --disable-font-subpixel-positioning=true --enable-zero-copy=true";
+			commandLineArgs = "--enable-features=Vulkan,DefaultANGLEVulkan,VulkanFromANGLE,TouchpadOverscrollHistoryNavigation,AcceleratedVideoEncoder,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,ParallelDownloading,UseMultiPlaneFormatForHardwareVideo,WaylandLinuxDrmSyncobj,WaylandPerSurfaceScale,WaylandTextInputV3,WaylandUiScale --disable-font-subpixel-positioning=true --enable-zero-copy=true --use-vulkan=true --enable-hardware-overlays=true --enable-unsafe-webgpu";
 		};
 		obs-studio-with-plugins = prev.wrapOBS {
 			plugins = with prev.obs-studio-plugins; [

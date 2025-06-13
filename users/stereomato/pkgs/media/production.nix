@@ -20,6 +20,6 @@
 		distrho-ports dragonfly-reverb lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4 calf CHOWTapeModel zam-plugins gxplugins-lv2 tap-plugins
 
 		# Images
-		gimp imagemagickBig waifu2x-converter-cpp  libjxl libavif
+		gimp3-with-plugins imagemagickBig waifu2x-converter-cpp  libjxl libavif
 	];
 }

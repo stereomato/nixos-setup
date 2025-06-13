@@ -42,7 +42,8 @@ in
 		systemd.packages = [ cfg.intel_lpmd.package ];
 		
 		systemd.services.intel_lpmd.enable = true;
-		systemd.services.intel_lpmd.wantedBy = [ "multi-user.target" ];
+		systemd.services.intel_lpmd.wantedBy = [ "multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
+		systemd.services.intel_lpmd.after = [ "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
 		# TODO: document this on a personal database thing
 		# https://github.com/NixOS/nixpkgs/issues/63703#issuecomment-504836857
 		 systemd.services.intel_lpmd.serviceConfig.ExecStart = [

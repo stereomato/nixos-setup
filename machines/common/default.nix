@@ -16,9 +16,9 @@
 					});
 				}
 				{
-					oldDependency = pkgs.libsForQt5.qt5.qtbase;
-					newDependency = pkgs.libsForQt5.qt5.qtbase.overrideAttrs(old: {
-						patches = pkgs.libsForQt5.qt5.qtbase.patches ++ [
+					oldDependency = pkgs.libsForQt5.qtbase;
+					newDependency = pkgs.libsForQt5.qtbase.overrideAttrs(old: {
+						patches = pkgs.libsForQt5.qtbase.patches ++ [
 							./patches/disable-stem-darkening-qt5.patch
 						];
 					});
@@ -35,7 +35,7 @@
 	};
 
 	programs.fish = {
-		enable = true; 
+		enable = true;
 		useBabelfish = true;
 	};
 

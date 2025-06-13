@@ -2,6 +2,9 @@
 	imports = [
 	];
 
+	# New nixos-rebuild command
+	system.rebuild.enableNg = true;
+
 	nix = {
 		settings = {
 			auto-optimise-store = true;

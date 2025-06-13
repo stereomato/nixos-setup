@@ -120,7 +120,7 @@ let workaround = writers.writeText "config-file.xml" ''
         from 0 - 100
         clear both util_entry_threshold and util_exit_threshold to disable util monitor
       -->
-      <util_exit_threshold>50</util_exit_threshold>
+      <util_exit_threshold>75</util_exit_threshold>
 
       <!--
         Entry delay. Minimum delay in non Low Power mode to
@@ -138,13 +138,13 @@ let workaround = writers.writeText "config-file.xml" ''
         Lowest hysteresis average in-LP-mode time in msec to enter LP mode
         0: to disable hysteresis support
       -->
-      <EntryHystMS>2500</EntryHystMS>
+      <EntryHystMS>0</EntryHystMS>
 
       <!--
         Lowest hysteresis average out-of-LP-mode time in msec to exit LP mode
         0: to disable hysteresis support
       -->
-      <ExitHystMS>3500</ExitHystMS>
+      <ExitHystMS>0</ExitHystMS>
 
       <!--
         Ignore ITMT setting during LP-mode enter/exit
@@ -161,12 +161,15 @@ let workaround = writers.writeText "config-file.xml" ''
           <ID> 1 </ID> <!-- no significance. number can be anything -->
           <Name> WLT_IDLE </Name>
           <WLTType> 0 </WLTType> <!-- WLTType mapped to Name -->
-          <EPP> 221 </EPP>
+          <EPP> 170 </EPP>
           <EPB> 13 </EPB>
-          <MinPollInterval> 125 </MinPollInterval>
-          <PollIntervalIncrement> 75 </PollIntervalIncrement>
-          <MaxPollInterval> 500 </MaxPollInterval>
-          <ActiveCPUs>8-15</ActiveCPUs>
+          <EnterGFXLoadThres>25</EnterGFXLoadThres>
+          <EntrySystemLoadThres>5</EntrySystemLoadThres>
+          <EnterCPULoadThres>25</EnterCPULoadThres>
+          <MinPollInterval> 1000 </MinPollInterval>
+          <PollIntervalIncrement> 500 </PollIntervalIncrement>
+          <MaxPollInterval> 2000 </MaxPollInterval>
+          <ActiveCPUs>lp</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>
       </State>
@@ -174,12 +177,15 @@ let workaround = writers.writeText "config-file.xml" ''
           <ID> 2 </ID>
           <Name> WLT_BATTERY_LIFE </Name>
           <WLTType> 1 </WLTType>
-          <EPP> 170 </EPP>
+          <EPP> 119 </EPP>
           <EPB> 10 </EPB>
-          <MinPollInterval> 125 </MinPollInterval>
-          <PollIntervalIncrement> 75 </PollIntervalIncrement>
-          <MaxPollInterval> 500 </MaxPollInterval>
-          <ActiveCPUs>8-15</ActiveCPUs>
+          <EnterGFXLoadThres>35</EnterGFXLoadThres>
+          <EntrySystemLoadThres>10</EntrySystemLoadThres>
+          <EnterCPULoadThres>35</EnterCPULoadThres>
+          <MinPollInterval> 1000 </MinPollInterval>
+          <PollIntervalIncrement> 500 </PollIntervalIncrement>
+          <MaxPollInterval> 2000 </MaxPollInterval>
+          <ActiveCPUs>lp</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>
       </State>
@@ -189,10 +195,12 @@ let workaround = writers.writeText "config-file.xml" ''
           <WLTType> 2 </WLTType>
           <EPP> 119 </EPP>
           <EPB> 7 </EPB>
-          <MinPollInterval> 125 </MinPollInterval>
-          <PollIntervalIncrement> 75 </PollIntervalIncrement>
-          <MaxPollInterval> 500 </MaxPollInterval>
-          <ActiveCPUs>0-15</ActiveCPUs>
+          <EntrySystemLoadThres>30</EntrySystemLoadThres>
+          <EnterGFXLoadThres>50</EnterGFXLoadThres>
+          <MinPollInterval> 1000 </MinPollInterval>
+          <PollIntervalIncrement> 500 </PollIntervalIncrement>
+          <MaxPollInterval> 2000 </MaxPollInterval>
+          <ActiveCPUs>all</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>
       </State>
@@ -200,12 +208,14 @@ let workaround = writers.writeText "config-file.xml" ''
           <ID> 4 </ID>
           <Name> WLT_BURSTY </Name>
           <WLTType> 3 </WLTType>
-          <EPP> 17 </EPP>
-          <EPB> 1 </EPB>
-          <MinPollInterval> 125 </MinPollInterval>
-          <PollIntervalIncrement> 75 </PollIntervalIncrement>
-          <MaxPollInterval> 500 </MaxPollInterval>
-          <ActiveCPUs>0-15</ActiveCPUs>
+          <EPP> 34 </EPP>
+          <EPB> 2 </EPB>
+          <EnterGFXLoadThres>50</EnterGFXLoadThres>
+          <EntrySystemLoadThres>50</EntrySystemLoadThres>
+          <MinPollInterval> 1000 </MinPollInterval>
+          <PollIntervalIncrement> 500 </PollIntervalIncrement>
+          <MaxPollInterval> 2000 </MaxPollInterval>
+          <ActiveCPUs>all</ActiveCPUs>
           <ITMTState> -1 </ITMTState>
           <IRQMigrate> -1 </IRQMigrate>
       </State>
@@ -221,8 +231,8 @@ in stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "intel";
     repo = "intel-lpmd";
-    rev = "refs/tags/v${finalAttrs.version}";
-    hash = "sha256-hM52KFgzHuXqadQ9TgRhEwFJsyiv8DyNdpGTWZAC0jU=";
+    rev = "afe44487750e58992004471b96ef7914bb07c848";
+    hash = "sha256-IygTSDz9l2xwctDwe6El+/jEKy3PFCvavCqgaPqSdbo=";
   };
 
   nativeBuildInputs = [

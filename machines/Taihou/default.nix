@@ -24,6 +24,17 @@
 				};
 				wantedBy = [ "multi-user.target" ];
 			};
+		
+			adl-cpu-efficiency = {
+				enable = true;
+				description = "Set the recommended max_perf_pct for ADL as highlighted by CaC";
+				after = [ "multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
+				serviceConfig = {
+					Type = "oneshot";
+					ExecStart = "${pkgs.bash}/bin/bash -c 'echo 75 | tee /sys/devices/system/cpu/intel_pstate/max_perf_pct'";
+				};
+				wantedBy = [ "multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
+			};
 
 			adl-smp-affinity-list = {
 				# Do not enable when using to intel lpmd
@@ -58,7 +69,7 @@
 				serviceConfig = {
 					Type = "oneshot";
 					# Some IRQs can't be modified, so use || true to work around this
-					ExecStart = "${pkgs.bash}/bin/bash -c 'rmmod hid_generic && rmmod hid_multitouch && modprobe hid_generic && modprobe hid_multitouch'";
+					ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.kmod}/bin/rmmod hid_generic && ${pkgs.kmod}/bin/rmmod hid_multitouch && ${pkgs.kmod}/bin/modprobe hid_generic && ${pkgs.kmod}/bin/modprobe hid_multitouch'";
 				};
 				wantedBy = [ "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
 			};

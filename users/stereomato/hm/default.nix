@@ -68,7 +68,7 @@
 	# QT look on gnome
 	qt = {
 		style.name = "kde";
-	} // lib.mkIf (taihouConfig.services.xserver.desktopManager.gnome.enable) {
+	} // lib.mkIf (taihouConfig.services.desktopManager.gnome.enable) {
 		enable = true;
 		platformTheme.name = "adwaita";
 	};
@@ -120,9 +120,9 @@
 					Restart = "no";
 				};
 				# TODO: Comment this out when I can use socket activation
-				# Install = {
-				# 	WantedBy = [ "graphical-session.target" ];
-				# };
+				Install = {
+					WantedBy = [ "graphical-session.target" ];
+				};
 			};
 		};
 	};
