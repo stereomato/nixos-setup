@@ -11,14 +11,11 @@
 		extraPackages = with pkgs; [ 
 			# HW media acceleration
 			vpl-gpu-rt
-			libvpl
-			intel-media-sdk
 			intel-media-driver
 
 			# Compute
-			level-zero
 			intel-compute-runtime
-
+			intel-compute-runtime.drivers
 			# Mangohud layers
 			mangohud
 		];

@@ -20,7 +20,7 @@
 			rar p7zip
 
 			# Miscellanous cli apps
-			xorg.xeyes maigret bc xdg-utils trash-cli
+			xorg.xeyes bc xdg-utils trash-cli
 
 			# Phone stuff
 			scrcpy

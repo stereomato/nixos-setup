@@ -70,7 +70,8 @@
 
 		open-webui = {
 			# TODO: https://github.com/open-webui/open-webui/discussions/8999
-			image = "ghcr.io/open-webui/open-webui:v0.6.5";
+			image = "ghcr.io/open-webui/open-webui:v0.6.15";
+			pull = "missing";
 			volumes = [ "open-webui-volume:/app/backend/data" ];
 
 	 		# dependsOn = [ "ollama-intel" ];

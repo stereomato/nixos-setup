@@ -25,7 +25,7 @@
 		commonsIo
 
 		# Gamedev
-		unityhub # https://nixpk.gs/pr-tracker.html?pr=368851
+		#unityhub # https://nixpk.gs/pr-tracker.html?pr=368851
 
 		# Containers
 		arion

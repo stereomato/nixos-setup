@@ -26,7 +26,7 @@
 			};
 		
 			adl-cpu-efficiency = {
-				enable = true;
+				enable = false;
 				description = "Set the recommended max_perf_pct for ADL as highlighted by CaC";
 				after = [ "multi-user.target" "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
 				serviceConfig = {
@@ -63,7 +63,7 @@
 			};
 
 			resume-touchpad-fix = {
-				enable = true;
+				enable = false;
 				description = "Fixes the touchpad after resuming from suspend.";
 				after = [ "suspend.target" "hibernate.target" "hybrid-sleep.target" ];
 				serviceConfig = {

@@ -16,7 +16,7 @@
 , zlib
 , alsa-lib
 , curl
-, webkitgtk
+, webkitgtk_6_0
 , gtk3
 , pcre
 , pcre2
@@ -59,7 +59,7 @@ stdenv.mkDerivation rec {
 		zlib
 		alsa-lib
 		curl
-		webkitgtk
+		webkitgtk_6_0
 		gtk3
 		pcre
 		pcre2
