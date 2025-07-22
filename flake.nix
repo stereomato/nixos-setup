@@ -2,7 +2,9 @@
 	description = "Stereomato's NixOS setup";
 
 	inputs = {
-		nixpkgs.url = "nixpkgs/nixos-unstable";
+		# nixpkgs.url = "nixpkgs/9807714d6944a957c2e036f84b0ff8caf9930bc0";
+		# nixpkgs.url = "nixpkgs/nixos-unstable";
+		nixpkgs.url = "github:NixOS/nixpkgs/pull/426048/head";
 		home-manager = {
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -115,7 +117,7 @@
 			# 		};
 			# 		modules = [
 			# 			./users/stereomato/hm
-			# 			nix-index-database.hmModules.nix-index
+			# 			nix-index-database.homeModules.nix-index
 			# 		];
 			# 	};
 			# };

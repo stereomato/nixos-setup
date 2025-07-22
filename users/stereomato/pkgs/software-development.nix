@@ -3,7 +3,7 @@
 	users.users.stereomato.packages = with pkgs; [
 		# https://github.com/NixOS/nixpkgs/issues/242322#issuecomment-2264995861
 		# Text editors, IDEs
-		zed-editor netbeans arduino-ide my-vscode octaveFull
+		my-vscode
 
 		toolbox distrobox
 		# Computer Graphics

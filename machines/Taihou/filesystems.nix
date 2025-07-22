@@ -26,11 +26,11 @@
 									];
 								};
 							};
-							everything = {
+							TaihouDisk = {
 								size = "100%";
 								content = {
 									type = "luks";
-									name = "everything";
+									name = "TaihouDisk";
 									initrdUnlock = true;
 									settings = {
 										allowDiscards = true;

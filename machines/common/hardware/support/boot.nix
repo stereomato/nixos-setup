@@ -34,6 +34,9 @@
 			# Powersaving
 			# "iwlwifi.power_save=1"
 			# "iwlwifi.power_level=3"
+
+			# Trust Intel RDRAND
+			"random.trust_cpu=1"
 		];
 		loader = {
 			systemd-boot = {

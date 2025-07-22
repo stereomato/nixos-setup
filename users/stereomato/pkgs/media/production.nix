@@ -11,7 +11,8 @@
 		mkvtoolnix # davinci-resolve
 
 		# Music/Audio file management
-		wavpack fdk-aac-encoder lame flac opusTools opustags easytag spek flacon
+		# TODO: https://github.com/NixOS/nixpkgs/issues/425364 spek
+		wavpack fdk-aac-encoder lame flac opusTools opustags easytag  flacon
 
 		# Music production: DAWs
 		audacity qpwgraph reaper ardour

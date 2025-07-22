@@ -87,16 +87,16 @@
 	localModule.intel_lpmd.enable = false;
 	localModule.performance.memory = {
 		zswap = {
-			enable = false;
+			enable = true;
 			size = 23726;
 			hibernation = {
-				enable = false;
+				enable = true;
 				device = "/dev/mapper/${config.disko.devices.disk.internalNVME.content.partitions.TaihouDisk.name}";
 				resumeOffset = 10828120;
 			};
 		};
 		zram = {
-			enable = true;
+			enable = false;
 			size = 200;
 		};
 	};
@@ -132,7 +132,16 @@
 
 			];
 		};
-
+		open-webui = {
+			enable = true;
+			port = 8080;
+			environment = {
+				WEBUI_AUTH = "False";
+				ENABLE_OPENAI_API = "False";
+				ENABLE_OLLAMA_API = "True";
+				OLLAMA_BASE_URL = "http://127.0.0.1:11434";
+			};
+		};
 	};
 
 	services.fprintd = {

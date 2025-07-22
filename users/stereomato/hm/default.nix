@@ -8,7 +8,7 @@
 		./workarounds.nix
 		./mpv.nix
 		#TODO: I might have to fix this when using home manager as standalone
-		inputs.nix-index-database.hmModules.nix-index
+		inputs.nix-index-database.homeModules.nix-index
 
 	];
 

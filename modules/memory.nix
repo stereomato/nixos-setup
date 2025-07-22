@@ -43,7 +43,7 @@ in
         "zswap.zpool=zsmalloc"
         "zswap.max_pool_percent=35"
         "zswap.accept_threshold_percent=90"
-      ] ++ lib.optionals (! cfg.zram.enable) [ "zswap.enabled=N" ]
+      ] ++ lib.optionals (! cfg.zram.enable) [ "zswap.enabled=Y" ]
         ++ lib.optionals (cfg.zswap.encryption) ["nohibernate"]
         ++ lib.optionals (cfg.zswap.hibernation.enable) [ 
             # Parameters needed to use hibernation
